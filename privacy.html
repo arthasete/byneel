@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité — byNeel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terracotta: #E07A5F;
+      --navy: #3D405B;
+      --cream: #F4F1DE;
+      --text: #2D2D2D;
+      --light: #888888;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--terracotta); }
+
+    nav a.back {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a.back:hover { color: var(--navy); }
+
+    .content {
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 0 24px 80px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--light);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      color: var(--navy);
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 40px 0 12px;
+    }
+
+    p { margin-bottom: 16px; font-size: 16px; color: #444; }
+
+    .highlight {
+      background: var(--cream);
+      border-left: 4px solid var(--terracotta);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+      font-size: 15px;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    ul { margin: 12px 0 16px 20px; }
+    ul li { font-size: 16px; color: #444; margin-bottom: 8px; }
+
+    a { color: var(--terracotta); }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      border-top: 1px solid #f0f0f0;
+      font-size: 13px;
+      color: var(--light);
+    }
+
+    footer a { color: var(--light); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: var(--navy); }
+
+    @media (max-width: 600px) {
+      nav { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">by<span>Neel</span></a>
+    <a href="/" class="back">← Retour</a>
+  </nav>
+
+  <div class="content">
+    <p class="meta">Dernière mise à jour : janvier 2026</p>
+    <h1>Politique de confidentialité</h1>
+
+    <div class="highlight">
+      En résumé : CookBook AI ne collecte aucune donnée personnelle. Tout reste sur votre téléphone.
+    </div>
+
+    <h2>1. Qui sommes-nous ?</h2>
+    <p>byNeel est un développeur indépendant d'applications mobiles. Contact : <a href="mailto:contact@byneel.com">contact@byneel.com</a></p>
+
+    <h2>2. Données collectées</h2>
+    <p>CookBook AI <strong>ne collecte aucune donnée personnelle</strong>. L'application ne dispose d'aucun serveur, d'aucune base de données et d'aucun compte utilisateur.</p>
+    <p>Les données suivantes sont stockées <strong>uniquement sur votre appareil</strong> :</p>
+    <ul>
+      <li>Vos recettes et leur contenu</li>
+      <li>Votre planning de repas</li>
+      <li>Vos préférences (thème, portions par défaut, etc.)</li>
+      <li>Votre clé API IA (chiffrée dans le Keychain iOS / Keystore Android)</li>
+    </ul>
+    <p>Ces données <strong>ne quittent jamais votre téléphone</strong> et ne nous sont pas accessibles.</p>
+
+    <h2>3. Requêtes vers des services tiers</h2>
+    <p>Lorsque vous utilisez les fonctionnalités IA (import de recette, Pantry AI, Sous-Chef), votre téléphone envoie une requête directement aux serveurs du provider IA que vous avez configuré (Google Gemini, OpenAI, etc.) en utilisant <strong>votre propre clé API</strong>.</p>
+    <p>Ces échanges sont soumis à la politique de confidentialité du provider concerné :</p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" target="_blank">Google — Politique de confidentialité</a></li>
+      <li><a href="https://openai.com/policies/privacy-policy" target="_blank">OpenAI — Politique de confidentialité</a></li>
+    </ul>
+
+    <h2>4. Commande d'impression (Lulu Direct)</h2>
+    <p>Si vous utilisez la fonctionnalité de livre de recettes imprimé, vous êtes redirigé vers le site de Lulu Direct pour finaliser votre commande et votre paiement. Cette transaction est traitée directement par Lulu et soumise à <a href="https://www.lulu.com/about/privacy-policy" target="_blank">leur politique de confidentialité</a>. Nous ne recevons ni ne stockons vos informations de paiement ou d'adresse.</p>
+
+    <h2>5. Publicités</h2>
+    <p>La version gratuite de l'application peut afficher des publicités via Google AdMob. Google peut collecter certaines données d'usage à des fins publicitaires, conformément à <a href="https://policies.google.com/privacy" target="_blank">sa politique de confidentialité</a>. Les utilisateurs Premium ne voient aucune publicité.</p>
+
+    <h2>6. Droits RGPD</h2>
+    <p>Étant donné que nous ne collectons aucune donnée personnelle, il n'y a rien à supprimer, modifier ou exporter de notre côté. Toutes vos données sont sur votre appareil — vous pouvez les supprimer en désinstallant l'application.</p>
+
+    <h2>7. Contact</h2>
+    <p>Pour toute question : <a href="mailto:contact@byneel.com">contact@byneel.com</a></p>
+  </div>
+
+  <footer>
+    <p>© 2026 byNeel</p>
+    <p style="margin-top:8px">
+      <a href="/">Accueil</a>
+      <a href="/terms.html">Conditions d'utilisation</a>
+    </p>
+  </footer>
+
+</body>
+</html>
