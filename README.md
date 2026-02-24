@@ -1,30 +1,36 @@
-# byneel.com — Site web byNeel
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Site statique HTML pur — hébergé sur Cloudflare Pages.
+## Getting Started
 
-## Structure
+First, run the development server:
 
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
-index.html    — Page d'accueil
-privacy.html  — Politique de confidentialité
-terms.html    — Conditions d'utilisation
-```
 
-## Déploiement
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Cloudflare Pages connecté au repo GitHub `arthasete/byneel`.
-Tout push sur `main` déclenche un déploiement automatique.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Settings Cloudflare Pages :
-- Framework preset : None
-- Build command : (vide)
-- Build output directory : `/`
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## TODO
+## Learn More
 
-- [ ] **Bilingue FR / EN** — ajouter un switch langue (FR par défaut, EN pour le worldwide). Option simple : deux versions de chaque page (`index.fr.html` / `index.en.html`) avec redirect selon le navigateur, ou un petit script JS qui swap le contenu.
-- [ ] **Animations** — ajouter des micro-animations à l'arrivée des sections (fade-in au scroll avec `IntersectionObserver`), hover sur les cartes app, transition douce sur le CTA.
-- [ ] **Page app CookBook AI** — page dédiée avec screenshots, description complète, liens App Store / Google Play (à faire quand l'app est soumise).
-- [ ] **Vrai logo byNeel** — remplacer le texte "byNeel" en nav par un vrai logo SVG.
-- [ ] **Mettre à jour "Bientôt"** sur la carte CookBook AI quand l'app est disponible sur les stores (remplacer par les vrais liens App Store / Google Play).
-- [ ] **"on" → "je"** dans le hero ("byNeel crée" → "Je crée") pour cohérence avec la section about.
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
