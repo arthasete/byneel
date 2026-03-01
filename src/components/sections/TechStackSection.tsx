@@ -1,6 +1,8 @@
 'use client';
 
+import { useMemo } from 'react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface TechItem {
   name: string;
@@ -15,16 +17,23 @@ const technologies: TechItem[] = [
   { name: 'TypeScript', icon: '🔷', category: 'Language', color: 'from-blue-600 to-blue-400' },
   { name: 'Python', icon: '🐍', category: 'Language', color: 'from-yellow-500 to-green-500' },
   { name: 'Supabase', icon: '🚀', category: 'Backend', color: 'from-green-500 to-emerald-500' },
-  { name: 'Claude AI', icon: '🤖', category: 'IA', color: 'from-purple-600 to-pink-500' },
+  { name: 'Claude AI', icon: '🤖', category: 'AI', color: 'from-purple-600 to-pink-500' },
   { name: 'FastAPI', icon: '⚡', category: 'Backend', color: 'from-teal-500 to-green-500' },
   { name: 'Docker', icon: '🐳', category: 'DevOps', color: 'from-blue-600 to-cyan-500' },
-  { name: 'Ollama', icon: '🧠', category: 'IA locale', color: 'from-orange-500 to-red-500' },
+  { name: 'Ollama', icon: '🧠', category: 'Local AI', color: 'from-orange-500 to-red-500' },
   { name: 'Tailwind CSS', icon: '🎨', category: 'Styling', color: 'from-cyan-500 to-blue-500' },
   { name: 'Dart', icon: '🎯', category: 'Language', color: 'from-blue-400 to-cyan-400' },
   { name: 'SQLite', icon: '🗄️', category: 'Database', color: 'from-blue-300 to-blue-500' },
 ];
 
 export function TechStackSection() {
+  const { t } = useLanguage();
+
+  const localizedTech = useMemo(() => technologies.map(tech => ({
+    ...tech,
+    category: tech.category === 'AI' ? t('tech.ai') : tech.category === 'Local AI' ? t('tech.localAi') : tech.category,
+  })), [t]);
+
   return (
     <section id="tech" className="relative py-24 px-6 overflow-hidden">
       {/* Background */}
@@ -36,13 +45,13 @@ export function TechStackSection() {
       <div className="relative z-10 max-w-6xl mx-auto">
         <ScrollReveal className="text-center mb-16">
           <p className="text-xs font-semibold tracking-widest uppercase text-brand-blue mb-3">
-            Technologie
+            {t('tech.label')}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            L&apos;arsenal technologique
+            {t('tech.title')}
           </h2>
           <p className="text-muted text-lg max-w-2xl mx-auto">
-            Les meilleures technologies pour construire des applications modernes, scalables et performantes.
+            {t('tech.description')}
           </p>
         </ScrollReveal>
 
@@ -52,7 +61,7 @@ export function TechStackSection() {
           <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-brand-blue/20 to-brand-violet/20 rounded-full blur-[80px] pointer-events-none" />
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
-            {technologies.map((tech, index) => (
+            {localizedTech.map((tech, index) => (
               <ScrollReveal key={tech.name} delay={index * 0.05}>
                 <div className="group relative h-full">
                   {/* Gradient background on hover */}
@@ -93,7 +102,7 @@ export function TechStackSection() {
         {/* Bottom description */}
         <ScrollReveal className="mt-16 text-center">
           <p className="text-muted text-base max-w-2xl mx-auto">
-            Stack soigneusement sélectionné pour la <span className="text-foreground font-semibold">performance</span>, la <span className="text-foreground font-semibold">maintenabilité</span> et la <span className="text-foreground font-semibold">scalabilité</span> de chaque projet.
+            {t('tech.bottom')} <span className="text-foreground font-semibold">{t('tech.performance')}</span>, <span className="text-foreground font-semibold">{t('tech.maintainability')}</span> and <span className="text-foreground font-semibold">{t('tech.scalability')}</span> {t('tech.bottomEnd')}
           </p>
         </ScrollReveal>
       </div>

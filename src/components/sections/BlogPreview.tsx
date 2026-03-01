@@ -1,25 +1,28 @@
 'use client';
 
 import Link from 'next/link';
-import { posts } from '@/data/posts';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { useLanguage } from '@/i18n/LanguageContext';
+import { usePosts } from '@/i18n/useLocalizedData';
 
 export function BlogPreview() {
-  const latestPosts = posts.slice(0, 3);
+  const { t, language } = useLanguage();
+  const localizedPosts = usePosts();
+  const latestPosts = localizedPosts.slice(0, 3);
 
   return (
     <section id="blog" className="relative py-24 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
           <p className="text-xs font-semibold tracking-widest uppercase text-brand-blue mb-3">
-            Blog
+            {t('blog.label')}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Derni&egrave;res r&eacute;flexions<span className="gradient-text">.</span>
+            {t('blog.title')}<span className="gradient-text">.</span>
           </h2>
           <p className="text-muted max-w-xl mb-12">
-            Retours d&apos;exp, choix techniques et coulisses du d&eacute;veloppement.
+            {t('blog.description')}
           </p>
         </ScrollReveal>
 
@@ -33,7 +36,7 @@ export function BlogPreview() {
                       {post.icon}
                     </span>
                     <time dateTime={post.date} className="text-xs text-muted">
-                      {new Date(post.date).toLocaleDateString('fr-FR', {
+                      {new Date(post.date).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
                         day: 'numeric',
                         month: 'short',
                       })}
@@ -71,7 +74,7 @@ export function BlogPreview() {
               href="/blog"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white gradient-glow transition-all duration-300 hover:scale-105"
             >
-              Voir tous les articles &rarr;
+              {t('blog.viewAll') + ' →'}
             </Link>
           </div>
         </ScrollReveal>

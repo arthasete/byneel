@@ -1,8 +1,9 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import { useInView } from 'motion/react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface Stat {
   number: string;
@@ -11,49 +12,30 @@ interface Stat {
   icon: string;
 }
 
-const stats: Stat[] = [
-  {
-    number: '8',
-    label: 'Apps',
-    description: 'Applications et outils en développement actif',
-    icon: '📱',
-  },
-  {
-    number: '5+',
-    label: 'Plateformes',
-    description: 'iOS, Android, Web, Desktop, CLI',
-    icon: '🌐',
-  },
-  {
-    number: '100%',
-    label: 'Geek',
-    description: 'Humain + IA — codé avec passion, café et trop d\'ambition',
-    icon: '🤓',
-  },
-];
-
 function CountUp({ target, duration = 2 }: { target: string; duration?: number }) {
   const [count, setCount] = useState('0');
   const ref = useRef(null);
   const isInView = useInView(ref);
 
+  const targetData = useMemo(() => ({
+    numericTarget: parseInt(target.replace(/\D/g, '')),
+    hasPlus: target.includes('+'),
+    hasPercent: target.includes('%'),
+  }), [target]);
+
   useEffect(() => {
     if (!isInView) return;
-
-    const numericTarget = parseInt(target.replace(/\D/g, ''));
-    const hasPlus = target.includes('+');
-    const hasPercent = target.includes('%');
 
     let animationStart: number | null = null;
 
     const animate = (timestamp: number) => {
       if (!animationStart) animationStart = timestamp;
       const progress = Math.min((timestamp - animationStart) / (duration * 1000), 1);
-      const currentValue = Math.floor(numericTarget * progress);
+      const currentValue = Math.floor(targetData.numericTarget * progress);
 
       let displayValue = currentValue.toString();
-      if (hasPlus) displayValue += '+';
-      if (hasPercent) displayValue += '%';
+      if (targetData.hasPlus) displayValue += '+';
+      if (targetData.hasPercent) displayValue += '%';
 
       setCount(displayValue);
 
@@ -64,7 +46,7 @@ function CountUp({ target, duration = 2 }: { target: string; duration?: number }
 
     const animation = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animation);
-  }, [isInView, target, duration]);
+  }, [isInView, duration, targetData]);
 
   return (
     <span ref={ref} className="inline-block">
@@ -74,6 +56,14 @@ function CountUp({ target, duration = 2 }: { target: string; duration?: number }
 }
 
 export function StatsSection() {
+  const { t } = useLanguage();
+
+  const stats: Stat[] = [
+    { number: '8', label: t('stats.apps'), description: t('stats.appsDesc'), icon: '📱' },
+    { number: '5+', label: t('stats.platforms'), description: t('stats.platformsDesc'), icon: '🌐' },
+    { number: '100%', label: t('stats.geek'), description: t('stats.geekDesc'), icon: '🤓' },
+  ];
+
   return (
     <section id="stats" className="relative py-24 px-6 overflow-hidden">
       {/* Background elements */}
@@ -84,13 +74,13 @@ export function StatsSection() {
       <div className="relative z-10 max-w-6xl mx-auto">
         <ScrollReveal className="text-center mb-16">
           <p className="text-xs font-semibold tracking-widest uppercase text-brand-blue mb-3">
-            Par les chiffres
+            {t('stats.label')}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Ce qui nous définit
+            {t('stats.title')}
           </h2>
           <p className="text-muted text-lg max-w-2xl mx-auto">
-            Une passion pour la qualité, l&apos;innovation et l&apos;excellence sur chaque plateforme.
+            {t('stats.description')}
           </p>
         </ScrollReveal>
 

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>byNeel - App Icons 2026 | Premium Design Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 25%, #16213e 50%, #0f1419 75%, #1a1a2e 100%);
+            background-attachment: fixed;
+            color: #e0e0e0;
+            min-height: 100vh;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        /* Animated background gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 0%, rgba(236, 72, 153, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Section */
+        header {
+            padding: 80px 40px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            animation: fadeIn 0.8s ease-out 0.1s both;
+        }
+
+        .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            color: #b0b0c0;
+            margin-bottom: 12px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #808090;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 0 40px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        /* Icons Grid */
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        /* Icon Card with Glassmorphism */
+        .icon-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: scaleIn 0.6s ease-out both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .icon-card:nth-child(1) { animation-delay: 0.5s; }
+        .icon-card:nth-child(2) { animation-delay: 0.6s; }
+        .icon-card:nth-child(3) { animation-delay: 0.7s; }
+        .icon-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .icon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .icon-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-12px);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .icon-card:hover::before {
+            opacity: 1;
+        }
+
+        .icon-container {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .icon-card:hover .icon-container {
+            background: rgba(255, 255, 255, 0.05);
+            transform: scale(1.05);
+        }
+
+        .icon-container svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+            transition: all 0.4s ease;
+        }
+
+        .icon-card:hover .icon-container svg {
+            filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.4));
+        }
+
+        .app-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            transition: all 0.4s ease;
+        }
+
+        .icon-card:hover .app-name {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .app-description {
+            font-size: 13px;
+            color: #a0a0b0;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 40px;
+        }
+
+        .icon-details {
+            font-size: 12px;
+            color: #707080;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+        }
+
+        .color-swatch {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin: 0 6px;
+            vertical-align: middle;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Features Section */
+        .features-section {
+            margin-top: 120px;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            animation: fadeIn 0.8s ease-out 0.9s both;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, #a855f7 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .feature-text {
+            font-size: 13px;
+            color: #b0b0c0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            margin-top: 80px;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #808090;
+            margin-bottom: 10px;
+        }
+
+        .footer-link {
+            color: #a855f7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .footer-link:hover {
+            color: #ec4899;
+            border-color: rgba(236, 72, 153, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .tagline {
+                font-size: 18px;
+            }
+
+            .icons-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .features-section {
+                padding: 40px 20px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: rgba(168, 85, 247, 0.3);
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">byNeel</div>
+        <div class="tagline">App Icons 2026</div>
+        <div class="subtitle">Premium Design Portfolio — Glassmorphism & Modern Gradients</div>
+    </header>
+
+    <div class="container">
+        <div class="icons-grid">
+            <!-- TipLog Icon Card -->
+            <div class="icon-card">
+                <div class="icon-container">
+                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                        <defs>
+                            <linearGradient id="tiplogGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#06b6d4;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="tiplogAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#6ee7b7;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="tiplogShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                                <feOffset dx="0" dy="8" result="offsetblur"/>
+                                <feFlood flood-color="#000000" flood-opacity="0.25" result="offsetcolor"/>
+                                <feComposite in="offsetcolor" in2="offsetblur" operator="in" result="offsetblur"/>
+                                <feFlood flood-color="#10b981" flood-opacity="0.3" result="glowcolor"/>
+                                <feGaussianBlur in="glowcolor" stdDeviation="6" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <mask id="roundedMask">
+                                <rect width="1024" height="1024" rx="220" fill="white"/>
+                            </mask>
+                        </defs>
+                        <rect width="1024" height="1024" rx="220" fill="url(#tiplogGradient)" mask="url(#roundedMask)"/>
+                        <rect width="1024" height="1024" rx="220" fill="white" opacity="0.08" mask="url(#roundedMask)"/>
+                        <g filter="url(#tiplogShadow)" opacity="0.95">
+                            <rect x="320" y="280" width="384" height="500" rx="24" fill="url(#tiplogAccent)" opacity="0.2" stroke="url(#tiplogAccent)" stroke-width="12"/>
+                            <line x1="360" y1="360" x2="664" y2="360" stroke="url(#tiplogAccent)" stroke-width="16" stroke-linecap="round" opacity="0.8"/>
+                            <line x1="360" y1="440" x2="620" y2="440" stroke="url(#tiplogAccent)" stroke-width="14" stroke-linecap="round" opacity="0.7"/>
+                            <line x1="360" y1="510" x2="580" y2="510" stroke="url(#tiplogAccent)" stroke-width="14" stroke-linecap="round" opacity="0.7"/>
+                            <line x1="360" y1="580" x2="640" y2="580" stroke="url(#tiplogAccent)" stroke-width="16" stroke-linecap="round" opacity="0.8"/>
+                            <line x1="360" y1="660" x2="660" y2="660" stroke="url(#tiplogAccent)" stroke-width="16" stroke-linecap="round" opacity="0.9"/>
+                        </g>
+                        <g filter="url(#tiplogShadow)">
+                            <circle cx="750" cy="350" r="80" fill="none" stroke="url(#tiplogAccent)" stroke-width="14" opacity="0.9"/>
+                            <path d="M 750 260 L 780 320 L 750 310 L 720 320 Z" fill="url(#tiplogAccent)" opacity="0.95"/>
+                            <circle cx="750" cy="350" r="20" fill="url(#tiplogAccent)" opacity="0.85"/>
+                            <line x1="750" y1="280" x2="750" y2="310" stroke="url(#tiplogAccent)" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+                            <line x1="820" y1="350" x2="790" y2="350" stroke="url(#tiplogAccent)" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+                            <line x1="750" y1="420" x2="750" y2="390" stroke="url(#tiplogAccent)" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+                            <line x1="680" y1="350" x2="710" y2="350" stroke="url(#tiplogAccent)" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+                        </g>
+                        <ellipse cx="512" cy="180" rx="280" ry="120" fill="white" opacity="0.15" mask="url(#roundedMask)"/>
+                        <ellipse cx="512" cy="900" rx="220" ry="80" fill="black" opacity="0.08" mask="url(#roundedMask)"/>
+                    </svg>
+                </div>
+                <div class="app-name">TipLog</div>
+                <div class="app-description">Smart tipping & expense tracking for travelers</div>
+                <div class="icon-details">
+                    Theme: Money • Travel<br>
+                    <span class="color-swatch" style="background: linear-gradient(135deg, #10b981, #06b6d4);"></span>
+                    Emerald → Teal
+                </div>
+            </div>
+
+            <!-- CookBook AI Icon Card -->
+            <div class="icon-card">
+                <div class="icon-container">
+                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                        <defs>
+                            <linearGradient id="cookbookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#ef4444;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="cookbookAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffa500;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="cookbookGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                                <feOffset dx="0" dy="8" result="offsetblur"/>
+                                <feFlood flood-color="#000000" flood-opacity="0.3" result="offsetcolor"/>
+                                <feComposite in="offsetcolor" in2="offsetblur" operator="in" result="offsetblur"/>
+                                <feFlood flood-color="#f97316" flood-opacity="0.4" result="glowcolor"/>
+                                <feGaussianBlur in="glowcolor" stdDeviation="8" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <mask id="cookbookMask">
+                                <rect width="1024" height="1024" rx="220" fill="white"/>
+                            </mask>
+                        </defs>
+                        <rect width="1024" height="1024" rx="220" fill="url(#cookbookGradient)" mask="url(#cookbookMask)"/>
+                        <rect width="1024" height="1024" rx="220" fill="white" opacity="0.1" mask="url(#cookbookMask)"/>
+                        <g filter="url(#cookbookGlow)">
+                            <ellipse cx="512" cy="480" rx="140" ry="80" fill="url(#cookbookAccent)" opacity="0.25" stroke="url(#cookbookAccent)" stroke-width="10"/>
+                            <path d="M 372 480 Q 372 320 512 280 Q 652 320 652 480" fill="url(#cookbookAccent)" stroke="url(#cookbookAccent)" stroke-width="12" opacity="0.9"/>
+                            <ellipse cx="512" cy="480" rx="160" ry="40" fill="none" stroke="url(#cookbookAccent)" stroke-width="14" opacity="0.85"/>
+                            <ellipse cx="512" cy="500" rx="155" ry="30" fill="url(#cookbookAccent)" opacity="0.2"/>
+                        </g>
+                        <g filter="url(#cookbookGlow)" opacity="0.9">
+                            <circle cx="700" cy="280" r="14" fill="url(#cookbookAccent)" opacity="0.95"/>
+                            <circle cx="720" cy="300" r="10" fill="url(#cookbookAccent)" opacity="0.7"/>
+                            <circle cx="750" cy="310" r="8" fill="url(#cookbookAccent)" opacity="0.6"/>
+                            <line x1="700" y1="280" x2="720" y2="300" stroke="url(#cookbookAccent)" stroke-width="6" opacity="0.5" stroke-linecap="round"/>
+                            <line x1="720" y1="300" x2="750" y2="310" stroke="url(#cookbookAccent)" stroke-width="5" opacity="0.4" stroke-linecap="round"/>
+                            <circle cx="680" cy="650" r="12" fill="url(#cookbookAccent)" opacity="0.85"/>
+                            <circle cx="700" cy="670" r="8" fill="url(#cookbookAccent)" opacity="0.6"/>
+                            <line x1="680" y1="650" x2="700" y2="670" stroke="url(#cookbookAccent)" stroke-width="5" opacity="0.45" stroke-linecap="round"/>
+                            <circle cx="320" cy="320" r="10" fill="url(#cookbookAccent)" opacity="0.7"/>
+                            <circle cx="300" cy="340" r="7" fill="url(#cookbookAccent)" opacity="0.5"/>
+                            <line x1="320" y1="320" x2="300" y2="340" stroke="url(#cookbookAccent)" stroke-width="4" opacity="0.4" stroke-linecap="round"/>
+                        </g>
+                        <ellipse cx="512" cy="180" rx="280" ry="120" fill="white" opacity="0.18" mask="url(#cookbookMask)"/>
+                        <ellipse cx="512" cy="900" rx="220" ry="80" fill="black" opacity="0.1" mask="url(#cookbookMask)"/>
+                        <ellipse cx="200" cy="200" rx="180" ry="180" fill="white" opacity="0.06" mask="url(#cookbookMask)"/>
+                    </svg>
+                </div>
+                <div class="app-name">CookBook AI</div>
+                <div class="app-description">AI-powered recipe discovery and meal planning</div>
+                <div class="icon-details">
+                    Theme: Cooking • AI<br>
+                    <span class="color-swatch" style="background: linear-gradient(135deg, #f97316, #dc2626);"></span>
+                    Warm Orange → Red
+                </div>
+            </div>
+
+            <!-- OmniDrop Icon Card -->
+            <div class="icon-card">
+                <div class="icon-container">
+                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                        <defs>
+                            <linearGradient id="omnidropGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="omnidropAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="omnidropShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                                <feOffset dx="0" dy="8" result="offsetblur"/>
+                                <feFlood flood-color="#000000" flood-opacity="0.25" result="offsetcolor"/>
+                                <feComposite in="offsetcolor" in2="offsetblur" operator="in" result="offsetblur"/>
+                                <feFlood flood-color="#3b82f6" flood-opacity="0.35" result="glowcolor"/>
+                                <feGaussianBlur in="glowcolor" stdDeviation="7" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <mask id="omnidropMask">
+                                <rect width="1024" height="1024" rx="220" fill="white"/>
+                            </mask>
+                        </defs>
+                        <rect width="1024" height="1024" rx="220" fill="url(#omnidropGradient)" mask="url(#omnidropMask)"/>
+                        <rect width="1024" height="1024" rx="220" fill="white" opacity="0.09" mask="url(#omnidropMask)"/>
+                        <g filter="url(#omnidropShadow)">
+                            <path d="M 512 280 C 460 340 420 420 420 500 C 420 610 460 680 512 720 C 564 680 604 610 604 500 C 604 420 564 340 512 280 Z" fill="url(#omnidropAccent)" stroke="url(#omnidropAccent)" stroke-width="12" opacity="0.95"/>
+                            <ellipse cx="480" cy="420" rx="45" ry="60" fill="white" opacity="0.2"/>
+                        </g>
+                        <g filter="url(#omnidropShadow)" opacity="0.9">
+                            <g>
+                                <path d="M 280 480 L 360 440 L 340 480 L 360 520 Z" fill="url(#omnidropAccent)" opacity="0.9"/>
+                                <line x1="280" y1="480" x2="340" y2="480" stroke="url(#omnidropAccent)" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+                            </g>
+                            <g>
+                                <path d="M 744 480 L 664 440 L 684 480 L 664 520 Z" fill="url(#omnidropAccent)" opacity="0.9"/>
+                                <line x1="684" y1="480" x2="744" y2="480" stroke="url(#omnidropAccent)" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+                            </g>
+                            <g opacity="0.75">
+                                <path d="M 450 560 Q 512 520 574 560" fill="none" stroke="url(#omnidropAccent)" stroke-width="8" stroke-linecap="round"/>
+                                <path d="M 420 590 Q 512 540 604 590" fill="none" stroke="url(#omnidropAccent)" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+                                <path d="M 390 620 Q 512 560 634 620" fill="none" stroke="url(#omnidropAccent)" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+                            </g>
+                        </g>
+                        <ellipse cx="512" cy="180" rx="280" ry="120" fill="white" opacity="0.16" mask="url(#omnidropMask)"/>
+                        <ellipse cx="512" cy="900" rx="220" ry="80" fill="black" opacity="0.09" mask="url(#omnidropMask)"/>
+                        <circle cx="150" cy="150" r="200" fill="url(#omnidropAccent)" opacity="0.04" mask="url(#omnidropMask)"/>
+                    </svg>
+                </div>
+                <div class="app-name">OmniDrop</div>
+                <div class="app-description">Seamless wireless file transfer across devices</div>
+                <div class="icon-details">
+                    Theme: Connectivity • Transfer<br>
+                    <span class="color-swatch" style="background: linear-gradient(135deg, #3b82f6, #7c3aed);"></span>
+                    Blue → Violet
+                </div>
+            </div>
+
+            <!-- Beloved Icon Card -->
+            <div class="icon-card">
+                <div class="icon-container">
+                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                        <defs>
+                            <linearGradient id="belovedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#ec4899;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#db2777;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="belovedAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d946ef;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f472b6;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="belovedGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                                <feOffset dx="0" dy="8" result="offsetblur"/>
+                                <feFlood flood-color="#000000" flood-opacity="0.28" result="offsetcolor"/>
+                                <feComposite in="offsetcolor" in2="offsetblur" operator="in" result="offsetblur"/>
+                                <feFlood flood-color="#a855f7" flood-opacity="0.4" result="glowcolor"/>
+                                <feGaussianBlur in="glowcolor" stdDeviation="8" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <mask id="belovedMask">
+                                <rect width="1024" height="1024" rx="220" fill="white"/>
+                            </mask>
+                        </defs>
+                        <rect width="1024" height="1024" rx="220" fill="url(#belovedGradient)" mask="url(#belovedMask)"/>
+                        <rect width="1024" height="1024" rx="220" fill="white" opacity="0.11" mask="url(#belovedMask)"/>
+                        <g filter="url(#belovedGlow)">
+                            <path d="M 512 720 C 512 720 380 600 340 540 C 300 480 300 420 340 380 C 380 340 440 340 480 380 C 512 410 512 410 512 410 C 512 410 512 410 544 380 C 584 340 644 340 684 380 C 724 420 724 480 684 540 C 644 600 512 720 512 720 Z" fill="url(#belovedAccent)" stroke="url(#belovedAccent)" stroke-width="14" opacity="0.95"/>
+                            <ellipse cx="440" cy="450" rx="50" ry="70" fill="white" opacity="0.18"/>
+                        </g>
+                        <g filter="url(#belovedGlow)" opacity="0.85">
+                            <circle cx="420" cy="480" r="12" fill="url(#belovedAccent)" opacity="0.9"/>
+                            <circle cx="480" cy="520" r="12" fill="url(#belovedAccent)" opacity="0.9"/>
+                            <circle cx="544" cy="480" r="12" fill="url(#belovedAccent)" opacity="0.9"/>
+                            <circle cx="512" cy="580" r="12" fill="url(#belovedAccent)" opacity="0.9"/>
+                            <circle cx="450" cy="540" r="9" fill="url(#belovedAccent)" opacity="0.75"/>
+                            <circle cx="574" cy="540" r="9" fill="url(#belovedAccent)" opacity="0.75"/>
+                            <line x1="420" y1="480" x2="480" y2="520" stroke="url(#belovedAccent)" stroke-width="6" opacity="0.6" stroke-linecap="round"/>
+                            <line x1="480" y1="520" x2="544" y2="480" stroke="url(#belovedAccent)" stroke-width="6" opacity="0.6" stroke-linecap="round"/>
+                            <line x1="544" y1="480" x2="512" y2="580" stroke="url(#belovedAccent)" stroke-width="6" opacity="0.6" stroke-linecap="round"/>
+                            <line x1="512" y1="580" x2="480" y2="520" stroke="url(#belovedAccent)" stroke-width="6" opacity="0.6" stroke-linecap="round"/>
+                            <line x1="420" y1="480" x2="450" y2="540" stroke="url(#belovedAccent)" stroke-width="5" opacity="0.5" stroke-linecap="round"/>
+                            <line x1="544" y1="480" x2="574" y2="540" stroke="url(#belovedAccent)" stroke-width="5" opacity="0.5" stroke-linecap="round"/>
+                            <path d="M 420 480 Q 450 400 544 480" fill="none" stroke="url(#belovedAccent)" stroke-width="4" opacity="0.3" stroke-linecap="round" stroke-dasharray="10,8"/>
+                            <path d="M 512 580 Q 450 620 380 580" fill="none" stroke="url(#belovedAccent)" stroke-width="4" opacity="0.3" stroke-linecap="round" stroke-dasharray="10,8"/>
+                        </g>
+                        <ellipse cx="512" cy="180" rx="280" ry="120" fill="white" opacity="0.17" mask="url(#belovedMask)"/>
+                        <ellipse cx="512" cy="900" rx="220" ry="80" fill="black" opacity="0.1" mask="url(#belovedMask)"/>
+                        <circle cx="200" cy="200" r="220" fill="url(#belovedAccent)" opacity="0.05" mask="url(#belovedMask)"/>
+                        <circle cx="900" cy="900" r="200" fill="url(#belovedAccent)" opacity="0.03" mask="url(#belovedMask)"/>
+                    </svg>
+                </div>
+                <div class="app-name">Beloved</div>
+                <div class="app-description">Your personal AI companion for emotional support</div>
+                <div class="icon-details">
+                    Theme: AI Companion • Emotion<br>
+                    <span class="color-swatch" style="background: linear-gradient(135deg, #a855f7, #db2777);"></span>
+                    Purple → Pink
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2 class="section-title">Design Features</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-title">Glassmorphism</div>
+                    <div class="feature-text">Modern frosted glass aesthetic with subtle transparency and backdrop blur effects for contemporary appeal.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">Bold Gradients</div>
+                    <div class="feature-text">Vibrant linear gradients spanning complementary colors, creating depth and visual interest at any scale.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">3D Depth Effects</div>
+                    <div class="feature-text">Subtle shadows, highlights, and layering techniques that create realistic depth and dimensionality.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">Rounded Aesthetics</div>
+                    <div class="feature-text">Generous border-radius and smoothly rounded elements reflecting 2026 design trends for friendly appeal.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">SVG Scalability</div>
+                    <div class="feature-text">Scalable Vector Graphics format ensures perfect quality from 16px app store badges to 1024px displays.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-title">Professional Ready</div>
+                    <div class="feature-text">App Store and Play Store submission-ready with proper technical specifications and visual polish.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-text">Created with premium design standards — byNeel Design Portfolio 2026</p>
+        <p class="footer-text"><a href="#" class="footer-link">View SVG Files</a> • <a href="#" class="footer-link">Download All</a> • <a href="#" class="footer-link">License</a></p>
+    </footer>
+</body>
+</html>

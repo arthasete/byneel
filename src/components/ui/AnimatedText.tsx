@@ -1,1 +1,1 @@
-// Dead code — kept as placeholder. No motion dependency.
+// Removed: Dead code file. Use ScrollReveal or motion/react for animations instead.

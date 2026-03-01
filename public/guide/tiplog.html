@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide TipLog - Mode d'emploi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B1220;
+            color: #E8E8E8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #0F1628;
+            border-bottom: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #0A84FF;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #A8A8A8;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a2845;
+        }
+
+        nav a {
+            color: #0A84FF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4BA3FF;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            color: #0A84FF;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #0A84FF;
+        }
+
+        h3 {
+            color: #4BA3FF;
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #D0D0D0;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            color: #D0D0D0;
+        }
+
+        strong {
+            color: #0A84FF;
+        }
+
+        .step-box {
+            background-color: rgba(10, 132, 255, 0.1);
+            border-left: 4px solid #0A84FF;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .step-box h4 {
+            color: #0A84FF;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: #0A84FF;
+            color: #0B1220;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 0.8rem;
+        }
+
+        footer {
+            background-color: #0F1628;
+            border-top: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            color: #A8A8A8;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .contact-info {
+            color: #0A84FF;
+            text-decoration: none;
+        }
+
+        .contact-info:hover {
+            color: #4BA3FF;
+        }
+
+        .updated-date {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2845;
+        }
+
+        .highlight {
+            background-color: rgba(10, 132, 255, 0.15);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(10, 132, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guide TipLog</h1>
+        <p>Mode d'emploi complet</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="https://byneel.com">← Retour à byNeel</a>
+        </nav>
+
+        <section>
+            <h2>Premiers Pas</h2>
+            <h3>Installation</h3>
+            <p>
+                TipLog est disponible sur iOS (App Store) et Android (Google Play).
+                Téléchargez l'app gratuite et ouvrez-la pour commencer.
+            </p>
+
+            <h3>Permissions Nécessaires</h3>
+            <p>
+                À la première utilisation, TipLog vous demande les permissions suivantes (optionnelles) :
+            </p>
+            <ul>
+                <li><strong>Localisation (GPS)</strong> - Pour détecter automatiquement votre pays et devise</li>
+                <li><strong>Appareil photo</strong> - Si vous souhaitez activer le mode scanner (Premium)</li>
+            </ul>
+            <p>
+                Vous pouvez refuser ces permissions et sélectionner manuellement votre pays dans les paramètres.
+            </p>
+        </section>
+
+        <section>
+            <h2>Configuration Initiale</h2>
+            <h3>Sélectionner Votre Pays</h3>
+            <div class="step-box">
+                <h4><span class="step-number">1</span>Accédez aux Paramètres</h4>
+                <p>
+                    Appuyez sur l'icône engrenage (paramètres) en haut à droite.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">2</span>Choisissez Votre Région</h4>
+                <p>
+                    Sélectionnez votre pays dans la liste. Cela change automatiquement la devise et les taux de pourboire standards.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">3</span>Confirmer</h4>
+                <p>
+                    La devise s'affiche immédiatement dans l'écran principal.
+                    Vous pouvez revenir modifier ce paramètre à tout moment.
+                </p>
+            </div>
+
+            <h3>Personnaliser les Pourcentages</h3>
+            <p>
+                Dans les paramètres, vous pouvez définir vos propres pourcentages de pourboire
+                (par défaut : 15%, 18%, 20%). Appuyez sur le pourcentage pour le modifier.
+            </p>
+        </section>
+
+        <section>
+            <h2>Utilisation Quotidienne</h2>
+            <h3>Calculer un Pourboire</h3>
+            <div class="step-box">
+                <h4><span class="step-number">1</span>Ouvrir TipLog</h4>
+                <p>
+                    L'écran principal affiche le clavier de calcul.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">2</span>Entrer le Montant</h4>
+                <p>
+                    Appuyez sur les chiffres pour saisir le montant du repas ou du service.
+                    Le clavier affiche les caractères pour une saisie facile.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">3</span>Sélectionner le Pourcentage</h4>
+                <p>
+                    Appuyez sur l'un de vos pourcentages (15%, 18%, 20% ou personnalisé).
+                    TipLog calcule et affiche immédiatement le montant du pourboire et le total.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">4</span>Enregistrer (Optionnel)</h4>
+                <p>
+                    Appuyez sur "Enregistrer" pour ajouter cette dépense à votre historique.
+                    Vous pouvez aussi ajouter une note (restaurant, événement, etc.).
+                </p>
+            </div>
+
+            <div class="highlight">
+                <strong>Conseil :</strong> Vous n'êtes pas obligé d'enregistrer chaque calcul.
+                Le bouton "Enregistrer" est optionnel si vous voulez juste calculer rapidement.
+            </div>
+        </section>
+
+        <section>
+            <h2>Gérer Votre Historique</h2>
+            <h3>Consulter l'Historique</h3>
+            <p>
+                L'onglet "Historique" affiche tous vos calculs enregistrés avec :
+            </p>
+            <ul>
+                <li>Date et heure</li>
+                <li>Montant du repas et pourboire</li>
+                <li>Notes personnelles</li>
+                <li>Statistiques (total, moyenne)</li>
+            </ul>
+
+            <h3>Modifier une Entrée</h3>
+            <p>
+                Appuyez sur une entrée pour l'éditer. Vous pouvez modifier le montant, le pourcentage ou les notes.
+            </p>
+
+            <h3>Supprimer des Entrées</h3>
+            <p>
+                Glissez-déposez sur une entrée vers la gauche, puis appuyez sur la corbeille.
+                Vous pouvez aussi supprimer tout l'historique depuis les paramètres.
+            </p>
+        </section>
+
+        <section>
+            <h2>Exporter Vos Données</h2>
+            <h3>Créer un Rapport</h3>
+            <p>
+                Dans l'onglet "Historique", appuyez sur l'icône "Partager" (carré avec flèche) pour exporter vos données.
+            </p>
+
+            <h3>Formats Disponibles</h3>
+            <ul>
+                <li><strong>PDF</strong> - Avec graphiques et statistiques. Parfait pour imprimer.</li>
+                <li><strong>CSV</strong> - Format tableur pour Excel ou Google Sheets. Utile pour des analyses approfondies.</li>
+            </ul>
+
+            <h3>Partager ou Sauvegarder</h3>
+            <p>
+                Après l'export, vous pouvez :
+            </p>
+            <ul>
+                <li>Envoyer par email</li>
+                <li>Sauvegarder dans le cloud (iCloud, Google Drive)</li>
+                <li>Imprimer directement</li>
+                <li>Partager via Messages ou autres apps</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Fonctionnalités Avancées</h2>
+            <h3>Calcul Arrondi (Mode "Round")</h3>
+            <p>
+                Activez cette option dans les paramètres pour arrondir automatiquement le total
+                à un montant entier facile à payer (par exemple, €35 au lieu de €34,73).
+            </p>
+
+            <h3>Historique Statistiques</h3>
+            <p>
+                L'écran "Historique" affiche des statistiques utiles :
+            </p>
+            <ul>
+                <li>Nombre total de pourboires donnés</li>
+                <li>Montant moyen du pourboire</li>
+                <li>Pourcentage moyen appliqué</li>
+            </ul>
+
+            <h3>Convertisseur de Devise</h3>
+            <p>
+                Si vous voyagez, vous pouvez changer de devise temporairement sans modifier votre région.
+                Allez dans les paramètres et sélectionnez une devise différente.
+            </p>
+        </section>
+
+        <section>
+            <h2>Passer à TipLog Pro</h2>
+            <h3>Avantages Premium</h3>
+            <div class="highlight">
+                <strong>TipLog Pro déverrouille :</strong>
+                <ul style="margin: 1rem 0 0 2rem;">
+                    <li>Aucune publicité</li>
+                    <li>Historique illimité sans suppression</li>
+                    <li>Exportation personnalisée avancée</li>
+                    <li>Thèmes et personnalisations premium</li>
+                    <li>Mode "Round" intelligent</li>
+                </ul>
+            </div>
+
+            <h3>Souscrire à Pro</h3>
+            <p>
+                Appuyez sur "Débloquer Pro" dans les paramètres ou dans l'app.
+                Un essai gratuit est généralement disponible avant d'être facturé.
+            </p>
+
+            <h3>Gérer Votre Abonnement</h3>
+            <p>
+                Vous pouvez gérer, modifier ou annuler votre abonnement Pro via :
+            </p>
+            <ul>
+                <li><strong>iOS</strong> - Paramètres > App Store > Compte > Abonnements</li>
+                <li><strong>Android</strong> - Google Play > Compte > Abonnements > TipLog</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conseils et Astuces</h2>
+            <h3>Calculs Rapides</h3>
+            <p>
+                Vous n'avez pas besoin d'enregistrer chaque calcul. Utilisez TipLog comme une calculatrice
+                pour des calculs rapides au restaurant.
+            </p>
+
+            <h3>Notes Personnalisées</h3>
+            <p>
+                Lorsque vous enregistrez un pourboire, ajoutez une note avec le nom du restaurant ou l'événement.
+                Cela rend votre historique plus significatif.
+            </p>
+
+            <h3>Synchronisation Manuelle</h3>
+            <p>
+                Vos données restent locales sur votre appareil. Pour accéder à votre historique sur un autre téléphone,
+                exportez vos données en CSV et importez-les.
+            </p>
+
+            <h3>Sauvegardes Régulières</h3>
+            <p>
+                Nous recommandons d'exporter votre historique régulièrement en PDF ou CSV pour sauvegarder vos données.
+            </p>
+        </section>
+
+        <section>
+            <h2>Dépannage</h2>
+            <h3>L'App Plante au Démarrage</h3>
+            <p>
+                Essayez de supprimer et de réinstaller l'app. Vos données historiques peuvent être restaurées
+                depuis une sauvegarde CSV.
+            </p>
+
+            <h3>GPS ne Fonctionne pas</h3>
+            <p>
+                Vérifiez que vous avez autorisé la permission de localisation pour TipLog dans
+                les paramètres de votre téléphone. Vous pouvez aussi sélectionner manuellement votre pays.
+            </p>
+
+            <h3>L'Export Échoue</h3>
+            <p>
+                Assurez-vous d'avoir suffisamment d'espace de stockage. Essayez d'exporter vers un format différent (PDF ou CSV).
+            </p>
+
+            <h3>Besoin d'Aide ?</h3>
+            <p>
+                Contactez-nous à
+                <a href="mailto:ylaghouati@icloud.com" class="contact-info">ylaghouati@icloud.com</a>
+            </p>
+        </section>
+
+        <section>
+            <h2>Confidentialité et Sécurité</h2>
+            <p>
+                TipLog respecte votre vie privée. Toutes vos données restent locales sur votre appareil.
+                Aucun serveur, aucun cloud, aucun suivi.
+            </p>
+            <p>
+                Consultez notre
+                <a href="/legal/tiplog-privacy.html" style="color: #0A84FF;">politique de confidentialité</a>
+                pour plus de détails.
+            </p>
+        </section>
+
+        <div class="updated-date">
+            Dernière mise à jour : 25 février 2026
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 byNeel. Tous droits réservés.</p>
+        <p>Guide TipLog - Mode d'emploi</p>
+    </footer>
+</body>
+</html>

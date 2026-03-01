@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide CookBook AI - Mode d'emploi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B1220;
+            color: #E8E8E8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #0F1628;
+            border-bottom: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #0A84FF;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #A8A8A8;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a2845;
+        }
+
+        nav a {
+            color: #0A84FF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4BA3FF;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            color: #0A84FF;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #0A84FF;
+        }
+
+        h3 {
+            color: #4BA3FF;
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #D0D0D0;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            color: #D0D0D0;
+        }
+
+        strong {
+            color: #0A84FF;
+        }
+
+        .step-box {
+            background-color: rgba(10, 132, 255, 0.1);
+            border-left: 4px solid #0A84FF;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .step-box h4 {
+            color: #0A84FF;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: #0A84FF;
+            color: #0B1220;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 0.8rem;
+        }
+
+        footer {
+            background-color: #0F1628;
+            border-top: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            color: #A8A8A8;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .contact-info {
+            color: #0A84FF;
+            text-decoration: none;
+        }
+
+        .contact-info:hover {
+            color: #4BA3FF;
+        }
+
+        .updated-date {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2845;
+        }
+
+        .highlight {
+            background-color: rgba(10, 132, 255, 0.15);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(10, 132, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guide CookBook AI</h1>
+        <p>Mode d'emploi complet</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="https://byneel.com">← Retour à byNeel</a>
+        </nav>
+
+        <section>
+            <h2>Premiers Pas</h2>
+            <h3>Installation</h3>
+            <p>
+                CookBook AI est disponible sur iOS (App Store) et Android (Google Play).
+                Téléchargez l'app gratuitement et ouvrez-la pour commencer.
+            </p>
+
+            <h3>Permissions Nécessaires</h3>
+            <p>
+                À la première utilisation, CookBook AI vous demande les permissions suivantes (optionnelles) :
+            </p>
+            <ul>
+                <li><strong>Caméra</strong> - Pour scanner des recettes à partir de photos</li>
+                <li><strong>Microphone</strong> - Pour la dictée vocale des ingrédients</li>
+                <li><strong>Stockage</strong> - Pour sauvegarder vos recettes</li>
+            </ul>
+            <p>
+                Vous pouvez saisir manuellement les recettes sans activer ces permissions.
+            </p>
+        </section>
+
+        <section>
+            <h2>Créer et Importer des Recettes</h2>
+            <h3>Méthode 1 : Importer depuis une URL</h3>
+            <div class="step-box">
+                <h4><span class="step-number">1</span>Ouvrir l'app et Créer une Recette</h4>
+                <p>
+                    Appuyez sur le bouton "+" (Créer) au bas de l'écran.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">2</span>Sélectionner "Importer depuis URL"</h4>
+                <p>
+                    Choisissez cette option depuis le menu d'import.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">3</span>Coller le Lien</h4>
+                <p>
+                    Collez le lien d'une recette en ligne (blog culinaire, site de recettes, etc.).
+                    CookBook AI extrait automatiquement les ingrédients et instructions.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">4</span>Éditer et Sauvegarder</h4>
+                <p>
+                    Vérifiez les informations, corrigez si nécessaire, puis appuyez sur "Sauvegarder".
+                    Votre recette est maintenant dans votre bibliothèque.
+                </p>
+            </div>
+
+            <h3>Méthode 2 : Scanner une Photo</h3>
+            <div class="step-box">
+                <h4><span class="step-number">1</span>Créer une Recette</h4>
+                <p>
+                    Appuyez sur "+" pour créer une nouvelle recette.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">2</span>Sélectionner "Importer depuis Photo"</h4>
+                <p>
+                    CookBook AI ouvre votre caméra pour photographier la recette (livre, magazine, papier).
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">3</span>Prendre une Photo</h4>
+                <p>
+                    Photographiez la recette en vous assurant qu'elle est bien lisible et bien éclairée.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">4</span>OCR et Reconnaissance</h4>
+                <p>
+                    CookBook AI utilise OCR (reconnaissance de texte) pour extraire les ingrédients et instructions.
+                    Le texte reconnu s'affiche pour édition.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">5</span>Corriger et Sauvegarder</h4>
+                <p>
+                    Corrigez les erreurs de reconnaissance (typos, ingrédients mal lus), puis sauvegardez.
+                </p>
+            </div>
+
+            <h3>Méthode 3 : Saisie Manuelle</h3>
+            <p>
+                Appuyez sur "+" et choisissez "Créer une recette". Entrez manuellement le nom, les ingrédients et les instructions.
+                Vous pouvez aussi utiliser la dictée vocale.
+            </p>
+
+            <h3>Méthode 4 : Dictée Vocale</h3>
+            <div class="step-box">
+                <h4>Utiliser le Microphone</h4>
+                <p>
+                    Lors de la saisie, appuyez sur l'icône microphone et dictez vos ingrédients :
+                    "Ajouter 200 grammes de farine, 100 grammes de beurre, 2 œufs..."
+                    CookBook AI transcrit votre discours automatiquement.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Assistant IA</h2>
+            <h3>Générer une Recette</h3>
+            <p>
+                Appuyez sur le bouton "Assistant IA" (ou icône baguette magique).
+                Décrivez la recette que vous souhaitez :
+                "Une pâte à pizza fait maison avec des tomates fraîches et mozzarella"
+            </p>
+            <p>
+                CookBook AI utilise Google Gemini pour générer une recette complète avec ingrédients et instructions.
+                Cette fonctionnalité nécessite une connexion Internet.
+            </p>
+
+            <h3>Améliorer une Recette Existante</h3>
+            <p>
+                Sélectionnez une recette et appuyez sur "Assistant IA" pour :
+            </p>
+            <ul>
+                <li>Ajuster les portions</li>
+                <li>Remplacer des ingrédients</li>
+                <li>Simplifier ou enrichir les instructions</li>
+                <li>Suggérer des variantes ou des accompagnements</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Note :</strong> L'IA fonctionne avec Premium. La version gratuite propose des générations limitées.
+            </div>
+        </section>
+
+        <section>
+            <h2>Planifier Vos Repas</h2>
+            <h3>Créer un Plan de Repas</h3>
+            <div class="step-box">
+                <h4><span class="step-number">1</span>Ouvrir "Plans de Repas"</h4>
+                <p>
+                    Allez à l'onglet "Plans de repas" au bas de l'app.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">2</span>Créer un Nouveau Plan</h4>
+                <p>
+                    Appuyez sur "+" pour créer un nouveau plan. Sélectionnez les jours et les types de repas
+                    (petit-déjeuner, déjeuner, dîner, collation).
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">3</span>Ajouter des Recettes</h4>
+                <p>
+                    Pour chaque créneau, sélectionnez une recette de votre bibliothèque.
+                    Vous pouvez aussi chercher des recettes par nom ou ingrédients.
+                </p>
+            </div>
+
+            <div class="step-box">
+                <h4><span class="step-number">4</span>Générer une Liste de Courses</h4>
+                <p>
+                    Une fois votre plan complété, appuyez sur "Générer liste de courses".
+                    CookBook AI crée automatiquement une liste consolidée de tous les ingrédients nécessaires.
+                </p>
+            </div>
+
+            <h3>Gérer Votre Plan</h3>
+            <p>
+                Vous pouvez :
+            </p>
+            <ul>
+                <li>Modifier les recettes à tout moment</li>
+                <li>Dupliquer un plan existant pour la semaine suivante</li>
+                <li>Exporter votre plan en PDF</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Listes de Courses</h2>
+            <h3>Créer une Liste</h3>
+            <p>
+                Allez à l'onglet "Listes". Vous pouvez créer une liste manuellement ou générer une liste
+                automatiquement depuis votre plan de repas.
+            </p>
+
+            <h3>Utiliser la Dictée Vocale</h3>
+            <p>
+                Appuyez sur le microphone et dictez vos articles :
+                "Ajouter lait, œufs, tomates, poulet..."
+                CookBook AI ajoute automatiquement chaque article à votre liste.
+            </p>
+
+            <h3>Cocher les Articles</h3>
+            <p>
+                Au supermarché, cochez les articles au fur et à mesure que vous les ajoutez à votre panier.
+                Les articles cochés passent en bas de la liste.
+            </p>
+
+            <h3>Consolider les Articles Doublons</h3>
+            <p>
+                CookBook AI détecte automatiquement les doublons (ex: "lait" et "lait entier")
+                et propose de les fusionner.
+            </p>
+
+            <h3>Exporter Votre Liste</h3>
+            <p>
+                Appuyez sur "Partager" pour exporter votre liste en PDF ou l'envoyer par email.
+            </p>
+        </section>
+
+        <section>
+            <h2>Mode Cuisine</h2>
+            <h3>Activer le Mode Cuisine</h3>
+            <p>
+                Ouvrez une recette et appuyez sur "Mode cuisine" en bas. L'écran s'optimise pour la cuisine :
+            </p>
+            <ul>
+                <li>Texte très grand et facile à lire</li>
+                <li>Fond sombre pour moins de fatigue oculaire</li>
+                <li>Écran reste allumé avec luminosité adaptée</li>
+                <li>Gestes pour passer à l'étape suivante</li>
+            </ul>
+
+            <h3>Suivre les Étapes</h3>
+            <p>
+                Lisez les instructions étape par étape. Cochez chaque étape au fur et à mesure.
+                Appuyez sur ">" pour passer à l'étape suivante.
+            </p>
+
+            <h3>Quitter le Mode Cuisine</h3>
+            <p>
+                Appuyez sur "Fermer" en haut à gauche. Vous retournez à la vue normale de la recette.
+            </p>
+        </section>
+
+        <section>
+            <h2>Exporter et Partager</h2>
+            <h3>Exporter une Recette</h3>
+            <p>
+                Ouvrez une recette et appuyez sur "Partager" (icône carré avec flèche). Vous pouvez :
+            </p>
+            <ul>
+                <li><strong>Exporter en PDF</strong> - Parfait pour imprimer ou partager</li>
+                <li><strong>Partager par Email</strong> - Envoyer à vos amis</li>
+                <li><strong>Copier le Lien</strong> - Partager via Messages, Slack, etc.</li>
+                <li><strong>Sauvegarder en Cloud</strong> - ICloud, Google Drive, Dropbox</li>
+            </ul>
+
+            <h3>Exporter la Bibliothèque Complète</h3>
+            <p>
+                Dans les paramètres, appuyez sur "Exporter tout" pour télécharger toutes vos recettes
+                en format JSON (pour la portabilité des données).
+            </p>
+        </section>
+
+        <section>
+            <h2>Passer à Premium</h2>
+            <h3>Avantages Premium</h3>
+            <div class="highlight">
+                <strong>CookBook AI Premium déverrouille :</strong>
+                <ul style="margin: 1rem 0 0 2rem;">
+                    <li>Assistant IA illimité (générer et améliorer les recettes)</li>
+                    <li>Aucune publicité</li>
+                    <li>Reconnaissance OCR avancée</li>
+                    <li>Plans de repas personnalisés par IA</li>
+                    <li>Synchronisation cloud entre appareils</li>
+                    <li>Thèmes premium</li>
+                </ul>
+            </div>
+
+            <h3>Souscrire à Premium</h3>
+            <p>
+                Appuyez sur "Débloquer Premium" dans les paramètres ou dans l'app.
+                Un essai gratuit est généralement disponible.
+            </p>
+
+            <h3>Gérer Votre Abonnement</h3>
+            <p>
+                Gérez votre abonnement via :
+            </p>
+            <ul>
+                <li><strong>iOS</strong> - Paramètres > App Store > Compte > Abonnements</li>
+                <li><strong>Android</strong> - Google Play > Compte > Abonnements > CookBook AI</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conseils et Astuces</h2>
+            <h3>Organiser Vos Recettes</h3>
+            <p>
+                Créez des collections (tags) pour organiser vos recettes :
+                "Petit-déjeuner", "Desserts", "Végétalien", "Rapide", etc.
+            </p>
+
+            <h3>Mettre en Favori</h3>
+            <p>
+                Appuyez sur l'étoile pour mettre une recette en favori. Vos favoris apparaissent en haut.
+            </p>
+
+            <h3>Évaluer les Recettes</h3>
+            <p>
+                Après avoir cuisiné, évaluez la recette (1-5 étoiles) pour vous souvenir de vos préférées.
+            </p>
+
+            <h3>Ajuster les Portions</h3>
+            <p>
+                Lors de la création ou édition, ajustez le nombre de portions.
+                CookBook AI recalcule automatiquement tous les ingrédients.
+            </p>
+
+            <h3>Ajouter des Notes Personnelles</h3>
+            <p>
+                Ajoutez vos propres notes aux recettes : "Réduire le sel", "Ajouter plus d'épices", etc.
+            </p>
+        </section>
+
+        <section>
+            <h2>Confidentialité et Sécurité</h2>
+            <p>
+                Vos recettes sont stockées localement sur votre appareil. CookBook AI respecte votre vie privée.
+                Seules les demandes IA sont envoyées à Google Gemini (sans vos autres données).
+            </p>
+            <p>
+                Consultez notre
+                <a href="/legal/cookbook-privacy.html" style="color: #0A84FF;">politique de confidentialité</a>
+                pour plus de détails.
+            </p>
+        </section>
+
+        <section>
+            <h2>Dépannage</h2>
+            <h3>L'OCR Fonctionne Mal</h3>
+            <p>
+                Prenez une photo plus claire avec meilleur éclairage. Évitez les images floues ou inclinées.
+                Vous pouvez aussi saisir manuellement les recettes.
+            </p>
+
+            <h3>L'IA ne Répond pas</h3>
+            <p>
+                Vérifiez votre connexion Internet. L'assistant IA nécessite une connexion stable.
+            </p>
+
+            <h3>Synchronisation ne Fonctionne pas</h3>
+            <p>
+                Vérifiez votre connexion Internet et que vous êtes connecté à votre compte.
+                Allez dans les paramètres et appuyez sur "Synchroniser maintenant".
+            </p>
+
+            <h3>Besoin d'Aide ?</h3>
+            <p>
+                Contactez-nous à
+                <a href="mailto:ylaghouati@icloud.com" class="contact-info">ylaghouati@icloud.com</a>
+            </p>
+        </section>
+
+        <div class="updated-date">
+            Dernière mise à jour : 25 février 2026
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 byNeel. Tous droits réservés.</p>
+        <p>Guide CookBook AI - Mode d'emploi</p>
+    </footer>
+</body>
+</html>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Providers } from '@/components/Providers';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { FloatingParticles } from '@/components/ui/FloatingParticles';
@@ -11,8 +12,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'ByNeel — Applications mobiles & Outils IA',
-  description: 'ByNeel crée des applications mobiles et outils IA innovants pour iOS, Android et Desktop. Développement assisté par IA.',
+  title: 'ByNeel — Mobile Apps & AI Tools',
+  description: 'ByNeel builds innovative mobile apps and AI tools for iOS, Android and Desktop. AI-assisted development.',
 };
 
 export default function RootLayout({
@@ -21,14 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
-        <FloatingParticles />
-        <Navbar />
-        <main className="pt-16 relative z-[2]">
-          {children}
-        </main>
-        <Footer />
+        <Providers>
+          <FloatingParticles />
+          <Navbar />
+          <main className="pt-16 relative z-[2]">
+            {children}
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

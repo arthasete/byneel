@@ -1,11 +1,23 @@
 'use client';
 
+import { useMemo } from 'react';
 import Link from 'next/link';
-import { projects } from '@/data/projects';
+import { useProjects } from '@/i18n/useLocalizedData';
+import { useLanguage } from '@/i18n/LanguageContext';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
 
 export function Footer() {
+  const localizedProjects = useProjects();
+  const { t } = useLanguage();
+
+  const socialLinks = useMemo(() => [
+    { icon: Mail, href: 'mailto:contact@byneel.com', label: 'Email' },
+    { icon: Github, href: 'https://github.com/byneel-dev', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/by-neel-5461173b4/', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://x.com/_byneel', label: 'X (Twitter)' },
+  ], []);
+
   return (
     <footer className="relative border-t border-white/[0.08] px-6 md:px-12 py-16 mt-32 overflow-hidden">
       {/* Gradient line */}
@@ -27,17 +39,12 @@ export function Footer() {
               </h3>
             </div>
             <p className="text-sm text-muted leading-relaxed mb-6">
-              Créons des applications innovantes et des outils IA qui transforment les idées en réalité.
+              {t('footer.brand')}
             </p>
 
             {/* Social links — CSS hover only */}
             <div className="flex gap-3">
-              {[
-                { icon: Mail, href: 'mailto:contact@byneel.com', label: 'Email' },
-                { icon: Github, href: 'https://github.com/byneel', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com/company/byneel', label: 'LinkedIn' },
-                { icon: Twitter, href: 'https://twitter.com/byneel', label: 'Twitter' },
-              ].map((social) => (
+              {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
@@ -52,9 +59,9 @@ export function Footer() {
 
           {/* Projects column */}
           <ScrollReveal delay={0.1}>
-            <p className="text-sm font-semibold mb-4 text-foreground">Projets</p>
+            <p className="text-sm font-semibold mb-4 text-foreground">{t('footer.projects')}</p>
             <div className="flex flex-col gap-3">
-              {projects.slice(0, 6).map((project) => (
+              {localizedProjects.slice(0, 6).map((project) => (
                 <Link
                   key={project.slug}
                   href={`/projects/${project.slug}`}
@@ -69,50 +76,50 @@ export function Footer() {
 
           {/* Company column */}
           <ScrollReveal delay={0.2}>
-            <p className="text-sm font-semibold mb-4 text-foreground">Entreprise</p>
+            <p className="text-sm font-semibold mb-4 text-foreground">{t('footer.company')}</p>
             <div className="flex flex-col gap-3">
               <Link
                 href="/#contact"
                 className="text-sm text-muted hover:text-foreground hover:translate-x-1 transition-all duration-300"
               >
-                À propos
+                {t('footer.about')}
               </Link>
               <Link
                 href="/blog"
                 className="text-sm text-muted hover:text-foreground hover:translate-x-1 transition-all duration-300"
               >
-                Blog
+                {t('footer.blog')}
               </Link>
               <Link
                 href="/#contact"
                 className="text-sm text-muted hover:text-foreground hover:translate-x-1 transition-all duration-300"
               >
-                Contact
+                {t('footer.contact')}
               </Link>
             </div>
           </ScrollReveal>
 
           {/* Legal column */}
           <ScrollReveal delay={0.3}>
-            <p className="text-sm font-semibold mb-4 text-foreground">Légal</p>
+            <p className="text-sm font-semibold mb-4 text-foreground">{t('footer.legal')}</p>
             <div className="flex flex-col gap-3">
               <Link
                 href="/privacy"
                 className="text-sm text-muted hover:text-foreground hover:translate-x-1 transition-all duration-300"
               >
-                Politique de confidentialité
+                {t('footer.privacy')}
               </Link>
               <Link
                 href="/terms"
                 className="text-sm text-muted hover:text-foreground hover:translate-x-1 transition-all duration-300"
               >
-                Conditions d&apos;utilisation
+                {t('footer.terms')}
               </Link>
               <Link
                 href="/cookies"
                 className="text-sm text-muted hover:text-foreground hover:translate-x-1 transition-all duration-300"
               >
-                Politique de cookies
+                {t('footer.cookies')}
               </Link>
             </div>
           </ScrollReveal>
@@ -125,16 +132,16 @@ export function Footer() {
         <ScrollReveal>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-sm text-muted">
             <div>
-              <p>&copy; 2026 ByNeel &mdash; Tous droits réservés</p>
+              <p>&copy; 2026 ByNeel &mdash; {t('footer.rights')}</p>
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <span>Fait avec ❤️ + IA &mdash; développé en France</span>
+              <span>{t('footer.madeWith')}</span>
             </div>
 
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span>En ligne et disponible</span>
+              <span>{t('footer.online')}</span>
             </div>
           </div>
         </ScrollReveal>

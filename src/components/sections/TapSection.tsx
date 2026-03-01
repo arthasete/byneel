@@ -2,8 +2,10 @@
 
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export function TapSection() {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -48,8 +50,8 @@ export function TapSection() {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
         >
-          Touchez pour partager.{' '}
-          <span className="text-muted">C&apos;est tout.</span>
+          {t('tap.title1') + ' '}
+          <span className="text-muted">{t('tap.title2')}</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
@@ -58,7 +60,7 @@ export function TapSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-muted text-lg max-w-lg mx-auto"
         >
-          NFC pour se connecter, Wi-Fi pour transf&eacute;rer. Rapide, chiffr&eacute;, sans effort.
+          {t('tap.description')}
         </motion.p>
       </div>
     </section>

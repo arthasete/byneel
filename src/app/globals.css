@@ -44,6 +44,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
   }
 
   .gradient-text-cyan {
@@ -51,6 +53,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
   }
 
   .gradient-glow {
@@ -103,9 +107,9 @@
 .hero-orb-1 {
   top: 20%;
   left: 20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 70%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(139, 92, 246, 0.18) 50%, transparent 70%);
   filter: blur(80px);
   animation: orb-drift-1 12s ease-in-out infinite;
 }
@@ -113,9 +117,9 @@
 .hero-orb-2 {
   bottom: 20%;
   right: 25%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(236, 72, 153, 0.06) 50%, transparent 70%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.20) 0%, rgba(236, 72, 153, 0.14) 50%, transparent 70%);
   filter: blur(80px);
   animation: orb-drift-2 15s ease-in-out infinite;
 }

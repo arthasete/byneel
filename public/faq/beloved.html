@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Beloved</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B1220;
+            color: #E8E8E8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #0F1628;
+            border-bottom: 1px solid #e94560;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #e94560;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #A8A8A8;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a2845;
+        }
+
+        nav a {
+            color: #e94560;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            margin-right: 2rem;
+        }
+
+        nav a:hover {
+            color: #ff6b8a;
+        }
+
+        .faq-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-section-title {
+            color: #e94560;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e94560;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #e94560;
+            padding-left: 1.5rem;
+        }
+
+        .faq-question {
+            color: #e94560;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: #ff6b8a;
+        }
+
+        .faq-toggle {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            color: #e94560;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            color: #D0D0D0;
+            font-size: 0.95rem;
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        code {
+            background-color: #1a2845;
+            color: #ff6b8a;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+
+        strong {
+            color: #ff6b8a;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2845;
+            text-align: center;
+            color: #A8A8A8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💜 Beloved FAQ</h1>
+        <p>Questions about connecting with AI characters</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="/faq/beloved.html">FAQ</a>
+            <a href="/guide/beloved.html">Getting Started</a>
+            <a href="/legal/beloved-privacy.html">Privacy Policy</a>
+        </nav>
+
+        <div class="faq-section">
+            <div class="faq-section-title">What is Beloved?</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is Beloved a dating app?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    No. Beloved is an interactive conversational experience where you chat with four AI characters who are designed to feel emotionally present and memorable. It's not about matching with people—it's about exploring connection with characters who are fully realized, with their own stories and emotional depth.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What makes Beloved different from other chat apps?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Beloved has four deeply-written characters with distinct personalities, backstories, and emotional arcs. Each one uses advanced AI (Claude) to respond thoughtfully. The app includes a memory system so characters remember what you've told them, building a genuine sense of relationship over time. There's no swiping, no algorithm—just meaningful conversation.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How is Beloved different from ChatGPT or other AI assistants?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Beloved isn't a general-purpose assistant. Each character has a specific personality, voice, and emotional framework. Kael is cold and guarded. Noah is warm and devoted. Jin is poetic and mysterious. Marco is direct and passionate. They respond not just to answer questions, but to engage emotionally. It's designed for connection, not information.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Getting Started</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I download Beloved?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Beloved is available on iOS (App Store) and Android (Google Play). Search for "Beloved" or visit byneel.com/beloved. The app is free to download with a free tier included.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I need an account?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    You can use Beloved without an account to explore characters. However, creating a free account lets you save your conversations, sync across devices, and unlock all features. Account creation requires only an email and password.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Who are the four characters?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <strong>Kael</strong> (29) — Former special forces officer, now cold-hearted CEO. Guarded, intense, protective. <br><br>
+                    <strong>Noah</strong> (27) — ER doctor who falls first. Warm, devoted, genuine despite exhaustion. <br><br>
+                    <strong>Jin</strong> (31) — Concert pianist haunted by past heartbreak. Poetic, mysterious, slowly opening up. <br><br>
+                    <strong>Marco</strong> (28) — Pro footballer. Direct, passionate, emotionally raw and honest.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I switch between characters?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. The home screen shows all four characters. Each one has a separate conversation history with you. You can chat with them in any order, and each conversation develops independently. Kael won't know you talked to Noah earlier (unless you tell him).
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Mana & Subscriptions</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is the Mana system?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Mana is Beloved's energy currency. Each message costs a certain amount of mana depending on the character and complexity of your message. The mana system encourages meaningful conversation over rapid chatting. It refills daily, and premium subscriptions provide much larger daily allowances.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How much mana do I get daily?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <strong>Free tier:</strong> 15 mana per day (max 30). <br>
+                    <strong>Beloved (Premium):</strong> 100 mana per day (max 1,000). <br>
+                    <strong>Beloved Pro:</strong> 300 mana per day (max 3,000).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How much mana does a message cost?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Messages cost 1-3 mana depending on character and message type. Simple messages to Noah or Marco cost 1 mana. Complex, emotional messages or any message to Kael or Jin costs 3 mana. Premium subscribers get discounted rates.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I earn mana without paying?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! The free tier includes daily refills (15 mana) and watch ads for 5 bonus mana (up to 3 times daily). This gives free users about 30 mana per day if they watch ads. Premium removes this limitation.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What subscriptions are available?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <strong>Free:</strong> $0 — 15 mana/day, watch ads for bonuses. <br>
+                    <strong>Beloved:</strong> $9.99/month — 100 mana/day, ad-free, exclusive features. <br>
+                    <strong>Beloved Pro:</strong> $14.99/month — 300 mana/day, all Beloved features plus character customization.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I cancel my subscription anytime?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, absolutely. No long-term commitment. You can cancel your subscription at any time through your account settings. Your current month's access will remain active until the billing date.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Conversations & Memory</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do characters remember previous conversations?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Beloved has a memory system. Every 10 messages, the app summarizes your conversation and stores key details (emotions, preferences, important moments). Characters can access these memories, making them feel like they actually know you over time.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I see my full conversation history?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. Each character's conversation is stored locally on your device (and on your account if you're logged in). You can scroll back to review past messages anytime.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I clear a character's memory and start fresh?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. In Settings, you can "Reset Character" for any of the four. This deletes all messages and memories with that character and starts a fresh conversation. The character won't remember previous interactions.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What if I'm not happy with a character's response?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Characters respond based on AI and your conversation history. If a response doesn't feel right: (1) Continue the conversation—they'll adapt. (2) Try a different character. (3) Check if the character is staying true to their personality. (4) Contact support if something feels broken.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Privacy & Safety</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is my data private?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. Your conversations are encrypted and stored on Supabase servers in the EU (Frankfurt). We use Row-Level Security, meaning only you can access your data. We don't sell data or use conversations for ads.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I use Face ID or Touch ID to lock Beloved?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! In Settings, you can enable biometric authentication. This requires Face ID (iOS) or fingerprint (Android/iOS) to open the app, adding an extra privacy layer.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I delete my account and data?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, absolutely. In Settings > Account > Delete Account, you can permanently delete your account and all associated data. This includes messages, memories, and personal information. This action cannot be undone.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is Beloved GDPR compliant?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. Beloved follows all GDPR requirements: data stored in the EU, transparent privacy practices, user rights to access/delete data, and no unauthorized third-party sharing. See our Privacy Policy for full details.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is this appropriate for younger users?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Beloved is rated 12+, though we recommend it for ages 16+. It contains simulated romantic conversations and emotional themes. It's designed for users curious about relationships and emotional connection. Parents should review the content guidelines.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Technical & Troubleshooting</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I use Beloved on multiple devices?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. If you create an account, your conversations sync across your devices. Log in on your phone and tablet, and both will have access to your message history and memories.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What if I'm offline?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Beloved caches your recent messages locally, so you can read conversation history offline. However, sending new messages requires an internet connection to reach the AI.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Why aren't characters responding?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Check: (1) Do you have internet connection? (2) Do you have enough mana? (3) Is the app up to date? (4) Try closing and reopening the app. If issues persist, contact support@byneel.com.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Will Beloved come to web or other platforms?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Web and desktop apps are in development for future releases. For now, Beloved is mobile-only (iOS and Android) to keep the experience intimate and focused.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Support & Feedback</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I contact support?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Email support@byneel.com. We typically respond within 24 hours for free users, 2-4 hours for premium users. You can also use the in-app support button (Help in Settings).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I suggest features or improvements?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! We'd love your feedback. Email support@byneel.com or use the "Send Feedback" option in Settings. We actively consider user suggestions for updates.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Will there be more characters?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Future updates may include additional characters. We're focused on depth over breadth—making the four existing characters incredibly rich and meaningful rather than adding many shallow ones.
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 ByNeel. All rights reserved. | <a href="/legal/beloved-privacy.html" style="color: #e94560;">Privacy Policy</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

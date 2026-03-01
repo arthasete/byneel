@@ -1,18 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect } from 'react';
-import { projects } from '@/data/projects';
+import { useEffect, useMemo } from 'react';
+import { useLanguage } from '@/i18n/LanguageContext';
+import { useProjects } from '@/i18n/useLocalizedData';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { ArrowRight } from 'lucide-react';
 
-export default function ProjectPageClient({ slug }: { slug: string }) {
-  const project = projects.find((p) => p.slug === slug);
-  const projectIndex = projects.findIndex((p) => p.slug === slug);
-  const nextProject = projects[(projectIndex + 1) % projects.length];
-  const prevProject = projects[(projectIndex - 1 + projects.length) % projects.length];
-
-  // Trigger .reveal → .revealed via IntersectionObserver
+function useRevealAnimation() {
   useEffect(() => {
     const els = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver(
@@ -29,42 +24,57 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
   }, []);
+}
+
+export default function ProjectPageClient({ slug }: { slug: string }) {
+  const { t } = useLanguage();
+  const localizedProjects = useProjects();
+
+  useRevealAnimation();
+
+  const project = useMemo(() => localizedProjects.find((p) => p.slug === slug), [localizedProjects, slug]);
+  const projectIndex = useMemo(() => localizedProjects.findIndex((p) => p.slug === slug), [localizedProjects, slug]);
+  const nextProject = useMemo(() => localizedProjects[(projectIndex + 1) % localizedProjects.length], [localizedProjects, projectIndex]);
+  const prevProject = useMemo(() => localizedProjects[(projectIndex - 1 + localizedProjects.length) % localizedProjects.length], [localizedProjects, projectIndex]);
 
   if (!project) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center px-6">
-        <h1 className="text-3xl font-bold mb-4">Projet introuvable</h1>
+        <h1 className="text-3xl font-bold mb-4">{t('projectPage.notFound')}</h1>
         <Link href="/#projects" className="text-muted hover:text-foreground transition-colors">
-          &larr; Retour aux projets
+          &larr; {t('projectPage.backToProjects')}
         </Link>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br ${project.gradient} opacity-15 rounded-full blur-[120px] pointer-events-none`} />
+      <section className="relative pt-32 pb-24 px-6 overflow-clip">
+        {/* Main gradient orb — stronger */}
+        <div className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br ${project.gradient} opacity-25 rounded-full blur-[140px] pointer-events-none`} />
+        {/* Secondary gradient orb */}
+        <div className={`absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl ${project.gradient} opacity-15 rounded-full blur-[120px] pointer-events-none`} />
 
         <div className="max-w-4xl mx-auto relative z-10 reveal">
           <Link
             href="/#projects"
             className="inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors mb-8"
           >
-            &larr; Tous les projets
+            &larr; {t('projectPage.allProjects')}
           </Link>
 
-          <div className="flex items-start gap-6 mb-8">
-            <span className="text-6xl md:text-7xl animate-float-slow">{project.icon}</span>
-            <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-3">
+          <div className="flex items-start gap-4 md:gap-6 mb-8">
+            <span className="text-5xl md:text-7xl animate-float-slow shrink-0">{project.icon}</span>
+            <div className="min-w-0">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-3 leading-[1.15]">
                 {project.title}
               </h1>
               <div className="flex flex-wrap items-center gap-3">
                 {project.comingSoon && (
                   <span className="px-4 py-1.5 text-xs rounded-full bg-gradient-to-r from-brand-blue/20 to-brand-violet/20 text-foreground border border-brand-blue/30 font-semibold animate-pulse-glow">
-                    ✨ Bient&ocirc;t disponible
+                    {'✨ ' + t('projectPage.comingSoon')}
                   </span>
                 )}
                 {project.tags.map((tag) => (
@@ -82,41 +92,46 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
         </div>
       </section>
 
+      {/* Gradient divider line */}
+      <div className="px-6">
+        <div className={`max-w-4xl mx-auto h-px bg-gradient-to-r ${project.gradient} opacity-40`} />
+      </div>
+
       {/* Key Stats Bar */}
-      <section className="px-6 -mt-4 mb-8">
+      <section className="px-6 py-10">
         <div className="max-w-4xl mx-auto reveal">
-          <div className="grid grid-cols-3 gap-4">
-            <GlassCard className="p-5 text-center">
-              <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-brand-blue to-brand-violet bg-clip-text text-transparent mb-1">
+          <div className="grid grid-cols-3 gap-3 md:gap-4">
+            <GlassCard className="p-3 md:p-5 text-center">
+              <div className="text-xl md:text-3xl font-bold bg-gradient-to-r from-brand-blue to-brand-violet bg-clip-text text-transparent pb-0.5">
                 {project.features.length}
               </div>
-              <p className="text-xs text-muted">Fonctionnalit&eacute;s</p>
+              <p className="text-[10px] md:text-xs text-muted">{t('projectPage.features')}</p>
             </GlassCard>
-            <GlassCard className="p-5 text-center">
-              <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan to-brand-blue bg-clip-text text-transparent mb-1">
+            <GlassCard className="p-3 md:p-5 text-center">
+              <div className="text-xl md:text-3xl font-bold bg-gradient-to-r from-cyan to-brand-blue bg-clip-text text-transparent pb-0.5">
                 {project.techStack.length}
               </div>
-              <p className="text-xs text-muted">Technologies</p>
+              <p className="text-[10px] md:text-xs text-muted">{t('projectPage.technologies')}</p>
             </GlassCard>
-            <GlassCard className="p-5 text-center">
-              <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-brand-violet to-pink bg-clip-text text-transparent mb-1">
+            <GlassCard className="p-3 md:p-5 text-center">
+              <div className="text-xl md:text-3xl font-bold bg-gradient-to-r from-brand-violet to-pink bg-clip-text text-transparent pb-0.5">
                 {project.tags.length}
               </div>
-              <p className="text-xs text-muted">Plateformes</p>
+              <p className="text-[10px] md:text-xs text-muted">{t('projectPage.platforms')}</p>
             </GlassCard>
           </div>
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-16 px-6">
+      <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="reveal">
             <p className="text-xs font-semibold tracking-widest uppercase text-brand-blue mb-3">
-              Fonctionnalit&eacute;s
+              {t('projectPage.features')}
             </p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-10">
-              Ce que {project.title} peut faire
+              {t('projectPage.featuresTitle').replace('{title}', project.title)}
             </h2>
           </div>
 
@@ -140,10 +155,10 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
         <div className="max-w-4xl mx-auto">
           <div className="reveal">
             <p className="text-xs font-semibold tracking-widest uppercase text-brand-blue mb-3">
-              Technologies
+              {t('projectPage.technologies')}
             </p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-10">
-              Stack technique
+              {t('projectPage.techStack')}
             </h2>
           </div>
 
@@ -167,10 +182,10 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
         <div className="max-w-4xl mx-auto">
           <div className="reveal">
             <p className="text-xs font-semibold tracking-widest uppercase text-brand-blue mb-3">
-              Architecture
+              {t('projectPage.architecture')}
             </p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-10">
-              Comment c&apos;est construit
+              {t('projectPage.howBuilt')}
             </h2>
           </div>
 
@@ -179,37 +194,37 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                   <div className="text-2xl mb-3">🏗️</div>
-                  <h4 className="font-bold text-foreground mb-2">Frontend</h4>
+                  <h4 className="font-bold text-foreground mb-2">{t('projectPage.frontend')}</h4>
                   <p className="text-sm text-muted leading-relaxed">
                     {project.techStack.includes('Flutter') || project.techStack.includes('Dart')
-                      ? 'Flutter avec Dart pour une UI native cross-platform performante. Riverpod pour le state management.'
+                      ? t('projectPage.arch.flutter')
                       : project.techStack.includes('Swift')
-                      ? 'SwiftUI natif pour une expérience iOS optimale avec Core ML pour l\'IA embarquée.'
-                      : 'Dashboard web standalone avec interface responsive et temps réel.'}
+                      ? t('projectPage.arch.swift')
+                      : t('projectPage.arch.web')}
                   </p>
                 </div>
                 <div>
                   <div className="text-2xl mb-3">⚡</div>
-                  <h4 className="font-bold text-foreground mb-2">Backend</h4>
+                  <h4 className="font-bold text-foreground mb-2">{t('projectPage.backend')}</h4>
                   <p className="text-sm text-muted leading-relaxed">
                     {project.techStack.includes('Supabase')
-                      ? 'Supabase pour l\'authentification, la base de données PostgreSQL et le stockage en temps réel.'
+                      ? t('projectPage.arch.supabase')
                       : project.techStack.includes('FastAPI')
-                      ? 'FastAPI pour une API REST haute performance avec workers asynchrones et WebSocket.'
+                      ? t('projectPage.arch.fastapi')
                       : project.techStack.includes('SQLite') || project.techStack.includes('SQLite FTS5')
-                      ? 'SQLite local pour un stockage rapide et fiable sans serveur. Tout reste sur l\'appareil.'
-                      : 'Architecture serverless avec stockage local prioritaire.'}
+                      ? t('projectPage.arch.sqlite')
+                      : t('projectPage.arch.serverless')}
                   </p>
                 </div>
                 <div>
                   <div className="text-2xl mb-3">🔒</div>
-                  <h4 className="font-bold text-foreground mb-2">S&eacute;curit&eacute;</h4>
+                  <h4 className="font-bold text-foreground mb-2">{t('projectPage.security')}</h4>
                   <p className="text-sm text-muted leading-relaxed">
                     {project.techStack.includes('AES-256-GCM')
-                      ? 'Chiffrement AES-256-GCM de bout en bout. Aucune donnée ne transite par un serveur tiers.'
+                      ? t('projectPage.arch.aes')
                       : project.slug === 'beloved'
-                      ? 'Authentification sécurisée via Supabase Auth. Données chiffrées en transit et au repos.'
-                      : 'Données stockées localement. Clés API chiffrées via Keychain/Keystore natif.'}
+                      ? t('projectPage.arch.beloved')
+                      : t('projectPage.arch.keychain')}
                   </p>
                 </div>
               </div>
@@ -223,10 +238,10 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
         <div className="max-w-4xl mx-auto">
           <div className="reveal">
             <p className="text-xs font-semibold tracking-widest uppercase text-brand-blue mb-3">
-              Aper&ccedil;u
+              {t('projectPage.preview')}
             </p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-10">
-              Captures d&apos;&eacute;cran
+              {t('projectPage.screenshots')}
             </h2>
           </div>
 
@@ -234,10 +249,10 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
             <GlassCard className="p-12 flex flex-col items-center justify-center min-h-[280px]">
               <div className="text-5xl mb-4 opacity-50">{project.icon}</div>
               <p className="text-muted text-sm text-center mb-2">
-                Captures d&apos;&eacute;cran en cours de pr&eacute;paration
+                {t('projectPage.screenshotsPreparing')}
               </p>
               <p className="text-muted/50 text-xs text-center">
-                Les visuels seront ajout&eacute;s lors du lancement
+                {t('projectPage.screenshotsLaunch')}
               </p>
             </GlassCard>
           </div>
@@ -251,7 +266,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Link href={`/projects/${prevProject.slug}`} className="group">
                 <GlassCard className="p-6 hover:-translate-y-1 transition-transform duration-300">
-                  <p className="text-xs text-muted mb-2">&larr; Projet pr&eacute;c&eacute;dent</p>
+                  <p className="text-xs text-muted mb-2">&larr; {t('projectPage.prevProject')}</p>
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{prevProject.icon}</span>
                     <span className="font-bold group-hover:gradient-text-cyan transition-colors duration-300">{prevProject.title}</span>
@@ -261,7 +276,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
 
               <Link href={`/projects/${nextProject.slug}`} className="group">
                 <GlassCard className="p-6 hover:-translate-y-1 transition-transform duration-300 text-right">
-                  <p className="text-xs text-muted mb-2">Projet suivant &rarr;</p>
+                  <p className="text-xs text-muted mb-2">{t('projectPage.nextProject')} &rarr;</p>
                   <div className="flex items-center justify-end gap-3">
                     <span className="font-bold group-hover:gradient-text-cyan transition-colors duration-300">{nextProject.title}</span>
                     <span className="text-2xl">{nextProject.icon}</span>
@@ -280,10 +295,10 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
             href="/#projects"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white gradient-glow transition-all duration-300 hover:scale-105"
           >
-            Voir tous les projets <ArrowRight className="w-4 h-4" />
+            {t('projectPage.viewAll')} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

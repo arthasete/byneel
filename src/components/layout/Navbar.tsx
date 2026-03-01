@@ -1,39 +1,46 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
-
-const navLinks = [
-  { label: 'Projets', href: '/#projects' },
-  { label: 'Tech', href: '/#tech' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/#contact' },
-];
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+
+  const navLinks = useMemo(() => [
+    { label: t('nav.projects'), href: '/#projects' },
+    { label: t('nav.tech'), href: '/#tech' },
+    { label: t('nav.blog'), href: '/blog' },
+    { label: t('nav.contact'), href: '/#contact' },
+  ], [t]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  // Close menu on escape key
-  useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsOpen(false);
     };
     window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleEsc);
+    };
   }, []);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
+
+  const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
+  const closeMenu = useCallback(() => setIsOpen(false), []);
+  const toggleLanguage = useCallback(() => {
+    setLanguage(language === 'fr' ? 'en' : 'fr');
+  }, [language, setLanguage]);
 
   return (
     <>
@@ -60,6 +67,16 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+
+          {/* Language switcher */}
+          <button
+            onClick={toggleLanguage}
+            className="text-sm px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.08] hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-200 font-medium"
+            aria-label="Switch language"
+          >
+            {language === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR'}
+          </button>
+
           <a
             href="mailto:contact@byneel.com"
             className="text-sm px-4 py-2 rounded-full bg-white/[0.06] border border-white/[0.08] hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-200"
@@ -70,9 +87,9 @@ export function Navbar() {
 
         {/* Hamburger button */}
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleMenu}
           className="md:hidden relative z-[60] w-10 h-10 flex items-center justify-center"
-          aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
           aria-expanded={isOpen}
         >
           <div className="w-6 flex flex-col gap-[5px]">
@@ -108,7 +125,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
               className="text-3xl font-light text-muted hover:text-foreground transition-all duration-300 hover:tracking-wider"
               style={{
                 transitionDelay: isOpen ? `${i * 60}ms` : '0ms',
@@ -120,17 +137,35 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+
+          {/* Mobile language switcher */}
+          <button
+            onClick={() => {
+              toggleLanguage();
+              closeMenu();
+            }}
+            className="text-xl font-light text-muted hover:text-foreground transition-all duration-300"
+            style={{
+              transitionDelay: isOpen ? `${navLinks.length * 60}ms` : '0ms',
+              opacity: isOpen ? 1 : 0,
+              transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
+              transition: `opacity 0.4s ease ${isOpen ? navLinks.length * 60 : 0}ms, transform 0.4s ease ${isOpen ? navLinks.length * 60 : 0}ms, color 0.2s`,
+            }}
+          >
+            {language === 'fr' ? '🇬🇧 English' : '🇫🇷 Français'}
+          </button>
+
           <div
             className="mt-4 pt-6 border-t border-white/[0.08]"
             style={{
               opacity: isOpen ? 1 : 0,
               transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
-              transition: `opacity 0.4s ease ${isOpen ? navLinks.length * 60 : 0}ms, transform 0.4s ease ${isOpen ? navLinks.length * 60 : 0}ms`,
+              transition: `opacity 0.4s ease ${isOpen ? (navLinks.length + 1) * 60 : 0}ms, transform 0.4s ease ${isOpen ? (navLinks.length + 1) * 60 : 0}ms`,
             }}
           >
             <a
               href="mailto:contact@byneel.com"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
               className="text-lg text-brand-blue hover:text-brand-purple transition-colors duration-200"
             >
               contact@byneel.com

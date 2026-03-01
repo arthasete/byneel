@@ -1,9 +1,29 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect } from 'react';
-import { posts } from '@/data/posts';
+import { useEffect, useMemo } from 'react';
+import { useLanguage } from '@/i18n/LanguageContext';
+import { usePosts } from '@/i18n/useLocalizedData';
 import { GlassCard } from '@/components/ui/GlassCard';
+
+function useRevealAnimation() {
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('revealed');
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-30px' }
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+}
 
 /** Very lightweight markdown → JSX for blog posts */
 function renderMarkdown(md: string) {
@@ -126,34 +146,22 @@ function renderMarkdown(md: string) {
 }
 
 export default function BlogPostClient({ slug }: { slug: string }) {
-  const post = posts.find((p) => p.slug === slug);
-  const postIndex = posts.findIndex((p) => p.slug === slug);
-  const nextPost = posts[(postIndex + 1) % posts.length];
-  const prevPost = posts[(postIndex - 1 + posts.length) % posts.length];
+  const { t, language } = useLanguage();
+  const localizedPosts = usePosts();
 
-  useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('revealed');
-            obs.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '-30px' }
-    );
-    els.forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
+  useRevealAnimation();
+
+  const post = useMemo(() => localizedPosts.find((p) => p.slug === slug), [localizedPosts, slug]);
+  const postIndex = useMemo(() => localizedPosts.findIndex((p) => p.slug === slug), [localizedPosts, slug]);
+  const nextPost = useMemo(() => localizedPosts[(postIndex + 1) % localizedPosts.length], [localizedPosts, postIndex]);
+  const prevPost = useMemo(() => localizedPosts[(postIndex - 1 + localizedPosts.length) % localizedPosts.length], [localizedPosts, postIndex]);
 
   if (!post) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center px-6">
-        <h1 className="text-3xl font-bold mb-4">Article introuvable</h1>
+        <h1 className="text-3xl font-bold mb-4">{t('blogPost.notFound')}</h1>
         <Link href="/blog" className="text-muted hover:text-foreground transition-colors">
-          &larr; Retour au blog
+          &larr; {t('blogPost.back')}
         </Link>
       </div>
     );
@@ -172,19 +180,19 @@ export default function BlogPostClient({ slug }: { slug: string }) {
             href="/blog"
             className="inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors mb-8"
           >
-            &larr; Tous les articles
+            &larr; {t('blogPost.allArticles')}
           </Link>
 
           <div className="flex items-center gap-3 mb-4 text-sm text-muted">
             <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString('fr-FR', {
+              {new Date(post.date).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric',
               })}
             </time>
             <span>&middot;</span>
-            <span>{post.readTime} de lecture</span>
+            <span>{post.readTime} {t('blogPage.read')}</span>
           </div>
 
           <div className="flex items-start gap-5 mb-6">
@@ -223,7 +231,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Link href={`/blog/${prevPost.slug}`} className="group">
                 <GlassCard className="p-6 hover:-translate-y-1 transition-transform duration-300">
-                  <p className="text-xs text-muted mb-2">&larr; Article pr&eacute;c&eacute;dent</p>
+                  <p className="text-xs text-muted mb-2">&larr; {t('blogPost.prev')}</p>
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{prevPost.icon}</span>
                     <span className="font-bold text-sm group-hover:gradient-text transition-colors duration-300 line-clamp-1">
@@ -235,7 +243,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
 
               <Link href={`/blog/${nextPost.slug}`} className="group">
                 <GlassCard className="p-6 hover:-translate-y-1 transition-transform duration-300 text-right">
-                  <p className="text-xs text-muted mb-2">Article suivant &rarr;</p>
+                  <p className="text-xs text-muted mb-2">{t('blogPost.next')} &rarr;</p>
                   <div className="flex items-center justify-end gap-3">
                     <span className="font-bold text-sm group-hover:gradient-text transition-colors duration-300 line-clamp-1">
                       {nextPost.title}
@@ -256,7 +264,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
             href="/blog"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white gradient-glow transition-all duration-300 hover:scale-105"
           >
-            Voir tous les articles
+            {t('blogPost.viewAll')}
           </Link>
         </div>
       </section>

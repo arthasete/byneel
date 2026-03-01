@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - TipLog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B1220;
+            color: #E8E8E8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #0F1628;
+            border-bottom: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #0A84FF;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #A8A8A8;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a2845;
+        }
+
+        nav a {
+            color: #0A84FF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4BA3FF;
+        }
+
+        .faq-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #0A84FF;
+            padding-left: 1.5rem;
+        }
+
+        .faq-question {
+            color: #0A84FF;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: #4BA3FF;
+        }
+
+        .faq-toggle {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            color: #0A84FF;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            color: #D0D0D0;
+            display: none;
+            padding-top: 0.8rem;
+            border-top: 1px solid #1a2845;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        footer {
+            background-color: #0F1628;
+            border-top: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            color: #A8A8A8;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .contact-info {
+            color: #0A84FF;
+            text-decoration: none;
+        }
+
+        .contact-info:hover {
+            color: #4BA3FF;
+        }
+
+        .updated-date {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2845;
+        }
+
+        strong {
+            color: #0A84FF;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FAQ TipLog</h1>
+        <p>Questions fréquemment posées</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="https://byneel.com">← Retour à byNeel</a>
+        </nav>
+
+        <div class="faq-section">
+            <div class="faq-item open">
+                <div class="faq-question">
+                    <span>Comment fonctionne la détection GPS ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        TipLog utilise votre localisation GPS pour détecter automatiquement votre pays et afficher
+                        la bonne devise. Cette détection se fait uniquement sur votre appareil et n'est jamais envoyée
+                        à nos serveurs. Vous pouvez désactiver les permissions GPS dans les paramètres de votre téléphone
+                        si vous préférez, et sélectionner manuellement votre pays.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment enregistrer une dépense ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        C'est simple :
+                    </p>
+                    <ol style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Appuyez sur le bouton "+" pour créer une nouvelle dépense</li>
+                        <li>Entrez le montant du repas ou du service</li>
+                        <li>TipLog calcule automatiquement le pourboire selon le pourcentage sélectionné</li>
+                        <li>Appuyez sur "Enregistrer" pour ajouter la dépense à votre historique</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment exporter mon historique en PDF ou CSV ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Dans la section "Historique", appuyez sur le bouton "Exporter" (icône partage). TipLog vous permettra
+                        de choisir le format (PDF ou CSV) et d'envoyer le fichier par email ou de l'enregistrer sur votre appareil.
+                        Les fichiers PDF incluent des graphiques visuels de vos dépenses.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Qu'est-ce qui est inclus dans TipLog Pro ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        TipLog Pro déverrouille les fonctionnalités premium :
+                    </p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Pas de publicités</strong> - Interface sans pub intrusives</li>
+                        <li><strong>Historique illimité</strong> - Conservez tous vos enregistrements sans limite</li>
+                        <li><strong>Exportation personnalisée</strong> - Choisissez les filtres et périodes pour exporter</li>
+                        <li><strong>Thèmes premium</strong> - Accédez à des thèmes exclusifs pour personnaliser l'app</li>
+                        <li><strong>Calculs avancés</strong> - Mode "rond" pour arrondir les totaux</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Mes données sont-elles sécurisées ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Oui, entièrement.</strong> Toutes vos données (historique des dépenses, préférences) restent
+                        stockées localement sur votre appareil. Nous n'avons aucun serveur, aucun cloud, et aucun moyen d'accéder
+                        à vos informations. Vos données sont protégées par le chiffrement natif de votre système d'exploitation.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        Vous pouvez consulter notre <a href="/legal/tiplog-privacy.html" style="color: #0A84FF;">politique de confidentialité</a>
+                        pour plus de détails.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>TipLog fonctionne-t-il hors ligne ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Oui, complètement.</strong> TipLog fonctionne entièrement hors ligne. Vous n'avez besoin
+                        d'internet qu'une seule fois pour télécharger l'application. Tous les calculs et l'enregistrement
+                        des données se font localement.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je utiliser TipLog dans plusieurs pays ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Bien sûr !</strong> TipLog supporte les devises de plus de 150 pays. Vous pouvez changer
+                        manuellement votre pays/devise dans les paramètres, ou laisser la détection GPS automatique s'en charger.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Combien coûte TipLog Pro ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Le tarif varie selon votre région, mais TipLog Pro est généralement proposé à un tarif abordable
+                        avec un essai gratuit. Les prix exacts sont affichés dans l'app avant l'achat.
+                        Vous pouvez gérer votre abonnement via l'App Store (iOS) ou Google Play (Android).
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je rembourser mon abonnement Pro ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Les remboursements sont gérés par Apple (App Store) ou Google (Google Play) selon votre plateforme.
+                        Contactez directement leur support pour les demandes de remboursement. Nous recommandons
+                        de d'abord essayer la version gratuite avant d'acheter.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>TipLog collecte-t-il des données publicitaires ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        TipLog affiche des publicités via Google AdMob. Google peut collecter des données anonymes
+                        à des fins publicitaires. En achetant TipLog Pro, vous éliminez complètement les publicités.
+                        Voir notre <a href="/legal/tiplog-privacy.html" style="color: #0A84FF;">politique de confidentialité</a>
+                        pour plus de détails.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment puis-je supprimer mon historique ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Vous pouvez supprimer des enregistrements individuels en glissant-déposant sur un élément d'historique,
+                        ou effacer tout votre historique depuis le menu "Paramètres" > "Données". Cette action est irréversible.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #1a2845;">
+            <p style="color: #A8A8A8; margin-bottom: 1rem;">Vous avez d'autres questions ?</p>
+            <p>
+                <strong>Contactez-nous :</strong>
+                <a href="mailto:ylaghouati@icloud.com" class="contact-info">ylaghouati@icloud.com</a>
+            </p>
+        </div>
+
+        <div class="updated-date">
+            Dernière mise à jour : 25 février 2026
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 byNeel. Tous droits réservés.</p>
+        <p>FAQ TipLog</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                this.closest('.faq-item').classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

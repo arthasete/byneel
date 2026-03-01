@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - OmniDrop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B1220;
+            color: #E8E8E8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #0F1628;
+            border-bottom: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #0A84FF;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #A8A8A8;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a2845;
+        }
+
+        nav a {
+            color: #0A84FF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            margin-right: 2rem;
+        }
+
+        nav a:hover {
+            color: #4BA3FF;
+        }
+
+        .faq-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-section-title {
+            color: #0A84FF;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #0A84FF;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #0A84FF;
+            padding-left: 1.5rem;
+        }
+
+        .faq-question {
+            color: #0A84FF;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: #4BA3FF;
+        }
+
+        .faq-toggle {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            color: #0A84FF;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            color: #D0D0D0;
+            font-size: 0.95rem;
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        code {
+            background-color: #1a2845;
+            color: #4BA3FF;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+
+        strong {
+            color: #4BA3FF;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2845;
+            text-align: center;
+            color: #A8A8A8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>OmniDrop FAQ</h1>
+        <p>Questions & Answers about secure file sharing</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="/faq/omnidrop.html">FAQ</a>
+            <a href="/guide/omnidrop.html">Getting Started</a>
+            <a href="/legal/omnidrop-privacy.html">Privacy Policy</a>
+        </nav>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Getting Started</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I need to create an account to share files?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    No! OmniDrop is designed to work without any account creation. Simply select your files, generate a link, and share it. We don't require email addresses, passwords, or any personal information to get started.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I share files with OmniDrop?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    It's simple: (1) Open OmniDrop and tap "Select Files", (2) Choose the files you want to share, (3) Tap "Generate Link" to create a unique shareable URL, (4) Copy the link and send it via email, messenger, or any communication method. Recipients can download without needing an account.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What file types can I share?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    OmniDrop supports any file type: documents (PDF, Word, Excel), images (JPG, PNG, GIF), videos (MP4, MOV), audio (MP3, WAV), archives (ZIP, RAR), and more. The only limit is the file size supported by your plan (2GB for free, 20GB for premium).
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How large can my files be?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Free accounts can share files up to 2GB each with 1GB total storage. Premium accounts support up to 20GB per file with 1TB total storage. Perfect for large videos, archives, and professional documents.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Sharing & Links</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How long are share links active?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Free links expire in 30 days by default. Premium users can customize expiration from 1 day to 1 year. Once a link expires or the download limit is reached, the file becomes inaccessible.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I set a download limit on my links?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Free accounts can set limits up to 10 downloads per link. Premium accounts have unlimited downloads. Once the limit is reached, the link stops working automatically.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I password-protect my files?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. When creating a share link, you can optionally add a password. Recipients must enter the password before accessing or downloading the file. This adds an extra layer of security for sensitive documents.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I see who downloaded my files?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. OmniDrop tracks download activity for your shares, showing timestamps of when downloads occurred. This helps you verify that recipients have received your files.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I share multiple files in one link?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! Select multiple files during upload and they'll be packaged together in a single share link. Large batches are automatically compressed for easier download.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Security & Privacy</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is my data really encrypted?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. OmniDrop uses AES-256 encryption for files and TLS 1.3 for all data in transit. Files are encrypted on your device before upload, meaning only you and your recipients have access to the content.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Does OmniDrop track my activity?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    No. OmniDrop is privacy-first. We don't use cookies, analytics, or third-party trackers. We only track download activity on your own shares (so you know when files were accessed). Your personal browsing and file history remain private.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Where are my files stored?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    All OmniDrop files are stored on secure servers in the EU (Frankfurt), ensuring GDPR compliance. This means your data stays within the European data protection framework.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What happens to my files after they expire?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Files are automatically and permanently deleted from our servers once the expiration date passes or the download limit is reached. There's no way to recover them after deletion.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is OmniDrop GDPR compliant?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes. OmniDrop is fully GDPR compliant with data storage in the EU and transparent privacy practices. You can delete your account and all associated data at any time.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Pricing & Subscriptions</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is OmniDrop free?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! OmniDrop is completely free to use. You get 1GB of storage, can share files up to 2GB, and links expire in 30 days with up to 10 downloads each. No credit card required.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What's included in OmniDrop Premium?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Premium includes: 1TB storage, 20GB per-file limit, customizable link expiration (up to 1 year), unlimited downloads per link, priority support, advanced encryption, and API access for developers. Perfect for teams and professionals.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How much does Premium cost?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Premium is $9.99/month or $99/year. Cancel anytime—no long-term commitment. We also offer team plans for organizations with multiple users.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you offer team or business plans?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Contact us at support@byneel.com for enterprise pricing. We offer team management, bulk storage, API access, dedicated support, and custom features for organizations.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Technical Issues</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Why is my upload slow?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Upload speed depends on your internet connection and file size. Large files naturally take longer. If you're experiencing consistently slow uploads, try: (1) Checking your internet speed, (2) Uploading at a different time, (3) Compressing large files first, or (4) Contacting support@byneel.com.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What should I do if a download fails?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Failed downloads are usually due to connection issues. Try: (1) Check your internet connection, (2) Try again in a few minutes, (3) Use a different browser or device, (4) Ensure the link hasn't expired. Contact support if the issue persists.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Does OmniDrop work on mobile and desktop?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! OmniDrop works on iOS, Android, macOS, Windows, and web browsers (Chrome, Safari, Firefox, Edge). You can share files from any device and recipients can download on any platform.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I need to install OmniDrop to share files?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    The web version works in your browser without installation. The mobile apps (iOS/Android) can be installed from the App Store and Google Play for easier access and offline features.
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-section-title">Support & Feedback</div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I contact support?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Email us at <strong>support@byneel.com</strong>. Free users typically get a response within 24 hours. Premium users get priority support with responses in 2 hours or less.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I request new features?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! We'd love your feedback. Email support@byneel.com or visit our feature request board. We actively consider user suggestions for future OmniDrop updates.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I delete my account?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    You can delete your account and all associated data in Settings > Account > Delete Account. All files and share history will be permanently removed. This action cannot be undone.
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 ByNeel. All rights reserved. | <a href="/legal/omnidrop-privacy.html" style="color: #0A84FF;">Privacy Policy</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

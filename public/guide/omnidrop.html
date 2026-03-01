@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - OmniDrop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B1220;
+            color: #E8E8E8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #0F1628;
+            border-bottom: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #0A84FF;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #A8A8A8;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a2845;
+        }
+
+        nav a {
+            color: #0A84FF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            margin-right: 2rem;
+        }
+
+        nav a:hover {
+            color: #4BA3FF;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            color: #0A84FF;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #0A84FF;
+        }
+
+        h3 {
+            color: #4BA3FF;
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #D0D0D0;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            color: #D0D0D0;
+        }
+
+        strong {
+            color: #0A84FF;
+        }
+
+        code {
+            background-color: #1a2845;
+            color: #4BA3FF;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+
+        .step {
+            background-color: #1a2845;
+            border-left: 4px solid #0A84FF;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .step h3 {
+            margin-top: 0;
+            color: #4BA3FF;
+        }
+
+        .tip {
+            background-color: rgba(10, 132, 255, 0.1);
+            border-left: 4px solid #0A84FF;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .tip strong {
+            color: #4BA3FF;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2845;
+            text-align: center;
+            color: #A8A8A8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>OmniDrop - Getting Started</h1>
+        <p>A step-by-step guide to secure file sharing</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="/faq/omnidrop.html">FAQ</a>
+            <a href="/guide/omnidrop.html">Getting Started</a>
+            <a href="/legal/omnidrop-privacy.html">Privacy Policy</a>
+        </nav>
+
+        <section>
+            <h2>Installation & Setup</h2>
+
+            <div class="step">
+                <h3>Step 1: Download OmniDrop</h3>
+                <p>OmniDrop is available on multiple platforms:</p>
+                <ul>
+                    <li><strong>iOS:</strong> Search for "OmniDrop" in the App Store</li>
+                    <li><strong>Android:</strong> Search for "OmniDrop" in Google Play</li>
+                    <li><strong>Web:</strong> Visit app.omnidrop.com in any modern browser</li>
+                    <li><strong>Mac/Windows:</strong> Use the web version or download the native app</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>Step 2: Launch the App</h3>
+                <p>Open OmniDrop after installation. The app opens to the main screen ready to share files immediately—no account required!</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 3: Optional—Create an Account</h3>
+                <p>To save your share history and access files across devices, tap "Create Account" and enter:</p>
+                <ul>
+                    <li>Email address</li>
+                    <li>Password</li>
+                    <li>Confirm password</li>
+                </ul>
+                <p>Your account is encrypted and private. We only use your email for login recovery.</p>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> You can share files without an account. Create one later if you want to access your share history or sync across devices.
+            </div>
+        </section>
+
+        <section>
+            <h2>Sharing Files in 4 Steps</h2>
+
+            <div class="step">
+                <h3>Step 1: Tap "Select Files"</h3>
+                <p>On the main screen, tap the large blue button labeled "Select Files." This opens your device's file picker.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 2: Choose Your Files</h3>
+                <p>Navigate to the files you want to share:</p>
+                <ul>
+                    <li>Browse folders on your device</li>
+                    <li>Tap to select individual files</li>
+                    <li>Hold Ctrl (Windows) or Cmd (Mac) to select multiple files</li>
+                    <li>On mobile, tap files to add them to your selection</li>
+                </ul>
+                <p>You can select up to 2GB per file (free) or 20GB (premium).</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 3: Configure Share Options</h3>
+                <p>After selecting files, you'll see a "Share Settings" screen:</p>
+                <ul>
+                    <li><strong>Expiration:</strong> Set when the link expires (default: 30 days for free)</li>
+                    <li><strong>Download Limit:</strong> Max downloads before the link stops working (default: 10 for free)</li>
+                    <li><strong>Password:</strong> Optional—require a password for access</li>
+                    <li><strong>Message:</strong> Add a note for recipients</li>
+                </ul>
+                <p>Premium users can customize expiration up to 1 year and allow unlimited downloads.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 4: Generate & Share Link</h3>
+                <p>Tap "Generate Link" and you'll instantly get a unique shareable URL. Now you can:</p>
+                <ul>
+                    <li>Tap "Copy Link" to copy to clipboard</li>
+                    <li>Tap "Share" to send via email, messaging, social media, etc.</li>
+                    <li>Tap "QR Code" to generate a scannable QR code</li>
+                </ul>
+                <p>Share the link however you want. Recipients don't need an account to download.</p>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> After generating a link, it stays active according to your settings. You can view all your active shares in the "My Shares" tab.
+            </div>
+        </section>
+
+        <section>
+            <h2>Receiving & Downloading Files</h2>
+
+            <p>If someone sent you an OmniDrop link, downloading is simple:</p>
+
+            <ol>
+                <li>Click or tap the link they sent you</li>
+                <li>If password-protected, enter the password</li>
+                <li>Tap "Download" or "Download All"</li>
+                <li>Files download to your device's default download folder</li>
+                <li>For mobile, files typically save to your Files app or camera roll</li>
+            </ol>
+
+            <p>That's it! No account needed. You can download as many times as you want (until the limit is reached).</p>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> If receiving many files, they may be automatically compressed (.zip). Uncompress them on your device after download.
+            </div>
+        </section>
+
+        <section>
+            <h2>Managing Your Shares</h2>
+
+            <h3>View Active Shares</h3>
+            <p>Tap the "My Shares" tab to see all your active share links:</p>
+            <ul>
+                <li><strong>Share Link:</strong> The URL (tap to copy)</li>
+                <li><strong>Expiration:</strong> When the link stops working</li>
+                <li><strong>Downloads:</strong> How many times files have been downloaded (and remaining limit)</li>
+                <li><strong>Status:</strong> Active, Expired, or Limit Reached</li>
+            </ul>
+
+            <h3>Monitor Download Activity</h3>
+            <p>For each share, you can see:</p>
+            <ul>
+                <li>Download timestamps (when someone accessed your files)</li>
+                <li>Number of downloads completed</li>
+                <li>Remaining downloads allowed</li>
+            </ul>
+
+            <h3>Delete or Expire a Share</h3>
+            <p>To stop sharing files early:</p>
+            <ol>
+                <li>Find the share in "My Shares"</li>
+                <li>Tap the three-dot menu (⋯)</li>
+                <li>Select "Delete Link" or "Expire Now"</li>
+                <li>Confirm—the link will no longer work</li>
+            </ol>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Deleted links cannot be recovered. Recipients will see an error if they try to access them.
+            </div>
+        </section>
+
+        <section>
+            <h2>Premium Features</h2>
+
+            <h3>Upgrade to Premium</h3>
+            <p>In Settings, tap "Upgrade to Premium" to unlock:</p>
+            <ul>
+                <li>1TB storage (vs. 1GB free)</li>
+                <li>20GB per-file limit (vs. 2GB free)</li>
+                <li>Customizable expiration (up to 1 year)</li>
+                <li>Unlimited downloads per link</li>
+                <li>Priority support</li>
+                <li>Advanced encryption options</li>
+                <li>API access (for developers)</li>
+                <li>Team management</li>
+            </ul>
+
+            <p><strong>Pricing:</strong> $9.99/month or $99/year. Cancel anytime.</p>
+
+            <h3>Team Management (Premium)</h3>
+            <p>Premium users can:</p>
+            <ul>
+                <li>Invite team members to your workspace</li>
+                <li>Share file management responsibilities</li>
+                <li>Set role-based permissions (Admin, Editor, Viewer)</li>
+                <li>Track team file activity</li>
+                <li>Manage team billing</li>
+            </ul>
+
+            <p>Contact support@byneel.com for team setup assistance.</p>
+        </section>
+
+        <section>
+            <h2>Security & Privacy</h2>
+
+            <h3>How Your Files Are Protected</h3>
+            <ul>
+                <li><strong>Encryption:</strong> Files are encrypted using AES-256 before upload</li>
+                <li><strong>Secure Transfer:</strong> All data uses TLS 1.3 during transfer</li>
+                <li><strong>Password Protection:</strong> Optional passwords add an extra layer</li>
+                <li><strong>Automatic Deletion:</strong> Files auto-delete after expiration</li>
+                <li><strong>EU Storage:</strong> All files stored in Frankfurt for GDPR compliance</li>
+            </ul>
+
+            <h3>Privacy Practices</h3>
+            <ul>
+                <li>We don't track users or sell data</li>
+                <li>No cookies, analytics, or third-party integrations</li>
+                <li>Download activity is only visible to you</li>
+                <li>Account data is encrypted and private</li>
+                <li>Full transparency in our Privacy Policy</li>
+            </ul>
+
+            <div class="tip">
+                <strong>🔒 Security:</strong> For sensitive files, always use password protection and set a short expiration time.
+            </div>
+        </section>
+
+        <section>
+            <h2>Troubleshooting</h2>
+
+            <h3>Upload is Slow</h3>
+            <p>Upload speed depends on your internet connection and file size. To improve:</p>
+            <ul>
+                <li>Check your internet speed (speedtest.net)</li>
+                <li>Try again at a different time</li>
+                <li>Compress large files before uploading (7-Zip, WinRAR, or built-in tools)</li>
+                <li>Use a wired connection for faster uploads (if possible)</li>
+            </ul>
+
+            <h3>Download Failed</h3>
+            <p>If a recipient reports a download failed:</p>
+            <ul>
+                <li>Check if the link is still active (hasn't expired)</li>
+                <li>Verify the download limit hasn't been reached</li>
+                <li>Ask them to try a different browser</li>
+                <li>Try re-generating the link and sharing again</li>
+            </ul>
+
+            <h3>Link Isn't Working</h3>
+            <p>If a share link shows "Not Found" or "Expired":</p>
+            <ul>
+                <li>Check the link expiration date (has it passed?)</li>
+                <li>Verify the download limit hasn't been reached</li>
+                <li>Ensure you copied the full link correctly</li>
+                <li>Try regenerating the link</li>
+            </ul>
+
+            <h3>Can't Log In</h3>
+            <p>If you forgot your password:</p>
+            <ol>
+                <li>Tap "Forgot Password" on the login screen</li>
+                <li>Enter your email address</li>
+                <li>Check your email for a reset link</li>
+                <li>Follow the link to create a new password</li>
+            </ol>
+
+            <div class="tip">
+                <strong>📞 Need Help?</strong> Contact support@byneel.com. We respond within 24 hours (or 2 hours for premium users).
+            </div>
+        </section>
+
+        <section>
+            <h2>Best Practices</h2>
+
+            <h3>For Sensitive Files</h3>
+            <ul>
+                <li>Always use password protection</li>
+                <li>Set a short expiration (1-7 days)</li>
+                <li>Limit downloads to the number of recipients</li>
+                <li>Share the password separately (not in the link)</li>
+            </ul>
+
+            <h3>For Large Files</h3>
+            <ul>
+                <li>Compress files to reduce size (ZIP format)</li>
+                <li>Split very large uploads into parts</li>
+                <li>Test download speeds with a test file first</li>
+                <li>Consider email or cloud alternatives for 100GB+ files</li>
+            </ul>
+
+            <h3>For Business Use</h3>
+            <ul>
+                <li>Use a team account for shared responsibility</li>
+                <li>Set consistent expiration policies</li>
+                <li>Monitor download activity regularly</li>
+                <li>Use password protection for confidential documents</li>
+                <li>Keep receipts of shared information for compliance</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Keyboard Shortcuts (Web & Desktop)</h2>
+
+            <ul>
+                <li><strong>Ctrl+O (Cmd+O):</strong> Open file picker</li>
+                <li><strong>Ctrl+C (Cmd+C):</strong> Copy share link</li>
+                <li><strong>Ctrl+K (Cmd+K):</strong> Create new share</li>
+                <li><strong>Escape:</strong> Close dialogs</li>
+                <li><strong>Enter:</strong> Confirm actions</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 ByNeel. All rights reserved. | <a href="/legal/omnidrop-privacy.html" style="color: #0A84FF;">Privacy Policy</a></p>
+        </footer>
+    </div>
+</body>
+</html>

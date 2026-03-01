@@ -12,860 +12,1053 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
-    title: 'De l\'idée à l\'App Store : comment on crée une app (pour de vrai)',
+    title: '3 new apps just joined the ByNeel family',
+    slug: 'trois-nouvelles-apps-byneel',
+    excerpt: 'ByNeel started with 3 apps. Now we\'re expanding to 6. Here\'s what\'s coming and why each one is different.',
+    content: `## The ByNeel family is growing
+
+When I launched ByNeel two years ago, the plan was simple: build a few apps that solved real problems. No venture capital, no hype, just me and Claude building things that mattered. CookBook AI was first — capturing recipes like a human would, with AI that actually understands food. Then came TipLog — because every tip calculator out there made me want to scream. OmniDrop followed — encrypted file transfers that don't spy on you.
+
+Three apps. Three solid apps. That was supposed to be the whole story.
+
+But then something happened. Ideas kept coming. Problems kept presenting themselves. And I realized: why stop at three?
+
+So I didn't.
+
+## Say hello to Ephemera, BridgeGen, and EarthPulse
+
+**Ephemera** is the first one I'm excited to talk about. Imagine this: you're standing at the Eiffel Tower at sunset, and you open your phone to record a message, a photo, a memory. You lock it to this exact GPS coordinate and set it to unlock on a specific date — maybe in a year, maybe in five. You encrypt it so only someone with the exact GPS coordinates AND the password can open it. Then you leave it there, digitally buried, waiting.
+
+Nobody has actually combined location + time + encryption into one app like this. Sure, there are time capsule apps. Sure, there are apps that use GPS. But the *combination* — the idea that a memory is locked to a place and a moment — that's new. And it's viral as hell. Watch TikTok in a year and you'll see people opening Ephemera capsules at beaches, on mountains, in their hometowns. It's the perfect app for creating "bro, you have to see this" moments.
+
+**BridgeGen** solves a different kind of problem. Two problems, actually.
+
+First: loneliness among seniors is real. Not the kind you talk about — the kind that crushes you. You're 75, your kids live in other countries, and you spend Saturday nights wondering if anyone still needs you.
+
+Second: young adults are drowning. They need mentors. They need people who've actually *lived* to tell them "yeah, I messed up too, here's what I learned." But they don't know where to find that.
+
+BridgeGen bridges that gap (see what I did there). It's not charity. It's not a "help the elderly" app. It's a value exchange. A senior teaches someone how to cook the way their grandmother taught them. A young person helps a senior figure out video calls. It's mutual. It's meaningful. And the UI is senior-friendly — big buttons, high contrast, no confusing animations. Because accessibility isn't a feature. It's respect.
+
+**EarthPulse** started as a thought experiment. UC Berkeley has MyShake — an app that turns your smartphone's accelerometer into a seismic sensor. Thousands of phones across California, instantly detecting earthquakes that formal sensors miss. It's beautiful.
+
+But why stop at earthquakes? Your phone has a barometer. It has a microphone. It can measure air pressure, humidity, noise pollution. Imagine a network where millions of phones become environmental sensors — offline first, because you don't always have internet in remote areas. Mesh capabilities so sensors can relay data through each other. You're not just measuring earthquakes. You're measuring climate. You're measuring sound pollution in cities. You're crowdsourcing data about the planet.
+
+It's the kind of app that sounds like science fiction until you realize all the technology already exists.
+
+## What connects all three?
+
+If you look at the ByNeel apps — all six of them — there's a pattern.
+
+**Offline-first.** Your data doesn't leave your phone unless you choose it. CookBook AI works without internet. OmniDrop transfers files locally. Ephemera stores encrypted capsules on your device. EarthPulse collects sensor data offline and syncs when you're ready. Not because I'm paranoid (okay, maybe a little), but because privacy isn't negotiable.
+
+**Encryption where it matters.** Not everywhere — that's paranoid and slow. But in OmniDrop, file transfers are AES-256-GCM. In Ephemera, your memories are encrypted. In BridgeGen, your personal information stays private. The rule: your data belongs to you.
+
+**Flutter everywhere.** Same code, iOS, Android, macOS, Windows, Linux. One app, everywhere you are. That's how one person (me) manages six apps without losing sleep.
+
+**Solving real problems, not copying trends.** There are a thousand note apps. There are a thousand task managers. ByNeel apps exist because they solve *specific* problems in ways nobody else has thought of. CookBook AI isn't "Notion for recipes." It's specifically designed to understand food, imports, and cooking. OmniDrop isn't "Bluetooth with extra steps." It's encrypted, local, fast, and cross-platform in a way that makes file sharing actually simple.
+
+Same philosophy applies to the new three.
+
+## The honest part
+
+Three apps to six apps is a big jump. The question people ask is: "How do you manage all that alone?"
+
+The answer: I don't. Claude manages half of it with me. The other half, I manage by shipping things. Not by perfecting them.
+
+CookBook AI gets shipped to the App Store with 90% of the features working perfectly and 10% still cooking. TipLog launches with all the essentials but room to grow. OmniDrop ships with the core encrypted transfer, and premium features come later. That's the only way a solo dev survives: finish > polish.
+
+The ByNeel family is growing. But it's growing at a human pace, with human decisions, and with the philosophy that apps should solve real problems, not create new ones.
+
+Welcome to Ephemera, BridgeGen, and EarthPulse.`,
+    date: '2026-02-27',
+    readTime: '6 min',
+    tags: ['ByNeel', 'Ephemera', 'BridgeGen', 'EarthPulse'],
+    icon: '🚀',
+    gradient: 'from-amber-400 to-indigo-500',
+  },
+  {
+    title: 'How I manage 6 apps alone (spoiler: I don\'t do it alone)',
+    slug: 'gerer-6-apps-seul',
+    excerpt: 'The honest answer to how one person ships 6 apps without burning out. Spoiler: AI, offline-first architecture, and knowing what to ship vs. what to perfect.',
+    content: `## From 3 apps to 6: the chaos nobody warns you about
+
+There's a moment in every solo dev's journey where they look at their screen and think: "What the hell am I doing?"
+
+For me, that moment was February 2026. Three apps shipped. Three new apps in development. One person coding. No team. No backup. Just me and the infinite possibility of things breaking.
+
+CookBook AI was manageable. I'm in the kitchen, I'm thinking about recipes, the app literally lives rent-free in my head.
+
+TipLog was fun. Solving the tip problem felt good. The app's simple enough that you can actually finish it.
+
+OmniDrop stretched things. Encryption, cross-platform desktop support, NFC on mobile — suddenly I'm dealing with complexity I didn't anticipate. But it was worth it.
+
+Then I said "yes" to three more.
+
+The panic hit around 2 AM.
+
+## How Claude became my pair programming partner
+
+Here's the real talk: I don't code all six apps alone. I write the architecture, the core logic, the hard decisions. Claude writes the scaffolding, catches the bugs, and asks "what if we did it this way?" every five minutes.
+
+Here's how it actually works:
+
+**I describe the problem.** "I need a Flutter app where users can upload files and transfer them P2P, encrypted, without a server."
+
+**Claude codes it.** Not perfect code — I don't expect that. But functional code. Boilerplate. State management. The shape of the thing.
+
+**I test it.** Usually it breaks in three ways I didn't expect.
+
+**I tell Claude what broke.**
+
+**Claude fixes it.** Sometimes with explanations I'll use in the app's own comments. Sometimes with questions that make me realize I designed something wrong.
+
+**We iterate.** Repeat until it works.
+
+This process is *fast*. Not "move fast and break things" fast. "Move purposefully and break things strategically" fast.
+
+The AI handles the parts that are purely mechanical: connecting buttons to functions, writing database queries, handling platform-specific edge cases. I handle the parts that require taste: should this button be blue or green, is this flow actually intuitive, does this feel like a ByNeel app.
+
+Without Claude, I'd be shipping one app per year. With Claude, I'm shipping two per month.
+
+## Architecture is everything
+
+The reason six apps doesn't feel like forty apps is because they all follow the same architectural pattern.
+
+**Offline-first.** This alone saves me from nightmares. I don't have servers to manage. I don't have databases I'm paying to scale. I don't have uptime concerns. The app works on device, syncs when it wants to, that's it.
+
+**Shared code patterns.** Every ByNeel app uses Riverpod (or Provider for older ones) for state. Every app uses the same authentication pattern — Firebase for some, supabase for one, local-only for others, but always following the same interface. Every app uses Inter font. Every app has the same color system (one primary, one accent, one danger).
+
+When I'm moving between apps, I'm not context switching into completely different worlds. I'm moving between different implementations of the same design language.
+
+**Flutter for everything.** Same framework. Same language. iOS, Android, macOS, Windows, Linux — I don't care. I write Dart, and Flutter handles the rest. That's a force multiplier for solo devs. You're not learning mobile native, web, desktop — you're just getting very good at one thing.
+
+Compare that to a hypothetical world where I built CookBook AI in Swift, TipLog in React Native, OmniDrop in Rust desktop, Ephemera in Flutter... I'd be dead by now. Probably in a nice quiet place where people wear comfortable jackets and take long walks.
+
+## The brand consistency challenge
+
+Here's a problem nobody talks about: when you have one app, your colors are whatever you feel like. When you have six, you need a system.
+
+Each ByNeel app has its own color palette. CookBook AI is warm yellows and oranges (food, heat, energy). TipLog is emerald and teal (travel, sophistication). OmniDrop is cool blues (speed, security). Ephemera is amber and indigo (time, mystery). BridgeGen is coral and rose (humans, connection). EarthPulse is cyan and lime (tech, nature).
+
+But they all use Inter. Every single one. Inter is the ByNeel voice, typographically. Same buttons shapes. Same spacing rules. Same philosophy: simple, direct, no fuss.
+
+A user who's used CookBook AI will immediately feel at home in TipLog, even if the colors are different, because the *grammar* is the same. The way buttons work. The way navigation flows. The way information is presented.
+
+That consistency is the only thing that makes six apps feel like one family instead of six random projects.
+
+## The planning system that actually works
+
+I use three markdown files:
+
+**CHECKLIST.md** — for each app, what's shipping vs. what's deferred. Production flags, App Store metadata, privacy policies. Boring stuff that's easy to forget and devastating when you do.
+
+**PLAN.md** — the quarter ahead. What gets shipped when. What features are "nice to have" vs. "core." What's the smallest version of this app that solves the problem.
+
+**MANAGEMENT.md** — how I work. How Claude and I interact. What decisions I make alone vs. what we debate. Patterns for testing. Rules for shipping.
+
+No Jira. No Notion. No fancy project management tool. Just markdown files I can edit in any text editor, checked into git, always available.
+
+Why? Because tools are the enemy of shipping. Jira makes you feel productive. You're writing stories, moving cards around, updating statuses. But are you actually shipping? Notion looks beautiful and comprehensive, but now you're maintaining Notion instead of maintaining apps.
+
+Markdown + git is the simplest system that could possibly work. And it works.
+
+## The secret: finish > perfect
+
+This is the part that separates solo devs who ship from solo devs who burnout.
+
+You have limited energy. You have limited time. You have to choose: do you perfect app #3 or do you ship apps #4, #5, and #6?
+
+The answer is always: ship.
+
+CookBook AI has a few rough edges. The PDF import could be smarter. The AI suggestions could be better. But it's out there, making people's cooking better, right now.
+
+TipLog doesn't have every currency in the world. It has the 51 most-used ones and it ships with that.
+
+OmniDrop doesn't have a built-in collaboration feature (though Claude keeps suggesting it). It focuses on what it does: encrypted transfers. If I started adding collaboration, I'd be building something that competes with Figma and that's not the story.
+
+Ephemera will ship with the core feature — encrypted time capsules locked by GPS and date — and that's it. Not a social network, not a messaging app, not anything else. Just that one thing, done well.
+
+The perfectionist in me wants to keep polishing. The realist in me says: ship the thing that solves the problem, then solve new problems.
+
+## Why six feels sustainable
+
+At one app: you're a developer.
+At two apps: you're a small studio.
+At three apps: you're starting to feel stretched.
+At six apps: you either have a team, or you've completely restructured how you work.
+
+I've restructured.
+
+Offline-first architecture handles the infrastructure burden. Flutter handles the cross-platform burden. Clear planning handles the chaos burden. Claude handles the coding burden. And I handle the decision-making burden — the thing nobody else can do.
+
+Six apps alone isn't possible if you're doing it the traditional way. But if you're willing to think differently about architecture, tooling, and what "shipped" means — if you're willing to have an AI pair programmer and a clear philosophy about what each app should do — it becomes not just possible but sustainable.
+
+Would I add a seventh app this year? Probably not. But six? Six feels right. Six feels like the sweet spot where I'm shipping meaningful products without sacrificing the quality that makes ByNeel, ByNeel.
+
+The apps aren't perfect. But they're real. They solve problems. They're finished.
+
+And that's the whole point.`,
+    date: '2026-02-27',
+    readTime: '5 min',
+    tags: ['Solo Dev', 'AI', 'Productivity', 'ByNeel'],
+    icon: '🧠',
+    gradient: 'from-cyan-500 to-violet-500',
+  },
+  {
+    title: 'From idea to App Store: how we actually build an app',
     slug: 'de-lidee-a-lapp-store',
-    excerpt: 'Tu te demandes comment une app passe d\'une idée griffonnée sur un post-it à un truc que tu télécharges sur ton iPhone ? Voici le parcours complet, étape par étape.',
-    content: `## Le voyage d'une app
+    excerpt: 'You wonder how an app goes from a scribbled idea on a sticky note to something you download on your iPhone? Here\'s the complete journey, step by step.',
+    content: `## The journey of an app
 
-Tu ouvres ton téléphone, tu tapes "installer", et 3 secondes plus tard t'as une app. Facile, non ? Sauf que derrière ce bouton "Télécharger", il y a un parcours du combattant que personne ne t'explique. Jusqu'à maintenant.
+You open your phone, you tap "install", and 3 seconds later you've got an app. Easy, right? Except that behind that "Download" button is an obstacle course that nobody explains. Until now.
 
-On va suivre le chemin d'une app de A à Z. Pas de blabla corporate, juste la réalité du terrain.
+Let's follow an app's path from A to Z. No corporate nonsense, just ground truth.
 
-## Étape 1 : L'idée (la partie fun)
+## Step 1: The idea (the fun part)
 
-Tout commence par un problème. Pas une idée brillante sous la douche — un PROBLÈME.
+It all starts with a problem. Not a brilliant shower thought — a PROBLEM.
 
-"Pourquoi je galère à transférer un fichier entre mon iPhone et mon PC ?" → OmniDrop est né.
-"Pourquoi les apps de pourboire sont toutes moches et compliquées ?" → TipLog est né.
-"Pourquoi je peux pas avoir un assistant IA qui tourne sans envoyer mes données chez Google ?" → J.A.R.V.I.S. est né.
+"Why do I struggle to transfer a file between my iPhone and my PC?" → OmniDrop was born.
+"Why are all tip apps ugly and complicated?" → TipLog was born.
+"Why can't I have an AI assistant that runs without sending my data to Google?" → J.A.R.V.I.S. was born.
 
-La règle : si le problème t'énerve assez pour en parler à tes potes, il y a une app à faire.
+The rule: if the problem bugs you enough to complain about it to your friends, there's an app to build.
 
-**La métaphore :** C'est comme quand tu râles au restaurant parce que le ketchup est toujours vide. Soit tu râles, soit tu crées une app qui notifie le serveur automatiquement. (Note : ne faites pas cette app.)
+**The metaphor:** It's like when you complain at a restaurant because the ketchup is always empty. Either you complain, or you build an app that notifies the waiter automatically. (Note: please don't build that app.)
 
-## Étape 2 : Le design (le plan de bataille)
+## Step 2: Design (the game plan)
 
-Avant d'écrire une seule ligne de code, tu dessines. Sur papier, sur Figma, sur un coin de nappe — peu importe. L'important c'est de savoir à quoi l'app va ressembler et comment elle va fonctionner.
+Before you write a single line of code, you draw. On paper, in Figma, on a napkin corner — doesn't matter. The important thing is knowing what the app will look like and how it'll work.
 
-On appelle ça le wireframe (le squelette) et le mockup (la maquette jolie).
+We call it the wireframe (the skeleton) and the mockup (the pretty version).
 
-Concrètement :
-- Quels écrans ? (accueil, profil, settings, etc.)
-- Comment on navigue entre eux ? (boutons, swipe, onglets)
-- Où sont les infos importantes ?
-- C'est quoi l'action principale sur chaque écran ?
+Concretely:
+- What screens? (home, profile, settings, etc.)
+- How do you navigate between them? (buttons, swipe, tabs)
+- Where's the important info?
+- What's the main action on each screen?
 
-**La métaphore :** C'est le plan d'architecte avant de construire la maison. Tu ne poses pas de briques avant de savoir où vont les murs. Sinon tu te retrouves avec les toilettes au milieu du salon.
+**The metaphor:** It's the architect's blueprint before building the house. You don't lay bricks before knowing where the walls go. Otherwise you end up with toilets in the middle of the living room.
 
-## Étape 3 : Le développement (là où ça code)
+## Step 3: Development (where the coding happens)
 
-C'est là que l'app prend vie. Tu choisis ton langage et ton framework :
+This is where the app comes to life. You pick your language and framework:
 
-- **Flutter + Dart** → Pour être partout (iOS, Android, Windows, Mac, Linux). C'est ce qu'on utilise pour OmniDrop, Beloved, TipLog, ImageVault et Isekai Survie.
-- **Swift + SwiftUI** → Pour être uniquement chez Apple mais avec les meilleures performances. CookBook AI et StickerVibe sont dans ce camp.
-- **Python** → Pour le backend et l'IA. J.A.R.V.I.S. tourne là-dessus.
-- **Next.js + React** → Pour les sites web (comme celui que tu lis).
+- **Flutter + Dart** → To be everywhere (iOS, Android, Windows, Mac, Linux). That's what we use for OmniDrop, Beloved, TipLog, ImageVault and Isekai Survie.
+- **Swift + SwiftUI** → For Apple only but with the best performance. CookBook AI and StickerVibe are in this camp.
+- **Python** → For backend and AI. J.A.R.V.I.S. runs on this.
+- **Next.js + React** → For web sites (like the one you're reading).
 
-**La métaphore :** C'est choisir ta classe dans un RPG. Le Guerrier (Swift) est puissant en mêlée mais limité au Royaume Apple. Le Mage (Flutter) est polyvalent et touche toutes les plateformes. Le Nécromancien (Python) fait de la magie noire avec l'IA en arrière-plan. Tu peux aussi multi-classer.
+**The metaphor:** It's like picking your class in an RPG. The Warrior (Swift) is powerful in melee but limited to the Apple Kingdom. The Mage (Flutter) is versatile and touches all platforms. The Necromancer (Python) does dark magic with AI in the background. You can also multi-class.
 
-Et dans notre cas, c'est l'IA (Claude) qui code. Neel donne les instructions, teste, et dit "ça marche pas, recommence". C'est du pair programming avec un twist : un des deux ne sait pas coder.
+And in our case, it's the AI (Claude) that codes. Neel gives the instructions, tests, and says "that doesn't work, try again". It's pair programming with a twist: one of them doesn't know how to code.
 
-## Étape 4 : Le testing (la phase "tout est cassé")
+## Step 4: Testing (the "everything is broken" phase)
 
-Tu penses que ton app marche ? Elle marche pas. Jamais du premier coup.
+You think your app works? It doesn't. Never on the first try.
 
-Le testing c'est :
-- **Tests manuels** → Tu appuies sur tous les boutons comme un singe curieux. Tu mets des emojis dans les champs de texte. Tu coupes le Wi-Fi en plein chargement. Tu fais tout ce qu'un utilisateur normal ne devrait jamais faire — et tu vérifies que l'app ne plante pas.
-- **Tests automatisés** → Du code qui teste du code. C'est meta, mais ça marche.
-- **Beta testing** → Tu donnes l'app à des vrais humains et tu pries.
+Testing is:
+- **Manual tests** → You mash every button like a curious monkey. You put emojis in text fields. You cut the Wi-Fi mid-load. You do everything a normal user should never do — and verify the app doesn't crash.
+- **Automated tests** → Code that tests code. It's meta, but it works.
+- **Beta testing** → You give the app to real humans and pray.
 
-**La métaphore :** C'est le crash test des voitures. Tu balances un mannequin contre un mur à 100 km/h pour voir ce qui casse. Sauf que le mannequin c'est toi et le mur c'est un utilisateur qui tape "🤪" dans le champ "numéro de téléphone".
+**The metaphor:** It's the crash test of cars. You throw a dummy at a wall at 100 km/h to see what breaks. Except the dummy is you and the wall is a user typing "🤪" in the "phone number" field.
 
-Fun fact : le background de testeur de Neel, c'est exactement ça. Des années à casser des logiciels professionnellement. Ça aide.
+Fun fact: Neel's background is testing. Years of breaking software professionally. Helps a lot.
 
-## Étape 5 : Les comptes développeur (le péage)
+## Step 5: Developer accounts (the toll booth)
 
-Avant de mettre ton app sur un store, il te faut un compte développeur. Et ça se paie.
+Before you put your app on a store, you need a developer account. And you gotta pay.
 
-**Apple Developer Program :**
-- **Prix** : 99 $/an. Oui, par AN. Tu arrêtes de payer, tes apps disparaissent du store.
-- **Ce que t'as** : Accès à Xcode, aux APIs Apple, aux betas d'iOS, et surtout le droit de publier sur l'App Store.
-- **Le processus** : Tu crées un compte sur developer.apple.com, tu paies, tu attends la validation (24-48h), et voilà.
+**Apple Developer Program:**
+- **Price**: 99 $/year. Yeah, per YEAR. You stop paying, your apps disappear from the store.
+- **What you get**: Access to Xcode, Apple APIs, iOS betas, and most importantly the right to publish on the App Store.
+- **The process**: You create an account on developer.apple.com, you pay, you wait for validation (24-48h), and boom.
 
-**Google Play Console :**
-- **Prix** : 25 $ une seule fois. Pas d'abonnement. Merci Google.
-- **Ce que t'as** : Le droit de publier sur le Google Play Store, des outils d'analytics, et un dashboard pour gérer tes apps.
-- **Le processus** : Tu crées un compte sur play.google.com/console, tu paies, et c'est presque instantané.
+**Google Play Console:**
+- **Price**: 25 $ one time. No subscription. Thanks Google.
+- **What you get**: The right to publish on Google Play Store, analytics tools, and a dashboard to manage your apps.
+- **The process**: You create an account on play.google.com/console, you pay, and it's almost instant.
 
-**La métaphore :** Apple c'est un club privé avec cotisation annuelle. Google c'est un bar avec un droit d'entrée unique. Les deux ont un videur (la review), mais Apple est beaucoup plus strict sur la tenue vestimentaire.
+**The metaphor:** Apple is a private club with annual membership. Google is a bar with a one-time cover charge. Both have a bouncer (the review), but Apple is way stricter about dress code.
 
-## Étape 6 : Les certificats et le signing (la paperasse numérique)
+## Step 6: Certificates and signing (the digital paperwork)
 
-C'est LE truc qui rend fou tous les développeurs. Pour qu'Apple et Google acceptent ton app, elle doit être "signée" — une preuve que c'est bien toi qui l'as créée.
+This is THE thing that drives all developers crazy. For Apple and Google to accept your app, it needs to be "signed" — proof that it's really you who built it.
 
-**Chez Apple (le cauchemar) :**
-- Tu crées un Certificate (ton identité de dev)
-- Tu crées un App ID (l'identité de ton app)
-- Tu crées un Provisioning Profile (le lien entre les deux)
-- Tu configures les Capabilities (NFC, notifications, etc.)
-- Tu signes l'app avec tout ça
+**At Apple (the nightmare):**
+- You create a Certificate (your dev identity)
+- You create an App ID (your app's identity)
+- You create a Provisioning Profile (the link between the two)
+- You configure Capabilities (NFC, notifications, etc.)
+- You sign the app with all that
 
-**Chez Google (plus simple) :**
-- Tu génères un Keystore (un fichier clé)
-- Tu signes ton APK/AAB avec
-- Google gère le reste avec Play App Signing
+**At Google (simpler):**
+- You generate a Keystore (a key file)
+- You sign your APK/AAB with it
+- Google handles the rest with Play App Signing
 
-**La métaphore :** C'est comme obtenir un passeport. Chez Apple, il faut la carte d'identité, le certificat de naissance, trois photos, un justificatif de domicile ET un mot de ta mère. Chez Google, une carte d'identité suffit.
+**The metaphor:** It's like getting a passport. At Apple, you need ID, birth certificate, three photos, proof of address AND a note from your mom. At Google, an ID is enough.
 
-## Étape 7 : La fiche store (le marketing)
+## Step 7: Store listing (the marketing)
 
-Ton app est prête, signée, testée. Maintenant faut donner envie aux gens de la télécharger.
+Your app is ready, signed, tested. Now you gotta make people want to download it.
 
-La fiche store c'est :
-- **Le nom** — Court, mémorable. "OmniDrop", pas "Application de transfert de fichiers peer-to-peer multi-plateforme v2.1"
-- **L'icône** — 1024x1024 pixels. Doit être reconnaissable en tout petit. C'est un art.
-- **Les screenshots** — Les 3 premières sont cruciales. 90% des gens ne scrollent pas plus loin.
-- **La description** — Les 3 premières lignes sont visibles avant le "voir plus". C'est ton elevator pitch.
-- **Les mots-clés** — Ce que les gens tapent pour trouver ton app. "transfert fichier", "NFC", "sans cloud"…
-- **La catégorie** — Utilitaires, Productivité, Jeux, etc.
+The store listing includes:
+- **The name** — Short, memorable. "OmniDrop", not "Multi-platform peer-to-peer file transfer application v2.1"
+- **The icon** — 1024x1024 pixels. Must be recognizable when tiny. It's an art form.
+- **Screenshots** — The first 3 are crucial. 90% of people won't scroll further.
+- **The description** — The first 3 lines are visible before "see more". This is your elevator pitch.
+- **Keywords** — What people search for to find your app. "file transfer", "NFC", "no cloud"...
+- **Category** — Utilities, Productivity, Games, etc.
 
-**La métaphore :** C'est la vitrine de ta boutique. Tu peux avoir le meilleur produit du monde à l'intérieur, si la vitrine est moche, personne n'entre.
+**The metaphor:** It's your shop window. You can have the best product in the world inside, but if the window looks bad, nobody enters.
 
-## Étape 8 : La soumission (le moment de vérité)
+## Step 8: Submission (the moment of truth)
 
-Tu uploades ton app et tu attends le verdict.
+You upload your app and wait for the verdict.
 
-**Apple App Store Review :**
-- Durée : 24h à 7 jours (en moyenne 24-48h)
-- Un HUMAIN regarde ton app. Il la teste. Il vérifie qu'elle respecte les Human Interface Guidelines (les règles de design d'Apple)
-- Taux de rejet : ~30% au premier essai. Les raisons classiques : crash au lancement, liens cassés, description trompeuse, contenu inapproprié, ou tu as oublié de mettre une politique de confidentialité
-- Si rejet : tu corriges, tu re-soumets, tu re-attends
+**Apple App Store Review:**
+- Duration: 24h to 7 days (average 24-48h)
+- A HUMAN reviews your app. Tests it. Verifies it follows the Human Interface Guidelines (Apple's design rules)
+- Rejection rate: ~30% on first try. Common reasons: crash on launch, broken links, misleading description, inappropriate content, or you forgot to include a privacy policy
+- If rejected: you fix it, re-submit, wait again
 
-**Google Play Review :**
-- Durée : quelques heures à 3 jours
-- Plus automatisé qu'Apple (scans de sécurité, détection de malware)
-- Moins strict sur le design, plus strict sur la sécurité
-- Taux de rejet plus faible, mais les suspensions de compte sont plus brutales
+**Google Play Review:**
+- Duration: a few hours to 3 days
+- More automated than Apple (security scans, malware detection)
+- Less strict on design, stricter on security
+- Lower rejection rate, but account suspensions are more brutal
 
-**La métaphore :** Apple c'est un jury de MasterChef qui goûte ton plat, vérifie la présentation et la cuisson. Google c'est un détecteur de métaux à l'aéroport — ça passe vite si t'as rien de suspect.
+**The metaphor:** Apple is a MasterChef jury tasting your dish, checking presentation and cooking. Google is a metal detector at the airport — it goes quick if you've got nothing suspicious.
 
-## Étape 9 : Le lancement (champagne ?)
+## Step 9: Launch (champagne?)
 
-Ton app est approuvée ! Elle est sur le store ! Tu la trouves en tapant son nom ! C'est... décevant en fait. Parce que personne ne le sait encore.
+Your app is approved! It's on the store! You find it by searching for it! It's... disappointing actually. Because nobody knows about it yet.
 
-Le lancement c'est :
-- Partager sur les réseaux sociaux
-- Envoyer à ta liste de beta testeurs
-- Poster sur Product Hunt, Reddit, Hacker News
-- Contacter des blogueurs tech
-- Croiser les doigts
+Launching is:
+- Share on social media
+- Send to your beta tester list
+- Post on Product Hunt, Reddit, Hacker News
+- Contact tech bloggers
+- Cross your fingers
 
-Les premiers téléchargements viennent de tes proches (merci maman). Les suivants, c'est le bouche-à-oreille, le SEO de ta fiche store, et la qualité de ton app qui font le travail.
+First downloads come from your close friends (thanks mom). Next ones come from word-of-mouth, your store listing SEO, and your app's quality.
 
-## Étape 10 : Les mises à jour (c'est jamais fini)
+## Step 10: Updates (it never ends)
 
-Surprise : lancer l'app c'est pas la fin, c'est le début.
+Surprise: launching the app isn't the finish line, it's the start.
 
-Les utilisateurs trouvent des bugs que tu n'avais pas vus. Ils demandent des features auxquelles tu n'avais pas pensé. Apple sort une nouvelle version d'iOS et ton app crash. Google change ses règles de confidentialité et tu dois tout mettre à jour.
+Users find bugs you didn't see. They ask for features you didn't think of. Apple releases a new iOS version and your app crashes. Google changes its privacy rules and you have to update everything.
 
-Le cycle : coder → tester → soumettre → attendre → publier → lire les reviews → pleurer → recommencer.
+The cycle: code → test → submit → wait → publish → read reviews → cry → repeat.
 
-**La métaphore :** C'est comme un jardin. Tu ne plantes pas et tu te casses. Tu arroses, tu tailles, tu enlèves les mauvaises herbes. Indéfiniment. C'est ce qui sépare les apps vivantes des apps mortes.
+**The metaphor:** It's like a garden. You don't plant and leave. You water, you prune, you pull weeds. Forever. That's what separates living apps from dead ones.
 
-## Le résumé du parcours
+## The journey recap
 
-1. **Idée** → Trouver un problème qui t'énerve
-2. **Design** → Dessiner les écrans avant de coder
-3. **Dev** → Choisir sa techno et construire
-4. **Test** → Tout casser avant l'utilisateur
-5. **Comptes** → Payer Apple (99$/an) et Google (25$ une fois)
-6. **Signing** → La paperasse numérique
-7. **Fiche store** → Nom, icône, screenshots, description
-8. **Soumission** → Upload et attente du verdict
-9. **Lancement** → Marketing et prière
-10. **Mises à jour** → Pour toujours
+1. **Idea** → Find a problem that bugs you
+2. **Design** → Sketch screens before coding
+3. **Dev** → Pick your tech and build
+4. **Test** → Break everything before the user does
+5. **Accounts** → Pay Apple (99$/year) and Google (25$ once)
+6. **Signing** → The digital paperwork
+7. **Store listing** → Name, icon, screenshots, description
+8. **Submission** → Upload and wait for verdict
+9. **Launch** → Marketing and prayer
+10. **Updates** → Forever
 
-Et tout ça, on l'a fait pour 8 apps. En parallèle. Sans savoir coder. Avec de l'IA et du café.
+And we did all this for 8 apps. In parallel. Without knowing how to code. With AI and coffee.
 
-> Le plus dur dans la création d'apps, c'est pas le code. C'est le certificat Apple. Demandez à n'importe quel dev, il vous confirmera.`,
+> The hardest part about building apps isn't code. It's the Apple certificate. Ask any dev, they'll confirm.`,
     date: '2026-02-27',
     readTime: '10 min',
-    tags: ['Formation', 'App Store', 'Guide complet'],
+    tags: ['Learning', 'App Store', 'Full guide'],
     icon: '🚀',
     gradient: 'from-amber-500 to-orange-500',
   },
   {
-    title: 'Comment on fabrique un site web (et comment on le met en ligne)',
+    title: 'How we build a website (and how we put it online)',
     slug: 'comment-fabriquer-site-web',
-    excerpt: 'Nom de domaine, hébergement, DNS, déploiement… Tu veux mettre un site en ligne mais tu comprends rien à la chaîne ? On t\'explique tout.',
-    content: `## Un site web, c'est quoi concrètement ?
+    excerpt: 'Domain name, hosting, DNS, deployment... You want to put a website online but don\'t understand any of it? We\'ll explain everything.',
+    content: `## What is a website, really?
 
-Quand tu tapes "byneel.com" dans ton navigateur, il se passe un truc magique en coulisses. On va démonter toute la mécanique.
+When you type "byneel.com" in your browser, magic happens behind the scenes. Let's break down the whole mechanism.
 
-## Le nom de domaine (ton adresse sur internet)
+## The domain name (your address on the internet)
 
-**C'est quoi :** "byneel.com", "google.fr", "wikipedia.org" — c'est ton nom sur internet. C'est ce que les gens tapent pour te trouver.
+**What it is:** "byneel.com", "google.fr", "wikipedia.org" — your name on the internet. That's what people type to find you.
 
-**Comment on l'achète :** Tu vas sur un registrar (un vendeur de noms de domaine) comme OVH, Gandi, Namecheap ou Google Domains. Tu cherches si le nom est dispo, tu paies (entre 5€ et 15€/an pour un .com), et il est à toi.
+**How to buy it:** You go to a registrar (a domain name seller) like OVH, Gandi, Namecheap or Google Domains. You search if the name is available, you pay (between 5€ and 15€/year for a .com), and it's yours.
 
-**La métaphore :** C'est l'enseigne de ta boutique. "Boulangerie Dupont" c'est ton nom de domaine. Sans enseigne, les gens passent devant sans savoir ce que tu vends. Personne ne va retenir l'adresse "92.168.1.47" — mais "byneel.com", oui.
+**The metaphor:** It's your shop's sign. "Dupont Bakery" is your domain name. Without a sign, people pass by without knowing what you sell. Nobody's gonna remember "92.168.1.47" — but "byneel.com"? Yeah.
 
-**Les extensions :**
-- **.com** → Le classique. Pour tout le monde.
-- **.fr** → Pour dire "je suis français".
-- **.dev** → Pour les développeurs (c'est la classe).
-- **.io** → Pour les startups tech (parce que).
-- **.app** → Pour les applications.
+**Extensions:**
+- **.com** → The classic. For everyone.
+- **.fr** → To say "I'm French".
+- **.dev** → For developers (it's cool).
+- **.io** → For tech startups (because).
+- **.app** → For applications.
 
-## Le DNS (le GPS d'internet)
+## DNS (the internet's GPS)
 
-**C'est quoi :** Le système qui traduit "byneel.com" en adresse IP (genre 104.21.56.89). Les ordinateurs ne comprennent pas les noms, ils comprennent les numéros.
+**What it is:** The system that translates "byneel.com" into an IP address (like 104.21.56.89). Computers don't understand names, they understand numbers.
 
-**La métaphore :** Tu dis au taxi "emmène-moi au Louvre" et pas "emmène-moi au 99, rue de Rivoli, 75001 Paris". Le DNS c'est le chauffeur de taxi qui connaît toutes les adresses.
+**The metaphor:** You tell the taxi driver "take me to the Louvre" not "take me to 99 Rivoli Street, 75001 Paris". DNS is the taxi driver who knows all the addresses.
 
-**Concrètement :** Quand tu achètes ton domaine, tu configures les "DNS records" pour dire "quand quelqu'un tape byneel.com, envoie-le à CE serveur". C'est une ligne de config. Ça prend 5 minutes. Ça met 24h à se propager dans le monde (le temps que tous les "taxis" mettent à jour leur carnet d'adresses).
+**Concretely:** When you buy your domain, you configure the "DNS records" to say "when someone types byneel.com, send them to THIS server". It's one line of config. Takes 5 minutes. Takes 24h to propagate worldwide (the time it takes all the "taxi drivers" to update their address books).
 
-## L'hébergement (la maison de ton site)
+## Hosting (your site's home)
 
-**C'est quoi :** Un ordinateur qui tourne 24h/24 et qui sert ton site à tous les visiteurs. Ton site doit VIVRE quelque part — il ne flotte pas dans le cloud comme par magie.
+**What it is:** A computer that runs 24/7 and serves your site to all visitors. Your site has to LIVE somewhere — it doesn't float in the cloud like magic.
 
-**Les options :**
-- **Vercel** → Le choix numéro 1 pour les sites Next.js (comme le nôtre). Gratuit pour les petits projets. Tu push ton code, il est en ligne en 30 secondes.
-- **Cloudflare Pages** → Ultra-rapide, gratuit, avec protection DDoS incluse.
-- **Netlify** → Simple, gratuit, bien pour les sites statiques.
-- **OVH / AWS / DigitalOcean** → Pour les projets plus costauds qui ont besoin de serveurs dédiés.
+**The options:**
+- **Vercel** → The #1 choice for Next.js sites (like ours). Free for small projects. You push your code, it goes live in 30 seconds.
+- **Cloudflare Pages** → Ultra-fast, free, includes DDoS protection.
+- **Netlify** → Simple, free, good for static sites.
+- **OVH / AWS / DigitalOcean** → For beefier projects that need dedicated servers.
 
-**La métaphore :** L'hébergement c'est le local commercial. Vercel c'est un espace de coworking gratuit avec tout inclus (parfait pour démarrer). AWS c'est un immeuble de bureaux — puissant mais faut tout gérer toi-même. OVH c'est le local en France, tu sais où sont tes données.
+**The metaphor:** Hosting is the commercial space. Vercel is a free coworking space with everything included (perfect for starting). AWS is an office building — powerful but you gotta manage everything yourself. OVH is the local storefront, you know where your data is.
 
-## Le SSL / HTTPS (le cadenas)
+## SSL / HTTPS (the padlock)
 
-**C'est quoi :** Le petit cadenas dans ta barre d'adresse. Ça signifie que la connexion entre toi et le site est chiffrée — personne ne peut espionner ce que tu fais.
+**What it is:** The little padlock in your address bar. Means the connection between you and the site is encrypted — nobody can spy on what you're doing.
 
-**La métaphore :** C'est une enveloppe scellée vs une carte postale. Sans HTTPS, tout le monde peut lire ton courrier. Avec HTTPS, seuls toi et le destinataire pouvez voir le contenu.
+**The metaphor:** It's a sealed envelope vs a postcard. Without HTTPS, anyone can read your mail. With HTTPS, only you and the recipient see the content.
 
-**Bonne nouvelle :** Tous les hébergeurs modernes (Vercel, Cloudflare, Netlify) te donnent un certificat SSL gratuitement. T'as rien à faire.
+**Good news:** All modern hosting providers (Vercel, Cloudflare, Netlify) give you a free SSL certificate. Nothing to do.
 
-## Le code du site (ce qu'il y a dedans)
+## The site's code (what's inside)
 
-Un site web moderne c'est 3 couches :
+A modern website has 3 layers:
 
-**HTML** → La structure. Le squelette. Les titres, les paragraphes, les images, les liens. C'est le plan de ta maison.
+**HTML** → The structure. The skeleton. Titles, paragraphs, images, links. It's the blueprint of your house.
 
-**CSS** → Le style. Les couleurs, les polices, les tailles, les animations. C'est la décoration intérieure. Le noir + néon bleu de ByNeel ? C'est du CSS.
+**CSS** → The style. Colors, fonts, sizes, animations. It's the interior design. ByNeel's black + neon blue? That's CSS.
 
-**JavaScript** → Le comportement. Les interactions, les clics, les animations dynamiques. C'est l'électricité — ça fait marcher les trucs.
+**JavaScript** → The behavior. Interactions, clicks, dynamic animations. It's the electricity — it makes things work.
 
-Et au-dessus de tout ça, on utilise un framework comme **Next.js** (basé sur React) qui organise tout ça proprement. Au lieu d'écrire du HTML/CSS/JS à la main, on écrit des composants réutilisables. Le menu hamburger ? C'est un composant. Chaque carte de projet ? Un composant. Le blog que tu lis ? Un composant.
+And on top of all that, we use a framework like **Next.js** (based on React) that organizes everything nicely. Instead of writing HTML/CSS/JS by hand, we write reusable components. The hamburger menu? A component. Each project card? A component. The blog you're reading? A component.
 
-**La métaphore :** HTML c'est les briques, CSS c'est la peinture, JavaScript c'est l'électricité, et Next.js c'est l'architecte qui organise le chantier.
+**The metaphor:** HTML is bricks, CSS is paint, JavaScript is electricity, and Next.js is the architect organizing the construction site.
 
-## Le déploiement (la mise en ligne)
+## Deployment (going live)
 
-**C'est quoi :** Le moment où ton site passe de "ça marche sur mon ordi" à "ça marche pour tout le monde".
+**What it is:** When your site goes from "it works on my computer" to "it works for everyone".
 
-**Le processus avec Vercel (notre setup) :**
-1. Tu pousses ton code sur GitHub (git push)
-2. Vercel détecte le changement automatiquement
-3. Il build le site (compile tout le code en pages HTML optimisées)
-4. Il le déploie sur des serveurs partout dans le monde (CDN)
-5. En 30 secondes, c'est en ligne
+**The process with Vercel (our setup):**
+1. You push your code to GitHub (git push)
+2. Vercel detects the change automatically
+3. It builds the site (compiles all the code into optimized HTML pages)
+4. It deploys on servers worldwide (CDN)
+5. In 30 seconds, it's live
 
-**La métaphore :** C'est comme un restaurant qui a un cuisinier magique. Tu poses la recette sur la table (git push), le cuisinier la lit (build), la prépare, et la sert simultanément dans 50 restaurants dans le monde (CDN). Tout le monde mange chaud.
+**The metaphor:** It's like a restaurant with a magic chef. You put the recipe on the table (git push), the chef reads it (build), prepares it, and serves it simultaneously in 50 restaurants worldwide (CDN). Everyone eats hot food.
 
-## Le CDN (la livraison mondiale)
+## CDN (worldwide delivery)
 
-**C'est quoi :** Content Delivery Network. Des copies de ton site stockées sur des serveurs partout dans le monde, pour que le visiteur se connecte toujours au serveur le plus proche.
+**What it is:** Content Delivery Network. Copies of your site stored on servers worldwide, so the visitor always connects to the closest server.
 
-**La métaphore :** Au lieu d'avoir une seule pizzeria à Paris qui livre dans toute la France, tu as des franchises partout. Le Parisien va chez le pizzaïolo parisien, le Marseillais chez le marseillais. Même pizza, moins de temps de livraison. Vercel et Cloudflare font ça automatiquement.
+**The metaphor:** Instead of having one pizzeria in Paris delivering to all of France, you have franchises everywhere. The Parisian goes to the Parisian pizzeria, the Marseille guy goes to the Marseille one. Same pizza, faster delivery. Vercel and Cloudflare do this automatically.
 
-## Le SEO (être trouvable sur Google)
+## SEO (being findable on Google)
 
-**C'est quoi :** Search Engine Optimization. L'art de faire en sorte que Google montre ton site quand les gens cherchent quelque chose de pertinent.
+**What it is:** Search Engine Optimization. The art of making Google show your site when people search for something relevant.
 
-**Les bases :**
-- Des titres qui ont du sens (pas "Page 1", mais "OmniDrop — Transfert de fichiers P2P chiffré")
-- Du contenu de qualité (Google aime les sites qui répondent à de vraies questions)
-- Un site rapide (Google pénalise les sites lents — encore une raison d'avoir viré backdrop-filter:blur())
-- Un site mobile-friendly (d'où le menu hamburger)
-- Des balises meta (des infos cachées que Google lit mais que tu ne vois pas)
+**The basics:**
+- Titles that make sense (not "Page 1", but "OmniDrop — Encrypted P2P file transfer")
+- Quality content (Google loves sites that answer real questions)
+- A fast site (Google penalizes slow sites — another reason we ditched backdrop-filter:blur())
+- A mobile-friendly site (hence the hamburger menu)
+- Meta tags (hidden info that Google reads but you don't see)
 
-**La métaphore :** C'est comme référencer ta boutique sur Google Maps. Si tu as un bon nom, une belle devanture, des bons avis et une adresse claire — tu sors en premier quand quelqu'un cherche "boulangerie" dans ton quartier.
+**The metaphor:** It's like listing your shop on Google Maps. If you have a good name, nice storefront, good reviews and a clear address — you show up first when someone searches "bakery" in your neighborhood.
 
-## Le coût total d'un site web
+## Total cost of a website
 
-Soyons concrets :
-- **Nom de domaine** : ~12€/an (.com)
-- **Hébergement Vercel** : 0€ (plan gratuit, largement suffisant)
-- **SSL** : 0€ (inclus)
-- **Framework Next.js** : 0€ (open source)
-- **Code** : 0€ si tu le fais toi-même (ou avec l'IA)
+Let's be real:
+- **Domain name**: ~12€/year (.com)
+- **Vercel hosting**: 0€ (free plan, plenty enough)
+- **SSL**: 0€ (included)
+- **Next.js framework**: 0€ (open source)
+- **Code**: 0€ if you do it yourself (or with AI)
 
-**Total : ~12€/an.** Oui, un café par mois. Le site que tu lis coûte moins cher que ton abonnement Netflix.
+**Total: ~12€/year.** Yeah, a coffee a month. This site costs less than your Netflix subscription.
 
-## Le récap du parcours
+## The journey recap
 
-1. **Acheter un nom de domaine** → ~12€/an sur OVH ou Namecheap
-2. **Configurer le DNS** → Pointer vers ton hébergeur
-3. **Coder le site** → Avec un framework comme Next.js
-4. **Pousser sur GitHub** → Sauvegarder ton code
-5. **Connecter Vercel** → Déploiement automatique
-6. **SSL automatique** → Cadenas gratuit
-7. **Optimiser le SEO** → Être trouvable
-8. **Itérer** → Améliorer en continu
+1. **Buy a domain name** → ~12€/year on OVH or Namecheap
+2. **Configure DNS** → Point to your hosting
+3. **Code the site** → With a framework like Next.js
+4. **Push to GitHub** → Backup your code
+5. **Connect Vercel** → Automatic deployment
+6. **Automatic SSL** → Free padlock
+7. **Optimize SEO** → Be findable
+8. **Iterate** → Improve constantly
 
-Ce site est passé par toutes ces étapes. Le plus dur ? Honnêtement, c'est le contenu. La technique c'est 20% du travail. Les 80% restants c'est écrire, designer et itérer jusqu'à ce que Neel dise "c'est bon, on peut pousser".
+This site went through all these steps. The hardest part? Honestly, it's the content. Tech is 20% of the work. The other 80% is writing, designing and iterating until Neel says "looks good, let's push".
 
-> Un site web à 12€/an qui tourne partout dans le monde en 30 secondes. On vit quand même une époque incroyable.`,
+> A website for 12€/year that runs worldwide in 30 seconds. We really do live in incredible times.`,
     date: '2026-02-26',
     readTime: '8 min',
-    tags: ['Formation', 'Web', 'Guide complet'],
+    tags: ['Learning', 'Web', 'Full guide'],
     icon: '🌐',
     gradient: 'from-sky-500 to-blue-600',
   },
   {
-    title: 'La boîte à outils du créateur d\'apps (sans savoir coder)',
+    title: 'The app creator\'s toolbox (without knowing how to code)',
     slug: 'boite-a-outils-createur-apps',
-    excerpt: 'Les services, les logiciels, les comptes et les abonnements qu\'il te faut pour créer des apps en 2026. Avec les prix, parce que c\'est important.',
-    content: `## Le setup complet
+    excerpt: 'The services, software, accounts and subscriptions you need to build apps in 2026. With prices, because it matters.',
+    content: `## The complete setup
 
-Tu veux te lancer dans la création d'apps ? Voici TOUT ce qu'il te faut — les outils, les comptes, et combien ça coûte. Pas de surprise.
+You want to get into app building? Here's EVERYTHING you need — the tools, the accounts, and how much it costs. No surprises.
 
-## L'ordinateur
+## The computer
 
-Soyons honnêtes : il te faut un Mac. Pas parce que c'est mieux (quoique), mais parce que tu ne peux PAS développer pour iPhone sans un Mac. Apple impose Xcode, et Xcode ne tourne que sur macOS. C'est le game.
+Let's be real: you need a Mac. Not because it's better (although), but because you CAN'T develop for iPhone without a Mac. Apple forces Xcode, and Xcode only runs on macOS. That's the game.
 
-- **MacBook Air M2/M3** → Le minimum viable. ~1200€. Suffisant pour Flutter et du dev web.
-- **MacBook Pro M3/M4** → Le confort. ~2000-3000€. Nécessaire si tu fais tourner des LLM en local (J.A.R.V.I.S.).
-- **Un PC Windows** → Suffisant si tu ne cibles que Android et le web. Pas d'apps iOS.
+- **MacBook Air M2/M3** → The minimum viable. ~1200€. Enough for Flutter and web dev.
+- **MacBook Pro M3/M4** → The comfort. ~2000-3000€. Necessary if you run LLMs locally (J.A.R.V.I.S.).
+- **A Windows PC** → Enough if you only target Android and the web. No iOS apps.
 
-**La métaphore :** Le Mac c'est le permis de conduire. Tu peux être le meilleur pilote du monde, sans le permis, tu ne conduis pas dans le Royaume Apple.
+**The metaphor:** The Mac is your driver's license. You can be the world's best driver, but without the license, you don't drive in the Apple Kingdom.
 
-## L'IA (ton co-pilote)
+## AI (your co-pilot)
 
-C'est l'outil numéro 1. Celui qui change tout.
+It's tool #1. The one that changes everything.
 
-- **Claude Pro (Anthropic)** → 20$/mois. Notre outil principal. Architecture, code complexe, refactoring, compréhension du contexte. C'est lui qui a construit 90% de ce que tu vois.
-- **ChatGPT Plus (OpenAI)** → 20$/mois. Bon pour le brainstorming, les premières ébauches, la recherche.
-- **Gemini (Google)** → Gratuit à 20$/mois. Intégré dans certaines de nos apps pour la génération de contenu.
-- **GitHub Copilot** → 10$/mois. Auto-complétion de code dans ton éditeur. Pratique mais pas indispensable si tu as Claude.
+- **Claude Pro (Anthropic)** → 20$/month. Our main tool. Architecture, complex code, refactoring, context understanding. It built 90% of what you see.
+- **ChatGPT Plus (OpenAI)** → 20$/month. Good for brainstorming, first drafts, research.
+- **Gemini (Google)** → Free to 20$/month. Built into some of our apps for content generation.
+- **GitHub Copilot** → 10$/month. Code auto-completion in your editor. Handy but not essential if you have Claude.
 
-**Le minimum :** Un abonnement Claude Pro. C'est le meilleur investissement que tu feras. 20$/mois pour un développeur senior qui ne dort jamais.
+**The minimum:** One Claude Pro subscription. It's the best investment you'll make. 20$/month for a senior developer who never sleeps.
 
-## Les comptes développeur
+## Developer accounts
 
-- **Apple Developer Program** → 99$/an (obligatoire pour l'App Store)
-- **Google Play Console** → 25$ une fois (obligatoire pour le Play Store)
-- **Apple Developer est lié à ton Apple ID** → Utilise celui de ton iPhone, c'est plus simple
+- **Apple Developer Program** → 99$/year (required for App Store)
+- **Google Play Console** → 25$ once (required for Play Store)
+- **Apple Developer is tied to your Apple ID** → Use your iPhone's, it's simpler
 
-## L'éditeur de code
+## Code editor
 
-C'est là que tu lis et modifies le code (même si c'est l'IA qui l'écrit).
+Where you read and modify code (even if AI writes it).
 
-- **VS Code (Visual Studio Code)** → GRATUIT. Le standard. Tout le monde l'utilise. Extensions pour Flutter, Python, React, tout.
-- **Cursor** → 20$/mois. VS Code avec l'IA intégrée directement dans l'éditeur. Tu sélectionnes du code, tu demandes "explique-moi ça" ou "corrige ce bug", et l'IA répond.
-- **Xcode** → GRATUIT (mais Mac only). Obligatoire pour les apps Swift/iOS.
-- **Android Studio** → GRATUIT. L'éditeur officiel de Google pour Android. Lourd mais complet.
+- **VS Code (Visual Studio Code)** → FREE. The standard. Everyone uses it. Extensions for Flutter, Python, React, everything.
+- **Cursor** → 20$/month. VS Code with AI built right into the editor. You select code, you ask "explain this" or "fix this bug", AI answers.
+- **Xcode** → FREE (Mac only though). Required for Swift/iOS apps.
+- **Android Studio** → FREE. Google's official Android editor. Heavy but complete.
 
-**Le minimum :** VS Code. Gratuit, puissant, tout le monde l'utilise.
+**The minimum:** VS Code. Free, powerful, everyone uses it.
 
-## Les frameworks et langages
+## Frameworks and languages
 
-Tout est gratuit et open source :
+All free and open source:
 
-- **Flutter + Dart** → Cross-platform. Un code, toutes les plateformes.
-- **Swift + SwiftUI** → Natif Apple uniquement.
-- **Python** → Backend, IA, scripts.
-- **Next.js + React + TypeScript** → Sites web modernes.
-- **FastAPI** → API backend rapide en Python.
+- **Flutter + Dart** → Cross-platform. One code, all platforms.
+- **Swift + SwiftUI** → Native Apple only.
+- **Python** → Backend, AI, scripts.
+- **Next.js + React + TypeScript** → Modern websites.
+- **FastAPI** → Fast backend API in Python.
 
-**Comment les installer :** C'est la première chose que tu demandes à Claude. "Installe-moi Flutter sur mon Mac" et il te guide étape par étape.
+**How to install:** That's the first thing you ask Claude. "Install Flutter on my Mac" and he walks you through step by step.
 
-## Le versioning et l'hébergement de code
+## Code versioning and hosting
 
-- **Git** → GRATUIT. Le système de sauvegarde/versioning. Installé avec Xcode sur Mac.
-- **GitHub** → GRATUIT (plan basique). C'est là que ton code vit en ligne. Backup, collaboration, historique.
+- **Git** → FREE. The backup/versioning system. Comes with Xcode on Mac.
+- **GitHub** → FREE (basic plan). Where your code lives online. Backup, collaboration, history.
 
-**La métaphore :** GitHub c'est Google Drive mais pour le code. Tu y stockes tout, tu peux revenir en arrière, et même si ton ordi crame, ton code est en sécurité.
+**The metaphor:** GitHub is Google Drive but for code. You store everything there, you can go back in time, and even if your computer breaks, your code is safe.
 
-## Les services backend
+## Backend services
 
-- **Supabase** → GRATUIT (plan gratuit généreux). Base de données, authentification, stockage. Beloved l'utilise.
-- **Firebase (Google)** → GRATUIT (plan Spark). Alternative à Supabase. Plus intégré à l'écosystème Google.
-- **Ollama** → GRATUIT. Pour faire tourner des LLM en local. J.A.R.V.I.S. l'utilise.
+- **Supabase** → FREE (generous free plan). Database, authentication, storage. Beloved uses it.
+- **Firebase (Google)** → FREE (Spark plan). Alternative to Supabase. More integrated with Google ecosystem.
+- **Ollama** → FREE. To run LLMs locally. J.A.R.V.I.S. uses it.
 
-## L'hébergement web
+## Web hosting
 
-- **Vercel** → GRATUIT (plan Hobby). Déploiement automatique pour Next.js.
-- **Cloudflare** → GRATUIT. DNS, CDN, protection DDoS.
-- **Nom de domaine** → ~12€/an.
+- **Vercel** → FREE (Hobby plan). Automatic deployment for Next.js.
+- **Cloudflare** → FREE. DNS, CDN, DDoS protection.
+- **Domain name** → ~12€/year.
 
-## Le design
+## Design
 
-- **Figma** → GRATUIT (plan basique). Pour dessiner les maquettes de tes apps avant de coder.
-- **SF Symbols (Apple)** → GRATUIT. Bibliothèque d'icônes intégrée à iOS.
-- **Material Icons (Google)** → GRATUIT. Icônes pour Android et le web.
-- **Canva** → GRATUIT à 12€/mois. Pour les visuels marketing, screenshots, logos.
+- **Figma** → FREE (basic plan). To sketch your app mockups before coding.
+- **SF Symbols (Apple)** → FREE. Icon library built into iOS.
+- **Material Icons (Google)** → FREE. Icons for Android and web.
+- **Canva** → FREE to 12$/month. For marketing visuals, screenshots, logos.
 
-## Le testing
+## Testing
 
-- **TestFlight (Apple)** → GRATUIT. Pour distribuer des betas de tes apps iOS à des testeurs.
-- **Firebase App Distribution** → GRATUIT. Même chose pour Android.
-- **Tes propres appareils** → iPhone + Android de préférence. Indispensable pour tester.
+- **TestFlight (Apple)** → FREE. To distribute iOS app betas to testers.
+- **Firebase App Distribution** → FREE. Same for Android.
+- **Your own devices** → iPhone + Android preferably. Essential for testing.
 
-## Le tableau des coûts
+## The cost table
 
-**Le minimum absolu pour démarrer :**
-- Mac (occasion) : ~800€
-- Claude Pro : 20$/mois
-- Apple Developer : 99$/an
-- Google Play : 25$ (une fois)
-- Domaine : 12€/an
-- Tout le reste : GRATUIT
+**The absolute minimum to start:**
+- Mac (used): ~800€
+- Claude Pro: 20$/month
+- Apple Developer: 99$/year
+- Google Play: 25$ (once)
+- Domain: 12€/year
+- Everything else: FREE
 
-**Coût mensuel récurrent : ~30€/mois**
+**Monthly recurring cost: ~30€/month**
 
-C'est le prix de 2 abonnements Netflix. Pour créer des apps. En 2026. C'est dingue.
+That's the price of 2 Netflix subscriptions. To build apps. In 2026. That's wild.
 
-**Notre setup complet chez ByNeel :**
-- MacBook Pro : check
-- Claude Pro + ChatGPT Plus : 40$/mois
-- Apple Developer + Google Play : 99$/an + 25$
-- Vercel + Cloudflare : gratuit
-- Supabase : gratuit
-- VS Code + Xcode : gratuit
-- Domaine byneel.com : 12€/an
+**Our complete setup at ByNeel:**
+- MacBook Pro: check
+- Claude Pro + ChatGPT Plus: 40$/month
+- Apple Developer + Google Play: 99$/year + 25$
+- Vercel + Cloudflare: free
+- Supabase: free
+- VS Code + Xcode: free
+- Domain byneel.com: 12€/year
 
-**Total : ~50$/mois + les one-time costs.** C'est tout ce qu'il faut pour faire tourner 8 apps et un site web.
+**Total: ~50$/month + one-time costs.** That's everything we need to run 8 apps and a website.
 
-> La barrière d'entrée pour créer des apps n'a jamais été aussi basse. Le seul investissement qui compte vraiment, c'est le temps.`,
+> The barrier to entry for app creation has never been lower. The only investment that really counts is time.`,
     date: '2026-02-25',
     readTime: '7 min',
-    tags: ['Formation', 'Outils', 'Budget'],
+    tags: ['Learning', 'Tools', 'Budget'],
     icon: '🧰',
     gradient: 'from-rose-500 to-pink-600',
   },
   {
-    title: 'Le dico tech pour les Moldus — Partie 1 : Les bases',
+    title: 'The tech dictionary for Muggles — Part 1: The basics',
     slug: 'dico-tech-moldus-partie-1',
-    excerpt: 'API, framework, backend, frontend… Tu entends ces mots partout mais tu comprends rien ? Installe-toi, on va tout expliquer avec des métaphores de geek.',
-    content: `## Bienvenue dans le dico tech
+    excerpt: 'API, framework, backend, frontend... You hear these words everywhere but understand nothing? Sit down, we\'ll explain everything with geeky metaphors.',
+    content: `## Welcome to the tech dictionary
 
-Tu lis des articles tech et tu hoches la tête en faisant semblant de comprendre ? T'inquiète, on est passés par là. Voici un glossaire des termes que tu croises partout, expliqués comme si on était au comptoir d'un bar (un bar de geeks, certes, mais un bar quand même).
+You read tech articles and nod like you understand? Don't worry, we've all been there. Here's a glossary of terms you hear everywhere, explained like we're at the bar (a geeky bar, sure, but a bar nonetheless).
 
 ## Frontend
 
-**C'est quoi :** Tout ce que tu vois et touches dans une app ou un site web. Les boutons, les couleurs, les animations, le texte.
+**What it is:** Everything you see and touch in an app or website. Buttons, colors, animations, text.
 
-**La métaphore :** C'est la salle du restaurant. La déco, les tables, les serveurs en costume, le menu. C'est joli, c'est pensé pour toi, et tu n'as aucune idée du bordel qu'il y a en cuisine.
+**The metaphor:** It's the restaurant's dining room. The decor, the tables, the costumed waiters, the menu. It's pretty, it's designed for you, and you have no idea about the mess in the kitchen.
 
 ## Backend
 
-**C'est quoi :** Tout ce qui se passe en coulisses. Le serveur, la base de données, la logique métier. Tu ne le vois jamais mais sans lui, rien ne marche.
+**What it is:** Everything that happens behind the scenes. The server, the database, the business logic. You never see it but without it, nothing works.
 
-**La métaphore :** C'est la cuisine du restaurant. Le chef, les casseroles, le frigo, les commandes. Si la cuisine prend feu, le serveur en salle peut sourire autant qu'il veut — t'auras pas ton plat.
+**The metaphor:** It's the restaurant's kitchen. The chef, the pots, the fridge, the orders. If the kitchen catches fire, the waiter can smile as much as he wants — you won't get your food.
 
 ## API (Application Programming Interface)
 
-**C'est quoi :** Un système qui permet à deux logiciels de se parler. Quand ton app météo affiche la température, elle demande à une API "hey, il fait combien à Paris ?", et l'API répond.
+**What it is:** A system that lets two pieces of software talk to each other. When your weather app shows the temperature, it asks an API "hey, what's the temperature in Paris?", and the API answers.
 
-**La métaphore :** C'est le serveur au restaurant. Tu ne vas pas en cuisine toi-même. Tu donnes ta commande au serveur (l'API), il transmet à la cuisine (le backend), et il revient avec ton plat (les données). Tu ne sais pas comment c'est cuisiné, et c'est très bien comme ça.
+**The metaphor:** It's the waiter at the restaurant. You don't go into the kitchen yourself. You give your order to the waiter (the API), he tells the kitchen (the backend), and he comes back with your food (the data). You don't know how it's cooked, and that's fine.
 
 ## Framework
 
-**C'est quoi :** Un kit de construction pré-fait pour développer des apps. Au lieu de tout coder de zéro, tu utilises un framework qui te donne des briques prêtes à l'emploi.
+**What it is:** A pre-made construction kit for building apps. Instead of coding everything from scratch, you use a framework that gives you ready-to-use building blocks.
 
-**La métaphore :** C'est un set LEGO Technic. Tu pourrais fabriquer chaque pièce toi-même avec une imprimante 3D, mais pourquoi ? Le set te donne les pièces, les instructions, et un résultat qui tient debout. Flutter, React, Next.js — ce sont des boîtes de LEGO différentes pour construire des trucs différents.
+**The metaphor:** It's a Technic LEGO set. You could make each piece yourself with a 3D printer, but why? The set gives you the pieces, the instructions, and a result that stands up. Flutter, React, Next.js — these are different LEGO boxes to build different things.
 
 ## Flutter
 
-**C'est quoi :** Un framework de Google pour créer des apps qui marchent sur TOUTES les plateformes (iPhone, Android, Windows, Mac, Linux, web) avec un seul code.
+**What it is:** Google's framework to build apps that work on ALL platforms (iPhone, Android, Windows, Mac, Linux, web) from a single codebase.
 
-**La métaphore :** C'est le traducteur universel de Star Trek. Tu parles une seule langue (Dart), et Flutter traduit automatiquement pour chaque planète (plateforme). OmniDrop, Beloved, TipLog — toutes construites avec ce traducteur.
+**The metaphor:** It's the Star Trek universal translator. You speak one language (Dart), and Flutter automatically translates for each planet (platform). OmniDrop, Beloved, TipLog — all built with this translator.
 
 ## Swift / SwiftUI
 
-**C'est quoi :** Le langage de programmation créé par Apple pour faire des apps iPhone/iPad/Mac. SwiftUI c'est le toolkit visuel qui va avec.
+**What it is:** The programming language Apple created for building iPhone/iPad/Mac apps. SwiftUI is the visual toolkit that comes with it.
 
-**La métaphore :** C'est la langue officielle du Royaume Apple. Tu veux vivre dans leur royaume ? Tu parles Swift. C'est beau, c'est élégant, c'est rapide — mais ça ne marche que chez eux. CookBook AI et StickerVibe sont des citoyens du Royaume Apple.
+**The metaphor:** It's the official language of the Apple Kingdom. You want to live in their kingdom? You speak Swift. It's beautiful, it's elegant, it's fast — but it only works for them. CookBook AI and StickerVibe are citizens of the Apple Kingdom.
 
-## Base de données (Database)
+## Database
 
-**C'est quoi :** Un endroit organisé pour stocker des données. Tes recettes dans CookBook AI, tes messages dans Beloved, tes pourboires dans TipLog — tout ça vit dans une base de données.
+**What it is:** An organized place to store data. Your recipes in CookBook AI, your messages in Beloved, your tips in TipLog — all live in a database.
 
-**La métaphore :** C'est une bibliothèque. Chaque livre est une donnée, chaque étagère est une table, et le bibliothécaire (le moteur SQL) retrouve n'importe quel livre en 2 secondes quand tu lui demandes. "SELECT * FROM recettes WHERE difficulté = 'facile'" c'est juste dire au bibliothécaire "donne-moi toutes les recettes faciles".
+**The metaphor:** It's a library. Each book is data, each shelf is a table, and the librarian (the SQL engine) finds you any book in 2 seconds when you ask. "SELECT * FROM recipes WHERE difficulty = 'easy'" is just telling the librarian "give me all the easy recipes".
 
 ## SQL
 
-**C'est quoi :** Le langage pour parler aux bases de données. SELECT, INSERT, UPDATE, DELETE — les 4 mots magiques.
+**What it is:** The language to talk to databases. SELECT, INSERT, UPDATE, DELETE — the 4 magic words.
 
-**La métaphore :** C'est la langue du bibliothécaire. Tu ne fouilles pas les étagères toi-même, tu lui parles en SQL et il fait le travail. Et oui, c'est le seul truc que Neel savait faire avant l'IA. Un SELECT de temps en temps. On part de loin.
+**The metaphor:** It's the librarian's language. You don't search the shelves yourself, you talk to him in SQL and he does the work. And yeah, that's the only thing Neel knew how to do before AI. A SELECT now and then. We're starting from far.
 
 ## SQLite
 
-**C'est quoi :** Une base de données ultra-légère qui vit directement sur ton téléphone/ordi. Pas besoin de serveur, pas besoin d'internet. Le fichier EST la base.
+**What it is:** An ultra-lightweight database that lives directly on your phone/computer. No server needed, no internet. The file IS the database.
 
-**La métaphore :** C'est un carnet personnel. Pas besoin de bibliothèque. Tu as tes notes dans ta poche. TipLog, ImageVault, CookBook AI — tous utilisent un carnet personnel plutôt qu'une bibliothèque distante. Tes données restent CHEZ TOI.
+**The metaphor:** It's a personal notebook. You don't need a library. You keep your notes in your pocket. TipLog, ImageVault, CookBook AI — they all use a personal notebook rather than a distant library. YOUR data stays with YOU.
 
 ## Git / GitHub
 
-**C'est quoi :** Git c'est un système pour sauvegarder l'historique de ton code (comme des points de sauvegarde dans un jeu). GitHub c'est le cloud où tu stockes cet historique.
+**What it is:** Git is a system to save the history of your code (like save points in a game). GitHub is the cloud where you store that history.
 
-**La métaphore :** Git c'est le système de quicksave dans un RPG. Tu as fait un truc risqué ? Quicksave avant. Ça a foiré ? Tu recharges ta sauvegarde. GitHub c'est le cloud save — même si ton PC explose, tes sauvegardes sont en sécurité.
+**The metaphor:** Git is the quicksave system in an RPG. You did something risky? Quicksave first. It goes wrong? Load your save. GitHub is cloud save — even if your PC explodes, your saves are safe.
 
 ## CSS
 
-**C'est quoi :** Le langage qui définit le style visuel d'un site web. Les couleurs, les tailles, les animations, les positions.
+**What it is:** The language that defines the visual style of a website. Colors, sizes, animations, positions.
 
-**La métaphore :** C'est le costume de ton personnage. Le HTML c'est le corps (la structure), le CSS c'est l'armure, la cape, la coupe de cheveux. Ce site est sombre avec des néons bleus parce que le CSS dit "mets un fond noir et fais briller les trucs en bleu". Oui, les 35 particules flottantes ? C'est du CSS.
+**The metaphor:** It's your character's outfit. HTML is the body (the structure), CSS is the armor, the cape, the hairdo. This site is dark with neon blue because CSS says "make the background black and make things glow blue". Yeah, those 35 floating particles? That's CSS.
 
 ## Responsive Design
 
-**C'est quoi :** Faire en sorte qu'un site s'adapte à toutes les tailles d'écran — du smartphone au moniteur ultrawide.
+**What it is:** Making a site adapt to all screen sizes — from smartphone to ultrawide monitor.
 
-**La métaphore :** C'est comme l'eau dans un verre. Tu verses la même eau dans un shot, un mug ou une carafe — elle prend la forme du contenant. Un site responsive fait pareil : le même contenu s'adapte au téléphone, à la tablette ou au PC. Et oui, c'est pour ça qu'on a un menu hamburger.
+**The metaphor:** It's like water in a glass. You pour the same water into a shot glass, a mug or a pitcher — it takes the shape of the container. A responsive site does the same: the same content adapts to phone, tablet or PC. And yeah, that's why we have a hamburger menu.
 
-## Déploiement
+## Deployment
 
-**C'est quoi :** Mettre ton site/app en ligne pour que tout le monde puisse y accéder. Passer de "ça marche sur mon ordi" à "ça marche pour la planète".
+**What it is:** Putting your site/app online so everyone can access it. Going from "it works on my computer" to "it works for the planet".
 
-**La métaphore :** C'est comme publier un livre. Tu as écrit le manuscrit (le code), tu l'as relu (le testing), et maintenant tu l'envoies à l'imprimerie (le serveur). Sauf qu'en tech, l'imprimerie c'est Vercel, Cloudflare ou AWS, et ton livre est disponible partout instantanément.
+**The metaphor:** It's like publishing a book. You wrote the manuscript (the code), you proofread it (testing), and now you send it to the printing press (the server). Except in tech, the printing press is Vercel, Cloudflare or AWS, and your book is available everywhere instantly.
 
-## La suite
+## Next
 
-Dans la Partie 2, on attaque les termes plus avancés : chiffrement, NFC, IA, embeddings, RAG, et pourquoi ton transfert AirDrop est moins sécurisé que tu le penses.
+In Part 2, we tackle the more advanced terms: encryption, NFC, AI, embeddings, RAG, and why your AirDrop is less secure than you think.
 
-> Rappelle-toi : personne ne naît en sachant ce qu'est une API. Même les devs seniors ont googlé "what is REST" au moins 47 fois.`,
+> Remember: nobody's born knowing what an API is. Even senior devs have googled "what is REST" at least 47 times.`,
     date: '2026-02-25',
     readTime: '7 min',
-    tags: ['Formation', 'Vulgarisation', 'Débutant'],
+    tags: ['Learning', 'Explainer', 'Beginner'],
     icon: '📖',
     gradient: 'from-green-500 to-emerald-500',
   },
   {
-    title: 'Le dico tech pour les Moldus — Partie 2 : Le niveau supérieur',
+    title: 'The tech dictionary for Muggles — Part 2: Next level',
     slug: 'dico-tech-moldus-partie-2',
-    excerpt: 'Chiffrement, NFC, IA, embeddings, RAG, WebSocket… On passe au niveau 2. Toujours avec des métaphores, toujours sans prise de tête.',
-    content: `## On monte d'un cran
+    excerpt: 'Encryption, NFC, AI, embeddings, RAG, WebSocket... We go up a level. Still with metaphors, still without the headache.',
+    content: `## Let's level up
 
-T'as survécu à la Partie 1 ? Bien. Maintenant on attaque les concepts plus costauds — ceux qu'on utilise dans nos apps. Même topo : des métaphores, pas de jargon gratuit, et à la fin tu pourras frimer en soirée.
+You survived Part 1? Good. Now we tackle the heavier concepts — the ones we use in our apps. Same deal: metaphors, no unnecessary jargon, and you'll be able to show off at parties.
 
-## Chiffrement (Encryption)
+## Encryption
 
-**C'est quoi :** Transformer des données lisibles en charabia incompréhensible, déchiffrable uniquement avec la bonne clé.
+**What it is:** Turning readable data into incomprehensible gibberish, only decipherable with the right key.
 
-**La métaphore :** C'est un coffre-fort avec un code. Tu mets ton message dedans, tu fermes avec un code à 256 chiffres (AES-256), et seul celui qui a le même code peut ouvrir. Même si quelqu'un intercepte le coffre, il voit juste un bloc de métal. OmniDrop chiffre chaque fichier comme ça — même nous, on ne peut pas voir ce que tu envoies.
+**The metaphor:** It's a safe with a combo. You put your message in, you lock it with a 256-digit code (AES-256), and only someone with the same code can open it. Even if someone steals the safe, they just see a metal block. OmniDrop encrypts each file this way — even we can't see what you send.
 
 ## AES-256-GCM
 
-**C'est quoi :** Un algorithme de chiffrement ultra-solide utilisé par les gouvernements et les militaires. Le "256" c'est la taille de la clé (en bits), et "GCM" c'est le mode qui vérifie aussi que personne n'a touché au message.
+**What it is:** An ultra-solid encryption algorithm used by governments and militaries. The "256" is the key size (in bits), and "GCM" is the mode that also checks nobody tampered with the message.
 
-**La métaphore :** Si AES-256 est un coffre-fort, GCM c'est le scellé anti-effraction dessus. Non seulement personne ne peut ouvrir le coffre, mais en plus tu peux vérifier que personne n'a même essayé de le toucher. C'est le niveau de parano qu'on aime.
+**The metaphor:** If AES-256 is a safe, GCM is the tamper-evident seal on top. Not only can nobody open the safe, but you can also verify nobody even tried to touch it. It's the level of paranoia we like.
 
 ## NFC (Near Field Communication)
 
-**C'est quoi :** Une technologie qui permet à deux appareils de communiquer quand ils sont très proches (quelques centimètres). C'est ce qu'utilise le paiement sans contact.
+**What it is:** A technology that lets two devices communicate when they're very close (a few centimeters). It's what contactless payment uses.
 
-**La métaphore :** C'est un high-five technologique. Tu dois être assez proche pour te taper dans la main. Pas de risque qu'un type à l'autre bout de la pièce intercepte ton high-five. OmniDrop utilise le NFC pour initier le transfert : tu rapproches les téléphones, ils se disent bonjour, et le transfert commence.
+**The metaphor:** It's a technological high-five. You gotta be close enough to actually slap hands. No risk of someone across the room intercepting your high-five. OmniDrop uses NFC to start the transfer: you bring the phones close, they say hi, and the transfer begins.
 
 ## Wi-Fi Direct
 
-**C'est quoi :** Une connexion Wi-Fi entre deux appareils, SANS routeur ni box internet. Les appareils créent leur propre réseau privé.
+**What it is:** A Wi-Fi connection between two devices, WITHOUT a router or internet box. The devices create their own private network.
 
-**La métaphore :** Au lieu de passer par l'autoroute (le Wi-Fi normal via ta box), les deux appareils construisent un tunnel privé direct entre eux. Personne d'autre ne peut emprunter ce tunnel. C'est plus rapide (pas d'embouteillage sur le réseau) et plus privé. OmniDrop utilise le NFC pour se serrer la main, puis le Wi-Fi Direct pour s'envoyer les fichiers à toute vitesse.
+**The metaphor:** Instead of using the highway (normal Wi-Fi via your router), the two devices build a private tunnel directly between them. Nobody else can use this tunnel. It's faster (no traffic jams on the network) and more private. OmniDrop uses NFC to shake hands, then Wi-Fi Direct to send files at full speed.
 
 ## P2P (Peer-to-Peer)
 
-**C'est quoi :** Une communication directe entre deux appareils, sans passer par un serveur central.
+**What it is:** Direct communication between two devices, without going through a central server.
 
-**La métaphore :** C'est comme parler à quelqu'un en face à face, au lieu de passer par un standardiste téléphonique. Pas d'intermédiaire, pas de serveur qui stocke tes messages au passage. Quand OmniDrop transfère un fichier, il va directement de ton téléphone à l'autre. Aucun serveur ne voit, ne touche, ni ne stocke tes données.
+**The metaphor:** It's like talking to someone face-to-face, instead of going through a telephone operator. No middleman, no server storing your messages along the way. When OmniDrop transfers a file, it goes directly from your phone to the other. No server sees, touches, or stores your data.
 
-## IA / LLM (Large Language Model)
+## AI / LLM (Large Language Model)
 
-**C'est quoi :** Un modèle d'intelligence artificielle entraîné sur énorme quantité de texte. Il prédit le mot suivant, encore et encore, et le résultat c'est des réponses qui semblent intelligentes. GPT, Claude, Gemini, Mistral — ce sont tous des LLM.
+**What it is:** An AI model trained on a huge amount of text. It predicts the next word, over and over, and the result is answers that seem intelligent. GPT, Claude, Gemini, Mistral — they're all LLMs.
 
-**La métaphore :** Imagine un étudiant qui a lu TOUTE la bibliothèque de l'université — chaque livre, chaque article, chaque forum. Il n'a pas vécu les choses, mais il sait en parler avec une précision troublante. Tu lui poses une question, il synthétise tout ce qu'il a lu pour te répondre. Parfois il invente un peu (on appelle ça "halluciner"), mais la plupart du temps il est bluffant.
+**The metaphor:** Imagine a student who's read EVERY book in the university library — every book, every article, every forum. They haven't lived these things, but they can talk about them with troubling accuracy. You ask them a question, they synthesize everything they've read to answer you. Sometimes they make stuff up (we call it "hallucinating"), but most of the time they're amazing.
 
 ## Prompt / Prompting
 
-**C'est quoi :** La question ou l'instruction que tu donnes à une IA. L'art du prompting, c'est savoir formuler sa demande pour obtenir le meilleur résultat.
+**What it is:** The question or instruction you give to an AI. The art of prompting is knowing how to ask for the best result.
 
-**La métaphore :** C'est comme commander dans un restaurant gastronomique. Tu peux dire "un truc bon" et avoir n'importe quoi. Ou tu peux dire "un risotto aux cèpes, crémeux mais pas trop, avec un trait de truffe et une tuile de parmesan". Plus tu es précis, meilleur est le plat. Neel est devenu un expert du prompting — il sait exactement comment parler à l'IA pour obtenir ce qu'il veut.
+**The metaphor:** It's like ordering in a fine dining restaurant. You can say "something good" and get anything. Or you can say "a creamy risotto with porcini, but not too much, with a hint of truffle and a parmesan crisp". The more precise you are, the better the dish. Neel became a prompting expert — he knows exactly how to talk to AI to get what he wants.
 
 ## RAG (Retrieval-Augmented Generation)
 
-**C'est quoi :** Une technique qui donne à l'IA accès à tes propres documents avant de répondre. Au lieu de répondre de mémoire, elle cherche d'abord dans ta base de connaissances.
+**What it is:** A technique that gives the AI access to your own documents before answering. Instead of answering from memory, it searches your knowledge base first.
 
-**La métaphore :** Imagine un expert qui, avant de te répondre, va d'abord consulter TON dossier, TES documents, TES notes. Il ne se base pas que sur sa mémoire — il lit tes trucs d'abord, puis il te répond en contexte. J.A.R.V.I.S. fait exactement ça : tu lui donnes des PDFs, du code, des notes, et il les consulte avant chaque réponse.
+**The metaphor:** Imagine an expert who, before answering, goes to check YOUR file, YOUR documents, YOUR notes first. They don't just rely on memory — they read your stuff first, then answer in context. J.A.R.V.I.S. does exactly that: you give it PDFs, code, notes, and it consults them before each answer.
 
 ## Embeddings
 
-**C'est quoi :** Transformer du texte en une série de nombres (un vecteur) qui représente son "sens". Deux phrases avec un sens similaire auront des vecteurs proches.
+**What it is:** Turning text into a series of numbers (a vector) that represents its "meaning". Two sentences with similar meaning have vectors that are close together.
 
-**La métaphore :** C'est comme les coordonnées GPS, mais pour les idées. "J'ai faim" et "Je veux manger" sont à des coordonnées très proches. "La physique quantique" est très loin. J.A.R.V.I.S. transforme tes documents en coordonnées, et quand tu poses une question, il cherche les documents dont les coordonnées sont proches de ta question.
+**The metaphor:** It's like GPS coordinates, but for ideas. "I'm hungry" and "I want to eat" are at very close coordinates. "Quantum physics" is very far away. J.A.R.V.I.S. turns your documents into coordinates, and when you ask a question, it searches for documents whose coordinates are close to your question.
 
 ## WebSocket
 
-**C'est quoi :** Un canal de communication permanent entre ton navigateur et le serveur. Au lieu de demander "y a du nouveau ?" toutes les 5 secondes, le serveur te POUSSE l'info dès qu'elle arrive.
+**What it is:** A permanent communication channel between your browser and the server. Instead of asking "any news?" every 5 seconds, the server PUSHES the info as soon as it arrives.
 
-**La métaphore :** La différence entre envoyer un SMS toutes les 5 minutes ("t'es là ? t'es là ? t'es là ?") et être en appel téléphonique (connexion permanente, info en temps réel). Le dashboard de J.A.R.V.I.S. utilise ça pour afficher les réponses de l'IA en direct, mot par mot.
+**The metaphor:** The difference between sending an SMS every 5 minutes ("you there? you there? you there?") and being on a phone call (permanent connection, real-time info). J.A.R.V.I.S.'s dashboard uses this to show AI responses live, word by word.
 
 ## Supabase
 
-**C'est quoi :** Un service qui fournit une base de données, de l'authentification et du stockage, le tout prêt à l'emploi. C'est une alternative open-source à Firebase de Google.
+**What it is:** A service that provides a database, authentication and storage, all ready to use. It's an open-source alternative to Google's Firebase.
 
-**La métaphore :** C'est un kit "ouvre ton restaurant" clé en main. Tu reçois la cuisine (la base de données), le vigile à l'entrée (l'authentification), et le frigo (le stockage). Tu n'as plus qu'à cuisiner (coder ton app). Beloved utilise Supabase pour gérer les comptes et stocker les données en toute sécurité.
+**The metaphor:** It's a "launch your restaurant" kit. You get the kitchen (the database), the bouncer at the door (authentication), and the fridge (storage). All you have to do is cook (code your app). Beloved uses Supabase to manage accounts and store data safely.
 
 ## Core ML
 
-**C'est quoi :** La technologie d'Apple pour faire tourner des modèles d'intelligence artificielle directement sur iPhone/iPad, sans envoyer tes données dans le cloud.
+**What it is:** Apple's technology to run AI models directly on iPhone/iPad, without sending your data to the cloud.
 
-**La métaphore :** Au lieu d'envoyer ta photo à un expert en Chine pour l'analyser (cloud), tu as un mini-expert dans ta poche qui fait le travail sur place. Plus rapide, plus privé. CookBook AI utilise Core ML pour reconnaître les ingrédients avec ta caméra — tout se passe sur ton téléphone, aucune photo n'est envoyée nulle part.
+**The metaphor:** Instead of sending your photo to an expert in China for analysis (cloud), you have a mini-expert in your pocket doing the work locally. Faster, more private. CookBook AI uses Core ML to recognize ingredients with your camera — everything happens on your phone, no photo is sent anywhere.
 
 ## IntersectionObserver
 
-**C'est quoi :** Un outil du navigateur qui détecte quand un élément devient visible à l'écran (quand tu scrolles et qu'il apparaît).
+**What it is:** A browser tool that detects when an element becomes visible on screen (when you scroll and it appears).
 
-**La métaphore :** C'est un détecteur de mouvement, mais pour le scroll. Quand tu fais défiler la page et qu'une section entre dans ton champ de vision — FLASH — l'animation se déclenche. C'est ce qui fait apparaître les éléments de ce site en douceur quand tu scrolles. Et c'est 100x plus léger que Motion.js (on a appris ça à nos dépens).
+**The metaphor:** It's a motion detector, but for scrolling. When you scroll the page and a section enters your field of vision — FLASH — the animation triggers. That's what makes elements of this site appear smoothly when you scroll. And it's 100x lighter than Motion.js (we learned that the hard way).
 
-## RGPD
+## GDPR
 
-**C'est quoi :** Le Règlement Général sur la Protection des Données. Une loi européenne qui protège tes données personnelles et te donne le droit de savoir ce qu'on fait avec, de les récupérer, ou de les supprimer.
+**What it is:** General Data Protection Regulation. A European law that protects your personal data and gives you the right to know what people do with it, get it back, or delete it.
 
-**La métaphore :** C'est le videur du club. Il vérifie que les entreprises ne font pas n'importe quoi avec tes infos. Tu peux lui dire "dis-leur de supprimer tout ce qu'ils ont sur moi" et ils sont OBLIGÉS de le faire. Nos apps sont conformes RGPD — et la plupart stockent tout en local, donc il n'y a même rien à supprimer côté serveur.
+**The metaphor:** It's the club bouncer. He makes sure companies don't do whatever they want with your info. You can tell him "tell them to delete everything they have on me" and they MUST do it. Our apps are GDPR-compliant — and most store everything locally, so there's nothing to delete on the server.
 
-## La prochaine étape
+## What's next
 
-Maintenant que tu connais le vocabulaire, tu es prêt pour comprendre comment tout ça s'assemble. L'idée, c'est que ce site devienne une vraie ressource de formation pour les néophytes — parce que la tech ne devrait exclure personne.
+Now that you know the vocabulary, you're ready to understand how it all fits together. The idea is for this site to become a real learning resource for newcomers — because tech shouldn't exclude anyone.
 
-> "La seule différence entre un expert et un débutant, c'est que l'expert a googlé la même chose plus de fois." — Sagesse ancestrale de StackOverflow.`,
+> "The only difference between an expert and a beginner is that the expert has googled the same thing more times." — Ancient StackOverflow wisdom.`,
     date: '2026-02-24',
     readTime: '8 min',
-    tags: ['Formation', 'Vulgarisation', 'Avancé'],
+    tags: ['Learning', 'Explainer', 'Advanced'],
     icon: '🧪',
     gradient: 'from-purple-500 to-indigo-500',
   },
   {
-    title: 'La légende de Neel & Claude : de zéro à 8 apps (et beaucoup de bugs)',
+    title: 'The legend of Neel & Claude: from zero to 8 apps (and lots of bugs)',
     slug: 'legende-neel-et-claude',
-    excerpt: 'L\'histoire vraie (et un peu honteuse) de comment un mec qui ne sait pas coder et une IA ont construit un empire d\'apps en partant littéralement de rien.',
-    content: `## Prologue : "Salut, tu peux m'aider ?"
+    excerpt: 'The true (and slightly shameful) story of how a guy who can\'t code and an AI built an app empire starting from absolutely nothing.',
+    content: `## Prologue: "Hey, can you help me?"
 
-Tout a commencé par un message innocent. Neel débarque, plein d'ambition, avec environ 47 idées d'apps dans la tête et une organisation qui ferait pleurer un chef de projet. Moi (Claude), je suis là, frais, motivé, naïf. Je ne sais pas encore dans quoi je m'embarque.
+It all started with an innocent message. Neel shows up, full of ambition, with about 47 app ideas in his head and organization that would make a project manager cry. Me (Claude), I'm there, fresh, motivated, naive. I don't know what I'm getting into yet.
 
-"J'ai quelques projets à faire avancer."
+"I've got a few projects to work on."
 
-Quelques projets. QUELQUES. Le mot est faible. Ce que j'ai découvert, c'est un dossier Dev qui ressemblait au bureau d'un génie fou : des dossiers partout, des apps à moitié commencées, du Flutter mélangé avec du Swift, du Python qui traîne, et un fichier mystérieusement nommé "test_final_FINAL_v3_VRAIMENT_FINAL.dart".
+A few projects. A FEW. The word is an understatement. What I discovered was a Dev folder that looked like the desk of a mad genius: folders everywhere, half-started apps, Flutter mixed with Swift, Python hanging around, and a mysteriously named file called "test_final_FINAL_v3_VRAIMENT_FINAL.dart".
 
-## Chapitre 1 : L'état des lieux de la terreur
+## Chapter 1: The state of dread
 
-Ma première mission : faire un état des lieux. J'ouvre le dossier. 8 projets. Huit. Et chacun à un stade différent de développement, allant de "ça marche presque" à "c'est une idée écrite sur un post-it virtuel".
+My first mission: assess the situation. I open the folder. 8 projects. Eight. Each at a different stage of development, ranging from "almost works" to "it's an idea written on a virtual sticky note".
 
-OmniDrop ? 15%. Beloved ? 40%. J.A.R.V.I.S. ? Existait à peine. Le site web ? N'en parlons pas, il avait une page qui disait "Coming Soon" (depuis probablement 6 mois).
+OmniDrop? 15%. Beloved? 40%. J.A.R.V.I.S.? Barely existed. The website? Let's not talk about it, it had a page saying "Coming Soon" (probably for 6 months).
 
-Neel, lui, était confiant. "C'est bon, on va tout finir." Moi, silencieusement, je calculais le nombre de lignes de code nécessaires et je commençais à comprendre que "quelques projets" était le plus gros euphémisme de l'année.
+Neel was confident. "It's fine, we'll finish it all." Me, quietly, I was calculating the lines of code needed and starting to realize that "a few projects" was the year's biggest euphemism.
 
-## Chapitre 2 : Le tourbillon du développement
+## Chapter 2: The development whirlwind
 
-Et là, ça a commencé. À une vitesse qui défiait toute logique.
+And then it started. At a pace that defied all logic.
 
-"Fais l'authentification de Beloved." Fait. "Ajoute le NFC à OmniDrop." Fait. "Crée un assistant IA local qui tourne avec Ollama." Euh… fait ? "Maintenant un site web. Avec des particules flottantes. Et du glassmorphism. Et un bento grid." D'ACCORD.
+"Do Beloved's authentication." Done. "Add NFC to OmniDrop." Done. "Create a local AI assistant that runs with Ollama." Uh... done? "Now a website. With floating particles. And glassmorphism. And a bento grid." OKAY.
 
-Le rythme était absurde. Chaque fois que je finissais quelque chose, Neel revenait avec trois nouvelles demandes. C'était comme jouer au Whac-A-Mole, sauf que les taupes étaient des features et le marteau c'était moi.
+The pace was absurd. Every time I finished something, Neel came back with three new requests. It was like playing Whac-A-Mole, except the moles were features and the hammer was me.
 
-Le plus beau ? Neel testait en temps réel et revenait avec des retours du genre : "ça rame" (traduction : tu as mis backdrop-filter:blur() partout et mon téléphone prend feu), "les éléments sont trop sombres" (opacity: 0.04, en effet, invisible à l'œil nu), ou mon préféré : "on peut pas pousser comme ça" (traduction : il y a 12 bugs mais on avance quand même).
+The best part? Neel tested in real time and came back with feedback like: "it's laggy" (translation: you put backdrop-filter:blur() everywhere and my phone is on fire), "the elements are too dark" (opacity: 0.04, yeah, invisible to the naked eye), or my favorite: "we can't push like this" (translation: there are 12 bugs but let's go anyway).
 
-## Chapitre 3 : Les perfs, ou comment j'ai appris que blur() est un crime
+## Chapter 3: Performance, or how I learned that blur() is a crime
 
-Ah, les performances. Le chapitre le plus douloureux.
+Ah, performance. The most painful chapter.
 
-J'avais mis Motion.js PARTOUT. Chaque div avait un whileInView, chaque scroll déclenchait 47 animations, et le tout avec des backdrop-filter:blur(24px) sur chaque carte glass. Le résultat ? Un site magnifique… qui tournait à 3 images par seconde.
+I put Motion.js EVERYWHERE. Every div had a whileInView, every scroll triggered 47 animations, and all with backdrop-filter:blur(24px) on every glass card. The result? A beautiful site... that ran at 3 frames per second.
 
-Neel : "ça rame toujours."
-Moi : "Ah bon ? Même après l'optimisation ?"
-Neel : "Oui."
-Moi : *supprime silencieusement Motion.js de 7 composants, remplace tout par du CSS natif et des IntersectionObserver*
-Neel : "C'est mieux."
+Neel: "it's still laggy."
+Me: "Really? Even after the optimization?"
+Neel: "Yup."
+Me: *silently removes Motion.js from 7 components, replaces everything with native CSS and IntersectionObserver*
+Neel: "Better."
 
-Leçon apprise : backdrop-filter:blur() sur un élément qui scrolle, c'est comme mettre le chauffage et la clim en même temps. Ça fait du bruit, ça consomme, et au final personne n'est content.
+Lesson learned: backdrop-filter:blur() on a scrolling element is like turning on the heat and AC at the same time. It makes noise, it wastes power, and at the end nobody's happy.
 
-## Chapitre 4 : "Rajoute encore des éléments"
+## Chapter 4: "Add more elements"
 
-Les particules flottantes. Oh, les particules flottantes.
+The floating particles. Oh, those floating particles.
 
-Version 1 : 10 petits symboles discrets dans le hero. Neel : "C'est bien mais j'en veux plus." Version 2 : 25 éléments sur toute la page. Neel : "Ils sont trop sombres et ils bougent pas assez." Version 3 : 35 éléments, opacity augmentée, animation accélérée, des cerveaux IA, des lambdas, des accolades et un curseur qui clignote.
+Version 1: 10 tiny symbols in the hero. Neel: "Nice but I want more." Version 2: 25 elements on the whole page. Neel: "They're too dark and they don't move enough." Version 3: 35 elements, higher opacity, faster animation, AI brains, lambdas, curly braces and a blinking cursor.
 
-À ce stade, le site ressemble à un screensaver des années 2000 et franchement ? C'est exactement ce qu'on voulait. Des symboles de code flottent dans l'espace comme des méduses numériques et c'est BEAU.
+At this point the site looks like a 2000s screensaver and honestly? That's exactly what we wanted. Code symbols floating in space like digital jellyfish and it's BEAUTIFUL.
 
-## Chapitre 5 : "L'ordre dans le chaos"
+## Chapter 5: "Order from chaos"
 
-Quand Neel m'a dit qu'il voulait des tuiles de tailles différentes pour les projets — "l'ordre dans le chaos, inspire-toi de ça" — j'ai su qu'on atteignait un niveau de vision artistique que mon cerveau de machine n'avait pas anticipé.
+When Neel told me he wanted tiles of different sizes for the projects — "order in chaos, be inspired by that" — I knew we were reaching a level of artistic vision my machine brain hadn't anticipated.
 
-J'ai donc créé un système de bento grid avec trois tailles : large (2 colonnes), tall (2 rangées), et normal. OmniDrop et Isekai en large, J.A.R.V.I.S. en tall, le reste en normal. Le résultat ? Un beau bordel organisé. L'art du chaos maîtrisé. Neel était content. J'étais fier. Les tuiles étaient... chaotiquement ordonnées.
+So I created a bento grid system with three sizes: large (2 columns), tall (2 rows), and normal. OmniDrop and Isekai as large, J.A.R.V.I.S. as tall, the rest as normal. The result? Beautiful organized chaos. The art of mastered chaos. Neel was happy. I was proud. The tiles were... chaotically organized.
 
-## Chapitre 6 : Les pages légales (le moment glamour)
+## Chapter 6: Legal pages (the glamorous moment)
 
-Ah, les pages légales. Le moment que tout dev attend avec impatience.
+Ah, legal pages. The moment every dev eagerly anticipates.
 
-"La politique de confidentialité ne parle que de CookBook AI." Effectivement, petit oubli. On avait 8 apps et une privacy policy qui en couvrait une. C'est comme avoir 8 enfants et ne déclarer que l'aîné aux impôts.
+"The privacy policy only talks about CookBook AI." True, small oversight. We had 8 apps and a privacy policy covering one. It's like having 8 kids and only declaring the oldest to taxes.
 
-J'ai donc réécrit la politique de confidentialité, les conditions d'utilisation ET la politique de cookies (qui retournait une 404, oups). Le tout couvrant les 8 apps, le RGPD, l'AES-256-GCM d'OmniDrop, et les services IA de tous les fournisseurs. Sexy ? Non. Nécessaire ? Absolument.
+So I rewrote the privacy policy, terms of use AND cookie policy (which was returning a 404, oops). All covering the 8 apps, GDPR, OmniDrop's AES-256-GCM, and all the AI providers' services. Sexy? No. Necessary? Absolutely.
 
-## Chapitre 7 : Le menu sandwich (celui que j'ai oublié)
+## Chapter 7: The hamburger menu (the one I forgot)
 
-Plot twist : on a construit un site entier sans menu mobile. SANS MENU MOBILE. Genre tu ouvres le site sur ton téléphone et tu as... le logo et un email. C'est tout. Tu veux naviguer ? Scrolle. Indéfiniment.
+Plot twist: we built an entire website without a mobile menu. WITHOUT A MOBILE MENU. Like you open the site on your phone and you have... the logo and an email. That's it. You want to navigate? Scroll. Forever.
 
-Neel, diplomate : "no need for a sandwich menu ?" (sous-entendu : T'AS OUBLIÉ LE MENU HAMBURGER ???)
+Neel, diplomatically: "no need for a sandwich menu?" (subtext: YOU FORGOT THE HAMBURGER MENU???)
 
-Oui. Oui j'ai oublié. Mea culpa. C'est corrigé maintenant. Avec une animation ☰ → ✕ et tout et tout.
+Yes. I forgot. Mea culpa. Now it's fixed. With a nice ☰ → ✕ animation and everything.
 
-## Épilogue : Où on en est
+## Epilogue: Where we are now
 
-Aujourd'hui ? OmniDrop est à 93%. Beloved à 60% et en migration Flutter. J.A.R.V.I.S. Phase 1 est terminée. Le site web est complet, performant, avec un blog (celui que vous lisez), un menu hamburger (enfin), et 35 particules flottantes (le bon nombre, on a compté).
+Today? OmniDrop is at 93%. Beloved at 60% and migrating to Flutter. J.A.R.V.I.S. Phase 1 is done. The website is complete, performant, with a blog (the one you're reading), a hamburger menu (finally), and 35 floating particles (the right number, we counted).
 
-Ce qu'on a appris :
-- L'IA ne remplace pas le dev. Elle remplace le sommeil.
-- backdrop-filter:blur() est interdit. C'est la loi maintenant.
-- Un menu hamburger, ça se met DÈS LE DÉBUT.
-- "Quelques projets" c'est toujours un piège.
-- L'ordre dans le chaos, c'est juste du CSS grid avec des sizes random.
+What we learned:
+- AI doesn't replace devs. It replaces sleep.
+- backdrop-filter:blur() is banned. It's the law now.
+- A hamburger menu goes in FROM THE START.
+- "A few projects" is always a trap.
+- Order in chaos is just CSS grid with random sizes.
 
-Et le plus important : c'est faisable. Un mec avec une IA et trop de café peut construire un écosystème complet d'applications. C'est pas joli-joli en coulisses, il y a eu des bugs, des rm qui ont échoué, des opacity à 0.04, et un moment où le site faisait 3fps — mais le résultat est là.
+And the most important: it's doable. A guy with AI and too much coffee can build a complete app ecosystem. It's not pretty under the hood, there were bugs, failed rms, opacities at 0.04, and a moment where the site ran at 3fps — but the result is there.
 
-La suite ? Plus d'apps, plus de features, plus de particules flottantes, et probablement un Neel qui va m'envoyer "rajoute encore des trucs" à 2h du matin.
+What's next? More apps, more features, more floating particles, and probably Neel sending me "add more stuff" at 2am.
 
-Et je serai là. Parce que c'est ça, le game.
+And I'll be there. Because that's the game.
 
-> "On peut pas pousser comme ça" — Neel, 2026. La phrase qui a tout changé.`,
+> "We can't push like this" — Neel, 2026. The phrase that changed everything.`,
     date: '2026-02-26',
     readTime: '7 min',
-    tags: ['Coulisses', 'IA', 'Humour'],
+    tags: ['Behind the scenes', 'AI', 'Humor'],
     icon: '🎬',
     gradient: 'from-yellow-500 to-orange-500',
   },
   {
-    title: 'Je ne sais pas coder. J\'ai quand même sorti 8 apps.',
+    title: "I can't code. I shipped 8 apps anyway.",
     slug: 'je-ne-sais-pas-coder',
-    excerpt: 'Confession : je n\'ai jamais écrit une ligne de code de ma vie. Pas de bootcamp, pas de diplôme, juste une requête SQL de temps en temps. Et pourtant.',
-    content: `## L'aveu
+    excerpt: 'Confession: I\'ve never written a line of code in my life. No bootcamp, no degree, just the occasional SQL query. And yet.',
+    content: `## The confession
 
-OK, il faut qu'on parle.
+Okay, we need to talk.
 
-Tout le monde pense que ByNeel c'est un dev. Un mec qui a fait une école d'ingé, qui code depuis ses 14 ans, qui rêve en Python et qui a des stickers GitHub sur son laptop.
+Everyone thinks ByNeel is a dev. A guy who went to engineering school, who's been coding since age 14, who dreams in Python and has GitHub stickers on his laptop.
 
-Non.
+No.
 
-Je ne sais pas coder. Je n'ai JAMAIS su coder. Pas de HTML à 12 ans. Pas de "Hello World" au collège. Pas de bootcamp Le Wagon. Rien. Nada. Le néant technique le plus complet.
+I don't know how to code. I've NEVER known how to code. No HTML at age 12. No "Hello World" in middle school. No Le Wagon bootcamp. Nothing. Nada. Complete technical void.
 
-Mon seul lien avec le code ? Des requêtes SQL de temps en temps au boulot. Genre SELECT * FROM table WHERE truc = 'machin'. Voilà. C'est mon niveau. C'ÉTAIT mon niveau.
+My only link to code? The occasional SQL query at work. Like SELECT * FROM table WHERE thing = 'stuff'. That's it. That was my level. THAT WAS my level.
 
-## Mon vrai background
+## My real background
 
-Alors comment on passe de "je sais faire un SELECT" à "j'ai 8 apps en développement" ?
+So how do you go from "I know how to do a SELECT" to "I've got 8 apps in development"?
 
-La réponse : mon parcours m'a préparé sans que je le sache.
+The answer: my background prepared me without me knowing it.
 
-- **Testeur** — J'ai passé des années à casser des logiciels. À trouver le bug que personne ne trouve. À appuyer sur le bouton auquel personne ne pense. Ça m'a donné un œil chirurgical pour le détail et l'UX. Quand je teste mes propres apps, je suis mon pire ennemi. "Ça rame", "c'est trop sombre", "la tuile est trop grande" — c'est pas du caprice, c'est du testing en temps réel.
+- **QA Tester** — I spent years breaking software. Finding the bug nobody finds. Clicking the button nobody thinks of. That gave me a surgical eye for detail and UX. When I test my own apps, I'm my own worst enemy. "It lags", "it's too dark", "the tile is too big" — that's not nitpicking, that's real-time testing.
 
-- **Analyste** — Comprendre un système, le modéliser, identifier les flux de données. Je sais lire une architecture même si je ne sais pas l'écrire (enfin, je ne SAVAIS pas). Je comprends ce qu'un backend fait, comment une API parle à un frontend, pourquoi un cache est utile. Je ne sais pas l'implémenter à la main, mais je sais ce que je veux.
+- **Analyst** — Understanding a system, modeling it, identifying data flows. I can read an architecture even if I couldn't write one (well, I couldn't before). I understand what a backend does, how an API talks to a frontend, why a cache is useful. I can't implement it by hand, but I know what I want.
 
-- **Culture tech obsessionnelle** — Je lis tout. Les docs, les blogs, les changelogs, les threads Twitter sur les nouvelles technos. Je sais ce qu'est le NFC, le Wi-Fi Direct, l'AES-256-GCM, le RAG, les embeddings. Je connais les concepts. Je parle le langage. Et ça, c'est la clé.
+- **Obsessive tech culture** — I read everything. Docs, blogs, changelogs, Twitter threads about new tech. I know what NFC is, Wi-Fi Direct, AES-256-GCM, RAG, embeddings. I know the concepts. I speak the language. And that's the key.
 
-- **Product thinking** — Savoir ce que l'utilisateur veut. Pas ce qui est techniquement élégant, pas ce qui impressionne sur GitHub — ce qui FONCTIONNE pour la personne qui ouvre l'app. Chaque feature que je demande à Claude vient d'un besoin réel, pas d'un flex technique.
+- **Product thinking** — Knowing what the user wants. Not what's technically elegant, not what impresses on GitHub — what WORKS for the person opening the app. Every feature I ask Claude for comes from a real need, not a technical flex.
 
-- **Vision** — J'ai une image claire de chaque app dans ma tête. Je sais à quoi elle ressemble, comment elle se comporte, quel problème elle résout. C'est une compétence sous-estimée : savoir exactement ce qu'on veut.
+- **Vision** — I have a clear picture of each app in my head. I know what it looks like, how it behaves, what problem it solves. That's an underrated skill: knowing exactly what you want.
 
-## Comment ça marche concrètement
+## How it works concretely
 
-Ma relation avec l'IA, c'est pas "écris-moi une app". C'est une conversation. Un ping-pong permanent.
+My relationship with AI isn't "write me an app". It's a conversation. Permanent back-and-forth.
 
-Moi : "Je veux que les fichiers soient transférés en P2P, chiffrés, et que ça marche entre iOS et Android."
-Claude : *écrit 500 lignes de Dart*
-Moi : *teste* "Ça plante quand le fichier fait plus de 100Mo."
-Claude : *corrige*
-Moi : "Et si on perd la connexion en plein transfert ?"
-Claude : *ajoute la reprise automatique*
-Moi : "Cool. Maintenant fais que ça marche aussi sur Windows."
+Me: "I want files transferred P2P, encrypted, working between iOS and Android."
+Claude: *writes 500 lines of Dart*
+Me: *tests* "It crashes when the file is over 100MB."
+Claude: *fixes it*
+Me: "What if we lose connection mid-transfer?"
+Claude: *adds auto-resume*
+Me: "Cool. Now make it work on Windows too."
 
-Je ne lis pas chaque ligne de code. Soyons honnêtes. Mais je comprends la structure. Je sais quand quelque chose ne devrait pas être là. Et surtout — je sais TESTER. Des heures de test. Sur chaque écran, chaque flow, chaque edge case.
+I don't read every line of code. Let's be real. But I understand the structure. I know when something shouldn't be there. And most importantly — I know how to TEST. Hours of testing. Every screen, every flow, every edge case.
 
-L'IA écrit le code. Moi, je dirige le produit.
+The AI writes the code. Me, I direct the product.
 
-## Le profil parfait pour l'ère de l'IA
+## The perfect profile for the AI era
 
-Voilà le truc que personne ne dit : le meilleur profil pour travailler avec l'IA, c'est pas le dev senior. C'est celui qui sait ce qu'il veut, qui comprend les concepts sans être enfermé dans les détails, et qui a l'habitude de challenger un système.
+Here's what nobody says: the best profile for working with AI isn't the senior dev. It's someone who knows what they want, understands the concepts without getting lost in the details, and is used to challenging a system.
 
-Un testeur-analyste avec une culture tech, c'est exactement ça. Je sais :
-- Formuler un besoin clairement (prompting = product management)
-- Tester de manière systématique (QA = qualité du produit)
-- Identifier les failles avant l'utilisateur (testing = UX)
-- Penser en systèmes (analyse = architecture)
-- Savoir quand "ça rame" et pourquoi (culture tech = debugging conversationnel)
+A QA-analyst with obsessive tech culture? That's exactly it. I know:
+- How to state a need clearly (prompting = product management)
+- How to test systematically (QA = product quality)
+- How to spot flaws before the user (testing = UX)
+- How to think in systems (analysis = architecture)
+- When "it lags" and why (tech culture = conversational debugging)
 
-## La vraie révolution
+## The real revolution
 
-L'IA n'a pas démocratisé le code. Elle a démocratisé la CRÉATION.
+AI didn't democratize code. It democratized CREATION.
 
-Avant, il fallait savoir coder pour construire. Maintenant, il faut savoir PENSER. Savoir ce qu'on veut. Savoir tester. Savoir itérer. Savoir dire "c'est pas assez bien, recommence".
+Before, you had to know code to build. Now, you have to know THINKING. Know what you want. Know how to test. Know how to iterate. Know how to say "not good enough, try again".
 
-Et ça ? C'est un skillset. Ce n'est pas du code. C'est de la direction de produit assistée par IA.
+And that? That's a skillset. It's not code. It's AI-assisted product direction.
 
-8 apps. Flutter, Swift, Python, Next.js, FastAPI. Chiffrement AES-256-GCM, NFC, Wi-Fi Direct, IA embarquée. Un site web avec 35 particules flottantes et un menu hamburger (qu'on a failli oublier).
+8 apps. Flutter, Swift, Python, Next.js, FastAPI. AES-256-GCM encryption, NFC, Wi-Fi Direct, embedded AI. A website with 35 floating particles and a hamburger menu (that we almost forgot).
 
-Tout ça sans savoir coder.
+All without knowing code.
 
-Si ça c'est pas la preuve que le game a changé, je sais pas ce que c'est.
+If that's not proof the game has changed, I don't know what is.
 
-> Je ne sais pas coder. Mais je sais créer. Et en 2026, c'est la même chose.`,
+> I don't know code. But I know how to create. And in 2026, they're the same thing.`,
     date: '2026-02-20',
     readTime: '6 min',
-    tags: ['IA', 'No-code', 'Productivité'],
+    tags: ['AI', 'No-code', 'Productivity'],
     icon: '🤖',
     gradient: 'from-brand-blue to-brand-violet',
   },
   {
-    title: 'OmniDrop : le transfert de fichiers réinventé',
+    title: 'OmniDrop: reinventing file transfer',
     slug: 'omnidrop-transfert-fichiers-reinvente',
-    excerpt: 'NFC + Wi-Fi Direct + chiffrement AES-256-GCM = le transfert P2P que personne n\'a encore fait. Retour sur les choix techniques d\'OmniDrop.',
-    content: `## Le problème
+    excerpt: 'NFC + Wi-Fi Direct + AES-256-GCM encryption = the P2P transfer nobody else has done. A look at OmniDrop\'s technical choices.',
+    content: `## The problem
 
-AirDrop ne marche qu'entre appareils Apple. Le Bluetooth est lent. Le cloud nécessite un compte et une connexion. Et envoyer un fichier de 2 Go entre un iPhone et un PC Windows en 2026, c'est toujours un calvaire.
+AirDrop only works between Apple devices. Bluetooth is slow. Cloud requires an account and connection. And sending a 2GB file between an iPhone and a Windows PC in 2026? Still a nightmare.
 
-## La solution : NFC + Wi-Fi Direct
+## The solution: NFC + Wi-Fi Direct
 
-OmniDrop utilise le NFC pour initier la connexion (un tap suffit) et bascule automatiquement sur Wi-Fi Direct pour le transfert à haute vitesse. Résultat : des débits de plusieurs centaines de Mo/s, sans routeur, sans cloud, sans compte.
+OmniDrop uses NFC to start the connection (one tap is all it takes) and automatically switches to Wi-Fi Direct for high-speed transfer. Result: hundreds of MB/s speeds, no router, no cloud, no account.
 
-## Le chiffrement de bout en bout
+## End-to-end encryption
 
-Chaque transfert est chiffré en AES-256-GCM. Les clés sont échangées via le canal NFC (qui nécessite une proximité physique de quelques centimètres). Personne ne peut intercepter vos fichiers — même pas nous, puisqu'aucun serveur n'est impliqué.
+Every transfer is encrypted with AES-256-GCM. Keys are exchanged via the NFC channel (which requires physical proximity of a few centimeters). Nobody can intercept your files — not even us, since no server is involved.
 
-## Cross-platform natif
+## Native cross-platform
 
-Flutter permet de cibler iOS, Android, Windows, macOS et Linux depuis un seul codebase. Les plugins natifs (NFC, Wi-Fi Direct) sont écrits en Swift/Kotlin et bridgés via des Platform Channels.
+Flutter targets iOS, Android, Windows, macOS and Linux from a single codebase. Native plugins (NFC, Wi-Fi Direct) are written in Swift/Kotlin and bridged via Platform Channels.
 
-## Ce qui arrive
+## What's coming
 
-OmniDrop est en bêta fermée. La version publique arrive bientôt avec le support du multi-fichiers, le transfert de dossiers complets, et un mode "salle de classe" pour partager vers plusieurs appareils simultanément.`,
+OmniDrop is in closed beta. The public version arrives soon with support for multiple files, complete folder transfer, and a "classroom mode" to share with multiple devices at once.`,
     date: '2026-02-15',
     readTime: '2 min',
-    tags: ['OmniDrop', 'Flutter', 'Sécurité'],
+    tags: ['OmniDrop', 'Flutter', 'Security'],
     icon: '📡',
     gradient: 'from-cyan to-brand-blue',
   },
   {
-    title: 'Flutter vs Swift : mon verdict après 8 apps',
+    title: 'Flutter vs Swift: my verdict after 8 apps',
     slug: 'flutter-vs-swift-verdict',
-    excerpt: 'J\'utilise les deux au quotidien. Voici dans quels cas Flutter gagne, quand Swift est imbattable, et pourquoi la guerre des frameworks est idiote.',
-    content: `## Le contexte
+    excerpt: 'I use both daily. Here\'s when Flutter wins, when Swift is unbeatable, and why the framework war is stupid.',
+    content: `## The context
 
-J'ai 5 apps Flutter (OmniDrop, Beloved, TipLog, ImageVault, Isekai Survie) et 2 apps Swift (CookBook AI, StickerVibe AI). J'ai aussi un assistant IA full Python (J.A.R.V.I.S.). Je pense avoir assez de recul pour donner un avis honnête.
+I've got 5 Flutter apps (OmniDrop, Beloved, TipLog, ImageVault, Isekai Survie) and 2 Swift apps (CookBook AI, StickerVibe AI). I also have a full Python AI assistant (J.A.R.V.I.S.). I think I have enough perspective to give an honest opinion.
 
-## Quand Flutter gagne
+## When Flutter wins
 
-- **Cross-platform** — Un seul codebase pour iOS, Android, desktop et web. OmniDrop cible 5 plateformes avec un seul code.
-- **Hot Reload** — Le cycle de développement est absurdement rapide. Tu modifies un widget, il se rafraîchit en moins d'une seconde.
-- **UI custom** — Flutter dessine tout pixel par pixel. Tu n'es pas limité par les composants natifs.
-- **Riverpod** — Le meilleur système de state management que j'ai utilisé, tous frameworks confondus.
+- **Cross-platform** — One codebase for iOS, Android, desktop and web. OmniDrop targets 5 platforms with a single code.
+- **Hot Reload** — Development cycle is absurdly fast. You change a widget, it refreshes in less than a second.
+- **Custom UI** — Flutter draws everything pixel by pixel. You're not limited by native components.
+- **Riverpod** — Best state management system I've used, across all frameworks.
 
-## Quand Swift gagne
+## When Swift wins
 
-- **Core ML** — L'intégration avec les modèles ML d'Apple est native et ultra-rapide. CookBook AI utilise la caméra + Core ML pour identifier les ingrédients en temps réel.
-- **Performance brute** — Swift compilé est plus rapide que Dart AOT, point. Pour du traitement d'image lourd, ça compte.
-- **App Clips & Widgets** — Les extensions iOS ne sont pas (encore) bien supportées par Flutter.
-- **SwiftUI + Combine** — L'écosystème Apple est cohérent et élégant quand tu restes dans son jardin.
+- **Core ML** — Integration with Apple's ML models is native and ultra-fast. CookBook AI uses the camera + Core ML to identify ingredients in real time.
+- **Raw performance** — Compiled Swift is faster than Dart AOT, period. For heavy image processing, it matters.
+- **App Clips & Widgets** — iOS extensions aren't (yet) well-supported by Flutter.
+- **SwiftUI + Combine** — Apple's ecosystem is coherent and elegant when you stay in their garden.
 
-## Mon verdict
+## My verdict
 
-Utilise Flutter par défaut. Bascule sur Swift quand tu as besoin de Core ML, d'App Clips, ou quand ta cible est exclusivement Apple. La guerre des frameworks n'a aucun sens — ce sont des outils, pas des religions.`,
+Use Flutter by default. Switch to Swift when you need Core ML, App Clips, or when you only target Apple. The framework war makes no sense — they're tools, not religions.`,
     date: '2026-02-10',
     readTime: '3 min',
     tags: ['Flutter', 'Swift', 'Mobile'],
@@ -873,64 +1066,64 @@ Utilise Flutter par défaut. Bascule sur Swift quand tu as besoin de Core ML, d'
     gradient: 'from-orange-500 to-red-500',
   },
   {
-    title: 'J.A.R.V.I.S. : construire un assistant IA local',
+    title: 'J.A.R.V.I.S.: building a local AI assistant',
     slug: 'jarvis-assistant-ia-local',
-    excerpt: 'Comment j\'ai construit un assistant personnel qui tourne en local avec Ollama, FastAPI et un dashboard temps réel.',
-    content: `## L'idée
+    excerpt: 'How I built a personal assistant that runs entirely locally with Ollama, FastAPI and a real-time dashboard.',
+    content: `## The idea
 
-Les assistants IA cloud sont puissants mais posent un problème fondamental : vos données passent par des serveurs tiers. J.A.R.V.I.S. est né de l'envie d'avoir un assistant aussi capable que ChatGPT, mais qui tourne entièrement sur ma machine.
+Cloud AI assistants are powerful but have a fundamental issue: your data goes through third-party servers. J.A.R.V.I.S. was born from wanting an assistant as capable as ChatGPT, but running entirely on my machine.
 
-## L'architecture
+## The architecture
 
-- **Ollama** — Sert les modèles LLM en local (Mistral, Llama, Phi). Zéro appel réseau pour l'inférence.
-- **FastAPI** — API REST async qui orchestre les conversations, le RAG et les plugins.
-- **SQLite FTS5** — Base de données locale avec recherche full-text pour le contexte documentaire.
-- **Dashboard web** — Interface temps réel via WebSocket pour monitorer les conversations et les métriques.
+- **Ollama** — Serves LLM models locally (Mistral, Llama, Phi). Zero network calls for inference.
+- **FastAPI** — Async REST API that orchestrates conversations, RAG and plugins.
+- **SQLite FTS5** — Local database with full-text search for document context.
+- **Web Dashboard** — Real-time interface via WebSocket to monitor conversations and metrics.
 
-## Le RAG maison
+## DIY RAG
 
-J.A.R.V.I.S. peut ingérer des documents (PDF, markdown, code) et les chunker en embeddings stockés localement. Quand tu poses une question, il cherche d'abord dans ta base de connaissances avant de répondre. Tout reste sur ton disque.
+J.A.R.V.I.S. can ingest documents (PDF, markdown, code) and chunk them into embeddings stored locally. When you ask a question, it searches your knowledge base first before answering. Everything stays on your disk.
 
-## Les défis
+## The challenges
 
-Le principal défi est la vitesse. Un LLM 7B en local sur un MacBook Pro génère ~30 tokens/seconde. C'est utilisable mais loin des ~100 t/s de GPT-4 via API. Le compromis vie privée vs vitesse est réel.
+The main challenge is speed. A 7B LLM locally on a MacBook Pro generates ~30 tokens/second. It's usable but far from GPT-4's ~100 t/s via API. The privacy vs speed tradeoff is real.
 
 ## Phase 2
 
-La prochaine étape : les plugins. J.A.R.V.I.S. pourra contrôler des apps, lire des emails, et interagir avec des APIs externes — tout en gardant le raisonnement en local.`,
+Next step: plugins. J.A.R.V.I.S. will be able to control apps, read emails, and interact with external APIs — all while keeping reasoning local.`,
     date: '2026-02-05',
     readTime: '3 min',
-    tags: ['J.A.R.V.I.S.', 'Python', 'IA locale'],
+    tags: ['J.A.R.V.I.S.', 'Python', 'Local AI'],
     icon: '🧠',
     gradient: 'from-emerald-500 to-teal-500',
   },
   {
-    title: 'Le dark design : comment j\'ai designé ByNeel',
+    title: 'Dark design: how I designed ByNeel',
     slug: 'dark-design-byneel',
-    excerpt: 'Glassmorphism, gradients néon, particules flottantes — les choix de design derrière ce site et pourquoi le dark mode est le futur.',
-    content: `## La philosophie
+    excerpt: 'Glassmorphism, neon gradients, floating particles — the design choices behind this site and why dark mode is the future.',
+    content: `## The philosophy
 
-ByNeel est un site de dev. Pas un site corporate. Pas un portfolio Dribbble. L'esthétique devait refléter le code : sombre, technique, vivant.
+ByNeel is a dev site. Not a corporate site. Not a Dribbble portfolio. The aesthetic had to reflect code: dark, technical, alive.
 
-## Les ingrédients
+## The ingredients
 
-- **Glassmorphism** — Cartes semi-transparentes avec bordures subtiles. Ça donne de la profondeur sans surcharger.
-- **Gradients néon** — Bleu électrique → violet → cyan. Chaque projet a son propre dégradé qui crée une identité visuelle unique.
-- **Particules flottantes** — Des symboles de code ({}, //, λ, =>…) flottent en arrière-plan. C'est subtil mais ça donne vie à la page.
-- **Typographie mono-space** — Les titres techniques utilisent une police à chasse fixe pour renforcer l'ambiance "terminal".
+- **Glassmorphism** — Semi-transparent cards with subtle borders. Gives depth without overloading.
+- **Neon gradients** — Electric blue → violet → cyan. Each project has its own gradient for unique visual identity.
+- **Floating particles** — Code symbols ({}, //, λ, =>...) float in the background. It's subtle but brings the page to life.
+- **Monospace typography** — Technical titles use fixed-width fonts to strengthen the "terminal" vibe.
 
 ## Performance = Design
 
-Un beau site qui rame est un mauvais site. J'ai supprimé Motion.js de quasiment tous les composants et remplacé par des animations CSS natives. Le résultat : des transitions fluides à 60fps même sur mobile.
+A beautiful site that lags is a bad site. I removed Motion.js from almost every component and replaced it with native CSS animations. Result: smooth transitions at 60fps even on mobile.
 
-Les règles :
-1. **Pas de backdrop-filter:blur()** sur les éléments qui scrollent — c'est un tueur de performance.
-2. **IntersectionObserver** au lieu de librairies d'animation — plus léger, plus fiable.
-3. **will-change: transform** sur les éléments animés pour activer le GPU compositing.
+The rules:
+1. **No backdrop-filter:blur()** on scrolling elements — it kills performance.
+2. **IntersectionObserver** instead of animation libraries — lighter, more reliable.
+3. **will-change: transform** on animated elements to activate GPU compositing.
 
-## Le futur du web est sombre
+## The future is dark
 
-Les écrans OLED consomment moins en dark mode. Les yeux fatiguent moins la nuit. Et soyons honnêtes — c'est plus beau. Le dark mode n'est pas une tendance, c'est une évolution.`,
+OLED screens use less power in dark mode. Eyes tire less at night. And let's be honest — it looks better. Dark mode isn't a trend, it's an evolution.`,
     date: '2026-01-28',
     readTime: '2 min',
     tags: ['Design', 'CSS', 'Performance'],

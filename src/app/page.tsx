@@ -1,5 +1,4 @@
 import { HeroSection } from '@/components/sections/HeroSection';
-import { TapSection } from '@/components/sections/TapSection';
 import { StatsSection } from '@/components/sections/StatsSection';
 import { BentoGrid } from '@/components/sections/BentoGrid';
 import { TechStackSection } from '@/components/sections/TechStackSection';
@@ -14,7 +13,6 @@ export default function Home() {
       <StatsSection />
       <BentoGrid />
       <TechStackSection />
-      <TapSection />
       <BlogPreview />
       <PlatformSection />
       <AboutSection />

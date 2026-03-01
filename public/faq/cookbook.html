@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - CookBook AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B1220;
+            color: #E8E8E8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #0F1628;
+            border-bottom: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #0A84FF;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #A8A8A8;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a2845;
+        }
+
+        nav a {
+            color: #0A84FF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4BA3FF;
+        }
+
+        .faq-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #0A84FF;
+            padding-left: 1.5rem;
+        }
+
+        .faq-question {
+            color: #0A84FF;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: #4BA3FF;
+        }
+
+        .faq-toggle {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            color: #0A84FF;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            color: #D0D0D0;
+            display: none;
+            padding-top: 0.8rem;
+            border-top: 1px solid #1a2845;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        footer {
+            background-color: #0F1628;
+            border-top: 1px solid #0A84FF;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            color: #A8A8A8;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .contact-info {
+            color: #0A84FF;
+            text-decoration: none;
+        }
+
+        .contact-info:hover {
+            color: #4BA3FF;
+        }
+
+        .updated-date {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2845;
+        }
+
+        strong {
+            color: #0A84FF;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FAQ CookBook AI</h1>
+        <p>Questions fréquemment posées</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="https://byneel.com">← Retour à byNeel</a>
+        </nav>
+
+        <div class="faq-section">
+            <div class="faq-item open">
+                <div class="faq-question">
+                    <span>Comment importer une recette à partir d'une URL ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        C'est simple :
+                    </p>
+                    <ol style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Appuyez sur "+" pour créer une nouvelle recette</li>
+                        <li>Sélectionnez l'option "Importer depuis URL"</li>
+                        <li>Collez le lien de la recette (depuis n'importe quel site culinaire)</li>
+                        <li>CookBook AI extrait automatiquement les ingrédients et les instructions</li>
+                        <li>Vous pouvez éditer et personnaliser avant de sauvegarder</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment fonctionne la dictée vocale ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        La dictée vocale vous permet d'ajouter des ingrédients ou des instructions mains libres :
+                    </p>
+                    <ol style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Appuyez sur l'icône microphone</li>
+                        <li>Parlez naturellement : "ajouter 200 grammes de farine"</li>
+                        <li>CookBook AI transcrit votre parole et l'ajoute à la recette</li>
+                        <li>Vous pouvez corriger ou éditer avant de confirmer</li>
+                    </ol>
+                    <p style="margin-top: 1rem;">
+                        Le traitement du discours fonctionne en ligne et hors ligne selon votre configuration.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je exporter mes recettes ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Oui !</strong> Vous pouvez exporter vos recettes de plusieurs façons :
+                    </p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>PDF</strong> - Parfait pour imprimer ou partager</li>
+                        <li><strong>JSON</strong> - Format de portabilité de données</li>
+                        <li><strong>Email</strong> - Envoyer la recette par email</li>
+                        <li><strong>Partage</strong> - Partager via Messages, iCloud, etc.</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">
+                        Appuyez sur l'icône "Partager" depuis la fiche de recette.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Qu'est-ce qui est déverrouillé avec Premium ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        CookBook AI Premium déverrouille les fonctionnalités avancées :
+                    </p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Assistant IA illimité</strong> - Générez et améliorez les recettes sans limite</li>
+                        <li><strong>Pas de publicités</strong> - Interface propre sans interruptions</li>
+                        <li><strong>Reconnaissance de photos avancée</strong> - Meilleure extraction OCR des recettes</li>
+                        <li><strong>Plans de repas personnalisés</strong> - Générés par l'IA selon vos préférences</li>
+                        <li><strong>Listes de courses intelligentes</strong> - Avec consolidation automatique</li>
+                        <li><strong>Thèmes premium</strong> - Personnalisez l'apparence de l'app</li>
+                        <li><strong>Synchronisation cloud</strong> - Accédez à vos recettes sur plusieurs appareils</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>L'IA a-t-elle besoin d'Internet ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Cela dépend :</strong>
+                    </p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Océrisation (reconnaissance de photos)</strong> - Fonctionne partiellement hors ligne (Google ML Kit)</li>
+                        <li><strong>Génération de recettes IA</strong> - Nécessite Internet (Google Gemini API)</li>
+                        <li><strong>Dictée vocale</strong> - Peut fonctionner hors ligne selon votre appareil</li>
+                        <li><strong>Stockage local</strong> - Toutes vos recettes sont sauvegardées localement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment scanner une recette à partir d'une photo ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        C'est facile :
+                    </p>
+                    <ol style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Appuyez sur "+" pour créer une nouvelle recette</li>
+                        <li>Choisissez "Importer depuis photo"</li>
+                        <li>Prenez une photo d'une recette (livre, magazine, papier)</li>
+                        <li>CookBook AI utilise OCR pour reconnaître le texte</li>
+                        <li>Vérifiez et corrigez les informations avant de sauvegarder</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment créer un plan de repas ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Pour créer un plan de repas :
+                    </p>
+                    <ol style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Allez à l'onglet "Plans de repas"</li>
+                        <li>Appuyez sur "Créer un nouveau plan"</li>
+                        <li>Sélectionnez les jours et repas (petit-déjeuner, déjeuner, dîner)</li>
+                        <li>Ajoutez vos recettes à chaque créneau</li>
+                        <li>CookBook AI génère automatiquement une liste de courses consolidée</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quelles données sont stockées localement ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Toutes vos données cuisinaires restent sur votre appareil :
+                    </p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Vos recettes complètes</li>
+                        <li>Plans de repas</li>
+                        <li>Listes de courses</li>
+                        <li>Notes personnelles</li>
+                        <li>Préférences et favoris</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">
+                        Aucun de ces éléments n'est envoyé à nos serveurs sauf si vous avez la synchronisation cloud activée.
+                        Voir notre <a href="/legal/cookbook-privacy.html" style="color: #0A84FF;">politique de confidentialité</a>
+                        pour plus de détails.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment utiliser le mode cuisine ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        Le mode cuisine optimise l'affichage pour la cuisine :
+                    </p>
+                    <ol style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Ouvrez une recette</li>
+                        <li>Appuyez sur "Mode cuisine" en bas</li>
+                        <li>L'écran affiche les instructions en grand pour une meilleure lisibilité</li>
+                        <li>Cochez les étapes à mesure que vous progressez</li>
+                        <li>L'écran reste allumé avec luminosité adaptée</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Mes données de recettes sont-elles sécurisées ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Oui, vos recettes restent privées.</strong>
+                    </p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Vos recettes locales sont stockées sur votre appareil uniquement</li>
+                        <li>Protégées par le chiffrement natif de votre système d'exploitation</li>
+                        <li>Seules les demandes IA sont envoyées à Google Gemini (sans vos autres données)</li>
+                        <li>Aucun partage de données avec des tiers non autorisés</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">
+                        Consultez notre <a href="/legal/cookbook-privacy.html" style="color: #0A84FF;">politique de confidentialité</a>
+                        pour les détails complets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je utiliser CookBook AI hors ligne ?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        <strong>Oui, partiellement.</strong> Vous pouvez :
+                    </p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Consulter toutes vos recettes sauvegardées</li>
+                        <li>Suivre un plan de repas</li>
+                        <li>Utiliser votre liste de courses</li>
+                        <li>Scanner des photos (avec ML Kit on-device)</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">
+                        Vous aurez besoin d'Internet pour générer une recette avec l'IA.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #1a2845;">
+            <p style="color: #A8A8A8; margin-bottom: 1rem;">Vous avez d'autres questions ?</p>
+            <p>
+                <strong>Contactez-nous :</strong>
+                <a href="mailto:ylaghouati@icloud.com" class="contact-info">ylaghouati@icloud.com</a>
+            </p>
+        </div>
+
+        <div class="updated-date">
+            Dernière mise à jour : 25 février 2026
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 byNeel. Tous droits réservés.</p>
+        <p>FAQ CookBook AI</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                this.closest('.faq-item').classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

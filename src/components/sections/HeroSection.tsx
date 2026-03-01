@@ -1,8 +1,10 @@
 'use client';
 
 import { ChevronDown } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export function HeroSection() {
+  const { t } = useLanguage();
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden pt-32">
       {/* Background — hero orbs + grid only (floating elements are now global) */}
@@ -20,7 +22,7 @@ export function HeroSection() {
         {/* Badge */}
         <div className="inline-block px-4 py-2 mb-8 text-xs font-medium tracking-widest uppercase rounded-full glass-shimmer animate-shimmer">
           <span className="bg-gradient-to-r from-brand-blue via-brand-violet to-cyan bg-clip-text text-transparent">
-            ✨ Développement assisté par IA
+            {'✨ ' + t('hero.badge')}
           </span>
         </div>
 
@@ -32,23 +34,21 @@ export function HeroSection() {
         </h1>
 
         {/* Tagline */}
-        <div className="h-20 md:h-24 flex items-center justify-center mb-8">
-          <div className="text-2xl md:text-4xl lg:text-5xl font-bold">
+        <div className="flex items-center justify-center mb-10">
+          <div className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
             <span className="bg-gradient-to-r from-cyan via-brand-blue to-brand-violet bg-clip-text text-transparent">
-              Des idées
+              {t('hero.ideas')}
             </span>
             <br />
-            <span className="inline-block mt-2 bg-gradient-to-r from-brand-violet via-pink to-cyan bg-clip-text text-transparent">
-              qui prennent vie.
+            <span className="inline-block mt-2 bg-gradient-to-r from-brand-violet via-pink to-cyan bg-clip-text text-transparent pb-1">
+              {t('hero.broughtToLife')}
             </span>
           </div>
         </div>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-12 leading-relaxed">
-          Applications mobiles, outils IA et projets open source.{' '}
-          <span className="text-foreground font-semibold">Développement assisté par IA</span>,
-          conçus pour durer.
+        <p className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-14 leading-relaxed">
+          {t('hero.subtitle1')} <span className="text-foreground font-semibold">{t('hero.subtitle2')}</span>{t('hero.subtitle3')}
         </p>
 
         {/* CTA Buttons */}
@@ -59,7 +59,7 @@ export function HeroSection() {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-brand-blue via-brand-violet to-cyan opacity-100 group-hover:opacity-90 transition-opacity rounded-2xl" />
             <span className="relative flex items-center gap-2">
-              Découvrir les projets
+              {t('hero.cta1')}
               <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
             </span>
           </a>
@@ -68,7 +68,7 @@ export function HeroSection() {
             href="#contact"
             className="px-8 py-4 rounded-2xl font-semibold border-2 border-white/20 text-white hover:bg-white/5 hover:scale-[1.03] active:scale-95 transition-all duration-300"
           >
-            En savoir plus
+            {t('hero.cta2')}
           </a>
         </div>
       </div>
@@ -76,7 +76,7 @@ export function HeroSection() {
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-float">
         <a href="#stats" className="flex flex-col items-center gap-2 text-muted hover:text-foreground transition-colors">
-          <span className="text-sm font-medium">Scroll</span>
+          <span className="text-sm font-medium">{t('hero.scroll')}</span>
           <div className="w-6 h-10 border border-white/20 rounded-full flex items-center justify-center">
             <div className="w-1 h-2 bg-white/40 rounded-full scroll-dot" />
           </div>

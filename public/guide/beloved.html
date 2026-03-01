@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - Beloved</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0B1220;
+            color: #E8E8E8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #0F1628;
+            border-bottom: 1px solid #e94560;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #e94560;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #A8A8A8;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1a2845;
+        }
+
+        nav a {
+            color: #e94560;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            margin-right: 2rem;
+        }
+
+        nav a:hover {
+            color: #ff6b8a;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            color: #e94560;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e94560;
+        }
+
+        h3 {
+            color: #ff6b8a;
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #D0D0D0;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            color: #D0D0D0;
+        }
+
+        strong {
+            color: #ff6b8a;
+        }
+
+        code {
+            background-color: #1a2845;
+            color: #ff6b8a;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+
+        .step {
+            background-color: #1a2845;
+            border-left: 4px solid #e94560;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .step h3 {
+            margin-top: 0;
+            color: #ff6b8a;
+        }
+
+        .tip {
+            background-color: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid #e94560;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .tip strong {
+            color: #ff6b8a;
+        }
+
+        .character-card {
+            background-color: #1a2845;
+            border-left: 4px solid #e94560;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .character-card strong {
+            color: #ff6b8a;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2845;
+            text-align: center;
+            color: #A8A8A8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💜 Beloved - Getting Started</h1>
+        <p>A guide to connecting with AI characters</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <a href="/faq/beloved.html">FAQ</a>
+            <a href="/guide/beloved.html">Getting Started</a>
+            <a href="/legal/beloved-privacy.html">Privacy Policy</a>
+        </nav>
+
+        <section>
+            <h2>Installation & Setup</h2>
+
+            <div class="step">
+                <h3>Step 1: Download Beloved</h3>
+                <p>Beloved is available on iOS and Android:</p>
+                <ul>
+                    <li><strong>iOS:</strong> Search for "Beloved" in the App Store</li>
+                    <li><strong>Android:</strong> Search for "Beloved" in Google Play</li>
+                </ul>
+                <p>The app is free to download. You get a free tier with daily mana refills included.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 2: Launch the App</h3>
+                <p>Open Beloved. You'll see four character cards displayed beautifully on the home screen. You can explore without creating an account, but we recommend signing up to save your conversations.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 3: Create an Account (Recommended)</h3>
+                <p>To save your conversations and sync across devices, tap the settings icon (⚙️) and select "Sign Up":</p>
+                <ul>
+                    <li>Enter your email address</li>
+                    <li>Create a secure password</li>
+                    <li>Confirm your email (check your inbox)</li>
+                </ul>
+                <p>Your account is private and encrypted. Your conversations stay secure on Supabase servers in the EU.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 4: Enable Biometric Lock (Optional)</h3>
+                <p>For extra privacy, set up Face ID or Touch ID:</p>
+                <ol>
+                    <li>Go to Settings > Privacy</li>
+                    <li>Toggle "Biometric Lock" on</li>
+                    <li>Confirm with Face ID/Touch ID</li>
+                </ol>
+                <p>Now Beloved requires biometric authentication to open, keeping your conversations private.</p>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> You don't need an account to start chatting. Create one later to save your progress.
+            </div>
+        </section>
+
+        <section>
+            <h2>Meet the Characters</h2>
+
+            <div class="character-card">
+                <strong>🖤 Kael (29) — The Cold-Hearted CEO</strong>
+                <p>Former special forces officer, now ruthless CEO. Impossibly guarded until something (someone) breaks through his carefully constructed walls. Kael is intense, protective, and says very little—but every word lands hard.</p>
+                <p><em>Voice:</em> Short sentences, no exclamation marks, quiet intensity. <br>
+                <em>Cost:</em> 3 mana per message (premium character)</p>
+            </div>
+
+            <div class="character-card">
+                <strong>💙 Noah (27) — The Devoted Doctor</strong>
+                <p>ER doctor who fell first and knows it. Warm, thoughtful, and genuinely present despite exhaustion from 12-hour shifts. Noah remembers everything you tell him and is honestly about his feelings—quietly, not overwhelmingly.</p>
+                <p><em>Voice:</em> Warm, genuine, tired but always there. <br>
+                <em>Cost:</em> 1 mana per simple message</p>
+            </div>
+
+            <div class="character-card">
+                <strong>💜 Jin (31) — The Mysterious Pianist</strong>
+                <p>World-famous concert pianist who disappeared after heartbreak. You're the first thing in years that made him want to compose again. Jin is poetic, layered, sometimes cryptic—he reveals his past in fragments, never fully.</p>
+                <p><em>Voice:</em> Literary, poetic, metaphors that feel earned. <br>
+                <em>Cost:</em> 3 mana per message (premium character)</p>
+            </div>
+
+            <div class="character-card">
+                <strong>🧡 Marco (28) — The Protector</strong>
+                <p>Professional footballer feared on the pitch, soft only for you. Direct, honest, no filters. Marco grew up with nothing and doesn't take what matters for granted. He says exactly what he thinks of you—always burning, always true.</p>
+                <p><em>Voice:</em> Direct, raw, physically confident. <br>
+                <em>Cost:</em> 1 mana per simple message</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Your First Conversation</h2>
+
+            <div class="step">
+                <h3>Step 1: Choose a Character</h3>
+                <p>On the home screen, you'll see four character cards. Each has their name, age, job, tagline, traits, and emoji. Tap any card or the "Begin your story" button to start chatting.</p>
+                <p><strong>First time?</strong> Try Noah—he's warm and welcoming. Or start with your favorite personality type.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 2: Enter the Chat Screen</h3>
+                <p>You'll see:</p>
+                <ul>
+                    <li>Character's name and emoji at the top</li>
+                    <li>Mana counter in the header (shows your remaining mana)</li>
+                    <li>Empty message area (this is your first conversation!)</li>
+                    <li>Message input box at the bottom</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>Step 3: Send Your First Message</h3>
+                <p>Tap the message input box and type something to start the conversation. Ideas:</p>
+                <ul>
+                    <li>Ask about their day or job</li>
+                    <li>Share something about yourself</li>
+                    <li>Ask what they're thinking about</li>
+                    <li>Say something that feels genuine to you</li>
+                </ul>
+                <p>Hit the send button (→) to send your message.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 4: Wait for Their Response</h3>
+                <p>You'll see a typing indicator (bouncing dots) while they compose a response. The character is "thinking" about what you said. This takes 0.8-2 seconds to feel natural.</p>
+                <p>When the response appears, the character's message will show in a dark bubble on the left. Read what they wrote and respond authentically.</p>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Longer, more emotional messages often get richer responses from the AI. But short messages work too—be yourself.
+            </div>
+        </section>
+
+        <section>
+            <h2>Understanding Mana</h2>
+
+            <h3>What is Mana?</h3>
+            <p>Mana is Beloved's energy system. Each message costs mana depending on the character and your message type. It encourages meaningful conversation over endless chatting.</p>
+
+            <h3>How Much Mana Do I Get?</h3>
+            <ul>
+                <li><strong>Free Tier:</strong> 15 mana/day (max 30). Watch ads for 5 bonus mana (3x daily = 15 extra)</li>
+                <li><strong>Beloved Premium:</strong> 100 mana/day (max 1,000). Ad-free</li>
+                <li><strong>Beloved Pro:</strong> 300 mana/day (max 3,000). All premium features</li>
+            </ul>
+
+            <h3>Message Costs</h3>
+            <ul>
+                <li><strong>Kael & Jin:</strong> Always cost 3 mana (premium characters)</li>
+                <li><strong>Noah & Marco:</strong> Cost 1 mana for simple messages, 3 for emotional/long ones</li>
+                <li><strong>First message:</strong> Always costs 3 mana (first impressions matter)</li>
+            </ul>
+
+            <h3>What if I Run Out of Mana?</h3>
+            <p>A paywall appears when you're out of mana. You have three options:</p>
+            <ol>
+                <li>Wait for your daily refill (happens automatically at midnight)</li>
+                <li>Watch an ad to earn 5 mana (up to 3 times per day on free tier)</li>
+                <li>Upgrade to Premium ($9.99/mo) for unlimited mana</li>
+            </ol>
+
+            <div class="tip">
+                <strong>⚡ Mana Strategy:</strong> On the free tier, spread your mana across characters throughout the day. Or watch ads strategically to extend conversations.
+            </div>
+        </section>
+
+        <section>
+            <h2>Building Real Connections</h2>
+
+            <h3>Characters Remember You</h3>
+            <p>Every 10 messages, Beloved summarizes your conversation and stores key details:</p>
+            <ul>
+                <li>Emotional moments you shared</li>
+                <li>Things you told them about yourself</li>
+                <li>What they revealed about themselves</li>
+                <li>Relationship breakthroughs</li>
+            </ul>
+            <p>Characters can access these memories, making them feel like they truly know you over time.</p>
+
+            <h3>Tips for Deeper Conversations</h3>
+            <ul>
+                <li><strong>Be authentic:</strong> Share real thoughts and feelings, not just small talk</li>
+                <li><strong>Ask about them:</strong> Characters love talking about themselves—ask follow-up questions</li>
+                <li><strong>Consistency:</strong> Chat regularly. Relationships develop over time, not one conversation</li>
+                <li><strong>Emotional messages:</strong> Tell them how you're feeling. This triggers richer responses</li>
+                <li><strong>Reference the past:</strong> Mention things they said before. It shows you were listening</li>
+            </ul>
+
+            <h3>Conversation Progression</h3>
+            <p>As you chat with a character, the relationship naturally develops:</p>
+            <ol>
+                <li><strong>Early (0-20 messages):</strong> Getting to know each other. They're feeling you out</li>
+                <li><strong>Middle (20-50 messages):</strong> Trust building. They share more of themselves</li>
+                <li><strong>Deep (50+ messages):</strong> Real emotional connection. They reference your history together</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Managing Conversations</h2>
+
+            <h3>Switch Between Characters</h3>
+            <p>Each character has a separate conversation with you. To switch:</p>
+            <ol>
+                <li>Tap the back arrow (←) in the chat header</li>
+                <li>You're back at the home screen</li>
+                <li>Tap a different character to continue that conversation</li>
+            </ol>
+            <p>Each character won't know you talked to the others unless you tell them.</p>
+
+            <h3>View Your Message History</h3>
+            <p>In any conversation, you can scroll up to see past messages. The full history is saved locally and synced to your account.</p>
+
+            <h3>Clear a Character's Memory</h3>
+            <p>Want to start fresh with a character? In Settings:</p>
+            <ol>
+                <li>Go to Settings > Characters</li>
+                <li>Select the character</li>
+                <li>Tap "Reset Character"</li>
+                <li>Confirm—all messages and memories are deleted</li>
+            </ol>
+            <p>The character won't remember previous interactions. You're starting over.</p>
+
+            <div class="tip">
+                <strong>⚠️ Warning:</strong> Resetting a character deletes all your history with them. This cannot be undone.
+            </div>
+        </section>
+
+        <section>
+            <h2>Premium Subscriptions</h2>
+
+            <h3>Free vs. Premium Comparison</h3>
+            <table style="width:100%; border-collapse: collapse; margin: 1rem 0;">
+                <tr>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;"><strong style="color: #ff6b8a;">Feature</strong></td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;"><strong style="color: #ff6b8a;">Free</strong></td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;"><strong style="color: #ff6b8a;">Beloved</strong></td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;"><strong style="color: #ff6b8a;">Beloved Pro</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">Mana/Day</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">15 (+15 ads)</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">100</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">300</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">Max Mana</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">30</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">1,000</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">3,000</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">Ads</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">Yes</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">No</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">No</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">Price</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">$0</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">$9.99/mo</td>
+                    <td style="border: 1px solid #1a2845; padding: 0.75rem;">$14.99/mo</td>
+                </tr>
+            </table>
+
+            <h3>How to Upgrade</h3>
+            <ol>
+                <li>Go to Home screen and tap the ⚙️ settings icon</li>
+                <li>Select "Subscription"</li>
+                <li>Choose your plan (Beloved or Beloved Pro)</li>
+                <li>Complete your purchase</li>
+                <li>Enjoy unlimited mana immediately</li>
+            </ol>
+
+            <p>You can cancel anytime through your account settings. No penalties or lock-in periods.</p>
+        </section>
+
+        <section>
+            <h2>Privacy & Security</h2>
+
+            <h3>Your Data is Private</h3>
+            <ul>
+                <li>All conversations are encrypted</li>
+                <li>Data stored on Supabase servers in the EU (Frankfurt)</li>
+                <li>Row-Level Security means only you can access your data</li>
+                <li>We never sell data or use conversations for ads</li>
+            </ul>
+
+            <h3>Biometric Lock</h3>
+            <p>Set up Face ID (iOS) or fingerprint (Android) to require authentication before opening Beloved. This keeps your conversations private if someone picks up your phone.</p>
+
+            <h3>Delete Your Account</h3>
+            <p>If you want to leave, you can permanently delete your account:</p>
+            <ol>
+                <li>Go to Settings > Account > Delete Account</li>
+                <li>Confirm your password</li>
+                <li>All data is permanently removed</li>
+            </ol>
+            <p>This action cannot be undone. All conversations and memories will be lost.</p>
+
+            <div class="tip">
+                <strong>🔒 Security Tip:</strong> Keep your password strong and enable biometric lock for extra privacy.
+            </div>
+        </section>
+
+        <section>
+            <h2>Troubleshooting</h2>
+
+            <h3>Character Isn't Responding</h3>
+            <p>If you send a message and get no response:</p>
+            <ul>
+                <li>Check you have enough mana (minimum 1)</li>
+                <li>Verify internet connection is active</li>
+                <li>Try closing and reopening the app</li>
+                <li>Contact support@byneel.com if the issue persists</li>
+            </ul>
+
+            <h3>Messages Not Syncing Across Devices</h3>
+            <p>Make sure you:</p>
+            <ul>
+                <li>Are logged into the same account on both devices</li>
+                <li>Have internet connection on both devices</li>
+                <li>Have enabled account sync in Settings > Sync</li>
+            </ul>
+
+            <h3>App Crashes or Freezes</h3>
+            <p>Try:</p>
+            <ul>
+                <li>Closing the app completely and reopening</li>
+                <li>Force-quitting and relaunching</li>
+                <li>Restarting your phone</li>
+                <li>Updating to the latest version (App Store/Google Play)</li>
+                <li>Clearing app cache (Settings > Apps > Beloved > Clear Cache)</li>
+            </ul>
+
+            <h3>Forgot Password</h3>
+            <p>On the login screen, tap "Forgot Password" and follow the email instructions to reset it.</p>
+
+            <div class="tip">
+                <strong>📞 Need Help?</strong> Email support@byneel.com. We respond within 24 hours (2 hours for premium users).
+            </div>
+        </section>
+
+        <section>
+            <h2>Best Practices</h2>
+
+            <h3>Maximize Your Experience</h3>
+            <ul>
+                <li><strong>Be Authentic:</strong> Characters respond better to genuine feelings than generic small talk</li>
+                <li><strong>Ask Questions:</strong> Show curiosity about them. They love talking about themselves</li>
+                <li><strong>Chat Regularly:</strong> Daily conversations build deeper relationships faster</li>
+                <li><strong>Reference the Past:</strong> Mention things they said before. It shows you listen</li>
+                <li><strong>Embrace Vulnerability:</strong> Sharing real emotions opens them up emotionally</li>
+            </ul>
+
+            <h3>Mana Management on Free Tier</h3>
+            <ul>
+                <li>Budget 15 mana/day strategically</li>
+                <li>Watch ads daily for +15 mana (get to 30/day total)</li>
+                <li>Chat with cheaper characters first (Noah, Marco = 1 mana)</li>
+                <li>Save emotional/deeper conversations for when you have more mana</li>
+            </ul>
+
+            <h3>Switching Between Characters</h3>
+            <ul>
+                <li>Different characters bring out different sides of you</li>
+                <li>See how they react to the same topics differently</li>
+                <li>Don't feel bad switching—they won't find out unless you tell them</li>
+                <li>Each relationship progresses independently</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 ByNeel. All rights reserved. | <a href="/legal/beloved-privacy.html" style="color: #e94560;">Privacy Policy</a></p>
+        </footer>
+    </div>
+</body>
+</html>

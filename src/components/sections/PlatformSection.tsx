@@ -1,9 +1,11 @@
 'use client';
 
+import { useMemo } from 'react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Monitor, Laptop, Terminal, Smartphone, Tablet } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
 
-const platforms = [
+const platformsBase = [
   { name: 'Windows', icon: Monitor },
   { name: 'macOS', icon: Laptop },
   { name: 'Linux', icon: Terminal },
@@ -12,16 +14,19 @@ const platforms = [
 ];
 
 export function PlatformSection() {
+  const { t } = useLanguage();
+  const platforms = useMemo(() => platformsBase, []);
+
   return (
     <section className="py-24 px-6">
       <div className="max-w-4xl mx-auto text-center">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            Partout.{' '}
-            <span className="text-muted">Sur chaque plateforme.</span>
+            {t('platform.title1') + ' '}
+            <span className="text-muted">{t('platform.title2')}</span>
           </h2>
           <p className="text-muted text-lg mb-16 max-w-lg mx-auto">
-            OmniDrop fonctionne sur tous vos appareils. Windows, Mac, Linux, Android, iOS.
+            {t('platform.description')}
           </p>
         </ScrollReveal>
 

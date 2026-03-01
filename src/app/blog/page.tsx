@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { posts } from '@/data/posts';
+import { useLanguage } from '@/i18n/LanguageContext';
+import { usePosts } from '@/i18n/useLocalizedData';
 import { GlassCard } from '@/components/ui/GlassCard';
 
-export default function BlogPage() {
+function useRevealAnimation() {
   useEffect(() => {
     const els = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver(
@@ -22,6 +23,13 @@ export default function BlogPage() {
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
   }, []);
+}
+
+export default function BlogPage() {
+  const { t, language } = useLanguage();
+  const localizedPosts = usePosts();
+
+  useRevealAnimation();
 
   return (
     <main className="min-h-screen">
@@ -34,14 +42,14 @@ export default function BlogPage() {
             href="/"
             className="inline-flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors mb-8"
           >
-            &larr; Accueil
+            &larr; {t('blogPage.home')}
           </Link>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-            Blog<span className="gradient-text">.</span>
+            {t('blogPage.title')}<span className="gradient-text">.</span>
           </h1>
           <p className="text-lg text-muted max-w-xl leading-relaxed">
-            Retours d&apos;exp&eacute;rience, choix techniques et r&eacute;flexions d&apos;un dev solo assist&eacute; par IA.
+            {t('blogPage.subtitle')}
           </p>
         </div>
       </section>
@@ -50,7 +58,7 @@ export default function BlogPage() {
       <section className="px-6 pb-24">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col gap-6">
-            {posts.map((post, i) => (
+            {localizedPosts.map((post, i) => (
               <div key={post.slug} className="reveal" style={{ transitionDelay: `${i * 80}ms` }}>
                 <Link href={`/blog/${post.slug}`} className="block group">
                   <GlassCard className="p-6 md:p-8 hover:-translate-y-1 transition-transform duration-300">
@@ -61,14 +69,14 @@ export default function BlogPage() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-3 mb-2 text-xs text-muted">
                           <time dateTime={post.date}>
-                            {new Date(post.date).toLocaleDateString('fr-FR', {
+                            {new Date(post.date).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
                               day: 'numeric',
                               month: 'long',
                               year: 'numeric',
                             })}
                           </time>
                           <span>&middot;</span>
-                          <span>{post.readTime} de lecture</span>
+                          <span>{post.readTime} {t('blogPage.read')}</span>
                         </div>
 
                         <h2 className="text-xl md:text-2xl font-bold tracking-tight mb-2 group-hover:gradient-text transition-colors duration-300">
