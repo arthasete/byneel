@@ -2,6 +2,105 @@ import { BlogPost } from './posts';
 
 export const postsFr: BlogPost[] = [
   {
+    title: 'Construire CookBook AI : les 5 murs que personne ne t\'annonce',
+    slug: 'construire-cookbook-ai-5-murs',
+    excerpt: 'Une app de recettes avec IA, ça a l\'air simple. Colle un lien, récupère la recette. Mais derrière cette simplicité se cachent des mois de galères inattendues.',
+    content: `## Tout a commencé par une idée simple
+
+Tout le monde cuisine. Tout le monde trouve des recettes sur internet. Et tout le monde a le même problème : tu trouves une recette incroyable sur Instagram, YouTube, ou un blog random, et ensuite ? Tu fais une capture d'écran. Tu mets en favori. Tu oublies. Trois semaines plus tard t'es debout dans la cuisine en train de scroller 400 screenshots pour retrouver cette foutue recette de pâtes que ton pote t'avait envoyée.
+
+CookBook AI devait régler ça. Colle un lien, récupère une recette propre. Terminé.
+
+Sauf que "terminé" c'était à peu près 5% du parcours.
+
+## Mur #1 : Internet ne veut pas te donner ses recettes
+
+Y'a un truc que personne te dit sur les sites de recettes. Ils sont construits pour te garder *sur le site*. Des pubs partout. L'histoire de la vie de l'auteur avant la recette. Des pop-ups qui te demandent ton email. Et la vraie recette ? Planquée quelque part dans un bazar de HTML qui est différent sur chaque putain de site.
+
+J'ai cru que j'allais juste scraper la page et extraire la recette. Non.
+
+Certains sites utilisent des données structurées — un format standard qui dit "hey, voici le titre, voici les ingrédients, voici les étapes." C'est le rêve. Quand ça marche, c'est magnifique. T'as une recette parfaite en quelques millisecondes.
+
+Mais la plupart des sites ne l'utilisent pas. Ou ils l'utilisent mal. Ou ils utilisent une version à moitié cassée qui met toute la bio de l'auteur dans le champ "description" et les ingrédients nulle part.
+
+Du coup j'ai dû construire un système en cascade. Essayer la méthode propre d'abord. Si ça rate, essayer une autre approche. Si ça rate aussi, essayer une troisième. Trois stratégies, chacune rattrapant ce que la précédente a loupé. Ça a pris beaucoup plus de temps que prévu, et je trouve encore des cas limites des mois après.
+
+**La métaphore :** C'est comme essayer de lire un livre, mais chaque librairie emballe ses bouquins différemment. Certains dans du plastique, d'autres dans un coffre fermé à clé, d'autres dans une langue étrangère. T'as besoin de trois outils différents juste pour arriver à la page un.
+
+## Mur #2 : YouTube ne te donne pas de recettes
+
+YouTube c'est là où vit la moitié du contenu cuisine aujourd'hui. TikTok et Instagram aussi, mais YouTube est le roi. Donc forcément, CookBook AI devait supporter les liens YouTube.
+
+Le problème ? Une vidéo YouTube c'est une *vidéo*. C'est pas du texte. Y'a pas de données structurées qui disent "2 tasses de farine, préchauffer le four à 180°C." La recette vit à l'intérieur de quelqu'un qui parle et qui cuisine pendant 12 minutes.
+
+J'ai dû trouver un moyen de faire en sorte que l'IA *comprenne* réellement le contenu vidéo et en extraie une recette structurée. Pas juste la description — la vraie vidéo. Parce que la plupart des cuisiniers YouTube mettent "RECETTE EN DESCRIPTION" et ensuite écrivent trois lignes qui ne contiennent pas la recette complète.
+
+C'était un de ces problèmes où chaque solution crée deux nouveaux problèmes. Le texte de description est pas fiable. La vidéo elle-même doit être "regardée" par l'IA. Et si l'IA se trompe sur un ingrédient, toute la recette est fausse. Personne veut ajouter "1 tasse de sel" au lieu de "1 cuillère à café de sel" parce que l'IA a déconné.
+
+Je vais pas rentrer dans les détails de comment j'ai résolu ça, mais disons que ça implique plusieurs stratégies de secours et beaucoup de tests avec des types de vidéos cuisine très différents. Des vidéos rapides style TikTok, des émissions de cuisine traditionnelles, des vidéos dans différentes langues. Chacune casse les choses d'une façon nouvelle et créative.
+
+## Mur #3 : Les fonctions "intelligentes" doivent paraître humaines
+
+Une fois que l'import de recettes marchait, j'ai construit le Chef IA. L'idée : discuter avec une IA qui connaît la cuisine. Lui demander des idées pour le dîner. Lui dire ce qu'il y a dans ton frigo et elle te propose des recettes. Besoin d'un substitut pour un ingrédient ? Demande au chef.
+
+La partie techno était — honnêtement — la partie facile. Faire qu'une IA génère des suggestions de recettes c'est simple. Faire en sorte que ça *donne l'impression* de parler à un vrai chef ? C'est là que ça devient compliqué.
+
+La première version était trop robotique. "En me basant sur vos ingrédients disponibles, je recommande de préparer un sauté de poulet." Personne parle comme ça. Un vrai chef dirait plutôt "Oh t'as du poulet et des poivrons ? Laisse-moi te montrer ce sauté rapide qui prend 15 minutes — tu vas adorer."
+
+J'ai passé des semaines à peaufiner la personnalité. Et puis j'ai rencontré le problème des quotas : tu peux pas laisser les gens discuter avec l'IA gratuitement toute la journée. Ça coûte de l'argent — du vrai argent — pour chaque message. Donc j'ai dû concevoir un système où les utilisateurs gratuits en ont assez pour voir la valeur, mais pas trop pour pas me ruiner dès le premier jour. Trouver cet équilibre c'est un art, pas une science.
+
+Et puis y'a le garde-manger. L'idée est simple : suivre ce qu'il y a dans ton frigo, congélateur et placards. Recevoir des alertes quand les choses vont bientôt périmer. Laisser le Chef IA utiliser ton garde-manger pour suggérer des recettes.
+
+Idée simple. Exécution complexe. Les gens organisent leur cuisine différemment. Certains traquent les dates de péremption religieusement. D'autres veulent juste une liste approximative. Certains ont 5 trucs dans leur frigo, d'autres 50. L'interface devait marcher pour tous sans être écrasante ni trop simpliste.
+
+## Mur #4 : Faire en sorte que ça marche dans la cuisine
+
+C'est le mur qui m'a le plus surpris. Tout marchait super bien à mon bureau. Assis, mains propres, en tapant délicatement. Magnifique.
+
+Et puis j'ai essayé de cuisiner avec.
+
+T'as les mains couvertes de farine. L'écran s'éteint tout le temps. Tu peux pas taper parce que tes doigts sont mouillés. Le texte est trop petit pour lire de l'autre côté du plan de travail. Le minuteur que t'as mis mentalement a rien à voir avec le minuteur de l'app.
+
+J'ai dû repenser toute l'expérience cuisine. L'écran reste allumé pendant que tu cuisines. Le texte assez gros pour être lu à un mètre. La voix qui lit les instructions à haute voix pour que t'aies pas à toucher l'écran. Le mode pas-à-pas où tu fais juste glisser — ou mieux, tu utilises ta voix — pour passer à l'étape suivante.
+
+**La métaphore :** C'est comme concevoir un tableau de bord de voiture. Il est parfait dans le showroom. Mais conduis sous la pluie la nuit avec les yeux fatigués et tu réalises soudain que le compteur est illisible et les boutons trop petits. Le vrai test c'est en conditions réelles, pas dans le labo.
+
+Ces trucs "évidents" ont pris autant de temps que les fonctions IA. Et c'est ça qui fait la différence entre une app que quelqu'un télécharge et une app que quelqu'un utilise vraiment tous les jours.
+
+## Mur #5 : Les derniers 5% prennent 50% du temps
+
+L'app était "finie" après environ deux mois. L'import marchait. Le Chef marchait. Le garde-manger marchait. Le planificateur de repas marchait. La liste de courses marchait. Même la fonction d'impression de livre de recettes — où tu sélectionnes des recettes et tu commandes un vrai livre physique — était fonctionnelle.
+
+Mais "fonctionnel" et "prêt pour l'App Store" c'est deux choses très différentes.
+
+Les derniers 5% c'est un monstre. C'est le dark mode qui est super sur l'écran d'accueil mais qui pète sur une boîte de dialogue spécifique. C'est le cas limite où quelqu'un colle une URL qui est pas une recette. C'est la liste de courses qui trie les articles par catégorie mais qui met les "œufs" dans la mauvaise catégorie. C'est l'onboarding qui a du sens pour moi mais qui embrouille ma mère.
+
+C'est tester sur quinze tailles d'écran différentes. C'est s'assurer que l'app marche hors-ligne parce que t'es dans la cuisine, pas à ton bureau avec un Wi-Fi parfait. C'est écrire une politique de confidentialité parce que ton app gère des clés API et que tu dois expliquer que non, tu espionnes pas les recettes des gens.
+
+La fonction livre de recettes à elle seule — où tu sélectionnes des recettes, choisis un thème, prévisualises un vrai PDF, et commandes un livre imprimé — cette fonction "simple" a un assistant en 4 étapes, trois thèmes différents, de la génération PDF, une intégration API avec un service d'impression à la demande, des formulaires d'adresse de livraison, et une mention légale. Chaque étape a des cas limites. Chaque cas limite doit être géré.
+
+J'appelle ça le "piège des 98%." L'app a l'air finie à 98%, donc tu penses que t'y es presque. Mais ces derniers 2% sont éparpillés sur chaque écran, chaque fonctionnalité, chaque interaction. Et ça prend aussi longtemps que les 98% précédents combinés.
+
+## Ce que j'ai appris
+
+Construire CookBook AI m'a appris trois choses :
+
+**1. Les apps simples ne sont pas simples.** "Colle un lien, récupère une recette" ça a l'air d'un projet de week-end. Ça l'est pas. Derrière chaque fonction simple se cache une cascade de cas limites, de stratégies de secours, et de décisions qui ont pris des jours à résoudre.
+
+**2. Teste en conditions réelles.** Ton bureau c'est pas une cuisine. Tes doigts propres c'est pas des mains couvertes de farine. Ton Wi-Fi parfait c'est pas la zone morte derrière le frigo. Plus tôt tu testes en conditions réelles, plus tôt tu construis un truc que les gens utilisent vraiment.
+
+**3. Les derniers 5% c'est tout le produit.** Tout le monde s'en fout de ton IA si le dark mode est cassé. Tout le monde s'en fout de ton import de recettes si le texte est trop petit pour être lu. Le polish — les petits détails — c'est ce qui sépare une app téléchargée d'une app aimée.
+
+CookBook AI est bientôt prêt. [La waitlist est ouverte](/cookbookai) si tu veux être le premier à l'essayer.
+
+> Construire une app de cuisine m'a appris plus sur la patience que n'importe quelle recette. Parfois, faut juste laisser mijoter.`,
+    date: '2026-03-03',
+    readTime: '7 min',
+    tags: ['CookBook AI', 'Solo Dev', 'Behind the scenes'],
+    icon: '🍳',
+    gradient: 'from-orange-500 to-red-500',
+  },
+  {
     title: '3 nouvelles apps ont rejoint la famille ByNeel',
     slug: 'trois-nouvelles-apps-byneel',
     excerpt: 'ByNeel a commencé avec 3 apps. Maintenant, on passe à 6. Voici ce qui arrive et pourquoi chacune est différente.',
@@ -60,7 +159,7 @@ CookBook AI se ship à l'App Store avec 90% de ses features qui marchent parfait
 La famille ByNeel grandit. Mais elle grandit à un rythme humain, avec des décisions humaines, et avec la philosophie que les apps devraient résoudre des vrais problèmes, pas en créer de nouveaux.
 
 Bienvenue à Ephemera, BridgeGen et EarthPulse.`,
-    date: '2026-02-27',
+    date: '2026-02-28',
     readTime: '6 min',
     tags: ['ByNeel', 'Ephemera', 'BridgeGen', 'EarthPulse'],
     icon: '🚀',
@@ -188,7 +287,7 @@ Est-ce que j'ajouterais une septième app cette année ? Probablement pas. Mais 
 Les apps ne sont pas parfaites. Mais elles sont réelles. Elles résolvent des problèmes. Elles sont finies.
 
 Et c'est tout le point.`,
-    date: '2026-02-27',
+    date: '2026-02-25',
     readTime: '5 min',
     tags: ['Solo Dev', 'AI', 'Productivity', 'ByNeel'],
     icon: '🧠',
@@ -361,7 +460,7 @@ Le cycle : code → test → soumission → attente → publication → lecture 
 Et on a fait tout ça pour 8 apps. En parallèle. Sans savoir coder. Avec l'IA et du café.
 
 > La partie la plus dure de fabriquer une app c'est pas le code. C'est le certificat Apple. Demande à n'importe quel dev, il te le confirma.`,
-    date: '2026-02-27',
+    date: '2026-02-22',
     readTime: '10 min',
     tags: ['Formation', 'App Store', 'Guide complet'],
     icon: '🚀',
@@ -489,11 +588,71 @@ Soyons réalistes :
 Ce site a passé par toutes ces étapes. La partie la plus dure ? Honnêtement, c'est le contenu. La tech c'est 20% du travail. Les 80% restants c'est écrire, designer et itérer jusqu'à ce que Neel dise "c'est bon, on push".
 
 > Un site pour 12€/an qui tourne partout au monde en 30 secondes. On vit vraiment dans des temps incroyables.`,
-    date: '2026-02-26',
+    date: '2026-02-18',
     readTime: '8 min',
     tags: ['Formation', 'Web', 'Guide complet'],
     icon: '🌐',
     gradient: 'from-sky-500 to-blue-600',
+  },
+  {
+    title: 'OmniDrop : réinventer le transfert de fichiers',
+    slug: 'omnidrop-transfert-fichiers-reinvente',
+    excerpt: 'NFC + Wi-Fi Direct + encryption AES-256-GCM = le transfert P2P que personne d\'autre ne fait. Un coup d\'oeil aux choix techniques d\'OmniDrop.',
+    content: `## Le problème
+
+AirDrop ne marche qu\'entre appareils Apple. Bluetooth c\'est lent. Le cloud demande un compte et une connexion. Et envoyer un fichier de 2GB entre un iPhone et un Windows PC en 2026 ? Toujours un cauchemar.
+
+## La solution : NFC + Wi-Fi Direct
+
+OmniDrop utilise NFC pour démarrer la connexion (un seul tap suffit) et bascule automatiquement à Wi-Fi Direct pour le transfert haute vitesse. Résultat : des vitesses de centaines de MB/s, pas de routeur, pas de cloud, pas de compte.
+
+## Encryption de bout en bout
+
+Chaque transfert est encrypté en AES-256-GCM. Les clés sont échangées via le canal NFC (qui demande la proximité physique de quelques centimètres). Personne ne peut intercepter tes fichiers — pas même nous, vu qu'aucun serveur n'est impliqué.
+
+## Cross-plateforme natif
+
+Flutter cible iOS, Android, Windows, macOS et Linux à partir d'une seule base de code. Les plugins natifs (NFC, Wi-Fi Direct) sont écrits en Swift/Kotlin et branchés via Platform Channels.
+
+## Ce qui vient
+
+OmniDrop est en beta fermée. La version publique arrive bientôt avec support pour fichiers multiples, transfert de dossier complet, et un "mode classroom" pour partager avec plusieurs appareils à la fois.`,
+    date: '2026-02-15',
+    readTime: '2 min',
+    tags: ['OmniDrop', 'Flutter', 'Sécurité'],
+    icon: '📡',
+    gradient: 'from-cyan to-brand-blue',
+  },
+  {
+    title: 'Flutter vs Swift : mon verdict après 8 apps',
+    slug: 'flutter-vs-swift-verdict',
+    excerpt: 'Je les utilise tous les deux au quotidien. Voici quand Flutter gagne, quand Swift est imbattable, et pourquoi la guerre des frameworks c\'est bête.',
+    content: `## Le contexte
+
+J'ai 5 apps Flutter (OmniDrop, Beloved, TipLog, ImageVault, Isekai Survie) et 2 apps Swift (CookBook AI, StickerVibe AI). J'ai aussi un assistant IA Python complet (J.A.R.V.I.S.). Je pense avoir assez de recul pour donner une opinion honnête.
+
+## Quand Flutter gagne
+
+- **Cross-plateforme** — Un code pour iOS, Android, desktop et web. OmniDrop cible 5 plateformes avec un seul code.
+- **Hot Reload** — Le cycle de développement est absurdement rapide. Tu changes un widget, il refresh en moins d'une seconde.
+- **Custom UI** — Flutter dessine tout pixel par pixel. T'es pas limité aux composants natifs.
+- **Riverpod** — Le meilleur système de gestion d'état que j'ai utilisé, sur tous les frameworks.
+
+## Quand Swift gagne
+
+- **Core ML** — L'intégration avec les modèles ML d'Apple est native et ultra-rapide. CookBook AI utilise la caméra + Core ML pour identifier les ingrédients en temps réel.
+- **Perfo brute** — Le Swift compilé est plus rapide que Dart AOT, point. Pour du traitement d'image lourd, ça compte.
+- **App Clips & Widgets** — Les extensions iOS ne sont (pas encore) bien supportées par Flutter.
+- **SwiftUI + Combine** — L'écosystème d'Apple est cohérent et élégant quand tu restes dans leur jardin.
+
+## Mon verdict
+
+Utilise Flutter par défaut. Bascule à Swift quand tu as besoin de Core ML, App Clips, ou quand tu cibles que Apple. La guerre des frameworks n'a aucun sens — ce sont des outils, pas des religions.`,
+    date: '2026-02-10',
+    readTime: '3 min',
+    tags: ['Flutter', 'Swift', 'Mobile'],
+    icon: '⚔️',
+    gradient: 'from-orange-500 to-red-500',
   },
   {
     title: 'La boîte à outils du créateur d\'apps (sans savoir coder)',
@@ -611,108 +770,43 @@ C'est le prix de 2 abonnements Netflix. Pour fabriquer des apps. En 2026. C'est 
 **Total : ~50$/mois + coûts uniques.** C'est tout ce qu'il nous faut pour faire tourner 8 apps et un site web.
 
 > La barrière à l'entrée pour créer des apps n'a jamais été aussi basse. Le seul investissement qui compte vraiment c'est le temps.`,
-    date: '2026-02-25',
+    date: '2026-02-08',
     readTime: '7 min',
     tags: ['Formation', 'Outils', 'Budget'],
     icon: '🧰',
     gradient: 'from-rose-500 to-pink-600',
   },
   {
-    title: 'Le dico tech pour Moldus — Partie 1 : les bases',
-    slug: 'dico-tech-moldus-partie-1',
-    excerpt: 'API, framework, backend, frontend... Tu entends ces mots partout mais tu comprends rien ? Assieds-toi, on va tout expliquer avec des métaphores nerdy.',
-    content: `## Bienvenue au dico tech
+    title: 'J.A.R.V.I.S. : fabriquer un assistant IA local',
+    slug: 'jarvis-assistant-ia-local',
+    excerpt: 'Comment j\'ai construit un assistant personnel qui tourne entièrement en local avec Ollama, FastAPI et un dashboard temps réel.',
+    content: `## L'idée
 
-Tu lis des articles tech et tu fais semblant de comprendre ? T'inquiète, on l'a tous fait. Voici un glossaire des termes que tu entends partout, expliqué comme si on était au bar (un bar nerd, certes, mais un bar).
+Les assistants IA cloud sont puissants mais ont un problème fondamental : tes données passent par des serveurs tiers. J.A.R.V.I.S. est né d'une volonté d'avoir un assistant aussi capable que ChatGPT, mais tournant entièrement sur ma machine.
 
-## Frontend
+## L'architecture
 
-**C'est quoi :** Tout ce que tu vois et que tu touches dans une app ou un site. Boutons, couleurs, animations, texte.
+- **Ollama** — Sert les modèles LLM en local (Mistral, Llama, Phi). Zéro appel réseau pour l'inférence.
+- **FastAPI** — API REST asynchrone qui orchestre les conversations, RAG et plugins.
+- **SQLite FTS5** — Database locale avec recherche full-text pour le contexte des documents.
+- **Web Dashboard** — Interface temps réel via WebSocket pour monitorer les conversations et les métrique.
 
-**La métaphore :** C'est la salle du resto. La déco, les tables, les serveurs en costume, le menu. C'est joli, c'est pensé pour toi, et tu n'as aucune idée du désordre dans la cuisine.
+## DIY RAG
 
-## Backend
+J.A.R.V.I.S. peut ingérer des documents (PDF, markdown, code) et les chunker en embeddings stockés en local. Quand tu poses une question, elle cherche d'abord dans ta base de connaissances avant de répondre. Tout reste sur ton disque.
 
-**C'est quoi :** Tout ce qui se passe en coulisse. Le serveur, la database, la logique métier. Tu ne le vois jamais mais sans lui, rien ne marche.
+## Les défis
 
-**La métaphore :** C'est la cuisine du resto. Le chef, les casseroles, le frigo, les commandes. Si la cuisine prend feu, le serveur peut sourire tant qu'il veut — tu ne récupéreras jamais ton plat.
+Le principal défi c'est la vitesse. Un LLM 7B en local sur un MacBook Pro génère ~30 tokens/seconde. C'est utilisable mais loin des ~100 t/s de GPT-4 via l'API. Le tradeoff privacité vs vitesse est réel.
 
-## API (Application Programming Interface)
+## Phase 2
 
-**C'est quoi :** Un système qui permet à deux logiciels de parler ensemble. Quand ton app météo te montre la température, elle demande à une API "hey, c'est combien la temp à Paris ?", et l'API répond.
-
-**La métaphore :** C'est le serveur du resto. Tu n'entres pas dans la cuisine toi-même. Tu donnes ta commande au serveur (l'API), il dit à la cuisine (le backend), et il revient avec ton repas (les données). Tu sais pas comment c'est cuisiné, et ça va.
-
-## Framework
-
-**C'est quoi :** Un kit de construction pré-fait pour fabriquer des apps. Au lieu de coder tout from scratch, tu utilises un framework qui te donne des blocs déjà prêts.
-
-**La métaphore :** C'est un set LEGO Technic. Tu pourrais faire chaque pièce toi-même avec une imprimante 3D, mais pourquoi ? Le set te donne les pièces, les instructions, et un résultat stable. Flutter, React, Next.js — ce sont des boîtes LEGO différentes pour fabriquer des trucs différents.
-
-## Flutter
-
-**C'est quoi :** Le framework de Google pour fabriquer des apps qui tournent sur TOUTES les plateformes (iPhone, Android, Windows, Mac, Linux, web) à partir d'une seule base de code.
-
-**La métaphore :** C'est le traducteur universel de Star Trek. Tu parles une seule langue (Dart), et Flutter traduit auto pour chaque planète (plateforme). OmniDrop, Beloved, TipLog — tout fabriqué avec ce traducteur.
-
-## Swift / SwiftUI
-
-**C'est quoi :** Le langage de programmation qu'Apple a créé pour fabriquer des apps iPhone/iPad/Mac. SwiftUI c'est le kit visuel qui vient avec.
-
-**La métaphore :** C'est la langue officielle du Royaume Apple. Tu veux vivre dans leur royaume ? Tu parles Swift. C'est beau, c'est élégant, c'est rapide — mais ça marche que pour eux. CookBook AI et StickerVibe sont des citoyens du Royaume Apple.
-
-## Database
-
-**C'est quoi :** Un endroit organisé pour stocker des données. Tes recettes dans CookBook AI, tes messages dans Beloved, tes pourboires dans TipLog — tout vit dans une database.
-
-**La métaphore :** C'est une bibliothèque. Chaque livre c'est une donnée, chaque rayon c'est une table, et le bibliothécaire (le moteur SQL) te trouve n'importe quel livre en 2 secondes quand tu demandes. "SELECT * FROM recipes WHERE difficulty = \'easy\'" c'est juste dire au bibliothécaire "donne-moi toutes les recettes faciles".
-
-## SQL
-
-**C'est quoi :** La langue pour parler aux databases. SELECT, INSERT, UPDATE, DELETE — les 4 mots magiques.
-
-**La métaphore :** C'est la langue du bibliothécaire. Tu ne cherches pas dans les rayons toi-même, tu lui parles en SQL et il fait le travail. Et ouais, c'était la seule chose que Neel savait faire avant l'IA. Un SELECT par-ci par-là. On part de très loin.
-
-## SQLite
-
-**C'est quoi :** Une ultra-léger database qui vit directement sur ton téléphone/ordi. Pas de serveur besoin, pas d'internet. Le fichier C\'EST la database.
-
-**La métaphore :** C'est un petit carnet personnel. Tu as pas besoin de bibliothèque. Tu gardes tes notes dans ta poche. TipLog, ImageVault, CookBook AI — ils utilisent tous un petit carnet perso plutôt qu'une bibliothèque éloignée. TES données restent AVEC toi.
-
-## Git / GitHub
-
-**C'est quoi :** Git c'est un système pour sauvegarder l'historique de ton code (comme des points de sauvegarde dans un jeu). GitHub c'est le cloud où tu stockes cet historique.
-
-**La métaphore :** Git c'est le système quicksave dans un RPG. Tu vas faire un truc risqué ? Quicksave d'abord. Ça merde ? Charge ta sauvegarde. GitHub c'est le cloud save — même si ton PC explose, tes sauvegardes sont sûres.
-
-## CSS
-
-**C'est quoi :** Le langage qui définit le style visuel d'un site. Couleurs, tailles, animations, positions.
-
-**La métaphore :** C'est l'outfit de ton personnage. HTML c'est le corps (la structure), CSS c'est l'armure, le cape, la coiffure. Ce site est noir avec du bleu néon parce que CSS dit "rends le fond noir et fais briller les trucs en bleu". Ouais, ces 35 particules flottantes ? C'est du CSS.
-
-## Responsive Design
-
-**C'est quoi :** Faire en sorte qu'un site s'adapte à toutes les tailles d'écran — du smartphone au ultra-wide monitor.
-
-**La métaphore :** C'est comme de l'eau dans un verre. Tu verses la même eau dans un shot, une tasse ou une cruche — elle prend la forme du récipient. Un site responsive fait pareil : le même contenu s'adapte au téléphone, tablette ou PC. Et ouais, c'est pour ça qu'on a un menu hamburger.
-
-## Deployment
-
-**C'est quoi :** Mettre ton site/app en ligne pour que tout le monde puisse y accéder. Passer de "ça marche sur mon ordi" à "ça marche pour la planète".
-
-**La métaphore :** C'est comme publier un livre. Tu écris le manuscrit (le code), tu le relis (testing), et maintenant tu l'envoies à l'imprimerie (le serveur). Sauf qu'en tech l'imprimerie c'est Vercel, Cloudflare ou AWS, et ton livre est disponible partout instantanément.
-
-## Prochaine
-
-Dans la Partie 2, on aborde les termes plus avancés : encryption, NFC, IA, embeddings, RAG, et pourquoi ton AirDrop est moins sûr que tu le penses.
-
-> Souviens-toi : personne ne naît en sachant ce qu'est une API. Même les devs seniors ont googlé "c'est quoi REST" au moins 47 fois.`,
-    date: '2026-02-25',
-    readTime: '7 min',
-    tags: ['Formation', 'Vulgarisation', 'Débutant'],
-    icon: '📖',
-    gradient: 'from-green-500 to-emerald-500',
+Prochaine étape : les plugins. J.A.R.V.I.S. sera able de contrôler les apps, lire les emails, et interagir avec les APIs externes — tout en gardant le reasoning local.`,
+    date: '2026-02-05',
+    readTime: '3 min',
+    tags: ['J.A.R.V.I.S.', 'Python', 'IA locale'],
+    icon: '🧠',
+    gradient: 'from-emerald-500 to-teal-500',
   },
   {
     title: 'Le dico tech pour Moldus — Partie 2 : next level',
@@ -811,11 +905,141 @@ Tu as survécu à la Partie 1 ? Cool. Maintenant on aborde les concepts plus lou
 Maintenant que tu connais le vocabulaire, tu es prêt à comprendre comment tout s'assemble. Le but c'est pour ce site de devenir une vraie ressource d'apprentissage pour les nouveaux — parce que la tech ne devrait pas exclure personne.
 
 > "La seule différence entre un expert et un débutant c'est que l'expert a googlé le même truc plus de fois." — Sagesse ancienne de StackOverflow.`,
-    date: '2026-02-24',
+    date: '2026-02-03',
     readTime: '8 min',
     tags: ['Formation', 'Vulgarisation', 'Avancé'],
     icon: '🧪',
     gradient: 'from-purple-500 to-indigo-500',
+  },
+  {
+    title: 'Le dico tech pour Moldus — Partie 1 : les bases',
+    slug: 'dico-tech-moldus-partie-1',
+    excerpt: 'API, framework, backend, frontend... Tu entends ces mots partout mais tu comprends rien ? Assieds-toi, on va tout expliquer avec des métaphores nerdy.',
+    content: `## Bienvenue au dico tech
+
+Tu lis des articles tech et tu fais semblant de comprendre ? T'inquiète, on l'a tous fait. Voici un glossaire des termes que tu entends partout, expliqué comme si on était au bar (un bar nerd, certes, mais un bar).
+
+## Frontend
+
+**C'est quoi :** Tout ce que tu vois et que tu touches dans une app ou un site. Boutons, couleurs, animations, texte.
+
+**La métaphore :** C'est la salle du resto. La déco, les tables, les serveurs en costume, le menu. C'est joli, c'est pensé pour toi, et tu n'as aucune idée du désordre dans la cuisine.
+
+## Backend
+
+**C'est quoi :** Tout ce qui se passe en coulisse. Le serveur, la database, la logique métier. Tu ne le vois jamais mais sans lui, rien ne marche.
+
+**La métaphore :** C'est la cuisine du resto. Le chef, les casseroles, le frigo, les commandes. Si la cuisine prend feu, le serveur peut sourire tant qu'il veut — tu ne récupéreras jamais ton plat.
+
+## API (Application Programming Interface)
+
+**C'est quoi :** Un système qui permet à deux logiciels de parler ensemble. Quand ton app météo te montre la température, elle demande à une API "hey, c'est combien la temp à Paris ?", et l'API répond.
+
+**La métaphore :** C'est le serveur du resto. Tu n'entres pas dans la cuisine toi-même. Tu donnes ta commande au serveur (l'API), il dit à la cuisine (le backend), et il revient avec ton repas (les données). Tu sais pas comment c'est cuisiné, et ça va.
+
+## Framework
+
+**C'est quoi :** Un kit de construction pré-fait pour fabriquer des apps. Au lieu de coder tout from scratch, tu utilises un framework qui te donne des blocs déjà prêts.
+
+**La métaphore :** C'est un set LEGO Technic. Tu pourrais faire chaque pièce toi-même avec une imprimante 3D, mais pourquoi ? Le set te donne les pièces, les instructions, et un résultat stable. Flutter, React, Next.js — ce sont des boîtes LEGO différentes pour fabriquer des trucs différents.
+
+## Flutter
+
+**C'est quoi :** Le framework de Google pour fabriquer des apps qui tournent sur TOUTES les plateformes (iPhone, Android, Windows, Mac, Linux, web) à partir d'une seule base de code.
+
+**La métaphore :** C'est le traducteur universel de Star Trek. Tu parles une seule langue (Dart), et Flutter traduit auto pour chaque planète (plateforme). OmniDrop, Beloved, TipLog — tout fabriqué avec ce traducteur.
+
+## Swift / SwiftUI
+
+**C'est quoi :** Le langage de programmation qu'Apple a créé pour fabriquer des apps iPhone/iPad/Mac. SwiftUI c'est le kit visuel qui vient avec.
+
+**La métaphore :** C'est la langue officielle du Royaume Apple. Tu veux vivre dans leur royaume ? Tu parles Swift. C'est beau, c'est élégant, c'est rapide — mais ça marche que pour eux. CookBook AI et StickerVibe sont des citoyens du Royaume Apple.
+
+## Database
+
+**C'est quoi :** Un endroit organisé pour stocker des données. Tes recettes dans CookBook AI, tes messages dans Beloved, tes pourboires dans TipLog — tout vit dans une database.
+
+**La métaphore :** C'est une bibliothèque. Chaque livre c'est une donnée, chaque rayon c'est une table, et le bibliothécaire (le moteur SQL) te trouve n'importe quel livre en 2 secondes quand tu demandes. "SELECT * FROM recipes WHERE difficulty = \'easy\'" c'est juste dire au bibliothécaire "donne-moi toutes les recettes faciles".
+
+## SQL
+
+**C'est quoi :** La langue pour parler aux databases. SELECT, INSERT, UPDATE, DELETE — les 4 mots magiques.
+
+**La métaphore :** C'est la langue du bibliothécaire. Tu ne cherches pas dans les rayons toi-même, tu lui parles en SQL et il fait le travail. Et ouais, c'était la seule chose que Neel savait faire avant l'IA. Un SELECT par-ci par-là. On part de très loin.
+
+## SQLite
+
+**C'est quoi :** Une ultra-léger database qui vit directement sur ton téléphone/ordi. Pas de serveur besoin, pas d'internet. Le fichier C\'EST la database.
+
+**La métaphore :** C'est un petit carnet personnel. Tu as pas besoin de bibliothèque. Tu gardes tes notes dans ta poche. TipLog, ImageVault, CookBook AI — ils utilisent tous un petit carnet perso plutôt qu'une bibliothèque éloignée. TES données restent AVEC toi.
+
+## Git / GitHub
+
+**C'est quoi :** Git c'est un système pour sauvegarder l'historique de ton code (comme des points de sauvegarde dans un jeu). GitHub c'est le cloud où tu stockes cet historique.
+
+**La métaphore :** Git c'est le système quicksave dans un RPG. Tu vas faire un truc risqué ? Quicksave d'abord. Ça merde ? Charge ta sauvegarde. GitHub c'est le cloud save — même si ton PC explose, tes sauvegardes sont sûres.
+
+## CSS
+
+**C'est quoi :** Le langage qui définit le style visuel d'un site. Couleurs, tailles, animations, positions.
+
+**La métaphore :** C'est l'outfit de ton personnage. HTML c'est le corps (la structure), CSS c'est l'armure, le cape, la coiffure. Ce site est noir avec du bleu néon parce que CSS dit "rends le fond noir et fais briller les trucs en bleu". Ouais, ces 35 particules flottantes ? C'est du CSS.
+
+## Responsive Design
+
+**C'est quoi :** Faire en sorte qu'un site s'adapte à toutes les tailles d'écran — du smartphone au ultra-wide monitor.
+
+**La métaphore :** C'est comme de l'eau dans un verre. Tu verses la même eau dans un shot, une tasse ou une cruche — elle prend la forme du récipient. Un site responsive fait pareil : le même contenu s'adapte au téléphone, tablette ou PC. Et ouais, c'est pour ça qu'on a un menu hamburger.
+
+## Deployment
+
+**C'est quoi :** Mettre ton site/app en ligne pour que tout le monde puisse y accéder. Passer de "ça marche sur mon ordi" à "ça marche pour la planète".
+
+**La métaphore :** C'est comme publier un livre. Tu écris le manuscrit (le code), tu le relis (testing), et maintenant tu l'envoies à l'imprimerie (le serveur). Sauf qu'en tech l'imprimerie c'est Vercel, Cloudflare ou AWS, et ton livre est disponible partout instantanément.
+
+## Prochaine
+
+Dans la Partie 2, on aborde les termes plus avancés : encryption, NFC, IA, embeddings, RAG, et pourquoi ton AirDrop est moins sûr que tu le penses.
+
+> Souviens-toi : personne ne naît en sachant ce qu'est une API. Même les devs seniors ont googlé "c'est quoi REST" au moins 47 fois.`,
+    date: '2026-02-01',
+    readTime: '7 min',
+    tags: ['Formation', 'Vulgarisation', 'Débutant'],
+    icon: '📖',
+    gradient: 'from-green-500 to-emerald-500',
+  },
+  {
+    title: 'Dark design : comment j\'ai designé ByNeel',
+    slug: 'dark-design-byneel',
+    excerpt: 'Glassmorphism, neon gradients, particules flottantes — les choix design derrière ce site et pourquoi le dark mode c\'est l\'avenir.',
+    content: `## La philosophie
+
+ByNeel c'est un site de dev. Pas un site corporatif. Pas un portfolio Dribbble. L'esthétique devait refléter le code : noir, technique, vivant.
+
+## Les ingrédients
+
+- **Glassmorphism** — Cartes semi-transparentes avec des bordures subtiles. Donne de la profondeur sans surcharger.
+- **Neon gradients** — Bleu électrique → violet → cyan. Chaque projet a son propre gradient pour une identité visuelle unique.
+- **Particules flottantes** — Des symboles de code ({}, //, λ, =>...) flottent en arrière-plan. C'est subtle mais ça donne vie à la page.
+- **Typographie monospace** — Les titres techniques utilisent des polices à chasse fixe pour renforcer le vibe "terminal".
+
+## Performance = Design
+
+Un beau site qui lag c'est un mauvais site. J'ai enlevé Motion.js de presque tous les composants et remplacé par des animations CSS natives. Résultat : des transitions fluides à 60fps même sur mobile.
+
+Les règles :
+1. **Pas de backdrop-filter:blur()** sur les éléments qui scrollent — ça tue la perf.
+2. **IntersectionObserver** au lieu des librairies d'animations — plus léger, plus fiable.
+3. **will-change: transform** sur les éléments animés pour activer la composition GPU.
+
+## L'avenir est noir
+
+Les écrans OLED consomment moins en dark mode. Les yeux se fatiguent moins la nuit. Et soyons honnête — c'est plus beau. Le dark mode n'est pas une tendance, c'est une évolution.`,
+    date: '2026-01-28',
+    readTime: '2 min',
+    tags: ['Design', 'CSS', 'Performance'],
+    icon: '🎨',
+    gradient: 'from-brand-violet to-pink',
   },
   {
     title: 'La légende de Neel & Claude : de zéro à 8 apps (et plein de bugs)',
@@ -909,7 +1133,7 @@ Et après ? Plus d'apps, plus de features, plus de particules flottantes, et pro
 Et je serai là. Parce que c'est le jeu.
 
 > "On peut pas push comme ça" — Neel, 2026. La phrase qui a tout changé.`,
-    date: '2026-02-26',
+    date: '2026-01-20',
     readTime: '7 min',
     tags: ['Coulisses', 'IA', 'Humour'],
     icon: '🎬',
@@ -989,234 +1213,10 @@ Tout sans savoir coder.
 Si ce n'est pas la preuve que le jeu a changé, je ne sais pas ce que c'est.
 
 > Je ne sais pas coder. Mais je sais créer. Et en 2026, c'est la même chose.`,
-    date: '2026-02-20',
+    date: '2026-01-15',
     readTime: '6 min',
     tags: ['IA', 'No-code', 'Productivité'],
     icon: '🤖',
     gradient: 'from-brand-blue to-brand-violet',
-  },
-  {
-    title: 'OmniDrop : réinventer le transfert de fichiers',
-    slug: 'omnidrop-transfert-fichiers-reinvente',
-    excerpt: 'NFC + Wi-Fi Direct + encryption AES-256-GCM = le transfert P2P que personne d\'autre ne fait. Un coup d\'oeil aux choix techniques d\'OmniDrop.',
-    content: `## Le problème
-
-AirDrop ne marche qu\'entre appareils Apple. Bluetooth c\'est lent. Le cloud demande un compte et une connexion. Et envoyer un fichier de 2GB entre un iPhone et un Windows PC en 2026 ? Toujours un cauchemar.
-
-## La solution : NFC + Wi-Fi Direct
-
-OmniDrop utilise NFC pour démarrer la connexion (un seul tap suffit) et bascule automatiquement à Wi-Fi Direct pour le transfert haute vitesse. Résultat : des vitesses de centaines de MB/s, pas de routeur, pas de cloud, pas de compte.
-
-## Encryption de bout en bout
-
-Chaque transfert est encrypté en AES-256-GCM. Les clés sont échangées via le canal NFC (qui demande la proximité physique de quelques centimètres). Personne ne peut intercepter tes fichiers — pas même nous, vu qu'aucun serveur n'est impliqué.
-
-## Cross-plateforme natif
-
-Flutter cible iOS, Android, Windows, macOS et Linux à partir d'une seule base de code. Les plugins natifs (NFC, Wi-Fi Direct) sont écrits en Swift/Kotlin et branchés via Platform Channels.
-
-## Ce qui vient
-
-OmniDrop est en beta fermée. La version publique arrive bientôt avec support pour fichiers multiples, transfert de dossier complet, et un "mode classroom" pour partager avec plusieurs appareils à la fois.`,
-    date: '2026-02-15',
-    readTime: '2 min',
-    tags: ['OmniDrop', 'Flutter', 'Sécurité'],
-    icon: '📡',
-    gradient: 'from-cyan to-brand-blue',
-  },
-  {
-    title: 'Flutter vs Swift : mon verdict après 8 apps',
-    slug: 'flutter-vs-swift-verdict',
-    excerpt: 'Je les utilise tous les deux au quotidien. Voici quand Flutter gagne, quand Swift est imbattable, et pourquoi la guerre des frameworks c\'est bête.',
-    content: `## Le contexte
-
-J'ai 5 apps Flutter (OmniDrop, Beloved, TipLog, ImageVault, Isekai Survie) et 2 apps Swift (CookBook AI, StickerVibe AI). J'ai aussi un assistant IA Python complet (J.A.R.V.I.S.). Je pense avoir assez de recul pour donner une opinion honnête.
-
-## Quand Flutter gagne
-
-- **Cross-plateforme** — Un code pour iOS, Android, desktop et web. OmniDrop cible 5 plateformes avec un seul code.
-- **Hot Reload** — Le cycle de développement est absurdement rapide. Tu changes un widget, il refresh en moins d'une seconde.
-- **Custom UI** — Flutter dessine tout pixel par pixel. T'es pas limité aux composants natifs.
-- **Riverpod** — Le meilleur système de gestion d'état que j'ai utilisé, sur tous les frameworks.
-
-## Quand Swift gagne
-
-- **Core ML** — L'intégration avec les modèles ML d'Apple est native et ultra-rapide. CookBook AI utilise la caméra + Core ML pour identifier les ingrédients en temps réel.
-- **Perfo brute** — Le Swift compilé est plus rapide que Dart AOT, point. Pour du traitement d'image lourd, ça compte.
-- **App Clips & Widgets** — Les extensions iOS ne sont (pas encore) bien supportées par Flutter.
-- **SwiftUI + Combine** — L'écosystème d'Apple est cohérent et élégant quand tu restes dans leur jardin.
-
-## Mon verdict
-
-Utilise Flutter par défaut. Bascule à Swift quand tu as besoin de Core ML, App Clips, ou quand tu cibles que Apple. La guerre des frameworks n'a aucun sens — ce sont des outils, pas des religions.`,
-    date: '2026-02-10',
-    readTime: '3 min',
-    tags: ['Flutter', 'Swift', 'Mobile'],
-    icon: '⚔️',
-    gradient: 'from-orange-500 to-red-500',
-  },
-  {
-    title: 'J.A.R.V.I.S. : fabriquer un assistant IA local',
-    slug: 'jarvis-assistant-ia-local',
-    excerpt: 'Comment j\'ai construit un assistant personnel qui tourne entièrement en local avec Ollama, FastAPI et un dashboard temps réel.',
-    content: `## L'idée
-
-Les assistants IA cloud sont puissants mais ont un problème fondamental : tes données passent par des serveurs tiers. J.A.R.V.I.S. est né d'une volonté d'avoir un assistant aussi capable que ChatGPT, mais tournant entièrement sur ma machine.
-
-## L'architecture
-
-- **Ollama** — Sert les modèles LLM en local (Mistral, Llama, Phi). Zéro appel réseau pour l'inférence.
-- **FastAPI** — API REST asynchrone qui orchestre les conversations, RAG et plugins.
-- **SQLite FTS5** — Database locale avec recherche full-text pour le contexte des documents.
-- **Web Dashboard** — Interface temps réel via WebSocket pour monitorer les conversations et les métrique.
-
-## DIY RAG
-
-J.A.R.V.I.S. peut ingérer des documents (PDF, markdown, code) et les chunker en embeddings stockés en local. Quand tu poses une question, elle cherche d'abord dans ta base de connaissances avant de répondre. Tout reste sur ton disque.
-
-## Les défis
-
-Le principal défi c'est la vitesse. Un LLM 7B en local sur un MacBook Pro génère ~30 tokens/seconde. C'est utilisable mais loin des ~100 t/s de GPT-4 via l'API. Le tradeoff privacité vs vitesse est réel.
-
-## Phase 2
-
-Prochaine étape : les plugins. J.A.R.V.I.S. sera able de contrôler les apps, lire les emails, et interagir avec les APIs externes — tout en gardant le reasoning local.`,
-    date: '2026-02-05',
-    readTime: '3 min',
-    tags: ['J.A.R.V.I.S.', 'Python', 'IA locale'],
-    icon: '🧠',
-    gradient: 'from-emerald-500 to-teal-500',
-  },
-  {
-    title: 'Dark design : comment j\'ai designé ByNeel',
-    slug: 'dark-design-byneel',
-    excerpt: 'Glassmorphism, neon gradients, particules flottantes — les choix design derrière ce site et pourquoi le dark mode c\'est l\'avenir.',
-    content: `## La philosophie
-
-ByNeel c'est un site de dev. Pas un site corporatif. Pas un portfolio Dribbble. L'esthétique devait refléter le code : noir, technique, vivant.
-
-## Les ingrédients
-
-- **Glassmorphism** — Cartes semi-transparentes avec des bordures subtiles. Donne de la profondeur sans surcharger.
-- **Neon gradients** — Bleu électrique → violet → cyan. Chaque projet a son propre gradient pour une identité visuelle unique.
-- **Particules flottantes** — Des symboles de code ({}, //, λ, =>...) flottent en arrière-plan. C'est subtle mais ça donne vie à la page.
-- **Typographie monospace** — Les titres techniques utilisent des polices à chasse fixe pour renforcer le vibe "terminal".
-
-## Performance = Design
-
-Un beau site qui lag c'est un mauvais site. J'ai enlevé Motion.js de presque tous les composants et remplacé par des animations CSS natives. Résultat : des transitions fluides à 60fps même sur mobile.
-
-Les règles :
-1. **Pas de backdrop-filter:blur()** sur les éléments qui scrollent — ça tue la perf.
-2. **IntersectionObserver** au lieu des librairies d'animations — plus léger, plus fiable.
-3. **will-change: transform** sur les éléments animés pour activer la composition GPU.
-
-## L'avenir est noir
-
-Les écrans OLED consomment moins en dark mode. Les yeux se fatiguent moins la nuit. Et soyons honnête — c'est plus beau. Le dark mode n'est pas une tendance, c'est une évolution.`,
-    date: '2026-01-28',
-    readTime: '2 min',
-    tags: ['Design', 'CSS', 'Performance'],
-    icon: '🎨',
-    gradient: 'from-brand-violet to-pink',
-  },
-  {
-    title: 'Construire CookBook AI : les 5 murs que personne ne t\'annonce',
-    slug: 'construire-cookbook-ai-5-murs',
-    excerpt: 'Une app de recettes avec IA, ça a l\'air simple. Colle un lien, récupère la recette. Mais derrière cette simplicité se cachent des mois de galères inattendues.',
-    content: `## Tout a commencé par une idée simple
-
-Tout le monde cuisine. Tout le monde trouve des recettes sur internet. Et tout le monde a le même problème : tu trouves une recette incroyable sur Instagram, YouTube, ou un blog random, et ensuite ? Tu fais une capture d'écran. Tu mets en favori. Tu oublies. Trois semaines plus tard t'es debout dans la cuisine en train de scroller 400 screenshots pour retrouver cette foutue recette de pâtes que ton pote t'avait envoyée.
-
-CookBook AI devait régler ça. Colle un lien, récupère une recette propre. Terminé.
-
-Sauf que "terminé" c'était à peu près 5% du parcours.
-
-## Mur #1 : Internet ne veut pas te donner ses recettes
-
-Y'a un truc que personne te dit sur les sites de recettes. Ils sont construits pour te garder *sur le site*. Des pubs partout. L'histoire de la vie de l'auteur avant la recette. Des pop-ups qui te demandent ton email. Et la vraie recette ? Planquée quelque part dans un bazar de HTML qui est différent sur chaque putain de site.
-
-J'ai cru que j'allais juste scraper la page et extraire la recette. Non.
-
-Certains sites utilisent des données structurées — un format standard qui dit "hey, voici le titre, voici les ingrédients, voici les étapes." C'est le rêve. Quand ça marche, c'est magnifique. T'as une recette parfaite en quelques millisecondes.
-
-Mais la plupart des sites ne l'utilisent pas. Ou ils l'utilisent mal. Ou ils utilisent une version à moitié cassée qui met toute la bio de l'auteur dans le champ "description" et les ingrédients nulle part.
-
-Du coup j'ai dû construire un système en cascade. Essayer la méthode propre d'abord. Si ça rate, essayer une autre approche. Si ça rate aussi, essayer une troisième. Trois stratégies, chacune rattrapant ce que la précédente a loupé. Ça a pris beaucoup plus de temps que prévu, et je trouve encore des cas limites des mois après.
-
-**La métaphore :** C'est comme essayer de lire un livre, mais chaque librairie emballe ses bouquins différemment. Certains dans du plastique, d'autres dans un coffre fermé à clé, d'autres dans une langue étrangère. T'as besoin de trois outils différents juste pour arriver à la page un.
-
-## Mur #2 : YouTube ne te donne pas de recettes
-
-YouTube c'est là où vit la moitié du contenu cuisine aujourd'hui. TikTok et Instagram aussi, mais YouTube est le roi. Donc forcément, CookBook AI devait supporter les liens YouTube.
-
-Le problème ? Une vidéo YouTube c'est une *vidéo*. C'est pas du texte. Y'a pas de données structurées qui disent "2 tasses de farine, préchauffer le four à 180°C." La recette vit à l'intérieur de quelqu'un qui parle et qui cuisine pendant 12 minutes.
-
-J'ai dû trouver un moyen de faire en sorte que l'IA *comprenne* réellement le contenu vidéo et en extraie une recette structurée. Pas juste la description — la vraie vidéo. Parce que la plupart des cuisiniers YouTube mettent "RECETTE EN DESCRIPTION" et ensuite écrivent trois lignes qui ne contiennent pas la recette complète.
-
-C'était un de ces problèmes où chaque solution crée deux nouveaux problèmes. Le texte de description est pas fiable. La vidéo elle-même doit être "regardée" par l'IA. Et si l'IA se trompe sur un ingrédient, toute la recette est fausse. Personne veut ajouter "1 tasse de sel" au lieu de "1 cuillère à café de sel" parce que l'IA a déconné.
-
-Je vais pas rentrer dans les détails de comment j'ai résolu ça, mais disons que ça implique plusieurs stratégies de secours et beaucoup de tests avec des types de vidéos cuisine très différents. Des vidéos rapides style TikTok, des émissions de cuisine traditionnelles, des vidéos dans différentes langues. Chacune casse les choses d'une façon nouvelle et créative.
-
-## Mur #3 : Les fonctions "intelligentes" doivent paraître humaines
-
-Une fois que l'import de recettes marchait, j'ai construit le Chef IA. L'idée : discuter avec une IA qui connaît la cuisine. Lui demander des idées pour le dîner. Lui dire ce qu'il y a dans ton frigo et elle te propose des recettes. Besoin d'un substitut pour un ingrédient ? Demande au chef.
-
-La partie techno était — honnêtement — la partie facile. Faire qu'une IA génère des suggestions de recettes c'est simple. Faire en sorte que ça *donne l'impression* de parler à un vrai chef ? C'est là que ça devient compliqué.
-
-La première version était trop robotique. "En me basant sur vos ingrédients disponibles, je recommande de préparer un sauté de poulet." Personne parle comme ça. Un vrai chef dirait plutôt "Oh t'as du poulet et des poivrons ? Laisse-moi te montrer ce sauté rapide qui prend 15 minutes — tu vas adorer."
-
-J'ai passé des semaines à peaufiner la personnalité. Et puis j'ai rencontré le problème des quotas : tu peux pas laisser les gens discuter avec l'IA gratuitement toute la journée. Ça coûte de l'argent — du vrai argent — pour chaque message. Donc j'ai dû concevoir un système où les utilisateurs gratuits en ont assez pour voir la valeur, mais pas trop pour pas me ruiner dès le premier jour. Trouver cet équilibre c'est un art, pas une science.
-
-Et puis y'a le garde-manger. L'idée est simple : suivre ce qu'il y a dans ton frigo, congélateur et placards. Recevoir des alertes quand les choses vont bientôt périmer. Laisser le Chef IA utiliser ton garde-manger pour suggérer des recettes.
-
-Idée simple. Exécution complexe. Les gens organisent leur cuisine différemment. Certains traquent les dates de péremption religieusement. D'autres veulent juste une liste approximative. Certains ont 5 trucs dans leur frigo, d'autres 50. L'interface devait marcher pour tous sans être écrasante ni trop simpliste.
-
-## Mur #4 : Faire en sorte que ça marche dans la cuisine
-
-C'est le mur qui m'a le plus surpris. Tout marchait super bien à mon bureau. Assis, mains propres, en tapant délicatement. Magnifique.
-
-Et puis j'ai essayé de cuisiner avec.
-
-T'as les mains couvertes de farine. L'écran s'éteint tout le temps. Tu peux pas taper parce que tes doigts sont mouillés. Le texte est trop petit pour lire de l'autre côté du plan de travail. Le minuteur que t'as mis mentalement a rien à voir avec le minuteur de l'app.
-
-J'ai dû repenser toute l'expérience cuisine. L'écran reste allumé pendant que tu cuisines. Le texte assez gros pour être lu à un mètre. La voix qui lit les instructions à haute voix pour que t'aies pas à toucher l'écran. Le mode pas-à-pas où tu fais juste glisser — ou mieux, tu utilises ta voix — pour passer à l'étape suivante.
-
-**La métaphore :** C'est comme concevoir un tableau de bord de voiture. Il est parfait dans le showroom. Mais conduis sous la pluie la nuit avec les yeux fatigués et tu réalises soudain que le compteur est illisible et les boutons trop petits. Le vrai test c'est en conditions réelles, pas dans le labo.
-
-Ces trucs "évidents" ont pris autant de temps que les fonctions IA. Et c'est ça qui fait la différence entre une app que quelqu'un télécharge et une app que quelqu'un utilise vraiment tous les jours.
-
-## Mur #5 : Les derniers 5% prennent 50% du temps
-
-L'app était "finie" après environ deux mois. L'import marchait. Le Chef marchait. Le garde-manger marchait. Le planificateur de repas marchait. La liste de courses marchait. Même la fonction d'impression de livre de recettes — où tu sélectionnes des recettes et tu commandes un vrai livre physique — était fonctionnelle.
-
-Mais "fonctionnel" et "prêt pour l'App Store" c'est deux choses très différentes.
-
-Les derniers 5% c'est un monstre. C'est le dark mode qui est super sur l'écran d'accueil mais qui pète sur une boîte de dialogue spécifique. C'est le cas limite où quelqu'un colle une URL qui est pas une recette. C'est la liste de courses qui trie les articles par catégorie mais qui met les "œufs" dans la mauvaise catégorie. C'est l'onboarding qui a du sens pour moi mais qui embrouille ma mère.
-
-C'est tester sur quinze tailles d'écran différentes. C'est s'assurer que l'app marche hors-ligne parce que t'es dans la cuisine, pas à ton bureau avec un Wi-Fi parfait. C'est écrire une politique de confidentialité parce que ton app gère des clés API et que tu dois expliquer que non, tu espionnes pas les recettes des gens.
-
-La fonction livre de recettes à elle seule — où tu sélectionnes des recettes, choisis un thème, prévisualises un vrai PDF, et commandes un livre imprimé — cette fonction "simple" a un assistant en 4 étapes, trois thèmes différents, de la génération PDF, une intégration API avec un service d'impression à la demande, des formulaires d'adresse de livraison, et une mention légale. Chaque étape a des cas limites. Chaque cas limite doit être géré.
-
-J'appelle ça le "piège des 98%." L'app a l'air finie à 98%, donc tu penses que t'y es presque. Mais ces derniers 2% sont éparpillés sur chaque écran, chaque fonctionnalité, chaque interaction. Et ça prend aussi longtemps que les 98% précédents combinés.
-
-## Ce que j'ai appris
-
-Construire CookBook AI m'a appris trois choses :
-
-**1. Les apps simples ne sont pas simples.** "Colle un lien, récupère une recette" ça a l'air d'un projet de week-end. Ça l'est pas. Derrière chaque fonction simple se cache une cascade de cas limites, de stratégies de secours, et de décisions qui ont pris des jours à résoudre.
-
-**2. Teste en conditions réelles.** Ton bureau c'est pas une cuisine. Tes doigts propres c'est pas des mains couvertes de farine. Ton Wi-Fi parfait c'est pas la zone morte derrière le frigo. Plus tôt tu testes en conditions réelles, plus tôt tu construis un truc que les gens utilisent vraiment.
-
-**3. Les derniers 5% c'est tout le produit.** Tout le monde s'en fout de ton IA si le dark mode est cassé. Tout le monde s'en fout de ton import de recettes si le texte est trop petit pour être lu. Le polish — les petits détails — c'est ce qui sépare une app téléchargée d'une app aimée.
-
-CookBook AI est bientôt prêt. [La waitlist est ouverte](/cookbookai) si tu veux être le premier à l'essayer.
-
-> Construire une app de cuisine m'a appris plus sur la patience que n'importe quelle recette. Parfois, faut juste laisser mijoter.`,
-    date: '2026-03-03',
-    readTime: '7 min',
-    tags: ['CookBook AI', 'Solo Dev', 'Behind the scenes'],
-    icon: '🍳',
-    gradient: 'from-orange-500 to-red-500',
   },
 ];

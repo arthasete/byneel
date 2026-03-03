@@ -12,6 +12,105 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    title: 'Building CookBook AI: the 5 walls I hit that nobody warns you about',
+    slug: 'construire-cookbook-ai-5-murs',
+    excerpt: 'An AI recipe app sounds simple. Import a URL, get a recipe. But behind that simplicity hides months of unexpected problems.',
+    content: `## It started with a simple idea
+
+Everybody cooks. Everybody finds recipes on the internet. And everybody has the same problem: you find an amazing recipe on Instagram, YouTube, or some random blog, and then what? You screenshot it. You bookmark it. You forget about it. Three weeks later you're standing in the kitchen scrolling through 400 screenshots trying to find that one pasta recipe your friend sent you.
+
+CookBook AI was supposed to fix that. Paste a URL, get a clean recipe. Done.
+
+Turns out "done" was about 5% of the journey.
+
+## Wall #1: The internet doesn't want you to have its recipes
+
+Here's the thing nobody tells you about recipe websites. They're built to keep you *on the website*. Ads everywhere. Life story before the recipe. Pop-ups asking for your email. And the actual recipe? Buried somewhere in a mess of HTML that looks different on every single site.
+
+I thought I could just scrape the page and extract the recipe. Nope.
+
+Some sites use structured data — a standard format that says "hey, here's the title, here are the ingredients, here are the steps." That's the dream. When it works, it's beautiful. You get a perfect recipe in milliseconds.
+
+But most sites don't use it. Or they use it wrong. Or they use a half-broken version that puts the entire life story into the "description" field and the actual ingredients nowhere.
+
+So I had to build a cascade. Try the clean way first. If that fails, try another approach. If that fails too, try a third one. Three strategies, each one catching what the previous one missed. It took way longer than I expected, and I'm still finding edge cases months later.
+
+**The metaphor:** It's like trying to read a book, but every bookstore wraps their books in a different packaging, some in plastic, some in a locked box, some in a foreign language. You need three different tools just to get to page one.
+
+## Wall #2: YouTube doesn't give you recipes
+
+YouTube is where half the cooking content lives today. TikTok and Instagram too, but YouTube is king. So naturally, CookBook AI had to support YouTube links.
+
+The problem? A YouTube video is a *video*. It's not text. There's no structured data that says "2 cups of flour, preheat oven to 180°C." The recipe lives inside someone talking and cooking for 12 minutes.
+
+I had to figure out a way to make AI actually *understand* the video content and extract a structured recipe from it. Not just the description — the actual video. Because most YouTube cooks put "RECIPE BELOW" in the description and then write three lines that don't actually contain the full recipe.
+
+This was one of those problems where every solution creates two new problems. The description text is unreliable. The video itself needs to be "watched" by AI. And if the AI misunderstands one ingredient, the whole recipe is wrong. Nobody wants to add "1 cup of salt" instead of "1 teaspoon of salt" because the AI got confused.
+
+I won't go into the specifics of how I solved it, but let's just say it involves multiple fallback strategies and a lot of testing with very different types of cooking videos. Fast-paced TikTok-style videos, slow traditional cooking shows, videos in different languages. Each one breaks things in a new and creative way.
+
+## Wall #3: The "smart" features need to feel human
+
+Once the recipe import was working, I built the AI Chef. The idea: chat with an AI that knows about cooking. Ask it for dinner ideas. Tell it what's in your fridge and it suggests recipes. Need a substitute for an ingredient? Ask the chef.
+
+The technology part was — honestly — the easy part. Getting an AI to generate recipe suggestions is straightforward. Making it *feel* like you're talking to a real chef? That's where it gets tricky.
+
+The first version was too robotic. "Based on your available ingredients, I recommend preparing a chicken stir-fry." Nobody talks like that. A real chef would say something like "Oh you've got chicken and peppers? Let me show you this quick stir-fry that takes 15 minutes — you'll love it."
+
+I spent weeks tuning the personality. And then I hit the quota problem: you can't let people chat with AI for free all day. It costs money — real money — for every message. So I had to design a system where free users get enough to see the value, but not so much that it bankrupts me on day one. Finding that balance is an art, not a science.
+
+And then there's the pantry. The idea is simple: track what's in your fridge, freezer, and pantry. Get alerts when things are about to expire. Let the AI Chef use your pantry to suggest recipes.
+
+Simple idea. Complex execution. People organize their kitchens differently. Some track expiry dates religiously. Some just want a rough list. Some have 5 items in their fridge, some have 50. The UI had to work for all of them without being overwhelming or too simplistic.
+
+## Wall #4: Making it work in the kitchen
+
+This is the wall that surprised me the most. Everything worked great on my desk. Sitting down, clean hands, tapping carefully. Beautiful.
+
+Then I actually tried to cook with it.
+
+Your hands are covered in flour. The screen keeps turning off. You can't tap because your fingers are wet. The text is too small to read from across the counter. The timer you set mentally has nothing to do with the timer in the app.
+
+I had to rethink the entire cooking experience. Screen stays on while you're cooking. Text big enough to read from a meter away. Voice that reads instructions out loud so you don't have to touch the screen. Step-by-step mode where you just swipe — or better, use your voice — to go to the next step.
+
+**The metaphor:** It's like designing a car dashboard. It looks perfect in the showroom. But drive it in the rain at night with tired eyes and suddenly you realize the speedometer is unreadable and the buttons are too small. The real test is in real conditions, not in the lab.
+
+These "obvious" things took as much time as the AI features. And they're what makes the difference between an app someone downloads and an app someone actually uses every day.
+
+## Wall #5: The last 5% takes 50% of the time
+
+The app was "done" after about two months. Import worked. Chef worked. Pantry worked. Meal planner worked. Shopping list worked. Even the recipe book printing feature — where you can select recipes and order a real physical book — was functional.
+
+But "functional" and "ready for the App Store" are two very different things.
+
+The last 5% is a monster. It's the dark mode that looks great on the home screen but breaks on one specific dialog. It's the edge case where someone pastes a URL that's not a recipe. It's the shopping list that groups items by category but puts "eggs" in the wrong category. It's the onboarding that makes sense to me but confuses my mom.
+
+It's testing on fifteen different screen sizes. It's making sure the app works offline because you're in the kitchen, not at your desk with perfect Wi-Fi. It's writing a privacy policy because your app handles API keys and you need to explain that no, you don't spy on people's recipes.
+
+The book printing feature alone — where you select recipes, choose a theme, preview a real PDF, and order a printed book — that "simple" feature has a 4-step wizard, three different themes, PDF generation, an API integration with a print-on-demand service, shipping address forms, and a legal notice. Each step has edge cases. Each edge case needs handling.
+
+I call this the "98% trap." The app looks 98% done, so you think you're almost there. But that last 2% is spread across every single screen, every single feature, every single interaction. And it takes as long as the first 98% combined.
+
+## What I learned
+
+Building CookBook AI taught me three things:
+
+**1. Simple apps aren't simple.** "Paste a URL, get a recipe" sounds like a weekend project. It's not. Behind every simple feature is a cascade of edge cases, fallback strategies, and decisions that took days to figure out.
+
+**2. Test in real conditions.** Your desk is not a kitchen. Your clean fingers are not flour-covered hands. Your perfect Wi-Fi is not a dead zone behind the fridge. The sooner you test in real conditions, the sooner you build something people actually use.
+
+**3. The last 5% is the whole product.** Nobody cares about your AI if the dark mode is broken. Nobody cares about your recipe import if the text is too small to read. The polish — the small details — that's what separates a downloaded app from a loved app.
+
+CookBook AI is almost ready. [The waitlist is open](/cookbookai) if you want to be the first to try it.
+
+> Building a cooking app taught me more about patience than any recipe ever could. Sometimes you need to let things simmer.`,
+    date: '2026-03-03',
+    readTime: '7 min',
+    tags: ['CookBook AI', 'Solo Dev', 'Behind the scenes'],
+    icon: '🍳',
+    gradient: 'from-orange-500 to-red-500',
+  },
+  {
     title: '3 new apps just joined the ByNeel family',
     slug: 'trois-nouvelles-apps-byneel',
     excerpt: 'ByNeel started with 3 apps. Now we\'re expanding to 6. Here\'s what\'s coming and why each one is different.',
@@ -70,7 +169,7 @@ CookBook AI gets shipped to the App Store with 90% of the features working perfe
 The ByNeel family is growing. But it's growing at a human pace, with human decisions, and with the philosophy that apps should solve real problems, not create new ones.
 
 Welcome to Ephemera, BridgeGen, and EarthPulse.`,
-    date: '2026-02-27',
+    date: '2026-02-28',
     readTime: '6 min',
     tags: ['ByNeel', 'Ephemera', 'BridgeGen', 'EarthPulse'],
     icon: '🚀',
@@ -198,7 +297,7 @@ Would I add a seventh app this year? Probably not. But six? Six feels right. Six
 The apps aren't perfect. But they're real. They solve problems. They're finished.
 
 And that's the whole point.`,
-    date: '2026-02-27',
+    date: '2026-02-25',
     readTime: '5 min',
     tags: ['Solo Dev', 'AI', 'Productivity', 'ByNeel'],
     icon: '🧠',
@@ -371,7 +470,7 @@ The cycle: code → test → submit → wait → publish → read reviews → cr
 And we did all this for 8 apps. In parallel. Without knowing how to code. With AI and coffee.
 
 > The hardest part about building apps isn't code. It's the Apple certificate. Ask any dev, they'll confirm.`,
-    date: '2026-02-27',
+    date: '2026-02-22',
     readTime: '10 min',
     tags: ['Learning', 'App Store', 'Full guide'],
     icon: '🚀',
@@ -499,11 +598,71 @@ Let's be real:
 This site went through all these steps. The hardest part? Honestly, it's the content. Tech is 20% of the work. The other 80% is writing, designing and iterating until Neel says "looks good, let's push".
 
 > A website for 12€/year that runs worldwide in 30 seconds. We really do live in incredible times.`,
-    date: '2026-02-26',
+    date: '2026-02-18',
     readTime: '8 min',
     tags: ['Learning', 'Web', 'Full guide'],
     icon: '🌐',
     gradient: 'from-sky-500 to-blue-600',
+  },
+  {
+    title: 'OmniDrop: reinventing file transfer',
+    slug: 'omnidrop-transfert-fichiers-reinvente',
+    excerpt: 'NFC + Wi-Fi Direct + AES-256-GCM encryption = the P2P transfer nobody else has done. A look at OmniDrop\'s technical choices.',
+    content: `## The problem
+
+AirDrop only works between Apple devices. Bluetooth is slow. Cloud requires an account and connection. And sending a 2GB file between an iPhone and a Windows PC in 2026? Still a nightmare.
+
+## The solution: NFC + Wi-Fi Direct
+
+OmniDrop uses NFC to start the connection (one tap is all it takes) and automatically switches to Wi-Fi Direct for high-speed transfer. Result: hundreds of MB/s speeds, no router, no cloud, no account.
+
+## End-to-end encryption
+
+Every transfer is encrypted with AES-256-GCM. Keys are exchanged via the NFC channel (which requires physical proximity of a few centimeters). Nobody can intercept your files — not even us, since no server is involved.
+
+## Native cross-platform
+
+Flutter targets iOS, Android, Windows, macOS and Linux from a single codebase. Native plugins (NFC, Wi-Fi Direct) are written in Swift/Kotlin and bridged via Platform Channels.
+
+## What's coming
+
+OmniDrop is in closed beta. The public version arrives soon with support for multiple files, complete folder transfer, and a "classroom mode" to share with multiple devices at once.`,
+    date: '2026-02-15',
+    readTime: '2 min',
+    tags: ['OmniDrop', 'Flutter', 'Security'],
+    icon: '📡',
+    gradient: 'from-cyan to-brand-blue',
+  },
+  {
+    title: 'Flutter vs Swift: my verdict after 8 apps',
+    slug: 'flutter-vs-swift-verdict',
+    excerpt: 'I use both daily. Here\'s when Flutter wins, when Swift is unbeatable, and why the framework war is stupid.',
+    content: `## The context
+
+I've got 5 Flutter apps (OmniDrop, Beloved, TipLog, ImageVault, Isekai Survie) and 2 Swift apps (CookBook AI, StickerVibe AI). I also have a full Python AI assistant (J.A.R.V.I.S.). I think I have enough perspective to give an honest opinion.
+
+## When Flutter wins
+
+- **Cross-platform** — One codebase for iOS, Android, desktop and web. OmniDrop targets 5 platforms with a single code.
+- **Hot Reload** — Development cycle is absurdly fast. You change a widget, it refreshes in less than a second.
+- **Custom UI** — Flutter draws everything pixel by pixel. You're not limited by native components.
+- **Riverpod** — Best state management system I've used, across all frameworks.
+
+## When Swift wins
+
+- **Core ML** — Integration with Apple's ML models is native and ultra-fast. CookBook AI uses the camera + Core ML to identify ingredients in real time.
+- **Raw performance** — Compiled Swift is faster than Dart AOT, period. For heavy image processing, it matters.
+- **App Clips & Widgets** — iOS extensions aren't (yet) well-supported by Flutter.
+- **SwiftUI + Combine** — Apple's ecosystem is coherent and elegant when you stay in their garden.
+
+## My verdict
+
+Use Flutter by default. Switch to Swift when you need Core ML, App Clips, or when you only target Apple. The framework war makes no sense — they're tools, not religions.`,
+    date: '2026-02-10',
+    readTime: '3 min',
+    tags: ['Flutter', 'Swift', 'Mobile'],
+    icon: '⚔️',
+    gradient: 'from-orange-500 to-red-500',
   },
   {
     title: 'The app creator\'s toolbox (without knowing how to code)',
@@ -621,108 +780,43 @@ That's the price of 2 Netflix subscriptions. To build apps. In 2026. That's wild
 **Total: ~50$/month + one-time costs.** That's everything we need to run 8 apps and a website.
 
 > The barrier to entry for app creation has never been lower. The only investment that really counts is time.`,
-    date: '2026-02-25',
+    date: '2026-02-08',
     readTime: '7 min',
     tags: ['Learning', 'Tools', 'Budget'],
     icon: '🧰',
     gradient: 'from-rose-500 to-pink-600',
   },
   {
-    title: 'The tech dictionary for Muggles — Part 1: The basics',
-    slug: 'dico-tech-moldus-partie-1',
-    excerpt: 'API, framework, backend, frontend... You hear these words everywhere but understand nothing? Sit down, we\'ll explain everything with geeky metaphors.',
-    content: `## Welcome to the tech dictionary
+    title: 'J.A.R.V.I.S.: building a local AI assistant',
+    slug: 'jarvis-assistant-ia-local',
+    excerpt: 'How I built a personal assistant that runs entirely locally with Ollama, FastAPI and a real-time dashboard.',
+    content: `## The idea
 
-You read tech articles and nod like you understand? Don't worry, we've all been there. Here's a glossary of terms you hear everywhere, explained like we're at the bar (a geeky bar, sure, but a bar nonetheless).
+Cloud AI assistants are powerful but have a fundamental issue: your data goes through third-party servers. J.A.R.V.I.S. was born from wanting an assistant as capable as ChatGPT, but running entirely on my machine.
 
-## Frontend
+## The architecture
 
-**What it is:** Everything you see and touch in an app or website. Buttons, colors, animations, text.
+- **Ollama** — Serves LLM models locally (Mistral, Llama, Phi). Zero network calls for inference.
+- **FastAPI** — Async REST API that orchestrates conversations, RAG and plugins.
+- **SQLite FTS5** — Local database with full-text search for document context.
+- **Web Dashboard** — Real-time interface via WebSocket to monitor conversations and metrics.
 
-**The metaphor:** It's the restaurant's dining room. The decor, the tables, the costumed waiters, the menu. It's pretty, it's designed for you, and you have no idea about the mess in the kitchen.
+## DIY RAG
 
-## Backend
+J.A.R.V.I.S. can ingest documents (PDF, markdown, code) and chunk them into embeddings stored locally. When you ask a question, it searches your knowledge base first before answering. Everything stays on your disk.
 
-**What it is:** Everything that happens behind the scenes. The server, the database, the business logic. You never see it but without it, nothing works.
+## The challenges
 
-**The metaphor:** It's the restaurant's kitchen. The chef, the pots, the fridge, the orders. If the kitchen catches fire, the waiter can smile as much as he wants — you won't get your food.
+The main challenge is speed. A 7B LLM locally on a MacBook Pro generates ~30 tokens/second. It's usable but far from GPT-4's ~100 t/s via API. The privacy vs speed tradeoff is real.
 
-## API (Application Programming Interface)
+## Phase 2
 
-**What it is:** A system that lets two pieces of software talk to each other. When your weather app shows the temperature, it asks an API "hey, what's the temperature in Paris?", and the API answers.
-
-**The metaphor:** It's the waiter at the restaurant. You don't go into the kitchen yourself. You give your order to the waiter (the API), he tells the kitchen (the backend), and he comes back with your food (the data). You don't know how it's cooked, and that's fine.
-
-## Framework
-
-**What it is:** A pre-made construction kit for building apps. Instead of coding everything from scratch, you use a framework that gives you ready-to-use building blocks.
-
-**The metaphor:** It's a Technic LEGO set. You could make each piece yourself with a 3D printer, but why? The set gives you the pieces, the instructions, and a result that stands up. Flutter, React, Next.js — these are different LEGO boxes to build different things.
-
-## Flutter
-
-**What it is:** Google's framework to build apps that work on ALL platforms (iPhone, Android, Windows, Mac, Linux, web) from a single codebase.
-
-**The metaphor:** It's the Star Trek universal translator. You speak one language (Dart), and Flutter automatically translates for each planet (platform). OmniDrop, Beloved, TipLog — all built with this translator.
-
-## Swift / SwiftUI
-
-**What it is:** The programming language Apple created for building iPhone/iPad/Mac apps. SwiftUI is the visual toolkit that comes with it.
-
-**The metaphor:** It's the official language of the Apple Kingdom. You want to live in their kingdom? You speak Swift. It's beautiful, it's elegant, it's fast — but it only works for them. CookBook AI and StickerVibe are citizens of the Apple Kingdom.
-
-## Database
-
-**What it is:** An organized place to store data. Your recipes in CookBook AI, your messages in Beloved, your tips in TipLog — all live in a database.
-
-**The metaphor:** It's a library. Each book is data, each shelf is a table, and the librarian (the SQL engine) finds you any book in 2 seconds when you ask. "SELECT * FROM recipes WHERE difficulty = 'easy'" is just telling the librarian "give me all the easy recipes".
-
-## SQL
-
-**What it is:** The language to talk to databases. SELECT, INSERT, UPDATE, DELETE — the 4 magic words.
-
-**The metaphor:** It's the librarian's language. You don't search the shelves yourself, you talk to him in SQL and he does the work. And yeah, that's the only thing Neel knew how to do before AI. A SELECT now and then. We're starting from far.
-
-## SQLite
-
-**What it is:** An ultra-lightweight database that lives directly on your phone/computer. No server needed, no internet. The file IS the database.
-
-**The metaphor:** It's a personal notebook. You don't need a library. You keep your notes in your pocket. TipLog, ImageVault, CookBook AI — they all use a personal notebook rather than a distant library. YOUR data stays with YOU.
-
-## Git / GitHub
-
-**What it is:** Git is a system to save the history of your code (like save points in a game). GitHub is the cloud where you store that history.
-
-**The metaphor:** Git is the quicksave system in an RPG. You did something risky? Quicksave first. It goes wrong? Load your save. GitHub is cloud save — even if your PC explodes, your saves are safe.
-
-## CSS
-
-**What it is:** The language that defines the visual style of a website. Colors, sizes, animations, positions.
-
-**The metaphor:** It's your character's outfit. HTML is the body (the structure), CSS is the armor, the cape, the hairdo. This site is dark with neon blue because CSS says "make the background black and make things glow blue". Yeah, those 35 floating particles? That's CSS.
-
-## Responsive Design
-
-**What it is:** Making a site adapt to all screen sizes — from smartphone to ultrawide monitor.
-
-**The metaphor:** It's like water in a glass. You pour the same water into a shot glass, a mug or a pitcher — it takes the shape of the container. A responsive site does the same: the same content adapts to phone, tablet or PC. And yeah, that's why we have a hamburger menu.
-
-## Deployment
-
-**What it is:** Putting your site/app online so everyone can access it. Going from "it works on my computer" to "it works for the planet".
-
-**The metaphor:** It's like publishing a book. You wrote the manuscript (the code), you proofread it (testing), and now you send it to the printing press (the server). Except in tech, the printing press is Vercel, Cloudflare or AWS, and your book is available everywhere instantly.
-
-## Next
-
-In Part 2, we tackle the more advanced terms: encryption, NFC, AI, embeddings, RAG, and why your AirDrop is less secure than you think.
-
-> Remember: nobody's born knowing what an API is. Even senior devs have googled "what is REST" at least 47 times.`,
-    date: '2026-02-25',
-    readTime: '7 min',
-    tags: ['Learning', 'Explainer', 'Beginner'],
-    icon: '📖',
-    gradient: 'from-green-500 to-emerald-500',
+Next step: plugins. J.A.R.V.I.S. will be able to control apps, read emails, and interact with external APIs — all while keeping reasoning local.`,
+    date: '2026-02-05',
+    readTime: '3 min',
+    tags: ['J.A.R.V.I.S.', 'Python', 'Local AI'],
+    icon: '🧠',
+    gradient: 'from-emerald-500 to-teal-500',
   },
   {
     title: 'The tech dictionary for Muggles — Part 2: Next level',
@@ -821,11 +915,141 @@ You survived Part 1? Good. Now we tackle the heavier concepts — the ones we us
 Now that you know the vocabulary, you're ready to understand how it all fits together. The idea is for this site to become a real learning resource for newcomers — because tech shouldn't exclude anyone.
 
 > "The only difference between an expert and a beginner is that the expert has googled the same thing more times." — Ancient StackOverflow wisdom.`,
-    date: '2026-02-24',
+    date: '2026-02-03',
     readTime: '8 min',
     tags: ['Learning', 'Explainer', 'Advanced'],
     icon: '🧪',
     gradient: 'from-purple-500 to-indigo-500',
+  },
+  {
+    title: 'The tech dictionary for Muggles — Part 1: The basics',
+    slug: 'dico-tech-moldus-partie-1',
+    excerpt: 'API, framework, backend, frontend... You hear these words everywhere but understand nothing? Sit down, we\'ll explain everything with geeky metaphors.',
+    content: `## Welcome to the tech dictionary
+
+You read tech articles and nod like you understand? Don't worry, we've all been there. Here's a glossary of terms you hear everywhere, explained like we're at the bar (a geeky bar, sure, but a bar nonetheless).
+
+## Frontend
+
+**What it is:** Everything you see and touch in an app or website. Buttons, colors, animations, text.
+
+**The metaphor:** It's the restaurant's dining room. The decor, the tables, the costumed waiters, the menu. It's pretty, it's designed for you, and you have no idea about the mess in the kitchen.
+
+## Backend
+
+**What it is:** Everything that happens behind the scenes. The server, the database, the business logic. You never see it but without it, nothing works.
+
+**The metaphor:** It's the restaurant's kitchen. The chef, the pots, the fridge, the orders. If the kitchen catches fire, the waiter can smile as much as he wants — you won't get your food.
+
+## API (Application Programming Interface)
+
+**What it is:** A system that lets two pieces of software talk to each other. When your weather app shows the temperature, it asks an API "hey, what's the temperature in Paris?", and the API answers.
+
+**The metaphor:** It's the waiter at the restaurant. You don't go into the kitchen yourself. You give your order to the waiter (the API), he tells the kitchen (the backend), and he comes back with your food (the data). You don't know how it's cooked, and that's fine.
+
+## Framework
+
+**What it is:** A pre-made construction kit for building apps. Instead of coding everything from scratch, you use a framework that gives you ready-to-use building blocks.
+
+**The metaphor:** It's a Technic LEGO set. You could make each piece yourself with a 3D printer, but why? The set gives you the pieces, the instructions, and a result that stands up. Flutter, React, Next.js — these are different LEGO boxes to build different things.
+
+## Flutter
+
+**What it is:** Google's framework to build apps that work on ALL platforms (iPhone, Android, Windows, Mac, Linux, web) from a single codebase.
+
+**The metaphor:** It's the Star Trek universal translator. You speak one language (Dart), and Flutter automatically translates for each planet (platform). OmniDrop, Beloved, TipLog — all built with this translator.
+
+## Swift / SwiftUI
+
+**What it is:** The programming language Apple created for building iPhone/iPad/Mac apps. SwiftUI is the visual toolkit that comes with it.
+
+**The metaphor:** It's the official language of the Apple Kingdom. You want to live in their kingdom? You speak Swift. It's beautiful, it's elegant, it's fast — but it only works for them. CookBook AI and StickerVibe are citizens of the Apple Kingdom.
+
+## Database
+
+**What it is:** An organized place to store data. Your recipes in CookBook AI, your messages in Beloved, your tips in TipLog — all live in a database.
+
+**The metaphor:** It's a library. Each book is data, each shelf is a table, and the librarian (the SQL engine) finds you any book in 2 seconds when you ask. "SELECT * FROM recipes WHERE difficulty = 'easy'" is just telling the librarian "give me all the easy recipes".
+
+## SQL
+
+**What it is:** The language to talk to databases. SELECT, INSERT, UPDATE, DELETE — the 4 magic words.
+
+**The metaphor:** It's the librarian's language. You don't search the shelves yourself, you talk to him in SQL and he does the work. And yeah, that's the only thing Neel knew how to do before AI. A SELECT now and then. We're starting from far.
+
+## SQLite
+
+**What it is:** An ultra-lightweight database that lives directly on your phone/computer. No server needed, no internet. The file IS the database.
+
+**The metaphor:** It's a personal notebook. You don't need a library. You keep your notes in your pocket. TipLog, ImageVault, CookBook AI — they all use a personal notebook rather than a distant library. YOUR data stays with YOU.
+
+## Git / GitHub
+
+**What it is:** Git is a system to save the history of your code (like save points in a game). GitHub is the cloud where you store that history.
+
+**The metaphor:** Git is the quicksave system in an RPG. You did something risky? Quicksave first. It goes wrong? Load your save. GitHub is cloud save — even if your PC explodes, your saves are safe.
+
+## CSS
+
+**What it is:** The language that defines the visual style of a website. Colors, sizes, animations, positions.
+
+**The metaphor:** It's your character's outfit. HTML is the body (the structure), CSS is the armor, the cape, the hairdo. This site is dark with neon blue because CSS says "make the background black and make things glow blue". Yeah, those 35 floating particles? That's CSS.
+
+## Responsive Design
+
+**What it is:** Making a site adapt to all screen sizes — from smartphone to ultrawide monitor.
+
+**The metaphor:** It's like water in a glass. You pour the same water into a shot glass, a mug or a pitcher — it takes the shape of the container. A responsive site does the same: the same content adapts to phone, tablet or PC. And yeah, that's why we have a hamburger menu.
+
+## Deployment
+
+**What it is:** Putting your site/app online so everyone can access it. Going from "it works on my computer" to "it works for the planet".
+
+**The metaphor:** It's like publishing a book. You wrote the manuscript (the code), you proofread it (testing), and now you send it to the printing press (the server). Except in tech, the printing press is Vercel, Cloudflare or AWS, and your book is available everywhere instantly.
+
+## Next
+
+In Part 2, we tackle the more advanced terms: encryption, NFC, AI, embeddings, RAG, and why your AirDrop is less secure than you think.
+
+> Remember: nobody's born knowing what an API is. Even senior devs have googled "what is REST" at least 47 times.`,
+    date: '2026-02-01',
+    readTime: '7 min',
+    tags: ['Learning', 'Explainer', 'Beginner'],
+    icon: '📖',
+    gradient: 'from-green-500 to-emerald-500',
+  },
+  {
+    title: 'Dark design: how I designed ByNeel',
+    slug: 'dark-design-byneel',
+    excerpt: 'Glassmorphism, neon gradients, floating particles — the design choices behind this site and why dark mode is the future.',
+    content: `## The philosophy
+
+ByNeel is a dev site. Not a corporate site. Not a Dribbble portfolio. The aesthetic had to reflect code: dark, technical, alive.
+
+## The ingredients
+
+- **Glassmorphism** — Semi-transparent cards with subtle borders. Gives depth without overloading.
+- **Neon gradients** — Electric blue → violet → cyan. Each project has its own gradient for unique visual identity.
+- **Floating particles** — Code symbols ({}, //, λ, =>...) float in the background. It's subtle but brings the page to life.
+- **Monospace typography** — Technical titles use fixed-width fonts to strengthen the "terminal" vibe.
+
+## Performance = Design
+
+A beautiful site that lags is a bad site. I removed Motion.js from almost every component and replaced it with native CSS animations. Result: smooth transitions at 60fps even on mobile.
+
+The rules:
+1. **No backdrop-filter:blur()** on scrolling elements — it kills performance.
+2. **IntersectionObserver** instead of animation libraries — lighter, more reliable.
+3. **will-change: transform** on animated elements to activate GPU compositing.
+
+## The future is dark
+
+OLED screens use less power in dark mode. Eyes tire less at night. And let's be honest — it looks better. Dark mode isn't a trend, it's an evolution.`,
+    date: '2026-01-28',
+    readTime: '2 min',
+    tags: ['Design', 'CSS', 'Performance'],
+    icon: '🎨',
+    gradient: 'from-brand-violet to-pink',
   },
   {
     title: 'The legend of Neel & Claude: from zero to 8 apps (and lots of bugs)',
@@ -919,7 +1143,7 @@ What's next? More apps, more features, more floating particles, and probably Nee
 And I'll be there. Because that's the game.
 
 > "We can't push like this" — Neel, 2026. The phrase that changed everything.`,
-    date: '2026-02-26',
+    date: '2026-01-20',
     readTime: '7 min',
     tags: ['Behind the scenes', 'AI', 'Humor'],
     icon: '🎬',
@@ -999,234 +1223,10 @@ All without knowing code.
 If that's not proof the game has changed, I don't know what is.
 
 > I don't know code. But I know how to create. And in 2026, they're the same thing.`,
-    date: '2026-02-20',
+    date: '2026-01-15',
     readTime: '6 min',
     tags: ['AI', 'No-code', 'Productivity'],
     icon: '🤖',
     gradient: 'from-brand-blue to-brand-violet',
-  },
-  {
-    title: 'OmniDrop: reinventing file transfer',
-    slug: 'omnidrop-transfert-fichiers-reinvente',
-    excerpt: 'NFC + Wi-Fi Direct + AES-256-GCM encryption = the P2P transfer nobody else has done. A look at OmniDrop\'s technical choices.',
-    content: `## The problem
-
-AirDrop only works between Apple devices. Bluetooth is slow. Cloud requires an account and connection. And sending a 2GB file between an iPhone and a Windows PC in 2026? Still a nightmare.
-
-## The solution: NFC + Wi-Fi Direct
-
-OmniDrop uses NFC to start the connection (one tap is all it takes) and automatically switches to Wi-Fi Direct for high-speed transfer. Result: hundreds of MB/s speeds, no router, no cloud, no account.
-
-## End-to-end encryption
-
-Every transfer is encrypted with AES-256-GCM. Keys are exchanged via the NFC channel (which requires physical proximity of a few centimeters). Nobody can intercept your files — not even us, since no server is involved.
-
-## Native cross-platform
-
-Flutter targets iOS, Android, Windows, macOS and Linux from a single codebase. Native plugins (NFC, Wi-Fi Direct) are written in Swift/Kotlin and bridged via Platform Channels.
-
-## What's coming
-
-OmniDrop is in closed beta. The public version arrives soon with support for multiple files, complete folder transfer, and a "classroom mode" to share with multiple devices at once.`,
-    date: '2026-02-15',
-    readTime: '2 min',
-    tags: ['OmniDrop', 'Flutter', 'Security'],
-    icon: '📡',
-    gradient: 'from-cyan to-brand-blue',
-  },
-  {
-    title: 'Flutter vs Swift: my verdict after 8 apps',
-    slug: 'flutter-vs-swift-verdict',
-    excerpt: 'I use both daily. Here\'s when Flutter wins, when Swift is unbeatable, and why the framework war is stupid.',
-    content: `## The context
-
-I've got 5 Flutter apps (OmniDrop, Beloved, TipLog, ImageVault, Isekai Survie) and 2 Swift apps (CookBook AI, StickerVibe AI). I also have a full Python AI assistant (J.A.R.V.I.S.). I think I have enough perspective to give an honest opinion.
-
-## When Flutter wins
-
-- **Cross-platform** — One codebase for iOS, Android, desktop and web. OmniDrop targets 5 platforms with a single code.
-- **Hot Reload** — Development cycle is absurdly fast. You change a widget, it refreshes in less than a second.
-- **Custom UI** — Flutter draws everything pixel by pixel. You're not limited by native components.
-- **Riverpod** — Best state management system I've used, across all frameworks.
-
-## When Swift wins
-
-- **Core ML** — Integration with Apple's ML models is native and ultra-fast. CookBook AI uses the camera + Core ML to identify ingredients in real time.
-- **Raw performance** — Compiled Swift is faster than Dart AOT, period. For heavy image processing, it matters.
-- **App Clips & Widgets** — iOS extensions aren't (yet) well-supported by Flutter.
-- **SwiftUI + Combine** — Apple's ecosystem is coherent and elegant when you stay in their garden.
-
-## My verdict
-
-Use Flutter by default. Switch to Swift when you need Core ML, App Clips, or when you only target Apple. The framework war makes no sense — they're tools, not religions.`,
-    date: '2026-02-10',
-    readTime: '3 min',
-    tags: ['Flutter', 'Swift', 'Mobile'],
-    icon: '⚔️',
-    gradient: 'from-orange-500 to-red-500',
-  },
-  {
-    title: 'J.A.R.V.I.S.: building a local AI assistant',
-    slug: 'jarvis-assistant-ia-local',
-    excerpt: 'How I built a personal assistant that runs entirely locally with Ollama, FastAPI and a real-time dashboard.',
-    content: `## The idea
-
-Cloud AI assistants are powerful but have a fundamental issue: your data goes through third-party servers. J.A.R.V.I.S. was born from wanting an assistant as capable as ChatGPT, but running entirely on my machine.
-
-## The architecture
-
-- **Ollama** — Serves LLM models locally (Mistral, Llama, Phi). Zero network calls for inference.
-- **FastAPI** — Async REST API that orchestrates conversations, RAG and plugins.
-- **SQLite FTS5** — Local database with full-text search for document context.
-- **Web Dashboard** — Real-time interface via WebSocket to monitor conversations and metrics.
-
-## DIY RAG
-
-J.A.R.V.I.S. can ingest documents (PDF, markdown, code) and chunk them into embeddings stored locally. When you ask a question, it searches your knowledge base first before answering. Everything stays on your disk.
-
-## The challenges
-
-The main challenge is speed. A 7B LLM locally on a MacBook Pro generates ~30 tokens/second. It's usable but far from GPT-4's ~100 t/s via API. The privacy vs speed tradeoff is real.
-
-## Phase 2
-
-Next step: plugins. J.A.R.V.I.S. will be able to control apps, read emails, and interact with external APIs — all while keeping reasoning local.`,
-    date: '2026-02-05',
-    readTime: '3 min',
-    tags: ['J.A.R.V.I.S.', 'Python', 'Local AI'],
-    icon: '🧠',
-    gradient: 'from-emerald-500 to-teal-500',
-  },
-  {
-    title: 'Dark design: how I designed ByNeel',
-    slug: 'dark-design-byneel',
-    excerpt: 'Glassmorphism, neon gradients, floating particles — the design choices behind this site and why dark mode is the future.',
-    content: `## The philosophy
-
-ByNeel is a dev site. Not a corporate site. Not a Dribbble portfolio. The aesthetic had to reflect code: dark, technical, alive.
-
-## The ingredients
-
-- **Glassmorphism** — Semi-transparent cards with subtle borders. Gives depth without overloading.
-- **Neon gradients** — Electric blue → violet → cyan. Each project has its own gradient for unique visual identity.
-- **Floating particles** — Code symbols ({}, //, λ, =>...) float in the background. It's subtle but brings the page to life.
-- **Monospace typography** — Technical titles use fixed-width fonts to strengthen the "terminal" vibe.
-
-## Performance = Design
-
-A beautiful site that lags is a bad site. I removed Motion.js from almost every component and replaced it with native CSS animations. Result: smooth transitions at 60fps even on mobile.
-
-The rules:
-1. **No backdrop-filter:blur()** on scrolling elements — it kills performance.
-2. **IntersectionObserver** instead of animation libraries — lighter, more reliable.
-3. **will-change: transform** on animated elements to activate GPU compositing.
-
-## The future is dark
-
-OLED screens use less power in dark mode. Eyes tire less at night. And let's be honest — it looks better. Dark mode isn't a trend, it's an evolution.`,
-    date: '2026-01-28',
-    readTime: '2 min',
-    tags: ['Design', 'CSS', 'Performance'],
-    icon: '🎨',
-    gradient: 'from-brand-violet to-pink',
-  },
-  {
-    title: 'Building CookBook AI: the 5 walls I hit that nobody warns you about',
-    slug: 'construire-cookbook-ai-5-murs',
-    excerpt: 'An AI recipe app sounds simple. Import a URL, get a recipe. But behind that simplicity hides months of unexpected problems.',
-    content: `## It started with a simple idea
-
-Everybody cooks. Everybody finds recipes on the internet. And everybody has the same problem: you find an amazing recipe on Instagram, YouTube, or some random blog, and then what? You screenshot it. You bookmark it. You forget about it. Three weeks later you're standing in the kitchen scrolling through 400 screenshots trying to find that one pasta recipe your friend sent you.
-
-CookBook AI was supposed to fix that. Paste a URL, get a clean recipe. Done.
-
-Turns out "done" was about 5% of the journey.
-
-## Wall #1: The internet doesn't want you to have its recipes
-
-Here's the thing nobody tells you about recipe websites. They're built to keep you *on the website*. Ads everywhere. Life story before the recipe. Pop-ups asking for your email. And the actual recipe? Buried somewhere in a mess of HTML that looks different on every single site.
-
-I thought I could just scrape the page and extract the recipe. Nope.
-
-Some sites use structured data — a standard format that says "hey, here's the title, here are the ingredients, here are the steps." That's the dream. When it works, it's beautiful. You get a perfect recipe in milliseconds.
-
-But most sites don't use it. Or they use it wrong. Or they use a half-broken version that puts the entire life story into the "description" field and the actual ingredients nowhere.
-
-So I had to build a cascade. Try the clean way first. If that fails, try another approach. If that fails too, try a third one. Three strategies, each one catching what the previous one missed. It took way longer than I expected, and I'm still finding edge cases months later.
-
-**The metaphor:** It's like trying to read a book, but every bookstore wraps their books in a different packaging, some in plastic, some in a locked box, some in a foreign language. You need three different tools just to get to page one.
-
-## Wall #2: YouTube doesn't give you recipes
-
-YouTube is where half the cooking content lives today. TikTok and Instagram too, but YouTube is king. So naturally, CookBook AI had to support YouTube links.
-
-The problem? A YouTube video is a *video*. It's not text. There's no structured data that says "2 cups of flour, preheat oven to 180°C." The recipe lives inside someone talking and cooking for 12 minutes.
-
-I had to figure out a way to make AI actually *understand* the video content and extract a structured recipe from it. Not just the description — the actual video. Because most YouTube cooks put "RECIPE BELOW" in the description and then write three lines that don't actually contain the full recipe.
-
-This was one of those problems where every solution creates two new problems. The description text is unreliable. The video itself needs to be "watched" by AI. And if the AI misunderstands one ingredient, the whole recipe is wrong. Nobody wants to add "1 cup of salt" instead of "1 teaspoon of salt" because the AI got confused.
-
-I won't go into the specifics of how I solved it, but let's just say it involves multiple fallback strategies and a lot of testing with very different types of cooking videos. Fast-paced TikTok-style videos, slow traditional cooking shows, videos in different languages. Each one breaks things in a new and creative way.
-
-## Wall #3: The "smart" features need to feel human
-
-Once the recipe import was working, I built the AI Chef. The idea: chat with an AI that knows about cooking. Ask it for dinner ideas. Tell it what's in your fridge and it suggests recipes. Need a substitute for an ingredient? Ask the chef.
-
-The technology part was — honestly — the easy part. Getting an AI to generate recipe suggestions is straightforward. Making it *feel* like you're talking to a real chef? That's where it gets tricky.
-
-The first version was too robotic. "Based on your available ingredients, I recommend preparing a chicken stir-fry." Nobody talks like that. A real chef would say something like "Oh you've got chicken and peppers? Let me show you this quick stir-fry that takes 15 minutes — you'll love it."
-
-I spent weeks tuning the personality. And then I hit the quota problem: you can't let people chat with AI for free all day. It costs money — real money — for every message. So I had to design a system where free users get enough to see the value, but not so much that it bankrupts me on day one. Finding that balance is an art, not a science.
-
-And then there's the pantry. The idea is simple: track what's in your fridge, freezer, and pantry. Get alerts when things are about to expire. Let the AI Chef use your pantry to suggest recipes.
-
-Simple idea. Complex execution. People organize their kitchens differently. Some track expiry dates religiously. Some just want a rough list. Some have 5 items in their fridge, some have 50. The UI had to work for all of them without being overwhelming or too simplistic.
-
-## Wall #4: Making it work in the kitchen
-
-This is the wall that surprised me the most. Everything worked great on my desk. Sitting down, clean hands, tapping carefully. Beautiful.
-
-Then I actually tried to cook with it.
-
-Your hands are covered in flour. The screen keeps turning off. You can't tap because your fingers are wet. The text is too small to read from across the counter. The timer you set mentally has nothing to do with the timer in the app.
-
-I had to rethink the entire cooking experience. Screen stays on while you're cooking. Text big enough to read from a meter away. Voice that reads instructions out loud so you don't have to touch the screen. Step-by-step mode where you just swipe — or better, use your voice — to go to the next step.
-
-**The metaphor:** It's like designing a car dashboard. It looks perfect in the showroom. But drive it in the rain at night with tired eyes and suddenly you realize the speedometer is unreadable and the buttons are too small. The real test is in real conditions, not in the lab.
-
-These "obvious" things took as much time as the AI features. And they're what makes the difference between an app someone downloads and an app someone actually uses every day.
-
-## Wall #5: The last 5% takes 50% of the time
-
-The app was "done" after about two months. Import worked. Chef worked. Pantry worked. Meal planner worked. Shopping list worked. Even the recipe book printing feature — where you can select recipes and order a real physical book — was functional.
-
-But "functional" and "ready for the App Store" are two very different things.
-
-The last 5% is a monster. It's the dark mode that looks great on the home screen but breaks on one specific dialog. It's the edge case where someone pastes a URL that's not a recipe. It's the shopping list that groups items by category but puts "eggs" in the wrong category. It's the onboarding that makes sense to me but confuses my mom.
-
-It's testing on fifteen different screen sizes. It's making sure the app works offline because you're in the kitchen, not at your desk with perfect Wi-Fi. It's writing a privacy policy because your app handles API keys and you need to explain that no, you don't spy on people's recipes.
-
-The book printing feature alone — where you select recipes, choose a theme, preview a real PDF, and order a printed book — that "simple" feature has a 4-step wizard, three different themes, PDF generation, an API integration with a print-on-demand service, shipping address forms, and a legal notice. Each step has edge cases. Each edge case needs handling.
-
-I call this the "98% trap." The app looks 98% done, so you think you're almost there. But that last 2% is spread across every single screen, every single feature, every single interaction. And it takes as long as the first 98% combined.
-
-## What I learned
-
-Building CookBook AI taught me three things:
-
-**1. Simple apps aren't simple.** "Paste a URL, get a recipe" sounds like a weekend project. It's not. Behind every simple feature is a cascade of edge cases, fallback strategies, and decisions that took days to figure out.
-
-**2. Test in real conditions.** Your desk is not a kitchen. Your clean fingers are not flour-covered hands. Your perfect Wi-Fi is not a dead zone behind the fridge. The sooner you test in real conditions, the sooner you build something people actually use.
-
-**3. The last 5% is the whole product.** Nobody cares about your AI if the dark mode is broken. Nobody cares about your recipe import if the text is too small to read. The polish — the small details — that's what separates a downloaded app from a loved app.
-
-CookBook AI is almost ready. [The waitlist is open](/cookbookai) if you want to be the first to try it.
-
-> Building a cooking app taught me more about patience than any recipe ever could. Sometimes you need to let things simmer.`,
-    date: '2026-03-03',
-    readTime: '7 min',
-    tags: ['CookBook AI', 'Solo Dev', 'Behind the scenes'],
-    icon: '🍳',
-    gradient: 'from-orange-500 to-red-500',
   },
 ];
