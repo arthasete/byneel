@@ -16,6 +16,8 @@ export interface Project {
   masonryHeight?: 'sm' | 'md' | 'lg' | 'xl';
   /** Filter category */
   category: 'mobile' | 'ai' | 'backend';
+  /** Optional dedicated landing page URL (overrides /projects/[slug]) */
+  landingUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -75,6 +77,7 @@ export const projects: Project[] = [
     category: 'ai',
     masonryHeight: 'xl',
     bentoSize: 'large',
+    landingUrl: '/cookbookai',
     description: 'Your culinary second brain. Import recipes from anywhere, plan your meals.',
     longDescription: 'CookBook AI is your smart cooking assistant with a built-in AI Chef. Chat with your personal chef to get recipe ideas, empty the fridge, or find ingredient substitutes. Import recipes from any website, manage your pantry with expiry alerts, plan your meals and cook hands-free with step-by-step guidance.',
     icon: '🍳',

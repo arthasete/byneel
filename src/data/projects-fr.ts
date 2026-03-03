@@ -57,6 +57,7 @@ export const projectsFr: Project[] = [
     category: 'ai',
     masonryHeight: 'xl',
     bentoSize: 'large',
+    landingUrl: '/cookbookai',
     description: 'Votre chef IA personnel. Importez des recettes de n\'importe où, générez des menus et cuisinez avec un assistant étape par étape.',
     longDescription: `CookBook AI embarque un Chef IA conversationnel : demandez des idées de recettes, videz votre frigo, trouvez des substituts d'ingrédients — le tout en discutant naturellement. Importez des recettes depuis n'importe quel site en un tap, gérez votre garde-manger avec alertes de péremption, planifiez vos repas et cuisinez avec un assistant étape par étape. Votre clé API reste sur votre appareil, chiffrée dans le Keychain/Keystore natif.`,
     icon: '🍳',

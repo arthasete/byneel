@@ -1130,4 +1130,103 @@ OLED screens use less power in dark mode. Eyes tire less at night. And let's be 
     icon: '🎨',
     gradient: 'from-brand-violet to-pink',
   },
+  {
+    title: 'Building CookBook AI: the 5 walls I hit that nobody warns you about',
+    slug: 'construire-cookbook-ai-5-murs',
+    excerpt: 'An AI recipe app sounds simple. Import a URL, get a recipe. But behind that simplicity hides months of unexpected problems.',
+    content: `## It started with a simple idea
+
+Everybody cooks. Everybody finds recipes on the internet. And everybody has the same problem: you find an amazing recipe on Instagram, YouTube, or some random blog, and then what? You screenshot it. You bookmark it. You forget about it. Three weeks later you're standing in the kitchen scrolling through 400 screenshots trying to find that one pasta recipe your friend sent you.
+
+CookBook AI was supposed to fix that. Paste a URL, get a clean recipe. Done.
+
+Turns out "done" was about 5% of the journey.
+
+## Wall #1: The internet doesn't want you to have its recipes
+
+Here's the thing nobody tells you about recipe websites. They're built to keep you *on the website*. Ads everywhere. Life story before the recipe. Pop-ups asking for your email. And the actual recipe? Buried somewhere in a mess of HTML that looks different on every single site.
+
+I thought I could just scrape the page and extract the recipe. Nope.
+
+Some sites use structured data — a standard format that says "hey, here's the title, here are the ingredients, here are the steps." That's the dream. When it works, it's beautiful. You get a perfect recipe in milliseconds.
+
+But most sites don't use it. Or they use it wrong. Or they use a half-broken version that puts the entire life story into the "description" field and the actual ingredients nowhere.
+
+So I had to build a cascade. Try the clean way first. If that fails, try another approach. If that fails too, try a third one. Three strategies, each one catching what the previous one missed. It took way longer than I expected, and I'm still finding edge cases months later.
+
+**The metaphor:** It's like trying to read a book, but every bookstore wraps their books in a different packaging, some in plastic, some in a locked box, some in a foreign language. You need three different tools just to get to page one.
+
+## Wall #2: YouTube doesn't give you recipes
+
+YouTube is where half the cooking content lives today. TikTok and Instagram too, but YouTube is king. So naturally, CookBook AI had to support YouTube links.
+
+The problem? A YouTube video is a *video*. It's not text. There's no structured data that says "2 cups of flour, preheat oven to 180°C." The recipe lives inside someone talking and cooking for 12 minutes.
+
+I had to figure out a way to make AI actually *understand* the video content and extract a structured recipe from it. Not just the description — the actual video. Because most YouTube cooks put "RECIPE BELOW" in the description and then write three lines that don't actually contain the full recipe.
+
+This was one of those problems where every solution creates two new problems. The description text is unreliable. The video itself needs to be "watched" by AI. And if the AI misunderstands one ingredient, the whole recipe is wrong. Nobody wants to add "1 cup of salt" instead of "1 teaspoon of salt" because the AI got confused.
+
+I won't go into the specifics of how I solved it, but let's just say it involves multiple fallback strategies and a lot of testing with very different types of cooking videos. Fast-paced TikTok-style videos, slow traditional cooking shows, videos in different languages. Each one breaks things in a new and creative way.
+
+## Wall #3: The "smart" features need to feel human
+
+Once the recipe import was working, I built the AI Chef. The idea: chat with an AI that knows about cooking. Ask it for dinner ideas. Tell it what's in your fridge and it suggests recipes. Need a substitute for an ingredient? Ask the chef.
+
+The technology part was — honestly — the easy part. Getting an AI to generate recipe suggestions is straightforward. Making it *feel* like you're talking to a real chef? That's where it gets tricky.
+
+The first version was too robotic. "Based on your available ingredients, I recommend preparing a chicken stir-fry." Nobody talks like that. A real chef would say something like "Oh you've got chicken and peppers? Let me show you this quick stir-fry that takes 15 minutes — you'll love it."
+
+I spent weeks tuning the personality. And then I hit the quota problem: you can't let people chat with AI for free all day. It costs money — real money — for every message. So I had to design a system where free users get enough to see the value, but not so much that it bankrupts me on day one. Finding that balance is an art, not a science.
+
+And then there's the pantry. The idea is simple: track what's in your fridge, freezer, and pantry. Get alerts when things are about to expire. Let the AI Chef use your pantry to suggest recipes.
+
+Simple idea. Complex execution. People organize their kitchens differently. Some track expiry dates religiously. Some just want a rough list. Some have 5 items in their fridge, some have 50. The UI had to work for all of them without being overwhelming or too simplistic.
+
+## Wall #4: Making it work in the kitchen
+
+This is the wall that surprised me the most. Everything worked great on my desk. Sitting down, clean hands, tapping carefully. Beautiful.
+
+Then I actually tried to cook with it.
+
+Your hands are covered in flour. The screen keeps turning off. You can't tap because your fingers are wet. The text is too small to read from across the counter. The timer you set mentally has nothing to do with the timer in the app.
+
+I had to rethink the entire cooking experience. Screen stays on while you're cooking. Text big enough to read from a meter away. Voice that reads instructions out loud so you don't have to touch the screen. Step-by-step mode where you just swipe — or better, use your voice — to go to the next step.
+
+**The metaphor:** It's like designing a car dashboard. It looks perfect in the showroom. But drive it in the rain at night with tired eyes and suddenly you realize the speedometer is unreadable and the buttons are too small. The real test is in real conditions, not in the lab.
+
+These "obvious" things took as much time as the AI features. And they're what makes the difference between an app someone downloads and an app someone actually uses every day.
+
+## Wall #5: The last 5% takes 50% of the time
+
+The app was "done" after about two months. Import worked. Chef worked. Pantry worked. Meal planner worked. Shopping list worked. Even the recipe book printing feature — where you can select recipes and order a real physical book — was functional.
+
+But "functional" and "ready for the App Store" are two very different things.
+
+The last 5% is a monster. It's the dark mode that looks great on the home screen but breaks on one specific dialog. It's the edge case where someone pastes a URL that's not a recipe. It's the shopping list that groups items by category but puts "eggs" in the wrong category. It's the onboarding that makes sense to me but confuses my mom.
+
+It's testing on fifteen different screen sizes. It's making sure the app works offline because you're in the kitchen, not at your desk with perfect Wi-Fi. It's writing a privacy policy because your app handles API keys and you need to explain that no, you don't spy on people's recipes.
+
+The book printing feature alone — where you select recipes, choose a theme, preview a real PDF, and order a printed book — that "simple" feature has a 4-step wizard, three different themes, PDF generation, an API integration with a print-on-demand service, shipping address forms, and a legal notice. Each step has edge cases. Each edge case needs handling.
+
+I call this the "98% trap." The app looks 98% done, so you think you're almost there. But that last 2% is spread across every single screen, every single feature, every single interaction. And it takes as long as the first 98% combined.
+
+## What I learned
+
+Building CookBook AI taught me three things:
+
+**1. Simple apps aren't simple.** "Paste a URL, get a recipe" sounds like a weekend project. It's not. Behind every simple feature is a cascade of edge cases, fallback strategies, and decisions that took days to figure out.
+
+**2. Test in real conditions.** Your desk is not a kitchen. Your clean fingers are not flour-covered hands. Your perfect Wi-Fi is not a dead zone behind the fridge. The sooner you test in real conditions, the sooner you build something people actually use.
+
+**3. The last 5% is the whole product.** Nobody cares about your AI if the dark mode is broken. Nobody cares about your recipe import if the text is too small to read. The polish — the small details — that's what separates a downloaded app from a loved app.
+
+CookBook AI is almost ready. [The waitlist is open](/cookbookai) if you want to be the first to try it.
+
+> Building a cooking app taught me more about patience than any recipe ever could. Sometimes you need to let things simmer.`,
+    date: '2026-03-03',
+    readTime: '7 min',
+    tags: ['CookBook AI', 'Solo Dev', 'Behind the scenes'],
+    icon: '🍳',
+    gradient: 'from-orange-500 to-red-500',
+  },
 ];

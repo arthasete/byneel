@@ -127,13 +127,17 @@ function renderMarkdown(md: string) {
       continue;
     }
 
-    // Paragraph (with inline bold support)
-    const parts = line.split(/(\*\*.*?\*\*)/g);
+    // Paragraph (with inline bold + link support)
+    const parts = line.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/g);
     elements.push(
       <p key={i} className="text-muted leading-relaxed mb-4">
         {parts.map((part, j) => {
           if (part.startsWith('**') && part.endsWith('**')) {
             return <strong key={j} className="text-foreground">{part.slice(2, -2)}</strong>;
+          }
+          const linkMatch = part.match(/^\[(.+?)\]\((.+?)\)$/);
+          if (linkMatch) {
+            return <a key={j} href={linkMatch[2]} className="text-brand-blue hover:underline">{linkMatch[1]}</a>;
           }
           return part;
         })}

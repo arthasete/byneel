@@ -1120,4 +1120,103 @@ Les écrans OLED consomment moins en dark mode. Les yeux se fatiguent moins la n
     icon: '🎨',
     gradient: 'from-brand-violet to-pink',
   },
+  {
+    title: 'Construire CookBook AI : les 5 murs que personne ne t\'annonce',
+    slug: 'construire-cookbook-ai-5-murs',
+    excerpt: 'Une app de recettes avec IA, ça a l\'air simple. Colle un lien, récupère la recette. Mais derrière cette simplicité se cachent des mois de galères inattendues.',
+    content: `## Tout a commencé par une idée simple
+
+Tout le monde cuisine. Tout le monde trouve des recettes sur internet. Et tout le monde a le même problème : tu trouves une recette incroyable sur Instagram, YouTube, ou un blog random, et ensuite ? Tu fais une capture d'écran. Tu mets en favori. Tu oublies. Trois semaines plus tard t'es debout dans la cuisine en train de scroller 400 screenshots pour retrouver cette foutue recette de pâtes que ton pote t'avait envoyée.
+
+CookBook AI devait régler ça. Colle un lien, récupère une recette propre. Terminé.
+
+Sauf que "terminé" c'était à peu près 5% du parcours.
+
+## Mur #1 : Internet ne veut pas te donner ses recettes
+
+Y'a un truc que personne te dit sur les sites de recettes. Ils sont construits pour te garder *sur le site*. Des pubs partout. L'histoire de la vie de l'auteur avant la recette. Des pop-ups qui te demandent ton email. Et la vraie recette ? Planquée quelque part dans un bazar de HTML qui est différent sur chaque putain de site.
+
+J'ai cru que j'allais juste scraper la page et extraire la recette. Non.
+
+Certains sites utilisent des données structurées — un format standard qui dit "hey, voici le titre, voici les ingrédients, voici les étapes." C'est le rêve. Quand ça marche, c'est magnifique. T'as une recette parfaite en quelques millisecondes.
+
+Mais la plupart des sites ne l'utilisent pas. Ou ils l'utilisent mal. Ou ils utilisent une version à moitié cassée qui met toute la bio de l'auteur dans le champ "description" et les ingrédients nulle part.
+
+Du coup j'ai dû construire un système en cascade. Essayer la méthode propre d'abord. Si ça rate, essayer une autre approche. Si ça rate aussi, essayer une troisième. Trois stratégies, chacune rattrapant ce que la précédente a loupé. Ça a pris beaucoup plus de temps que prévu, et je trouve encore des cas limites des mois après.
+
+**La métaphore :** C'est comme essayer de lire un livre, mais chaque librairie emballe ses bouquins différemment. Certains dans du plastique, d'autres dans un coffre fermé à clé, d'autres dans une langue étrangère. T'as besoin de trois outils différents juste pour arriver à la page un.
+
+## Mur #2 : YouTube ne te donne pas de recettes
+
+YouTube c'est là où vit la moitié du contenu cuisine aujourd'hui. TikTok et Instagram aussi, mais YouTube est le roi. Donc forcément, CookBook AI devait supporter les liens YouTube.
+
+Le problème ? Une vidéo YouTube c'est une *vidéo*. C'est pas du texte. Y'a pas de données structurées qui disent "2 tasses de farine, préchauffer le four à 180°C." La recette vit à l'intérieur de quelqu'un qui parle et qui cuisine pendant 12 minutes.
+
+J'ai dû trouver un moyen de faire en sorte que l'IA *comprenne* réellement le contenu vidéo et en extraie une recette structurée. Pas juste la description — la vraie vidéo. Parce que la plupart des cuisiniers YouTube mettent "RECETTE EN DESCRIPTION" et ensuite écrivent trois lignes qui ne contiennent pas la recette complète.
+
+C'était un de ces problèmes où chaque solution crée deux nouveaux problèmes. Le texte de description est pas fiable. La vidéo elle-même doit être "regardée" par l'IA. Et si l'IA se trompe sur un ingrédient, toute la recette est fausse. Personne veut ajouter "1 tasse de sel" au lieu de "1 cuillère à café de sel" parce que l'IA a déconné.
+
+Je vais pas rentrer dans les détails de comment j'ai résolu ça, mais disons que ça implique plusieurs stratégies de secours et beaucoup de tests avec des types de vidéos cuisine très différents. Des vidéos rapides style TikTok, des émissions de cuisine traditionnelles, des vidéos dans différentes langues. Chacune casse les choses d'une façon nouvelle et créative.
+
+## Mur #3 : Les fonctions "intelligentes" doivent paraître humaines
+
+Une fois que l'import de recettes marchait, j'ai construit le Chef IA. L'idée : discuter avec une IA qui connaît la cuisine. Lui demander des idées pour le dîner. Lui dire ce qu'il y a dans ton frigo et elle te propose des recettes. Besoin d'un substitut pour un ingrédient ? Demande au chef.
+
+La partie techno était — honnêtement — la partie facile. Faire qu'une IA génère des suggestions de recettes c'est simple. Faire en sorte que ça *donne l'impression* de parler à un vrai chef ? C'est là que ça devient compliqué.
+
+La première version était trop robotique. "En me basant sur vos ingrédients disponibles, je recommande de préparer un sauté de poulet." Personne parle comme ça. Un vrai chef dirait plutôt "Oh t'as du poulet et des poivrons ? Laisse-moi te montrer ce sauté rapide qui prend 15 minutes — tu vas adorer."
+
+J'ai passé des semaines à peaufiner la personnalité. Et puis j'ai rencontré le problème des quotas : tu peux pas laisser les gens discuter avec l'IA gratuitement toute la journée. Ça coûte de l'argent — du vrai argent — pour chaque message. Donc j'ai dû concevoir un système où les utilisateurs gratuits en ont assez pour voir la valeur, mais pas trop pour pas me ruiner dès le premier jour. Trouver cet équilibre c'est un art, pas une science.
+
+Et puis y'a le garde-manger. L'idée est simple : suivre ce qu'il y a dans ton frigo, congélateur et placards. Recevoir des alertes quand les choses vont bientôt périmer. Laisser le Chef IA utiliser ton garde-manger pour suggérer des recettes.
+
+Idée simple. Exécution complexe. Les gens organisent leur cuisine différemment. Certains traquent les dates de péremption religieusement. D'autres veulent juste une liste approximative. Certains ont 5 trucs dans leur frigo, d'autres 50. L'interface devait marcher pour tous sans être écrasante ni trop simpliste.
+
+## Mur #4 : Faire en sorte que ça marche dans la cuisine
+
+C'est le mur qui m'a le plus surpris. Tout marchait super bien à mon bureau. Assis, mains propres, en tapant délicatement. Magnifique.
+
+Et puis j'ai essayé de cuisiner avec.
+
+T'as les mains couvertes de farine. L'écran s'éteint tout le temps. Tu peux pas taper parce que tes doigts sont mouillés. Le texte est trop petit pour lire de l'autre côté du plan de travail. Le minuteur que t'as mis mentalement a rien à voir avec le minuteur de l'app.
+
+J'ai dû repenser toute l'expérience cuisine. L'écran reste allumé pendant que tu cuisines. Le texte assez gros pour être lu à un mètre. La voix qui lit les instructions à haute voix pour que t'aies pas à toucher l'écran. Le mode pas-à-pas où tu fais juste glisser — ou mieux, tu utilises ta voix — pour passer à l'étape suivante.
+
+**La métaphore :** C'est comme concevoir un tableau de bord de voiture. Il est parfait dans le showroom. Mais conduis sous la pluie la nuit avec les yeux fatigués et tu réalises soudain que le compteur est illisible et les boutons trop petits. Le vrai test c'est en conditions réelles, pas dans le labo.
+
+Ces trucs "évidents" ont pris autant de temps que les fonctions IA. Et c'est ça qui fait la différence entre une app que quelqu'un télécharge et une app que quelqu'un utilise vraiment tous les jours.
+
+## Mur #5 : Les derniers 5% prennent 50% du temps
+
+L'app était "finie" après environ deux mois. L'import marchait. Le Chef marchait. Le garde-manger marchait. Le planificateur de repas marchait. La liste de courses marchait. Même la fonction d'impression de livre de recettes — où tu sélectionnes des recettes et tu commandes un vrai livre physique — était fonctionnelle.
+
+Mais "fonctionnel" et "prêt pour l'App Store" c'est deux choses très différentes.
+
+Les derniers 5% c'est un monstre. C'est le dark mode qui est super sur l'écran d'accueil mais qui pète sur une boîte de dialogue spécifique. C'est le cas limite où quelqu'un colle une URL qui est pas une recette. C'est la liste de courses qui trie les articles par catégorie mais qui met les "œufs" dans la mauvaise catégorie. C'est l'onboarding qui a du sens pour moi mais qui embrouille ma mère.
+
+C'est tester sur quinze tailles d'écran différentes. C'est s'assurer que l'app marche hors-ligne parce que t'es dans la cuisine, pas à ton bureau avec un Wi-Fi parfait. C'est écrire une politique de confidentialité parce que ton app gère des clés API et que tu dois expliquer que non, tu espionnes pas les recettes des gens.
+
+La fonction livre de recettes à elle seule — où tu sélectionnes des recettes, choisis un thème, prévisualises un vrai PDF, et commandes un livre imprimé — cette fonction "simple" a un assistant en 4 étapes, trois thèmes différents, de la génération PDF, une intégration API avec un service d'impression à la demande, des formulaires d'adresse de livraison, et une mention légale. Chaque étape a des cas limites. Chaque cas limite doit être géré.
+
+J'appelle ça le "piège des 98%." L'app a l'air finie à 98%, donc tu penses que t'y es presque. Mais ces derniers 2% sont éparpillés sur chaque écran, chaque fonctionnalité, chaque interaction. Et ça prend aussi longtemps que les 98% précédents combinés.
+
+## Ce que j'ai appris
+
+Construire CookBook AI m'a appris trois choses :
+
+**1. Les apps simples ne sont pas simples.** "Colle un lien, récupère une recette" ça a l'air d'un projet de week-end. Ça l'est pas. Derrière chaque fonction simple se cache une cascade de cas limites, de stratégies de secours, et de décisions qui ont pris des jours à résoudre.
+
+**2. Teste en conditions réelles.** Ton bureau c'est pas une cuisine. Tes doigts propres c'est pas des mains couvertes de farine. Ton Wi-Fi parfait c'est pas la zone morte derrière le frigo. Plus tôt tu testes en conditions réelles, plus tôt tu construis un truc que les gens utilisent vraiment.
+
+**3. Les derniers 5% c'est tout le produit.** Tout le monde s'en fout de ton IA si le dark mode est cassé. Tout le monde s'en fout de ton import de recettes si le texte est trop petit pour être lu. Le polish — les petits détails — c'est ce qui sépare une app téléchargée d'une app aimée.
+
+CookBook AI est bientôt prêt. [La waitlist est ouverte](/cookbookai) si tu veux être le premier à l'essayer.
+
+> Construire une app de cuisine m'a appris plus sur la patience que n'importe quelle recette. Parfois, faut juste laisser mijoter.`,
+    date: '2026-03-03',
+    readTime: '7 min',
+    tags: ['CookBook AI', 'Solo Dev', 'Behind the scenes'],
+    icon: '🍳',
+    gradient: 'from-orange-500 to-red-500',
+  },
 ];

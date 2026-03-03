@@ -64,7 +64,7 @@ export function Footer() {
               {localizedProjects.slice(0, 6).map((project) => (
                 <Link
                   key={project.slug}
-                  href={`/projects/${project.slug}`}
+                  href={project.landingUrl || `/projects/${project.slug}`}
                   className="text-sm text-muted hover:text-foreground hover:translate-x-1 transition-all duration-300 flex items-center gap-2"
                 >
                   <span>{project.icon}</span>

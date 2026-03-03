@@ -11,6 +11,7 @@ export function Navbar() {
 
   const navLinks = useMemo(() => [
     { label: t('nav.projects'), href: '/#projects' },
+    { label: 'CookBook AI', href: '/cookbookai', highlight: true },
     { label: t('nav.tech'), href: '/#tech' },
     { label: t('nav.blog'), href: '/blog' },
     { label: t('nav.contact'), href: '/#contact' },
@@ -62,9 +63,13 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted hover:text-foreground transition-colors duration-200"
+              className={`text-sm transition-colors duration-200 ${
+                link.highlight
+                  ? 'text-orange-400 hover:text-orange-300 font-medium'
+                  : 'text-muted hover:text-foreground'
+              }`}
             >
-              {link.label}
+              {link.highlight && '🍳 '}{link.label}
             </a>
           ))}
 
@@ -126,7 +131,11 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className="text-3xl font-light text-muted hover:text-foreground transition-all duration-300 hover:tracking-wider"
+              className={`text-3xl font-light transition-all duration-300 hover:tracking-wider ${
+                link.highlight
+                  ? 'text-orange-400 hover:text-orange-300'
+                  : 'text-muted hover:text-foreground'
+              }`}
               style={{
                 transitionDelay: isOpen ? `${i * 60}ms` : '0ms',
                 opacity: isOpen ? 1 : 0,
@@ -134,7 +143,7 @@ export function Navbar() {
                 transition: `opacity 0.4s ease ${isOpen ? i * 60 : 0}ms, transform 0.4s ease ${isOpen ? i * 60 : 0}ms, color 0.2s, letter-spacing 0.3s`,
               }}
             >
-              {link.label}
+              {link.highlight && '🍳 '}{link.label}
             </a>
           ))}
 

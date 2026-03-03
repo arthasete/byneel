@@ -28,6 +28,7 @@ interface Project {
   category: 'mobile' | 'ai' | 'backend';
   tags: string[];
   comingSoon?: boolean;
+  landingUrl?: string;
 }
 
 function ProjectCard({ project, i, t }: { project: Project; i: number; t: (key: TranslationKey) => string }) {
@@ -39,7 +40,7 @@ function ProjectCard({ project, i, t }: { project: Project; i: number; t: (key: 
       delay={i * 0.04}
       className="masonry-item"
     >
-      <Link href={`/projects/${project.slug}`} className="block group">
+      <Link href={project.landingUrl || `/projects/${project.slug}`} className="block group">
         <div className={`relative ${minHeightClass}`}>
           {/* Gradient glow on hover */}
           <div className={`absolute -inset-1 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-25 rounded-2xl blur-2xl transition-all duration-500`} />
@@ -88,13 +89,17 @@ function ProjectCard({ project, i, t }: { project: Project; i: number; t: (key: 
                   )}
                 </div>
 
-                {/* Coming soon + CTA */}
+                {/* Badge + CTA */}
                 <div className="flex items-center justify-between">
-                  {project.comingSoon && (
+                  {project.landingUrl ? (
+                    <span className="px-3 py-1 text-[10px] font-semibold rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-300 border border-orange-500/20 animate-pulse-glow">
+                      {'🔥 ' + t('bento.joinWaitlist')}
+                    </span>
+                  ) : project.comingSoon ? (
                     <span className="px-3 py-1 text-[10px] font-semibold rounded-full bg-gradient-to-r from-brand-blue/20 to-brand-violet/20 text-foreground/80 border border-brand-blue/20">
                       {'✨ ' + t('bento.comingSoon')}
                     </span>
-                  )}
+                  ) : null}
                   <div className="flex items-center gap-1 text-xs font-semibold text-brand-blue opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300 ml-auto">
                     {t('bento.learnMore')} <ArrowRight className="w-3 h-3" />
                   </div>
