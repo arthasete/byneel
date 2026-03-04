@@ -12,6 +12,71 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    title: 'Why tipping abroad feels like a minefield (and how I built an app to fix it)',
+    slug: 'tiplog-pourboire-voyage',
+    excerpt: 'I left a 20% tip in Japan. The waiter ran after me. That\'s when I decided to build TipLog.',
+    content: `## The 20% mistake in Tokyo
+
+I was in a small ramen shop in Shinjuku. The bill came to 1,800 yen. I left 2,200 on the table. Felt generous.
+
+The waiter chased me to the door. Not to thank me — to return my money. In Japan, tipping is considered rude. It implies the establishment doesn't pay its staff properly. I had basically insulted them.
+
+That moment stuck with me. I travel a lot. And every country has its own invisible rules about money, gratitude, and social etiquette. In the US, not tipping 20% makes you the villain. In France, service is included but rounding up is classy. In the UAE, it depends on the type of establishment.
+
+Google helps, but who Googles "tipping customs in Morocco" while standing at a restaurant with the check in hand?
+
+## The problem is bigger than tips
+
+Business travelers have it worse. They need to:
+1. Know the tipping rule for the country they just landed in
+2. Calculate the right amount (with currency conversion)
+3. Track the expense for their report
+4. Export it all at the end of the month
+
+Most people use three different apps for this. A tip calculator, a notes app, and maybe a spreadsheet. It's messy.
+
+## TipLog: one app for the whole flow
+
+I built TipLog to be the one app you open when the bill arrives. Here's how it works:
+
+- **GPS detection**: The moment you open the app, it knows where you are. Paris? Service included, 5-10% optional. New York? 18-22% expected. It loads the right rules automatically.
+- **Smart calculator**: Enter the bill. Adjust the tip. Split it if you're with colleagues. See the total in local currency and yours.
+- **Expense tracking**: Save the expense. Tag it (restaurant, taxi, hotel). It goes into your monthly history.
+- **PDF/CSV export**: At month's end, generate a clean report for your company's accounting department. One tap.
+
+## 51 countries and counting
+
+Each country entry isn't just a percentage. It includes:
+- The standard tipping range (restaurant, taxi, hotel, delivery)
+- Cultural context (is it expected? optional? offensive?)
+- Local currency information
+- Common scenarios and how to handle them
+
+I researched each one individually. Some were straightforward (US: 15-25%). Some were surprisingly nuanced (China: usually not expected, but increasingly common in touristy areas).
+
+## Who it's for
+
+Honestly? Anyone who travels. But especially:
+- **Business travelers** who need expense reports
+- **Digital nomads** who change countries every month
+- **Tourists** visiting countries with different tipping cultures
+
+The app works 100% offline. All 51 country databases are stored locally. No internet needed — which matters when you're roaming internationally.
+
+## What's next
+
+TipLog is almost ready for iOS and Android. The core is solid: calculator, GPS, 51 countries, expense tracking, export.
+
+[The waitlist is open](/tiplog) if you travel and want to stop guessing.
+
+> The hardest part of building TipLog wasn't the code. It was learning that what's polite in one country is rude in another.`,
+    date: '2026-03-04',
+    readTime: '5 min',
+    tags: ['TipLog', 'Travel', 'Solo Dev'],
+    icon: '💰',
+    gradient: 'from-emerald-500 to-teal-500',
+  },
+  {
     title: 'Building CookBook AI: the 5 walls I hit that nobody warns you about',
     slug: 'construire-cookbook-ai-5-murs',
     excerpt: 'An AI recipe app sounds simple. Import a URL, get a recipe. But behind that simplicity hides months of unexpected problems.',

@@ -2,6 +2,71 @@ import { BlogPost } from './posts';
 
 export const postsFr: BlogPost[] = [
   {
+    title: 'Pourquoi laisser un pourboire à l\'étranger c\'est un champ de mines (et comment j\'ai résolu le problème)',
+    slug: 'tiplog-pourboire-voyage',
+    excerpt: 'J\'ai laissé 20% de pourboire au Japon. Le serveur m\'a couru après. C\'est là que j\'ai décidé de créer TipLog.',
+    content: `## L'erreur des 20% à Tokyo
+
+J'étais dans un petit restaurant de ramen à Shinjuku. L'addition est arrivée à 1 800 yens. J'ai laissé 2 200 sur la table. Généreux, je pensais.
+
+Le serveur m'a couru après jusqu'à la porte. Pas pour me remercier — pour me rendre mon argent. Au Japon, laisser un pourboire est considéré comme impoli. Ça implique que l'établissement ne paie pas correctement son personnel. J'avais en gros insulté le restaurant.
+
+Ce moment m'est resté. Je voyage beaucoup. Et chaque pays a ses propres règles invisibles sur l'argent, la gratitude et l'étiquette sociale. Aux USA, ne pas laisser 20% fait de toi le méchant. En France, le service est compris mais arrondir c'est classe. Aux Émirats, ça dépend du type d'établissement.
+
+Google aide, mais qui Google "coutumes de pourboire au Maroc" debout dans un restaurant avec l'addition à la main ?
+
+## Le problème va au-delà des pourboires
+
+Les voyageurs d'affaires ont encore pire. Ils doivent :
+1. Connaître la règle de pourboire du pays où ils viennent d'atterrir
+2. Calculer le bon montant (avec conversion de devises)
+3. Tracker la dépense pour leur note de frais
+4. Tout exporter en fin de mois
+
+La plupart utilisent trois apps différentes pour ça. Un calculateur de pourboire, une app de notes, et peut-être un tableur. C'est le bordel.
+
+## TipLog : une seule app pour tout le flux
+
+J'ai construit TipLog pour être la seule app que tu ouvres quand l'addition arrive. Voilà comment ça marche :
+
+- **Détection GPS** : Dès que tu ouvres l'app, elle sait où tu es. Paris ? Service compris, 5-10% optionnel. New York ? 18-22% attendus. Elle charge les bonnes règles automatiquement.
+- **Calculateur intelligent** : Entre le montant. Ajuste le pourboire. Partage si t'es avec des collègues. Vois le total en devise locale et la tienne.
+- **Suivi des dépenses** : Sauvegarde la dépense. Tagge-la (restaurant, taxi, hôtel). Elle va dans ton historique mensuel.
+- **Export PDF/CSV** : En fin de mois, génère un rapport propre pour la compta de ta boîte. Un tap.
+
+## 51 pays et ça continue
+
+Chaque entrée pays n'est pas juste un pourcentage. Elle inclut :
+- La fourchette standard (restaurant, taxi, hôtel, livraison)
+- Le contexte culturel (attendu ? optionnel ? offensant ?)
+- Les infos de devise locale
+- Les scénarios courants et comment les gérer
+
+J'ai recherché chacun individuellement. Certains étaient simples (USA : 15-25%). D'autres étonnamment nuancés (Chine : pas courant, mais de plus en plus dans les zones touristiques).
+
+## Pour qui c'est fait
+
+Honnêtement ? Toute personne qui voyage. Mais surtout :
+- **Les voyageurs d'affaires** qui ont besoin de notes de frais
+- **Les digital nomads** qui changent de pays tous les mois
+- **Les touristes** qui visitent des pays aux cultures de pourboire différentes
+
+L'app fonctionne 100% hors-ligne. Les 51 bases de données pays sont stockées localement. Pas besoin d'internet — ce qui compte quand t'es en roaming international.
+
+## La suite
+
+TipLog est presque prêt pour iOS et Android. Le cœur est solide : calculateur, GPS, 51 pays, suivi des dépenses, export.
+
+[La waitlist est ouverte](/tiplog) si tu voyages et que tu veux arrêter de deviner.
+
+> Le plus dur dans TipLog, c'était pas le code. C'était d'apprendre que ce qui est poli dans un pays est impoli dans un autre.`,
+    date: '2026-03-04',
+    readTime: '5 min',
+    tags: ['TipLog', 'Voyage', 'Solo Dev'],
+    icon: '💰',
+    gradient: 'from-emerald-500 to-teal-500',
+  },
+  {
     title: 'Construire CookBook AI : les 5 murs que personne ne t\'annonce',
     slug: 'construire-cookbook-ai-5-murs',
     excerpt: 'Une app de recettes avec IA, ça a l\'air simple. Colle un lien, récupère la recette. Mais derrière cette simplicité se cachent des mois de galères inattendues.',
