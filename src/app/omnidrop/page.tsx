@@ -6,17 +6,17 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import {
   Nfc,
+  Globe,
+  MessageSquareText,
+  Fingerprint,
   Monitor,
   ShieldCheck,
-  Infinity,
-  CloudOff,
-  History,
   Smartphone,
-  FolderOpen,
+  Send,
   Zap,
   Lock,
-  Route,
-  Code,
+  CloudOff,
+  FileText,
   Check,
   Sparkles,
   ArrowRight,
@@ -26,27 +26,26 @@ import {
 
 const features = [
   { icon: Nfc, key: 'nfc' },
+  { icon: Globe, key: 'remote' },
+  { icon: MessageSquareText, key: 'messaging' },
+  { icon: Fingerprint, key: 'identity' },
   { icon: Monitor, key: 'cross' },
   { icon: ShieldCheck, key: 'encrypt' },
-  { icon: Infinity, key: 'nolimit' },
-  { icon: CloudOff, key: 'nocloud' },
-  { icon: History, key: 'history' },
 ] as const;
 
 const steps = [
   { icon: Smartphone, num: '01', key: 'step1' },
-  { icon: FolderOpen, num: '02', key: 'step2' },
+  { icon: Send, num: '02', key: 'step2' },
   { icon: Zap, num: '03', key: 'step3' },
 ] as const;
 
 const trustItems = [
   { icon: Lock, key: 'encrypt' },
-  { icon: Route, key: 'direct' },
-  { icon: Code, key: 'open' },
+  { icon: CloudOff, key: 'nocloud' },
+  { icon: FileText, key: 'protocol' },
 ] as const;
 
-// OmniDrop currently has no dedicated Formspree — reuse contact or add later
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqedreaw';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkovdkvr';
 
 function WaitlistForm({ variant = 'hero' }: { variant?: 'hero' | 'footer' }) {
   const { t } = useLanguage();

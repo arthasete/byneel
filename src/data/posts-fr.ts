@@ -2,6 +2,143 @@ import { BlogPost } from './posts';
 
 export const postsFr: BlogPost[] = [
   {
+    title: 'Construire OmniDrop : comment j\'ai fait voler des fichiers entre appareils sans toucher un cloud',
+    slug: 'building-omnidrop-p2p-remote-messaging',
+    excerpt: 'LocalSend a 8 millions de downloads et ne fait que du LAN. J\'ai décidé d\'aller plus loin — transfert distant, messagerie chiffrée, et un système d\'identité. Voici ce que j\'ai appris.',
+    content: `## Le problème AirDrop
+
+J'étais assis dans un café en train d'essayer d'envoyer une vidéo de 2 Go depuis mon Android vers mon MacBook. Pas de câble. Pas de clé USB. Et clairement pas la patience d'uploader sur Google Drive, attendre 15 minutes, puis retélécharger de l'autre côté.
+
+AirDrop ? Apple uniquement. Nearby Share ? Android vers Android surtout. Samsung Quick Share ? Samsung uniquement. Chaque géant tech a construit le partage de fichiers — mais seulement pour *son* écosystème. Si tu vis dans un monde multi-appareils (et c'est le cas de la plupart des gens), t'es coincé.
+
+J'ai trouvé LocalSend. Open source, cross-platform, 8 millions de téléchargements. Magnifique. Sauf que ça ne marche que sur ton réseau local. Même WiFi, même pièce. Essaie d'envoyer un fichier à ton pote à l'autre bout de la ville et te revoilà sur Google Drive.
+
+C'est là qu'OmniDrop a commencé.
+
+## Et si le transfert de fichiers marchait comme la messagerie ?
+
+L'idée était simple : prendre tout ce que LocalSend fait bien (P2P local, pas de cloud, chiffrement) et ajouter ce qui manque :
+
+- **Transfert distant** — envoyer des fichiers à quelqu'un sur un autre réseau, à travers internet, toujours en P2P
+- **Messagerie chiffrée** — chat texte entre appareils, parce que parfois tu veux juste envoyer un message
+- **Identité d'appareil** — un ID persistant pour que tes appareils se reconnaissent et que tu puisses construire une liste de contacts
+
+Aucun concurrent ne combine les trois. LocalSend c'est LAN uniquement. WeTransfer nécessite un upload cloud. Telegram te donne la messagerie mais tes fichiers passent par leurs serveurs. Je voulais le package complet : local, distant, messagerie, chiffré, P2P, cross-platform.
+
+## La partie locale : NFC tap-to-pair
+
+Le transfert local a été la première chose que j'ai construite. Deux appareils sur le même WiFi se découvrent via mDNS (pense au Bluetooth mais pour le WiFi — les appareils diffusent "hey, je suis là" sur le réseau local). Sélectionne un appareil, choisis tes fichiers, envoie.
+
+Mais l'UX du pairing me dérangeait. Chaque concurrent te fait regarder une liste de noms d'appareils et deviner lequel est le tien. "Pixel 7" ? "MacBook Pro" ? Et s'il y a trois MacBooks dans la pièce ?
+
+Le NFC résout ça. Rapproche deux téléphones, tape, ils se connectent instantanément. Le handshake NFC échange la clé de chiffrement et les infos de connexion en une fraction de seconde. Pas de code de salle, pas de QR à scanner, pas de "quel appareil est le mien." Juste tape.
+
+Aucune app de transfert de fichiers n'utilise le NFC pour le pairing. Zéro. C'est notre premier différenciateur.
+
+## Passer au distant : le terrier du WebRTC
+
+Le transfert local est résolu. Le dur, c'est le distant — envoyer des fichiers entre deux appareils qui ne sont PAS sur le même réseau.
+
+L'approche naïve : upload le fichier sur un serveur, télécharge-le de l'autre côté. C'est ce que font WeTransfer, Dropbox et Google Drive. Ça marche, mais ça veut dire :
+1. Ton fichier traîne sur le serveur de quelqu'un d'autre (problème de vie privée)
+2. La vitesse d'upload goulotte tout (surtout sur les mauvaises connexions)
+3. Quelqu'un doit payer pour ce stockage serveur
+
+Je voulais du vrai P2P — appareil à appareil, pas de stockage serveur. Ça veut dire WebRTC.
+
+**WebRTC** c'est la même technologie qui fait tourner Google Meet et les appels Zoom. Mais au lieu de streamer de la vidéo, on peut ouvrir un "DataChannel" et streamer des données binaires brutes. Des morceaux de fichiers, en gros.
+
+Le hic ? Deux appareils derrière des routeurs différents ne peuvent pas se parler directement. Ils ont besoin d'aide pour se trouver. C'est ce qu'on appelle le **signaling** — un échange temporaire de messages pour négocier la connexion. Une fois le lien P2P établi, le serveur de signaling n'est plus nécessaire.
+
+Voici comment le flux distant d'OmniDrop fonctionne :
+
+1. Les deux appareils se connectent à un channel Supabase Realtime (la couche de signaling)
+2. L'appareil A crée une offre WebRTC (contenant ses infos réseau)
+3. L'offre est relayée vers l'appareil B via Supabase
+4. L'appareil B répond avec une réponse
+5. Les candidats ICE (options de routes réseau) sont échangés
+6. Un DataChannel P2P direct s'ouvre entre les deux appareils
+7. Les fichiers coulent en chunks binaires chiffrés — jamais stockés sur aucun serveur
+8. Quand le transfert est fini, le channel de signaling est fermé
+
+Environ 85% du temps, STUN (les serveurs gratuits de Google) aide les appareils à percer leurs routeurs et se connecter directement. Pour les 15% restants (firewalls d'entreprise restrictifs, NATs symétriques), un relais TURN transmet les paquets chiffrés. Même là, le relais ne voit que des données chiffrées opaques — il ne peut pas lire tes fichiers.
+
+**La métaphore :** Le signaling c'est comme deux personnes qui échangent leurs numéros de téléphone via un ami commun. Une fois qu'ils ont le numéro de l'autre, ils s'appellent directement. L'ami n'écoute pas la conversation.
+
+## Messagerie : parce que parfois t'as pas besoin d'un fichier
+
+Une fois que t'as un DataChannel P2P ouvert, envoyer un message texte c'est trivial. C'est juste un payload chiffré avec un octet de type différent. Mais construire l'*expérience* autour, c'est une autre histoire.
+
+OmniDrop a maintenant un système de messagerie complet :
+- **Liste de conversations** — comme l'écran principal de WhatsApp, montrant ton dernier message avec chaque contact
+- **Écran de chat** — bulles de messages (envoyé = droite, reçu = gauche), horodatages, statut de livraison
+- **Chiffrement** — chaque message est chiffré AES-256-GCM avant de quitter ton appareil
+- **Stockage local** — les messages sont stockés en SQLite sur ton appareil. Aucun serveur ne les voit jamais.
+- **Double transport** — si l'autre appareil est sur ton réseau local, les messages passent par TCP. Si distant, par WebRTC DataChannel.
+
+La messagerie n'est pas faite pour remplacer WhatsApp. C'est le compagnon naturel du transfert de fichiers. T'envoies un lot de photos à quelqu'un — ce serait pas bien d'envoyer un message avec ? "Voilà les photos de samedi" c'est mieux qu'un transfert entrant mystérieux de "Android Device."
+
+## OmniDrop ID : donner une identité aux appareils
+
+Pour que le transfert distant et la messagerie fonctionnent, les appareils doivent se reconnaître d'une session à l'autre. C'est là qu'intervient l'OmniDrop ID.
+
+Au premier lancement, l'app génère une paire de clés cryptographiques et dérive un identifiant unique de 8 caractères : **OMNI-A3F7-K9B2**. La clé privée reste verrouillée dans le stockage sécurisé de la plateforme (iOS Keychain, Android Keystore). La clé publique est partagée pendant le pairing.
+
+Tu peux ajouter des contacts en :
+- **Scannant un QR code** — l'autre appareil affiche un QR avec son ID et sa clé publique
+- **Entrant leur ID manuellement** — tape OMNI-XXXX-XXXX
+- **Découverte automatique** — les appareils sur le même réseau diffusent leur OmniDrop ID via mDNS
+
+Les contacts peuvent être **de confiance** (acceptation auto des transferts), **bloqués** (rejetés silencieusement), ou **inconnus** (demande à chaque fois). C'est la couche anti-spam. Des appareils random ne peuvent pas juste t'envoyer des fichiers — ils doivent être dans ta liste de contacts ou tu dois les approuver.
+
+## L'audit qui a sauvé l'app
+
+Après avoir construit toutes ces features — identité, contacts, messagerie, transfert distant, base de données — j'ai fait quelque chose que je devrais probablement faire plus souvent : un audit de code complet de bout en bout.
+
+Quatre agents de revue en parallèle, chacun examinant une couche différente : base de données, identité + contacts, messagerie + distant, et navigation + intégration. Ils ont trouvé 15 problèmes. Un était critique.
+
+Le service de contacts avait un bug où bloquer un contact inconnu crashait l'app. Le code essayait d'*insérer* une ligne partielle en base (avec juste le flag "bloqué") alors qu'il aurait dû *mettre à jour* une ligne existante. L'insert échouait parce que des colonnes obligatoires manquaient. Le fix était simple — deux nouvelles méthodes de base de données — mais sans l'audit, ça aurait été un crash en production pour chaque utilisateur qui bloque un spammeur.
+
+Autres corrections : encodage UTF-8 pour les textes non-ASCII (émojis dans les messages), un signal de raccrochage WebRTC qui causait une boucle infinie (l'appareil A envoie hangup, B le reçoit et renvoie hangup, A le reçoit et renvoie hangup...), et un état "connecté" prématuré qui s'affichait avant que le handshake WebRTC soit réellement terminé.
+
+La leçon : construis vite, audite en profondeur.
+
+## Ce qui différencie OmniDrop de LocalSend
+
+| Feature | LocalSend | OmniDrop |
+|---------|-----------|----------|
+| Transfert local | Oui | Oui |
+| Transfert distant | Non | Oui (WebRTC) |
+| Messagerie | Non | Oui (chiffrée) |
+| Identité d'appareil | Non | Oui (OMNI-XXXX-XXXX) |
+| Liste de contacts | Non | Oui (confiance/blocage) |
+| Pairing NFC | Non | Oui |
+| Chiffrement | HTTPS | AES-256-GCM + DTLS |
+| Prix | Gratuit | Freemium (3,99$/mois) |
+| Open source | Oui | Spec du protocole ouverte |
+
+LocalSend est une excellente app et je respecte ce qu'ils ont construit. Mais le marché a besoin de quelque chose qui va plus loin. Le transfert distant seul change la donne — ça veut dire qu'OmniDrop marche entre ton téléphone en 4G et ton laptop à la maison. Pas besoin de WiFi partagé.
+
+## La suite
+
+OmniDrop est presque prêt. Le cœur est solide : transfert local, transfert distant, messagerie, identité, contacts, chiffrement. Ce qui reste c'est la configuration et les tests :
+
+- Mettre en place le projet Supabase pour le signaling de production
+- Configurer les credentials du relais TURN
+- Tester les transferts entre vrais appareils (local + distant)
+- Builder les versions release pour iOS, Android et macOS
+- Soumettre sur l'App Store et le Play Store
+
+[La waitlist est ouverte](/omnidrop) si tu veux être parmi les premiers à essayer.
+
+> Le plus dur dans OmniDrop, c'était pas le chiffrement ou le signaling WebRTC. C'était accepter que "ça marche tout seul" nécessite de résoudre une centaine de problèmes invisibles que personne ne verra jamais.`,
+    date: '2026-03-05',
+    readTime: '8 min',
+    tags: ['OmniDrop', 'P2P', 'WebRTC', 'Solo Dev'],
+    icon: '📡',
+    gradient: 'from-blue-500 to-violet-500',
+  },
+  {
     title: 'Pourquoi laisser un pourboire à l\'étranger c\'est un champ de mines (et comment j\'ai résolu le problème)',
     slug: 'tiplog-pourboire-voyage',
     excerpt: 'J\'ai laissé 20% de pourboire au Japon. Le serveur m\'a couru après. C\'est là que j\'ai décidé de créer TipLog.',

@@ -12,6 +12,143 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    title: 'Building OmniDrop: how I made files fly between devices without touching a cloud',
+    slug: 'building-omnidrop-p2p-remote-messaging',
+    excerpt: 'LocalSend has 8 million downloads and does LAN only. I decided to go further — remote transfer, encrypted messaging, and a device identity system. Here\'s what I learned.',
+    content: `## The AirDrop problem
+
+I was sitting at a coffee shop trying to send a 2GB video from my Android phone to my MacBook. No cable. No USB stick. And definitely no patience for uploading it to Google Drive, waiting 15 minutes, then downloading it on the other side.
+
+AirDrop? Apple only. Nearby Share? Android-to-Android mostly. Samsung Quick Share? Samsung only. Every major tech company built file sharing — but only for *their* ecosystem. If you live in a mixed-device world (and most people do), you're out of luck.
+
+I found LocalSend. Open source, cross-platform, 8 million downloads. Beautiful. Except it only works on your local network. Same WiFi, same room. Try sending a file to your friend across town and you're back to Google Drive.
+
+That's when OmniDrop started.
+
+## What if file transfer worked like messaging?
+
+The idea was simple: take everything LocalSend does well (local P2P, no cloud, encryption) and add what's missing:
+
+- **Remote transfer** — send files to someone on a different network, across the internet, still P2P
+- **Encrypted messaging** — text chat between devices, because sometimes you just want to send a message
+- **Device identity** — a persistent ID so your devices recognize each other and you can build a contact list
+
+No competitor combines all three. LocalSend is LAN-only. WeTransfer requires cloud upload. Telegram gives you messaging but your files go through their servers. I wanted the whole package: local, remote, messaging, encrypted, P2P, cross-platform.
+
+## The local part: NFC tap-to-pair
+
+The local transfer was the first thing I built. Two devices on the same WiFi discover each other via mDNS (think of it as Bluetooth for WiFi — devices broadcast "hey, I'm here" on the local network). Select a device, pick your files, send.
+
+But the pairing UX bothered me. Every competitor makes you look at a list of device names and guess which one is yours. "Pixel 7"? "MacBook Pro"? What if there are three MacBooks in the room?
+
+NFC solved this. Bring two phones together, tap, they pair instantly. The NFC handshake exchanges the encryption key and connection info in a fraction of a second. No room codes, no QR scanning, no "which device is mine." Just tap.
+
+No file transfer app uses NFC for pairing. Zero. That's our first differentiator.
+
+## Going remote: the WebRTC rabbit hole
+
+Local transfer is solved. The hard part is remote — sending files between two devices that are NOT on the same network.
+
+The naive approach: upload the file to a server, download it on the other side. That's what WeTransfer, Dropbox, and Google Drive do. It works, but it means:
+1. Your file sits on someone else's server (privacy issue)
+2. Upload speed bottlenecks everything (especially on bad connections)
+3. Someone has to pay for that server storage
+
+I wanted true P2P — device to device, no server storage. That means WebRTC.
+
+**WebRTC** is the same technology that powers Google Meet and Zoom video calls. But instead of streaming video, you can open a "DataChannel" and stream raw binary data. File chunks, essentially.
+
+The catch? Two devices behind different routers can't talk to each other directly. They need help finding each other. This is called **signaling** — a temporary message exchange to negotiate the connection. Once the P2P link is established, the signaling server is no longer needed.
+
+Here's how OmniDrop's remote flow works:
+
+1. Both devices connect to a Supabase Realtime channel (the signaling layer)
+2. Device A creates a WebRTC offer (containing its network info)
+3. The offer is relayed to Device B via Supabase
+4. Device B responds with an answer
+5. ICE candidates (network route options) are exchanged
+6. A direct P2P DataChannel opens between the two devices
+7. Files flow as encrypted binary chunks — never stored on any server
+8. When the transfer is done, the signaling channel is closed
+
+About 85% of the time, STUN (Google's free servers) helps devices punch through their routers and connect directly. For the remaining 15% (restrictive corporate firewalls, symmetric NATs), a TURN relay forwards the encrypted packets. Even then, the relay only sees opaque encrypted data — it can't read your files.
+
+**The metaphor:** Signaling is like two people exchanging phone numbers through a mutual friend. Once they have each other's number, they call directly. The friend doesn't listen to the call.
+
+## Messaging: because sometimes you don't need a file
+
+Once you have a P2P DataChannel open, sending a text message is trivial. It's just an encrypted payload with a different type byte. But building the *experience* around it is another story.
+
+OmniDrop now has a full messaging system:
+- **Conversations list** — like WhatsApp's main screen, showing your latest message with each contact
+- **Chat screen** — message bubbles (sent = right, received = left), timestamps, delivery status
+- **Encryption** — every message is AES-256-GCM encrypted before leaving your device
+- **Local storage** — messages are stored in SQLite on your device. No server ever sees them.
+- **Dual transport** — if the other device is on your local network, messages go via TCP. If remote, via WebRTC DataChannel.
+
+The messaging isn't meant to replace WhatsApp. It's the natural companion to file transfer. You're sending someone a batch of photos — wouldn't it be nice to send a message with it? "Here are the photos from Saturday" beats a mysterious incoming transfer from "Android Device."
+
+## OmniDrop ID: giving devices an identity
+
+For remote transfer and messaging to work, devices need to recognize each other across sessions. That's where the OmniDrop ID comes in.
+
+On first launch, the app generates a cryptographic keypair and derives a unique 8-character identifier: **OMNI-A3F7-K9B2**. The private key stays locked in the platform's secure storage (iOS Keychain, Android Keystore). The public key is shared during pairing.
+
+You can add contacts by:
+- **Scanning a QR code** — the other device displays a QR with their ID and public key
+- **Entering their ID manually** — type OMNI-XXXX-XXXX
+- **Automatic discovery** — devices on the same network broadcast their OmniDrop ID via mDNS
+
+Contacts can be **trusted** (auto-accept transfers), **blocked** (silently rejected), or **unknown** (prompted each time). This is the anti-spam layer. Random devices can't just send you files — they need to be in your contact list or you need to approve them.
+
+## The audit that saved the app
+
+After building all these features — identity, contacts, messaging, remote transfer, database — I did something I should probably do more often: a full end-to-end code audit.
+
+Four parallel review agents, each examining a different layer: database, identity + contacts, messaging + remote, and navigation + integration. They found 15 issues. One was critical.
+
+The contacts service had a bug where blocking an unknown contact would crash. The code tried to *insert* a partial database row (with only the "blocked" flag set) when it should have *updated* an existing row. The insert would fail because required columns were missing. The fix was simple — two new database methods — but without the audit, it would have been a production crash for every user who blocks a spammer.
+
+Other fixes: UTF-8 encoding for non-ASCII text (emojis in messages), a WebRTC hangup signal that caused an infinite loop (device A sends hangup, device B receives it and sends hangup back, device A receives it and sends hangup back...), and a premature "connected" state that showed before the WebRTC handshake actually completed.
+
+The lesson: build fast, audit thoroughly.
+
+## What's different from LocalSend
+
+| Feature | LocalSend | OmniDrop |
+|---------|-----------|----------|
+| Local transfer | Yes | Yes |
+| Remote transfer | No | Yes (WebRTC) |
+| Messaging | No | Yes (encrypted) |
+| Device identity | No | Yes (OMNI-XXXX-XXXX) |
+| Contact list | No | Yes (trust/block) |
+| NFC pairing | No | Yes |
+| Encryption | HTTPS | AES-256-GCM + DTLS |
+| Price | Free | Freemium ($3.99/mo) |
+| Open source | Yes | Protocol spec is open |
+
+LocalSend is an excellent app and I respect what they've built. But the market needs something that goes further. Remote transfer alone changes the game — it means OmniDrop works between your phone on cellular data and your laptop at home. No shared WiFi required.
+
+## What's next
+
+OmniDrop is nearly ready. The core is solid: local transfer, remote transfer, messaging, identity, contacts, encryption. What's left is configuration and testing:
+
+- Set up the Supabase project for production signaling
+- Configure TURN relay credentials
+- Test transfers between real devices (local + remote)
+- Build release versions for iOS, Android, and macOS
+- Submit to the App Store and Play Store
+
+The [waitlist is open](/omnidrop) if you want to be among the first to try it.
+
+> The hardest part of OmniDrop wasn't the encryption or the WebRTC signaling. It was accepting that "just works" requires solving a hundred invisible problems that nobody will ever see.`,
+    date: '2026-03-05',
+    readTime: '8 min',
+    tags: ['OmniDrop', 'P2P', 'WebRTC', 'Solo Dev'],
+    icon: '📡',
+    gradient: 'from-blue-500 to-violet-500',
+  },
+  {
     title: 'Why tipping abroad feels like a minefield (and how I built an app to fix it)',
     slug: 'tiplog-pourboire-voyage',
     excerpt: 'I left a 20% tip in Japan. The waiter ran after me. That\'s when I decided to build TipLog.',
