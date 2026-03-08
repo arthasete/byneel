@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'Projets', href: '/#projects' },
   { label: 'Tech', href: '/#tech' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Kit', href: '/kit', highlight: true },
   { label: 'Contact', href: '/#contact' },
 ];
 
@@ -55,9 +56,19 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted hover:text-foreground transition-colors duration-200"
+              className={`text-sm transition-colors duration-200 ${
+                link.highlight
+                  ? 'text-brand-blue hover:text-foreground font-semibold'
+                  : 'text-muted hover:text-foreground'
+              }`}
             >
+              {link.highlight && '\u{1F680} '}
               {link.label}
+              {link.highlight && (
+                <span className="ml-1.5 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-brand-blue/20 text-brand-blue border border-brand-blue/30">
+                  New
+                </span>
+              )}
             </a>
           ))}
           <a
@@ -109,7 +120,9 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-3xl font-light text-muted hover:text-foreground transition-all duration-300 hover:tracking-wider"
+              className={`text-3xl font-light hover:text-foreground transition-all duration-300 hover:tracking-wider ${
+                link.highlight ? 'text-brand-blue' : 'text-muted'
+              }`}
               style={{
                 transitionDelay: isOpen ? `${i * 60}ms` : '0ms',
                 opacity: isOpen ? 1 : 0,
@@ -117,7 +130,7 @@ export function Navbar() {
                 transition: `opacity 0.4s ease ${isOpen ? i * 60 : 0}ms, transform 0.4s ease ${isOpen ? i * 60 : 0}ms, color 0.2s, letter-spacing 0.3s`,
               }}
             >
-              {link.label}
+              {link.highlight && '\u{1F680} '}{link.label}
             </a>
           ))}
           <div

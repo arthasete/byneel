@@ -84,6 +84,12 @@ export function Footer() {
                 Blog
               </Link>
               <Link
+                href="/kit"
+                className="text-sm text-brand-blue hover:text-foreground hover:translate-x-1 transition-all duration-300"
+              >
+                Starter Kit
+              </Link>
+              <Link
                 href="/#contact"
                 className="text-sm text-muted hover:text-foreground hover:translate-x-1 transition-all duration-300"
               >
