@@ -86,15 +86,20 @@ const texts = {
     title1: 'Zero to App Store',
     title2: 'with Claude Code',
     subtitle: 'The complete kit for non-developers who build apps with AI.',
-    cta: 'Get the Kit \u2014 $49',
+    cta: 'Get the Kit',
+    ctaPrice: '$19',
+    ctaOldPrice: '$49',
     subCta: '2 apps shipped. 50+ errors documented. 0 CS degree required.',
+    launchBadge: 'Launch price \u2014 first 50 only',
+    promoLabel: 'Promo code: LAUNCH',
     insideLabel: 'Everything you need',
     insideTitle: "What's Inside",
     insideDesc: '6 resources. Battle-tested on 2 real apps. Zero fluff.',
     baLabel: 'Real numbers',
     baTitle: 'Before vs After',
     priceBadge: 'COMPLETE KIT',
-    priceAmount: '$49',
+    priceAmount: '$19',
+    priceOld: '$49',
     priceUnit: 'one-time',
     faqLabel: 'Questions',
     faqTitle: 'FAQ',
@@ -109,15 +114,20 @@ const texts = {
     title1: 'De z\u00e9ro \u00e0 l\'App Store',
     title2: 'avec Claude Code',
     subtitle: 'Le kit complet pour les non-d\u00e9veloppeurs qui cr\u00e9ent des apps avec l\'IA.',
-    cta: 'Obtenir le Kit \u2014 49\u20ac',
+    cta: 'Obtenir le Kit',
+    ctaPrice: '19\u20ac',
+    ctaOldPrice: '49\u20ac',
     subCta: '2 apps publi\u00e9es. 50+ erreurs document\u00e9es. 0 dipl\u00f4me requis.',
+    launchBadge: 'Prix de lancement \u2014 50 premiers uniquement',
+    promoLabel: 'Code promo : LAUNCH',
     insideLabel: 'Tout ce qu\'il faut',
     insideTitle: 'Ce qui est inclus',
     insideDesc: '6 ressources. Test\u00e9es sur 2 vraies apps. Z\u00e9ro blabla.',
     baLabel: 'Chiffres r\u00e9els',
     baTitle: 'Avant vs Apr\u00e8s',
     priceBadge: 'KIT COMPLET',
-    priceAmount: '49\u20ac',
+    priceAmount: '19\u20ac',
+    priceOld: '49\u20ac',
     priceUnit: 'paiement unique',
     faqLabel: 'Questions',
     faqTitle: 'FAQ',
@@ -169,7 +179,7 @@ export default function KitPageClient() {
             brand: { '@type': 'Brand', name: 'ByNeel' },
             url: 'https://byneel.com/kit',
             image: 'https://byneel.com/og-kit.png',
-            offers: { '@type': 'Offer', price: '49.00', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            offers: { '@type': 'Offer', price: '19.00', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
           }),
         }}
       />
@@ -203,8 +213,8 @@ export default function KitPageClient() {
               <span className="gradient-text">{t.title2}</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-10">{t.subtitle}</p>
-            <a href="https://byneel.lemonsqueezy.com/checkout/buy/1b7c90b6-f742-463f-9cb0-6e796ef9fdd0" className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
-              {t.cta}
+            <a href="https://byneel.lemonsqueezy.com/checkout/buy/1b7c90b6-f742-463f-9cb0-6e796ef9fdd0?discount=LAUNCH" className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
+              {t.cta} — <span className="line-through text-white/40">{t.ctaOldPrice}</span> <span className="text-green-400">{t.ctaPrice}</span>
             </a>
             <p className="mt-6 text-sm text-muted">{t.subCta}</p>
           </div>
@@ -287,9 +297,13 @@ export default function KitPageClient() {
               <div className="absolute -inset-4 bg-gradient-to-br from-brand-blue/20 to-brand-violet/20 rounded-3xl blur-2xl opacity-50 pointer-events-none" />
               <GlassCard className="relative p-10 border-brand-blue/20 hover:border-brand-blue/30">
                 <div className="text-center mb-8">
-                  <span className="inline-block px-4 py-1.5 text-xs font-bold tracking-widest uppercase rounded-full gradient-glow text-white mb-6">{t.priceBadge}</span>
-                  <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-6xl font-bold">{t.priceAmount}</span>
+                  <span className="inline-block px-4 py-1.5 text-xs font-bold tracking-widest uppercase rounded-full gradient-glow text-white mb-4">{t.priceBadge}</span>
+                  <div className="inline-block px-4 py-1.5 text-sm font-semibold rounded-full bg-green-500/10 border border-green-500/20 text-green-400 mb-6">
+                    {t.launchBadge}
+                  </div>
+                  <div className="flex items-baseline justify-center gap-3">
+                    <span className="text-2xl text-muted/50 line-through">{t.priceOld}</span>
+                    <span className="text-6xl font-bold text-green-400">{t.priceAmount}</span>
                     <span className="text-muted text-lg">{t.priceUnit}</span>
                   </div>
                 </div>
@@ -301,9 +315,10 @@ export default function KitPageClient() {
                     </li>
                   ))}
                 </ul>
-                <a href="https://byneel.lemonsqueezy.com/checkout/buy/1b7c90b6-f742-463f-9cb0-6e796ef9fdd0" className="block w-full text-center px-8 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
-                  {t.cta}
+                <a href="https://byneel.lemonsqueezy.com/checkout/buy/1b7c90b6-f742-463f-9cb0-6e796ef9fdd0?discount=LAUNCH" className="block w-full text-center px-8 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
+                  {t.cta} — <span className="line-through text-white/40">{t.ctaOldPrice}</span> <span className="text-green-400">{t.ctaPrice}</span>
                 </a>
+                <p className="mt-4 text-sm text-muted text-center">{t.promoLabel}</p>
               </GlassCard>
             </div>
           </ScrollReveal>
@@ -363,8 +378,8 @@ export default function KitPageClient() {
           <ScrollReveal>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">{t.finalTitle}</h2>
             <p className="text-muted text-lg mb-10 max-w-xl mx-auto">{t.finalSubtitle}</p>
-            <a href="https://byneel.lemonsqueezy.com/checkout/buy/1b7c90b6-f742-463f-9cb0-6e796ef9fdd0" className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
-              {t.cta}
+            <a href="https://byneel.lemonsqueezy.com/checkout/buy/1b7c90b6-f742-463f-9cb0-6e796ef9fdd0?discount=LAUNCH" className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
+              {t.cta} — <span className="line-through text-white/40">{t.ctaOldPrice}</span> <span className="text-green-400">{t.ctaPrice}</span>
             </a>
           </ScrollReveal>
         </div>
