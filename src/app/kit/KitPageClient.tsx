@@ -203,7 +203,7 @@ export default function KitPageClient() {
               <span className="gradient-text">{t.title2}</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted max-w-2xl mx-auto mb-10">{t.subtitle}</p>
-            <a href="#" className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
+            <a href="https://byneel.lemonsqueezy.com/checkout/buy/1b7c90b6-f742-463f-9cb0-6e796ef9fdd0" className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
               {t.cta}
             </a>
             <p className="mt-6 text-sm text-muted">{t.subCta}</p>
@@ -301,7 +301,7 @@ export default function KitPageClient() {
                     </li>
                   ))}
                 </ul>
-                <a href="#" className="block w-full text-center px-8 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
+                <a href="https://byneel.lemonsqueezy.com/checkout/buy/1b7c90b6-f742-463f-9cb0-6e796ef9fdd0" className="block w-full text-center px-8 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
                   {t.cta}
                 </a>
               </GlassCard>
@@ -363,7 +363,7 @@ export default function KitPageClient() {
           <ScrollReveal>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">{t.finalTitle}</h2>
             <p className="text-muted text-lg mb-10 max-w-xl mx-auto">{t.finalSubtitle}</p>
-            <a href="#" className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
+            <a href="https://byneel.lemonsqueezy.com/checkout/buy/1b7c90b6-f742-463f-9cb0-6e796ef9fdd0" className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg text-white gradient-glow transition-all duration-300 hover:scale-105">
               {t.cta}
             </a>
           </ScrollReveal>

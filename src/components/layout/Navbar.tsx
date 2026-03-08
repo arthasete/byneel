@@ -87,12 +87,6 @@ export function Navbar() {
             {language === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR'}
           </button>
 
-          <a
-            href="mailto:contact@byneel.com"
-            className="text-sm px-4 py-2 rounded-full bg-white/[0.06] border border-white/[0.08] hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-200"
-          >
-            contact@byneel.com
-          </a>
         </div>
 
         {/* Hamburger button */}
@@ -173,22 +167,6 @@ export function Navbar() {
             {language === 'fr' ? '🇬🇧 English' : '🇫🇷 Français'}
           </button>
 
-          <div
-            className="mt-4 pt-6 border-t border-white/[0.08]"
-            style={{
-              opacity: isOpen ? 1 : 0,
-              transform: isOpen ? 'translateY(0)' : 'translateY(20px)',
-              transition: `opacity 0.4s ease ${isOpen ? (navLinks.length + 1) * 60 : 0}ms, transform 0.4s ease ${isOpen ? (navLinks.length + 1) * 60 : 0}ms`,
-            }}
-          >
-            <a
-              href="mailto:contact@byneel.com"
-              onClick={closeMenu}
-              className="text-lg text-brand-blue hover:text-brand-purple transition-colors duration-200"
-            >
-              contact@byneel.com
-            </a>
-          </div>
         </div>
       </div>
     </>
