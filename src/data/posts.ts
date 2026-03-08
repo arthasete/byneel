@@ -1432,83 +1432,118 @@ If that's not proof the game has changed, I don't know what is.
     gradient: 'from-brand-blue to-brand-violet',
   },
   {
-    title: 'The CLAUDE.md File That Changed My Productivity by 300%',
+    title: 'How CLAUDE.md Changed the Way I Build Apps (And Why You Need One)',
     slug: 'claude-md-productivity',
-    excerpt: 'How a simple markdown file transformed the way I code with AI. Real before/after numbers and 3 sections that change everything.',
-    content: `## 3 months of fighting Claude Code
+    excerpt: 'I went from 2-3 hours per feature to 30 minutes. Zero CS degree, 2 apps on the App Store. The secret? A single markdown file.',
+    content: `## The problem: repeating yourself every single session
 
-For 3 months, every Claude Code session started the same way. I'd open the terminal, paste my request, and spend the first 15 minutes re-explaining everything. "Here's my project structure. Here's my stack. Here's how I name files. No, don't put that there. No, use Provider, not setState."
+If you use Claude Code, you know the drill. You open a new session, and the first 15 minutes are wasted re-explaining everything. Your project structure. Your stack. Your naming conventions. Where files go. What patterns to follow.
 
-It was like hiring a brilliant developer who had total amnesia every morning.
+Every. Single. Time.
 
-Then I discovered CLAUDE.md.
+It's like having a brilliant colleague who gets full amnesia overnight. Monday: "put services in lib/core/services/." Tuesday: "no, I told you yesterday, services go in lib/core/services/." Wednesday: same thing.
+
+After 3 months of this, I was ready to quit. Then I found CLAUDE.md.
 
 ## What is a CLAUDE.md?
 
-A markdown file at the root of your project. That's it. Claude Code reads it automatically at the start of every session.
+A markdown file at the root of your project. That's it.
 
-Think of it as a permanent briefing. Without this file, Claude Code is a brilliant junior with amnesia. With it, it becomes a senior who knows your codebase by heart.
+Claude Code reads it automatically at the start of every session. Think of it as a permanent briefing document. Instead of repeating your instructions verbally every time, you write them once, and Claude remembers forever.
 
-No plugin. No config. No API. Just a file named CLAUDE.md at your project root.
+No plugin. No extension. No API key. No configuration. Just create a file called \`CLAUDE.md\` at your project root, and Claude Code picks it up.
 
-## Before / After (real numbers)
+Without CLAUDE.md, Claude Code is a brilliant intern with amnesia. With it, Claude becomes a senior developer who knows your codebase by heart.
 
-- **Time per feature:** 2-3 hours down to 30-45 minutes
-- **Structural errors:** Constant down to nearly zero
-- **Major refactoring:** Every 2 weeks down to once in 3 months
-- **Frustration level:** 8/10 down to 2/10
+## Before vs After: real numbers
 
-The first session after setting up the file, I asked "add a settings screen with dark mode toggle." Claude created the file in lib/features/settings/, used Provider, followed my naming convention, and added the route. Without me specifying anything.
+Here's what changed for me after setting up CLAUDE.md:
 
-## The 3 critical sections
+| Metric | Before | After |
+|--------|--------|-------|
+| Time per feature | 2-3 hours | 30-45 minutes |
+| Structural errors | Every session | Nearly zero |
+| Major refactoring | Every 2 weeks | Once in 3 months |
+| App Store rejections | 3 before approval | First submission approved |
+| Frustration level | 8/10 | 2/10 |
 
-## 1. Project structure (non-negotiable)
+The first session after creating my CLAUDE.md, I asked: "add a settings screen with dark mode toggle." Claude created the file in the right folder, used the right state management pattern, followed my naming convention, and added the route. Without me specifying anything.
 
-Not just "there's a features/ folder." Every subfolder with its role. Every file type with its location.
+That's when I knew this was a game-changer.
 
-**My initial mistake:** A vague structure description. Result: Claude put files wherever it wanted. A service in widgets/, a model in screens/. Chaos.
+## The 4 key sections of a great CLAUDE.md
 
-**The fix:** A complete tree with comments. Now Claude knows that API services go in lib/core/services/, screens go in lib/features/{name}/screens/, and models go in lib/features/{name}/models/.
+After iterating on mine across 2 published apps, I've landed on 4 sections that matter most.
 
-## 2. Strict rules (orders, not suggestions)
+### 1. Project Overview
 
-Not "try to use const when possible." Instead: "ALWAYS use const. NEVER use var."
+The 30-second pitch for your project. What it does, who it's for, what stack it uses. This gives Claude the big picture so it understands the *why* behind your code, not just the *what*.
 
-**My initial mistake:** Polite, flexible rules. Result: Inconsistent code. Sometimes const, sometimes let. Sometimes camelCase, sometimes snake_case.
+Keep it short: 5-10 lines max. Stack, target platforms, key dependencies.
 
-**The fix:** Direct orders with no ambiguity. Claude follows strict rules perfectly.
+### 2. Architecture
 
-## 3. Patterns with examples (show, don't tell)
+This is the most important section. A complete folder tree showing where every type of file lives. Not just "there's a features/ folder" but the full hierarchy with comments.
 
-A 5-line code snippet showing YOUR API call pattern is worth more than 3 paragraphs of explanation. Claude replicates examples perfectly.
+**My initial mistake:** A vague description. Result: Claude put a service in widgets/, a model in screens/, a utility in lib/. Pure chaos.
 
-**My initial mistake:** No examples. Result: Claude improvised a different pattern every time.
+**The fix:** A literal tree structure. Now Claude knows API services go in \`lib/core/services/\`, screens in \`lib/features/{name}/screens/\`, and models in \`lib/features/{name}/models/\`. Zero ambiguity, zero misplaced files.
 
-**The fix:** 2-3 real code snippets from my project. Now every new service, every new screen follows the same pattern.
+### 3. Conventions
 
-## The real ROI (not just speed)
+Strict rules, not suggestions. Claude follows orders perfectly, but it also follows vague suggestions loosely. So be direct.
 
-- **Consistency:** 47 files, same pattern. Every screen, every service, every model follows the same architecture.
-- **Maintainability:** I left a project for 2 months. When I came back, everything was clear because the CLAUDE.md documented every convention.
-- **Confidence:** No more fear of big changes. The CLAUDE.md acts as a guardrail. Claude won't break your architecture if the rules are clear.
+Bad: "Try to use const when possible."
+Good: "ALWAYS use const. NEVER use var. NEVER use let unless mutation is required."
+
+Bad: "Naming should be consistent."
+Good: "Files: kebab-case. Classes: PascalCase. Variables: camelCase. No exceptions."
+
+Include 2-3 real code snippets from your project showing your patterns. A 5-line example of your API call pattern is worth more than 3 paragraphs of explanation.
+
+### 4. Error Log
+
+This is the secret weapon most people skip. Every time Claude makes a mistake or you hit an unexpected error, document it here. "Firebase Auth: use signInWithCredential, NOT signInWithPopup on mobile" or "iOS build: always run pod install --repo-update before archive."
+
+Over time, this becomes your project's institutional memory. Claude will never repeat the same mistake twice because it reads the error log at the start of every session.
+
+My error log has 50+ entries across 2 apps. It saves me hours every week.
+
+## Concrete results: 2 apps shipped
+
+I'm not a developer. No CS degree. No bootcamp. I build apps with Claude Code as my AI pair programmer, and CLAUDE.md is what makes it work.
+
+Results so far:
+- **2 apps published** on the App Store and Google Play
+- **30-45 minutes per feature** instead of 2-3 hours
+- **47 files** across one project, all following the exact same architecture
+- **First submission approved** on both stores (after 3 rejections before CLAUDE.md)
+- Left a project for 2 months, came back, everything was immediately clear because the CLAUDE.md documented every convention
+
+The ROI isn't just speed. It's **consistency** (every file follows the same pattern), **maintainability** (you can understand your own project months later), and **confidence** (Claude won't break your architecture when the rules are clear).
 
 ## How to create yours in 15 minutes
 
 1. Open your project, look at the folder structure
-2. List your stack (language, framework, packages)
-3. Define the structure (every folder, every file type)
-4. Write 5-7 strict rules (use imperative: "ALWAYS," "NEVER")
-5. Add 2-3 code patterns from your actual project
-6. Save as CLAUDE.md at the project root
+2. Write the project overview (stack, platforms, purpose)
+3. Document the full architecture tree with comments
+4. List 5-7 strict conventions (use "ALWAYS" and "NEVER")
+5. Add 2-3 real code patterns from your actual project
+6. Start an error log section (even if it's empty for now)
+7. Save as \`CLAUDE.md\` at your project root
 
-That's it. 15 minutes of work for months of saved time.
+15 minutes of work. Months of saved time.
 
-## Get battle-tested templates
+## Get 4 battle-tested templates
 
-The 4 variants of my CLAUDE.md (Flutter, Next.js, Python/FastAPI, Universal) are in the [ByNeel Starter Kit](/kit) \u2014 with the complete guide, 15 prompts, and the App Store checklist.`,
+I've packaged the exact CLAUDE.md files I use into the [ByNeel Starter Kit](/kit). Four variants: Flutter, Next.js, Python/FastAPI, and a Universal template you can adapt to any stack.
+
+Plus a 60+ page guide, 15 ready-to-paste prompts, an App Store checklist, and setup scripts. Everything I wish I had when I started.
+
+[Get the Starter Kit \u2192](/kit)`,
     date: '2026-03-08',
-    readTime: '8 min',
-    tags: ['Claude Code', 'Productivity', 'Solo Dev'],
+    readTime: '10 min',
+    tags: ['Claude Code', 'Productivity', 'Solo Dev', 'CLAUDE.md'],
     icon: '\u{1F4CB}',
     gradient: 'from-cyan to-brand-blue',
   },

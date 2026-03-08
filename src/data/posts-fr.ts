@@ -1422,83 +1422,118 @@ Si ce n'est pas la preuve que le jeu a changé, je ne sais pas ce que c'est.
     gradient: 'from-brand-blue to-brand-violet',
   },
   {
-    title: 'Le fichier CLAUDE.md qui a chang\u00e9 ma productivit\u00e9 de 300%',
-    slug: 'claude-md-productivity',
-    excerpt: 'Comment un simple fichier markdown a transform\u00e9 ma fa\u00e7on de coder avec l\'IA. Chiffres r\u00e9els avant/apr\u00e8s et 3 sections qui changent tout.',
-    content: `## 3 mois \u00e0 me battre avec Claude Code
+    title: 'Comment CLAUDE.md a chang\u00e9 ma fa\u00e7on de cr\u00e9er des apps (et pourquoi tu en as besoin)',
+    slug: 'claude-md-productivite',
+    excerpt: 'Je suis pass\u00e9 de 2-3h par feature \u00e0 30 minutes. Z\u00e9ro dipl\u00f4me, 2 apps sur l\'App Store. Le secret ? Un simple fichier markdown.',
+    content: `## Le probl\u00e8me : se r\u00e9p\u00e9ter \u00e0 chaque session
 
-Pendant 3 mois, chaque session Claude Code commen\u00e7ait pareil. J'ouvrais le terminal, je collais ma demande, et je passais les 15 premi\u00e8res minutes \u00e0 tout r\u00e9expliquer. "Voil\u00e0 la structure du projet. Voil\u00e0 ma stack. Voil\u00e0 comment je nomme les fichiers. Non, mets pas \u00e7a l\u00e0. Non, utilise Provider, pas setState."
+Si tu utilises Claude Code, tu connais le rituel. Tu ouvres une nouvelle session, et les 15 premi\u00e8res minutes sont gaspill\u00e9es \u00e0 tout r\u00e9expliquer. La structure du projet. La stack. Les conventions de nommage. O\u00f9 vont les fichiers. Quels patterns suivre.
 
-C'\u00e9tait comme embaucher un d\u00e9veloppeur brillant qui avait une amn\u00e9sie totale chaque matin.
+\u00c0. Chaque. Session.
 
-Puis j'ai d\u00e9couvert CLAUDE.md.
+C'est comme avoir un coll\u00e8gue brillant qui a une amn\u00e9sie totale chaque nuit. Lundi : "mets les services dans lib/core/services/." Mardi : "non, je te l'ai dit hier, les services vont dans lib/core/services/." Mercredi : pareil.
 
-## Qu'est-ce qu'un CLAUDE.md ?
+Apr\u00e8s 3 mois de ce cirque, j'\u00e9tais pr\u00eat \u00e0 tout laisser tomber. Puis j'ai d\u00e9couvert CLAUDE.md.
 
-Un fichier markdown \u00e0 la racine de ton projet. C'est tout. Claude Code le lit automatiquement au d\u00e9but de chaque session.
+## C'est quoi un CLAUDE.md ?
 
-Pense \u00e0 \u00e7a comme un briefing permanent. Sans ce fichier, Claude Code est un junior brillant mais amn\u00e9sique. Avec, c'est un senior qui conna\u00eet ton code par c\u0153ur.
+Un fichier markdown \u00e0 la racine de ton projet. C'est tout.
 
-Pas de plugin. Pas de config. Pas d'API. Juste un fichier nomm\u00e9 CLAUDE.md \u00e0 la racine de ton projet.
+Claude Code le lit automatiquement au d\u00e9but de chaque session. C'est un briefing permanent. Au lieu de r\u00e9p\u00e9ter tes instructions \u00e0 chaque fois, tu les \u00e9cris une seule fois, et Claude s'en souvient pour toujours.
 
-## Avant / Apr\u00e8s (chiffres r\u00e9els)
+Pas de plugin. Pas d'extension. Pas de cl\u00e9 API. Pas de config. Tu cr\u00e9es un fichier \`CLAUDE.md\` \u00e0 la racine, et Claude Code le prend en compte.
 
-- **Temps par feature :** 2-3 heures \u2192 30-45 minutes
-- **Erreurs de structure :** Constantes \u2192 quasi z\u00e9ro
-- **Refactoring majeur :** Toutes les 2 semaines \u2192 1 fois en 3 mois
-- **Frustration :** 8/10 \u2192 2/10
+Sans CLAUDE.md, Claude Code est un stagiaire brillant mais amn\u00e9sique. Avec, c'est un d\u00e9veloppeur senior qui conna\u00eet ton code par c\u0153ur.
 
-La premi\u00e8re session apr\u00e8s avoir mis le fichier en place, j'ai demand\u00e9 "ajoute un \u00e9cran settings avec dark mode toggle". Claude a cr\u00e9\u00e9 le fichier dans lib/features/settings/, utilis\u00e9 Provider, suivi ma convention de nommage, ajout\u00e9 la route. Sans que je pr\u00e9cise quoi que ce soit.
+## Avant vs Apr\u00e8s : chiffres r\u00e9els
 
-## Les 3 sections critiques
+Voici ce qui a chang\u00e9 pour moi apr\u00e8s avoir mis en place CLAUDE.md :
 
-## 1. Structure du projet (non-n\u00e9gociable)
+| M\u00e9trique | Avant | Apr\u00e8s |
+|---------|-------|--------|
+| Temps par feature | 2-3 heures | 30-45 minutes |
+| Erreurs de structure | Chaque session | Quasi z\u00e9ro |
+| Refactoring majeur | Toutes les 2 semaines | 1 fois en 3 mois |
+| Rejets App Store | 3 avant approbation | Premi\u00e8re soumission accept\u00e9e |
+| Frustration | 8/10 | 2/10 |
 
-Pas juste "il y a un dossier features/". Chaque sous-dossier avec son r\u00f4le. Chaque type de fichier avec sa localisation.
+La premi\u00e8re session apr\u00e8s avoir cr\u00e9\u00e9 mon CLAUDE.md, j'ai demand\u00e9 : "ajoute un \u00e9cran settings avec dark mode toggle." Claude a cr\u00e9\u00e9 le fichier au bon endroit, utilis\u00e9 le bon pattern de state management, suivi ma convention de nommage, et ajout\u00e9 la route. Sans que je pr\u00e9cise quoi que ce soit.
 
-**Mon erreur initiale :** Une description de structure vague. R\u00e9sultat : Claude mettait les fichiers n'importe o\u00f9. Un service dans widgets/, un mod\u00e8le dans screens/. Le chaos.
+C'est l\u00e0 que j'ai compris que c'\u00e9tait un game-changer.
 
-**La solution :** Un arbre complet avec commentaires. Maintenant Claude sait que les services API vont dans lib/core/services/, les \u00e9crans dans lib/features/{name}/screens/, et les mod\u00e8les dans lib/features/{name}/models/.
+## Les 4 sections cl\u00e9s d'un bon CLAUDE.md
 
-## 2. R\u00e8gles strictes (des ordres, pas des suggestions)
+Apr\u00e8s avoir it\u00e9r\u00e9 sur le mien \u00e0 travers 2 apps publi\u00e9es, j'ai identifi\u00e9 4 sections essentielles.
 
-Pas "essaie d'utiliser const quand possible". Mais : "TOUJOURS const. JAMAIS var."
+### 1. Vue d'ensemble du projet
 
-**Mon erreur initiale :** Des r\u00e8gles polies et flexibles. R\u00e9sultat : Du code incoh\u00e9rent. Parfois const, parfois let. Parfois camelCase, parfois snake_case.
+Le pitch en 30 secondes de ton projet. Ce qu'il fait, pour qui, quelle stack. \u00c7a donne \u00e0 Claude le contexte global pour qu'il comprenne le *pourquoi* de ton code, pas juste le *quoi*.
 
-**La solution :** Des ordres directs sans ambigu\u00eft\u00e9. Claude suit les r\u00e8gles strictes parfaitement.
+Court : 5-10 lignes max. Stack, plateformes cibles, d\u00e9pendances cl\u00e9s.
 
-## 3. Patterns avec exemples (montre, n'explique pas)
+### 2. Architecture
 
-Un snippet de 5 lignes montrant TON pattern d'appel API vaut plus que 3 paragraphes d'explication. Claude r\u00e9plique les exemples parfaitement.
+La section la plus importante. Un arbre de dossiers complet montrant o\u00f9 chaque type de fichier va. Pas juste "il y a un dossier features/" mais la hi\u00e9rarchie compl\u00e8te avec des commentaires.
 
-**Mon erreur initiale :** Pas d'exemples. R\u00e9sultat : Claude improvisait un pattern diff\u00e9rent \u00e0 chaque fois.
+**Mon erreur initiale :** Une description vague. R\u00e9sultat : Claude mettait un service dans widgets/, un mod\u00e8le dans screens/, un utilitaire dans lib/. Le chaos total.
 
-**La solution :** 2-3 snippets de code r\u00e9els de mon projet. Maintenant chaque nouveau service, chaque nouvel \u00e9cran suit le m\u00eame pattern.
+**La solution :** Un arbre litt\u00e9ral. Maintenant Claude sait que les services API vont dans \`lib/core/services/\`, les \u00e9crans dans \`lib/features/{name}/screens/\`, et les mod\u00e8les dans \`lib/features/{name}/models/\`. Z\u00e9ro ambigu\u00eft\u00e9, z\u00e9ro fichier au mauvais endroit.
 
-## Le vrai ROI (pas juste la vitesse)
+### 3. Conventions
 
-- **Coh\u00e9rence :** 47 fichiers, m\u00eame pattern. Chaque \u00e9cran, chaque service, chaque mod\u00e8le suit la m\u00eame architecture.
-- **Maintenabilit\u00e9 :** J'ai laiss\u00e9 un projet pendant 2 mois. Au retour, tout \u00e9tait clair parce que le CLAUDE.md documentait chaque convention.
-- **Confiance :** Plus peur des gros changements. Le CLAUDE.md est un garde-fou. Claude ne cassera pas ton architecture si les r\u00e8gles sont claires.
+Des r\u00e8gles strictes, pas des suggestions. Claude suit les ordres parfaitement, mais il suit les suggestions vagues\u2026 vaguement. Sois direct.
+
+Mauvais : "Essaie d'utiliser const quand possible."
+Bon : "TOUJOURS const. JAMAIS var. JAMAIS let sauf si mutation n\u00e9cessaire."
+
+Mauvais : "Le nommage devrait \u00eatre coh\u00e9rent."
+Bon : "Fichiers : kebab-case. Classes : PascalCase. Variables : camelCase. Sans exception."
+
+Inclus 2-3 snippets de code r\u00e9els de ton projet montrant tes patterns. Un exemple de 5 lignes de ton pattern d'appel API vaut plus que 3 paragraphes d'explication.
+
+### 4. Journal d'erreurs
+
+L'arme secr\u00e8te que la plupart des gens ignorent. Chaque fois que Claude fait une erreur ou que tu rencontres un bug inattendu, documente-le ici. "Firebase Auth : utiliser signInWithCredential, PAS signInWithPopup sur mobile" ou "Build iOS : toujours lancer pod install --repo-update avant archive."
+
+Avec le temps, \u00e7a devient la m\u00e9moire institutionnelle de ton projet. Claude ne refera jamais la m\u00eame erreur deux fois parce qu'il lit le journal d'erreurs au d\u00e9but de chaque session.
+
+Mon journal a 50+ entr\u00e9es sur 2 apps. \u00c7a me fait gagner des heures chaque semaine.
+
+## R\u00e9sultats concrets : 2 apps publi\u00e9es
+
+Je ne suis pas d\u00e9veloppeur. Pas de dipl\u00f4me en info. Pas de bootcamp. Je cr\u00e9e des apps avec Claude Code comme copilote IA, et CLAUDE.md est ce qui fait que \u00e7a marche.
+
+R\u00e9sultats :
+- **2 apps publi\u00e9es** sur l'App Store et Google Play
+- **30-45 minutes par feature** au lieu de 2-3 heures
+- **47 fichiers** dans un projet, tous suivant exactement la m\u00eame architecture
+- **Premi\u00e8re soumission accept\u00e9e** sur les deux stores (apr\u00e8s 3 rejets avant CLAUDE.md)
+- Projet laiss\u00e9 2 mois, au retour tout \u00e9tait clair gr\u00e2ce au CLAUDE.md
+
+Le ROI n'est pas juste la vitesse. C'est la **coh\u00e9rence** (chaque fichier suit le m\u00eame pattern), la **maintenabilit\u00e9** (tu comprends ton propre projet des mois plus tard), et la **confiance** (Claude ne cassera pas ton architecture si les r\u00e8gles sont claires).
 
 ## Comment cr\u00e9er le tien en 15 minutes
 
 1. Ouvre ton projet, regarde la structure des dossiers
-2. Liste ta stack (langage, framework, packages)
-3. D\u00e9finis la structure (chaque dossier, chaque type de fichier)
-4. \u00c9cris 5-7 r\u00e8gles strictes (utilise l'imp\u00e9ratif : "TOUJOURS", "JAMAIS")
-5. Ajoute 2-3 patterns avec du code de ton vrai projet
-6. Sauvegarde en CLAUDE.md \u00e0 la racine
+2. \u00c9cris la vue d'ensemble (stack, plateformes, objectif)
+3. Documente l'arbre d'architecture complet avec commentaires
+4. Liste 5-7 conventions strictes (utilise "TOUJOURS" et "JAMAIS")
+5. Ajoute 2-3 patterns de code r\u00e9els de ton projet
+6. Commence un journal d'erreurs (m\u00eame vide pour l'instant)
+7. Sauvegarde en \`CLAUDE.md\` \u00e0 la racine du projet
 
-C'est tout. 15 minutes de travail pour des mois de temps gagn\u00e9.
+15 minutes de travail. Des mois de temps gagn\u00e9.
 
-## Les templates battle-tested
+## 4 templates pr\u00eats \u00e0 l'emploi
 
-Les 4 variantes de mon CLAUDE.md (Flutter, Next.js, Python/FastAPI, Universel) sont dans le [ByNeel Starter Kit](/kit) \u2014 avec le guide complet, 15 prompts, et la checklist App Store.`,
+J'ai packag\u00e9 les CLAUDE.md exacts que j'utilise dans le [ByNeel Starter Kit](/kit). Quatre variantes : Flutter, Next.js, Python/FastAPI, et un template Universel adaptable \u00e0 n'importe quelle stack.
+
+Plus un guide de 60+ pages, 15 prompts pr\u00eats \u00e0 coller, une checklist App Store, et des scripts de setup. Tout ce que j'aurais voulu avoir quand j'ai commenc\u00e9.
+
+[Obtenir le Starter Kit \u2192](/kit)`,
     date: '2026-03-08',
-    readTime: '8 min',
-    tags: ['Claude Code', 'Productivit\u00e9', 'Solo Dev'],
+    readTime: '10 min',
+    tags: ['Claude Code', 'Productivit\u00e9', 'Solo Dev', 'CLAUDE.md'],
     icon: '\u{1F4CB}',
     gradient: 'from-cyan to-brand-blue',
   },

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { projects } from '@/data/projects';
 import { posts } from '@/data/posts';
+import { postsFr } from '@/data/posts-fr';
 
 export const dynamic = 'force-static';
 
@@ -28,9 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/ephemera/privacy`, changeFrequency: 'yearly', priority: 0.2 },
   ];
 
-  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${base}/blog/${post.slug}`,
-    changeFrequency: 'monthly',
+  const allBlogSlugs = new Set([
+    ...posts.map((p) => p.slug),
+    ...postsFr.map((p) => p.slug),
+  ]);
+  const blogPages: MetadataRoute.Sitemap = Array.from(allBlogSlugs).map((slug) => ({
+    url: `${base}/blog/${slug}`,
+    changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 

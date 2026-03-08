@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useEffect, useMemo } from 'react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { usePosts } from '@/i18n/useLocalizedData';
+import { posts as postsEn } from '@/data/posts';
+import { postsFr } from '@/data/posts-fr';
 import { GlassCard } from '@/components/ui/GlassCard';
 
 function useRevealAnimation() {
@@ -155,10 +157,16 @@ export default function BlogPostClient({ slug }: { slug: string }) {
 
   useRevealAnimation();
 
-  const post = useMemo(() => localizedPosts.find((p) => p.slug === slug), [localizedPosts, slug]);
+  // Try current language first, fallback to other language for unique slugs
+  const post = useMemo(() => {
+    const found = localizedPosts.find((p) => p.slug === slug);
+    if (found) return found;
+    const fallback = language === 'fr' ? postsEn : postsFr;
+    return fallback.find((p) => p.slug === slug) || null;
+  }, [localizedPosts, slug, language]);
   const postIndex = useMemo(() => localizedPosts.findIndex((p) => p.slug === slug), [localizedPosts, slug]);
-  const nextPost = useMemo(() => localizedPosts[(postIndex + 1) % localizedPosts.length], [localizedPosts, postIndex]);
-  const prevPost = useMemo(() => localizedPosts[(postIndex - 1 + localizedPosts.length) % localizedPosts.length], [localizedPosts, postIndex]);
+  const nextPost = useMemo(() => localizedPosts[(postIndex === -1 ? 0 : postIndex + 1) % localizedPosts.length], [localizedPosts, postIndex]);
+  const prevPost = useMemo(() => localizedPosts[(postIndex === -1 ? 0 : postIndex - 1 + localizedPosts.length) % localizedPosts.length], [localizedPosts, postIndex]);
 
   if (!post) {
     return (
