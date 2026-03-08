@@ -11,9 +11,10 @@ export function Navbar() {
 
   const navLinks = useMemo(() => [
     { label: t('nav.projects'), href: '/#projects' },
-    { label: 'CookBook AI', href: '/cookbookai', highlight: true },
+    { label: 'CookBook AI', href: '/cookbookai', style: 'cookbook' as const },
     { label: t('nav.tech'), href: '/#tech' },
     { label: t('nav.blog'), href: '/blog' },
+    { label: t('nav.kit'), href: '/kit', style: 'kit' as const },
     { label: t('nav.contact'), href: '/#contact' },
   ], [t]);
 
@@ -64,12 +65,16 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-sm transition-colors duration-200 ${
-                link.highlight
+                link.style === 'cookbook'
                   ? 'text-orange-400 hover:text-orange-300 font-medium'
+                  : link.style === 'kit'
+                  ? 'text-brand-blue hover:text-foreground font-semibold'
                   : 'text-muted hover:text-foreground'
               }`}
             >
-              {link.highlight && '🍳 '}{link.label}
+              {link.style === 'cookbook' && '\u{1F373} '}
+              {link.style === 'kit' && '\u{1F680} '}
+              {link.label}
             </a>
           ))}
 
@@ -132,8 +137,10 @@ export function Navbar() {
               href={link.href}
               onClick={closeMenu}
               className={`text-3xl font-light transition-all duration-300 hover:tracking-wider ${
-                link.highlight
+                link.style === 'cookbook'
                   ? 'text-orange-400 hover:text-orange-300'
+                  : link.style === 'kit'
+                  ? 'text-brand-blue hover:text-foreground'
                   : 'text-muted hover:text-foreground'
               }`}
               style={{
@@ -143,7 +150,9 @@ export function Navbar() {
                 transition: `opacity 0.4s ease ${isOpen ? i * 60 : 0}ms, transform 0.4s ease ${isOpen ? i * 60 : 0}ms, color 0.2s, letter-spacing 0.3s`,
               }}
             >
-              {link.highlight && '🍳 '}{link.label}
+              {link.style === 'cookbook' && '\u{1F373} '}
+              {link.style === 'kit' && '\u{1F680} '}
+              {link.label}
             </a>
           ))}
 

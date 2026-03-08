@@ -91,6 +91,12 @@ export function Footer() {
                 {t('footer.blog')}
               </Link>
               <Link
+                href="/kit"
+                className="text-sm text-brand-blue hover:text-foreground hover:translate-x-1 transition-all duration-300"
+              >
+                {t('footer.kit')}
+              </Link>
+              <Link
                 href="/#contact"
                 className="text-sm text-muted hover:text-foreground hover:translate-x-1 transition-all duration-300"
               >

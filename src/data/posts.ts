@@ -1431,4 +1431,85 @@ If that's not proof the game has changed, I don't know what is.
     icon: '🤖',
     gradient: 'from-brand-blue to-brand-violet',
   },
+  {
+    title: 'The CLAUDE.md File That Changed My Productivity by 300%',
+    slug: 'claude-md-productivity',
+    excerpt: 'How a simple markdown file transformed the way I code with AI. Real before/after numbers and 3 sections that change everything.',
+    content: `## 3 months of fighting Claude Code
+
+For 3 months, every Claude Code session started the same way. I'd open the terminal, paste my request, and spend the first 15 minutes re-explaining everything. "Here's my project structure. Here's my stack. Here's how I name files. No, don't put that there. No, use Provider, not setState."
+
+It was like hiring a brilliant developer who had total amnesia every morning.
+
+Then I discovered CLAUDE.md.
+
+## What is a CLAUDE.md?
+
+A markdown file at the root of your project. That's it. Claude Code reads it automatically at the start of every session.
+
+Think of it as a permanent briefing. Without this file, Claude Code is a brilliant junior with amnesia. With it, it becomes a senior who knows your codebase by heart.
+
+No plugin. No config. No API. Just a file named CLAUDE.md at your project root.
+
+## Before / After (real numbers)
+
+- **Time per feature:** 2-3 hours down to 30-45 minutes
+- **Structural errors:** Constant down to nearly zero
+- **Major refactoring:** Every 2 weeks down to once in 3 months
+- **Frustration level:** 8/10 down to 2/10
+
+The first session after setting up the file, I asked "add a settings screen with dark mode toggle." Claude created the file in lib/features/settings/, used Provider, followed my naming convention, and added the route. Without me specifying anything.
+
+## The 3 critical sections
+
+## 1. Project structure (non-negotiable)
+
+Not just "there's a features/ folder." Every subfolder with its role. Every file type with its location.
+
+**My initial mistake:** A vague structure description. Result: Claude put files wherever it wanted. A service in widgets/, a model in screens/. Chaos.
+
+**The fix:** A complete tree with comments. Now Claude knows that API services go in lib/core/services/, screens go in lib/features/{name}/screens/, and models go in lib/features/{name}/models/.
+
+## 2. Strict rules (orders, not suggestions)
+
+Not "try to use const when possible." Instead: "ALWAYS use const. NEVER use var."
+
+**My initial mistake:** Polite, flexible rules. Result: Inconsistent code. Sometimes const, sometimes let. Sometimes camelCase, sometimes snake_case.
+
+**The fix:** Direct orders with no ambiguity. Claude follows strict rules perfectly.
+
+## 3. Patterns with examples (show, don't tell)
+
+A 5-line code snippet showing YOUR API call pattern is worth more than 3 paragraphs of explanation. Claude replicates examples perfectly.
+
+**My initial mistake:** No examples. Result: Claude improvised a different pattern every time.
+
+**The fix:** 2-3 real code snippets from my project. Now every new service, every new screen follows the same pattern.
+
+## The real ROI (not just speed)
+
+- **Consistency:** 47 files, same pattern. Every screen, every service, every model follows the same architecture.
+- **Maintainability:** I left a project for 2 months. When I came back, everything was clear because the CLAUDE.md documented every convention.
+- **Confidence:** No more fear of big changes. The CLAUDE.md acts as a guardrail. Claude won't break your architecture if the rules are clear.
+
+## How to create yours in 15 minutes
+
+1. Open your project, look at the folder structure
+2. List your stack (language, framework, packages)
+3. Define the structure (every folder, every file type)
+4. Write 5-7 strict rules (use imperative: "ALWAYS," "NEVER")
+5. Add 2-3 code patterns from your actual project
+6. Save as CLAUDE.md at the project root
+
+That's it. 15 minutes of work for months of saved time.
+
+## Get battle-tested templates
+
+The 4 variants of my CLAUDE.md (Flutter, Next.js, Python/FastAPI, Universal) are in the [ByNeel Starter Kit](/kit) \u2014 with the complete guide, 15 prompts, and the App Store checklist.`,
+    date: '2026-03-08',
+    readTime: '8 min',
+    tags: ['Claude Code', 'Productivity', 'Solo Dev'],
+    icon: '\u{1F4CB}',
+    gradient: 'from-cyan to-brand-blue',
+  },
 ];

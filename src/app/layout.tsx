@@ -12,6 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://byneel.com'),
   title: 'ByNeel — Mobile Apps & AI Tools',
   description: 'ByNeel builds innovative mobile apps and AI tools for iOS, Android and Desktop. AI-assisted development.',
 };

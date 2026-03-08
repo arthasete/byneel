@@ -4,6 +4,7 @@ const en = {
   'nav.tech': 'Tech',
   'nav.blog': 'Blog',
   'nav.contact': 'Contact',
+  'nav.kit': 'Starter Kit',
   'nav.closeMenu': 'Close menu',
   'nav.openMenu': 'Open menu',
 
@@ -84,6 +85,7 @@ const en = {
   'footer.company': 'Company',
   'footer.about': 'About',
   'footer.blog': 'Blog',
+  'footer.kit': 'Starter Kit',
   'footer.contact': 'Contact',
   'footer.legal': 'Legal',
   'footer.privacy': 'Privacy Policy',
@@ -510,6 +512,7 @@ const fr: Record<keyof typeof en, string> = {
   'nav.tech': 'Tech',
   'nav.blog': 'Blog',
   'nav.contact': 'Contact',
+  'nav.kit': 'Starter Kit',
   'nav.closeMenu': 'Fermer le menu',
   'nav.openMenu': 'Ouvrir le menu',
 
@@ -590,6 +593,7 @@ const fr: Record<keyof typeof en, string> = {
   'footer.company': 'Entreprise',
   'footer.about': '\u00c0 propos',
   'footer.blog': 'Blog',
+  'footer.kit': 'Starter Kit',
   'footer.contact': 'Contact',
   'footer.legal': 'L\u00e9gal',
   'footer.privacy': 'Politique de confidentialit\u00e9',
