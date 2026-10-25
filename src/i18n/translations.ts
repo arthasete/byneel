@@ -23,8 +23,8 @@ const en = {
   'stats.label': 'By the numbers',
   'stats.title': 'What defines us',
   'stats.description': 'A passion for quality, innovation and excellence on every platform.',
-  'stats.apps': 'Apps',
-  'stats.appsDesc': 'Applications and tools in active development',
+  'stats.apps': 'Projects',
+  'stats.appsDesc': 'Apps, tools and creative projects built so far',
   'stats.platforms': 'Platforms',
   'stats.platformsDesc': 'iOS, Android, Web, Desktop, CLI',
   'stats.geek': 'Geek',
@@ -55,7 +55,7 @@ const en = {
   // Bento / Projects grid
   'bento.label': 'Projects',
   'bento.title': "What we're building",
-  'bento.subtitle': 'active projects \u2014 mobile apps, AI tools and open source projects.',
+  'bento.subtitle': 'projects \u2014 mobile apps, AI tools, games and creative work.',
   'bento.comingSoon': 'Coming soon',
   'bento.learnMore': 'Learn more',
   'bento.bottomText': "Got an idea? Let's talk!",
@@ -64,6 +64,8 @@ const en = {
   'bento.filterMobile': 'Mobile',
   'bento.filterAI': 'AI & Tools',
   'bento.filterBackend': 'Backend',
+  'bento.filterCreative': 'Creative',
+  'bento.paused': 'On hold',
   'bento.joinWaitlist': 'Join the waitlist',
 
   // Blog preview
@@ -74,7 +76,7 @@ const en = {
 
   // About
   'about.title': "Hey, I'm Neel",
-  'about.p1': "Passionate solo developer. I build mobile apps that I'd want to use myself \u2014 polished in the details, simple to use.",
+  'about.p1': "Passionate solo developer. I build apps that I'd want to use myself \u2014 polished in the details, simple to use. Lately also games, motion design videos, 3D web prototypes and a fantasy novel.",
   'about.highlight': 'AI-assisted development',
   'about.p2': ' \u2014 I use Claude and other AI tools to speed up development while keeping a human vision and attention to detail.',
   'about.cta': 'Get in touch',
@@ -110,6 +112,7 @@ const en = {
   // Project pages
   'projectPage.allProjects': 'All projects',
   'projectPage.comingSoon': 'Coming soon',
+  'projectPage.paused': 'On hold',
   'projectPage.features': 'Features',
   'projectPage.featuresTitle': 'What {title} can do',
   'projectPage.technologies': 'Technologies',
@@ -531,8 +534,8 @@ const fr: Record<keyof typeof en, string> = {
   'stats.label': 'En chiffres',
   'stats.title': 'Ce qui nous d\u00e9finit',
   'stats.description': 'Une passion pour la qualit\u00e9, l\'innovation et l\'excellence sur chaque plateforme.',
-  'stats.apps': 'Apps',
-  'stats.appsDesc': 'Applications et outils en d\u00e9veloppement actif',
+  'stats.apps': 'Projets',
+  'stats.appsDesc': 'Apps, outils et projets cr\u00e9atifs construits \u00e0 ce jour',
   'stats.platforms': 'Plateformes',
   'stats.platformsDesc': 'iOS, Android, Web, Desktop, CLI',
   'stats.geek': 'Geek',
@@ -563,7 +566,7 @@ const fr: Record<keyof typeof en, string> = {
   // Bento / Projects grid
   'bento.label': 'Projets',
   'bento.title': 'Ce qu\'on construit',
-  'bento.subtitle': 'projets actifs \u2014 applications mobiles, outils IA et projets open source.',
+  'bento.subtitle': 'projets \u2014 applications mobiles, outils IA, jeux et cr\u00e9ations.',
   'bento.comingSoon': 'Bient\u00f4t disponible',
   'bento.learnMore': 'D\u00e9couvrir',
   'bento.bottomText': 'Une id\u00e9e ? Parlons-en !',
@@ -572,6 +575,8 @@ const fr: Record<keyof typeof en, string> = {
   'bento.filterMobile': 'Mobile',
   'bento.filterAI': 'IA & Outils',
   'bento.filterBackend': 'Backend',
+  'bento.filterCreative': 'Cr\u00e9ations',
+  'bento.paused': 'En pause',
   'bento.joinWaitlist': 'Rejoindre la waitlist',
 
   // Blog preview
@@ -582,7 +587,7 @@ const fr: Record<keyof typeof en, string> = {
 
   // About
   'about.title': 'Bonjour, je suis Neel',
-  'about.p1': 'D\u00e9veloppeur solo passionn\u00e9. Je cr\u00e9e des apps mobiles que j\'aurais envie d\'utiliser moi-m\u00eame \u2014 soign\u00e9es dans les d\u00e9tails, simples \u00e0 utiliser.',
+  'about.p1': 'D\u00e9veloppeur solo passionn\u00e9. Je cr\u00e9e des apps que j\'aurais envie d\'utiliser moi-m\u00eame \u2014 soign\u00e9es dans les d\u00e9tails, simples \u00e0 utiliser. Et depuis peu, aussi des jeux, des vid\u00e9os de motion design, des prototypes 3D et un roman de fantasy.',
   'about.highlight': 'D\u00e9veloppement assist\u00e9 par IA',
   'about.p2': ' \u2014 j\'utilise Claude et d\'autres outils IA pour acc\u00e9l\u00e9rer le d\u00e9veloppement tout en gardant une vision humaine et une attention au d\u00e9tail.',
   'about.cta': 'Me contacter',
@@ -618,6 +623,7 @@ const fr: Record<keyof typeof en, string> = {
   // Project pages
   'projectPage.allProjects': 'Tous les projets',
   'projectPage.comingSoon': 'Bient\u00f4t disponible',
+  'projectPage.paused': 'En pause',
   'projectPage.features': 'Fonctionnalit\u00e9s',
   'projectPage.featuresTitle': 'Ce que {title} peut faire',
   'projectPage.technologies': 'Technologies',

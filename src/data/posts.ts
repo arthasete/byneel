@@ -12,6 +12,65 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    title: 'Seven months later: what I built since March',
+    slug: 'whats-new-october-2026',
+    excerpt: 'The blog went quiet, the projects did not. An iPad school app, a redesigned CookBook AI, an OmniDrop reset, a game, videos written in code, a 3D house site and a fantasy novel. Here is the honest update.',
+    content: `## The blog went quiet. The work did not.
+
+My last post was in March. Since then I shipped less noise and more real things. Some projects moved a lot, some I put on hold on purpose. Here is where everything stands.
+
+## CookBook AI: redesigned around three needs
+
+I rebuilt CookBook AI around what people actually do in a kitchen: **import a recipe from a link**, **plan the week**, **get the shopping list**. Everything else became secondary.
+
+- Share a recipe from Safari or YouTube straight into the app
+- "Fill my week" plans lunch and dinner in one tap, without duplicates and without allergens
+- The shopping list follows the plan, rounds quantities to what you actually buy, and sorts everything by aisle
+
+The design now follows Apple's guidelines (system font, Dynamic Type, real dark mode), and on-device Apple Intelligence handles imports even without an API key. It is used every day at home on an iPad mini. What is left before the stores is mostly paperwork: ads setup on Android, the premium product, signing.
+
+## ScolIA: a school app for iPad
+
+The biggest new project. ScolIA is a native SwiftUI app for primary school: the French curriculum, the level of the best international schools, and future skills like money, code and AI, engineering and critical thinking.
+
+The rule that shaped everything: **the child never writes**. Every exercise is touch-based (16 types), every lesson ends with a challenge that asks you to use what you learned somewhere else. Today: 117 lessons, about 1,400 exercises, 100% offline.
+
+## OmniDrop: stop, rethink, rebuild
+
+I have to be honest about OmniDrop. The March version had a lot of features and not enough reliability. Meanwhile the market moved: AirDrop now talks to Quick Share on recent Android phones, and LocalSend keeps getting better.
+
+So I reset the plan. The new core speaks the open **LocalSend v2 protocol**. Local transfer will be free and unlimited. The chat and the OmniDrop ID are on hold. The focus is what is still missing out there: **a clipboard shared across every system, and sending files outside your Wi-Fi without an account**. Nothing else ships before a transfer works 10 times out of 10 on two real devices.
+
+## New things I did not plan
+
+- **Bonne Étoile**: a funny isekai text RPG for iPhone. Ten chapters, d20 dice, and an on-device AI game master that improvises when you type something the story did not expect.
+- **AION 2 Companion**: a passive tool for the game AION 2. A transparent overlay draws the best route on the map, and an advisor reads my character from the official public page. No memory reading, no automation: the account stays safe.
+- **MotionStudio**: videos written in code, rendered at 60 fps. The first ones present my own apps, filmed on the real builds.
+- **Plans3D**: a prototype site where a house plan draws itself like an architect sketch, rises into a 3D model, then becomes a real-time render with a sun you can move.
+- **L'Écorce**: yes, a novel. A heroic fantasy saga planned in five volumes. Volume 1 is drafted, 40 chapters, and waiting for my reading.
+
+## Behind the scenes: a better way to work with AI
+
+I keep building with Claude, but the setup changed. My workspace now has guard rails that run on their own (a hook that blocks dangerous commands, a checkpoint every 75 actions), small specialised helpers (one that reads, one that verifies), and a command that proposes, tests, then keeps improvements to the setup itself. Fewer rules to remember, more checks that run automatically.
+
+## What I put on hold
+
+Ephemera, BridgeGen, EarthPulse, GhostKitchen, NightOwl, PlateScore, Nova and StickerVibe AI are still on the site, now marked **On hold**. Their MVPs exist, but a solo dev cannot push 20 projects at once. I would rather finish a few.
+
+## What comes next
+
+1. OmniDrop: reliable local transfer, tested on two real devices
+2. CookBook AI and TipLog: store submission
+3. More presentation videos, including one for this site
+
+Thanks for reading. If one of these projects speaks to you, tell me: it helps me choose what to finish first.`,
+    date: '2026-10-25',
+    readTime: '6 min',
+    tags: ['Update', 'Solo Dev', 'Projects'],
+    icon: '\u{1F5D3}\u{FE0F}',
+    gradient: 'from-brand-blue to-brand-violet',
+  },
+  {
     title: 'Building OmniDrop: how I made files fly between devices without touching a cloud',
     slug: 'building-omnidrop-p2p-remote-messaging',
     excerpt: 'LocalSend has 8 million downloads and does LAN only. I decided to go further — remote transfer, encrypted messaging, and a device identity system. Here\'s what I learned.',

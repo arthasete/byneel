@@ -2,6 +2,65 @@ import { BlogPost } from './posts';
 
 export const postsFr: BlogPost[] = [
   {
+    title: 'Sept mois plus tard : tout ce que j\'ai construit depuis mars',
+    slug: 'quoi-de-neuf-octobre-2026',
+    excerpt: 'Le blog s\'est tu, les projets non. Une app d\'école pour iPad, un CookBook AI repensé, OmniDrop remis à plat, un jeu, des vidéos écrites en code, un site de maisons en 3D et un roman de fantasy. Le point, honnêtement.',
+    content: `## Le blog s'est tu. Le travail, non.
+
+Mon dernier article date de mars. Depuis, moins de bruit et plus de choses concrètes. Certains projets ont beaucoup avancé, d'autres sont en pause, volontairement. Voici où en est chaque chose.
+
+## CookBook AI : repensée autour de trois besoins
+
+J'ai reconstruit CookBook AI autour de ce qu'on fait vraiment en cuisine : **importer une recette depuis un lien**, **planifier la semaine**, **avoir la liste de courses**. Tout le reste est devenu secondaire.
+
+- On partage une recette depuis Safari ou YouTube, elle arrive directement dans l'app
+- « Remplir ma semaine » planifie midi et soir en un geste, sans doublon et sans allergène
+- La liste de courses suit le planning, arrondit les quantités à ce qu'on achète vraiment et range tout par rayon
+
+Le design suit maintenant les règles d'Apple (police système, Dynamic Type, vrai mode sombre), et Apple Intelligence embarquée gère les imports même sans clé API. Elle sert tous les jours à la maison, sur un iPad mini. Ce qui reste avant les stores, c'est surtout de l'administratif : les pubs sur Android, le produit premium, la signature.
+
+## ScolIA : une app d'école pour iPad
+
+Le plus gros nouveau projet. ScolIA est une app SwiftUI native pour le primaire : le programme français, le niveau des meilleures écoles internationales, et les compétences du futur comme l'argent, le code et l'IA, l'ingénierie et l'esprit critique.
+
+La règle qui a tout guidé : **l'enfant n'écrit jamais**. Tous les exercices se font au toucher (16 types), et chaque leçon finit par un défi où il faut se servir de ce qu'on a appris ailleurs. Aujourd'hui : 117 leçons, près de 1 400 exercices, 100 % hors ligne.
+
+## OmniDrop : stop, on repense, on reconstruit
+
+Je dois être honnête sur OmniDrop. La version de mars avait beaucoup de fonctions et pas assez de fiabilité. Et pendant ce temps, le marché a bougé : AirDrop parle maintenant à Quick Share sur les Android récents, et LocalSend continue de s'améliorer.
+
+Alors j'ai remis le plan à plat. Le nouveau cœur parle le protocole ouvert **LocalSend v2**. Le transfert local sera gratuit et illimité. Le chat et l'OmniDrop ID sont en pause. L'objectif, c'est ce qui manque encore ailleurs : **un presse-papiers partagé entre tous les systèmes, et l'envoi de fichiers hors de ton Wi-Fi sans compte**. Rien d'autre ne sort tant qu'un transfert ne marche pas 10 fois sur 10 sur deux vrais appareils.
+
+## Des nouveautés que je n'avais pas prévues
+
+- **Bonne Étoile** : un jeu de rôle textuel isekai et drôle pour iPhone. Dix chapitres, des dés d20, et un maître du jeu IA embarqué qui improvise quand tu tapes un truc que l'histoire n'avait pas prévu.
+- **AION 2 Companion** : un outil passif pour le jeu AION 2. Une fenêtre transparente dessine la meilleure route sur la carte, et un conseiller lit mon personnage depuis la page officielle publique. Aucune lecture de mémoire, aucune automatisation : le compte reste en sécurité.
+- **MotionStudio** : des vidéos écrites en code, rendues en 60 images par seconde. Les premières présentent mes propres apps, filmées sur les vraies versions.
+- **Plans3D** : un prototype de site où un plan de maison se dessine comme un croquis d'architecte, monte en maquette 3D, puis devient un rendu en temps réel avec un soleil qu'on déplace.
+- **L'Écorce** : oui, un roman. Une saga d'heroic fantasy prévue en cinq tomes. Le tome 1 est rédigé, 40 chapitres, et attend ma lecture.
+
+## En coulisses : une meilleure façon de travailler avec l'IA
+
+Je construis toujours avec Claude, mais l'organisation a changé. Mon espace de travail a maintenant des garde-fous qui tournent tout seuls (un crochet qui bloque les commandes dangereuses, un point d'étape toutes les 75 actions), de petits assistants spécialisés (un qui lit, un qui vérifie), et une commande qui propose, teste, puis garde les améliorations de l'organisation elle-même. Moins de règles à retenir, plus de vérifications automatiques.
+
+## Ce que j'ai mis en pause
+
+Ephemera, BridgeGen, EarthPulse, GhostKitchen, NightOwl, PlateScore, Nova et StickerVibe AI restent sur le site, marqués **En pause**. Leurs MVP existent, mais un dev solo ne peut pas pousser 20 projets à la fois. Je préfère en finir quelques-uns.
+
+## La suite
+
+1. OmniDrop : un transfert local fiable, testé sur deux vrais appareils
+2. CookBook AI et TipLog : soumission aux stores
+3. D'autres vidéos de présentation, dont une pour ce site
+
+Merci de m'avoir lu. Si un de ces projets te parle, dis-le-moi : ça m'aide à choisir lequel finir en premier.`,
+    date: '2026-10-25',
+    readTime: '6 min',
+    tags: ['Nouveautés', 'Solo Dev', 'Projets'],
+    icon: '\u{1F5D3}\u{FE0F}',
+    gradient: 'from-brand-blue to-brand-violet',
+  },
+  {
     title: 'Construire OmniDrop : comment j\'ai fait voler des fichiers entre appareils sans toucher un cloud',
     slug: 'building-omnidrop-p2p-remote-messaging',
     excerpt: 'LocalSend a 8 millions de downloads et ne fait que du LAN. J\'ai décidé d\'aller plus loin — transfert distant, messagerie chiffrée, et un système d\'identité. Voici ce que j\'ai appris.',

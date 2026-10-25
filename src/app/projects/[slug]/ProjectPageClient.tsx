@@ -72,6 +72,11 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
                 {project.title}
               </h1>
               <div className="flex flex-wrap items-center gap-3">
+                {project.paused && (
+                  <span className="px-4 py-1.5 text-xs rounded-full bg-white/[0.04] text-muted border border-white/15 font-semibold">
+                    {'💤 ' + t('projectPage.paused')}
+                  </span>
+                )}
                 {project.comingSoon && (
                   <span className="px-4 py-1.5 text-xs rounded-full bg-gradient-to-r from-brand-blue/20 to-brand-violet/20 text-foreground border border-brand-blue/30 font-semibold animate-pulse-glow">
                     {'✨ ' + t('projectPage.comingSoon')}

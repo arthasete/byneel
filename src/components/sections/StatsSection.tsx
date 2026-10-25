@@ -59,7 +59,7 @@ export function StatsSection() {
   const { t } = useLanguage();
 
   const stats: Stat[] = [
-    { number: '8', label: t('stats.apps'), description: t('stats.appsDesc'), icon: '📱' },
+    { number: '20+', label: t('stats.apps'), description: t('stats.appsDesc'), icon: '📱' },
     { number: '5+', label: t('stats.platforms'), description: t('stats.platformsDesc'), icon: '🌐' },
     { number: '100%', label: t('stats.geek'), description: t('stats.geekDesc'), icon: '🤓' },
   ];

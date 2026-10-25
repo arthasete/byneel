@@ -8,7 +8,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { useProjects } from '@/i18n/useLocalizedData';
 import type { TranslationKey } from '@/i18n/translations';
 
-type FilterCategory = 'all' | 'mobile' | 'ai' | 'backend';
+type FilterCategory = 'all' | 'mobile' | 'ai' | 'backend' | 'creative';
 
 const MASONRY_MIN_HEIGHTS: Record<string, string> = {
   sm: 'min-h-[260px]',
@@ -25,9 +25,10 @@ interface Project {
   gradient: string;
   bentoSize?: 'large' | 'tall' | 'normal';
   masonryHeight?: 'sm' | 'md' | 'lg' | 'xl';
-  category: 'mobile' | 'ai' | 'backend';
+  category: 'mobile' | 'ai' | 'backend' | 'creative';
   tags: string[];
   comingSoon?: boolean;
+  paused?: boolean;
   landingUrl?: string;
 }
 
@@ -95,6 +96,10 @@ function ProjectCard({ project, i, t }: { project: Project; i: number; t: (key: 
                     <span className="px-3 py-1 text-[10px] font-semibold rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-300 border border-orange-500/20 animate-pulse-glow">
                       {'🔥 ' + t('bento.joinWaitlist')}
                     </span>
+                  ) : project.paused ? (
+                    <span className="px-3 py-1 text-[10px] font-semibold rounded-full bg-white/[0.04] text-muted border border-white/[0.1]">
+                      {'💤 ' + t('bento.paused')}
+                    </span>
                   ) : project.comingSoon ? (
                     <span className="px-3 py-1 text-[10px] font-semibold rounded-full bg-gradient-to-r from-brand-blue/20 to-brand-violet/20 text-foreground/80 border border-brand-blue/20">
                       {'✨ ' + t('bento.comingSoon')}
@@ -123,6 +128,7 @@ export function BentoGrid() {
     { key: 'mobile', label: t('bento.filterMobile') },
     { key: 'ai', label: t('bento.filterAI') },
     { key: 'backend', label: t('bento.filterBackend') },
+    { key: 'creative', label: t('bento.filterCreative') },
   ];
 
   const filteredProjects = useMemo(() => {
