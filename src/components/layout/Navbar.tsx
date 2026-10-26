@@ -10,6 +10,7 @@ export function Navbar() {
   const { language, setLanguage, t } = useLanguage();
 
   const navLinks = useMemo(() => [
+    { label: t('nav.portfolio'), href: '/#portfolio' },
     { label: t('nav.projects'), href: '/#projects' },
     { label: 'CookBook AI', href: '/cookbookai', style: 'cookbook' as const },
     { label: t('nav.tech'), href: '/#tech' },

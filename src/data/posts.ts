@@ -12,6 +12,426 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    title: 'Seven months later: what I built since March',
+    slug: 'whats-new-october-2026',
+    excerpt: 'The blog went quiet, the projects did not. An iPad school app, a redesigned CookBook AI, an OmniDrop reset, a game, videos written in code, a 3D house site and a fantasy novel. Here is the honest update.',
+    content: `## The blog went quiet. The work did not.
+
+My last post was in March. Since then I shipped less noise and more real things. Some projects moved a lot, some I put on hold on purpose. Here is where everything stands.
+
+## CookBook AI: redesigned around three needs
+
+I rebuilt CookBook AI around what people actually do in a kitchen: **import a recipe from a link**, **plan the week**, **get the shopping list**. Everything else became secondary.
+
+- Share a recipe from Safari or YouTube straight into the app
+- "Fill my week" plans lunch and dinner in one tap, without duplicates and without allergens
+- The shopping list follows the plan, rounds quantities to what you actually buy, and sorts everything by aisle
+
+The design now follows Apple's guidelines (system font, Dynamic Type, real dark mode), and on-device Apple Intelligence handles imports even without an API key. It is used every day at home on an iPad mini. What is left before the stores is mostly paperwork: ads setup on Android, the premium product, signing.
+
+## ScolIA: a school app for iPad
+
+The biggest new project. ScolIA is a native SwiftUI app for primary school: the French curriculum, the level of the best international schools, and future skills like money, code and AI, engineering and critical thinking.
+
+The rule that shaped everything: **the child never writes**. Every exercise is touch-based (16 types), every lesson ends with a challenge that asks you to use what you learned somewhere else. Today: 117 lessons, about 1,400 exercises, 100% offline.
+
+## OmniDrop: stop, rethink, rebuild
+
+I have to be honest about OmniDrop. The March version had a lot of features and not enough reliability. Meanwhile the market moved: AirDrop now talks to Quick Share on recent Android phones, and LocalSend keeps getting better.
+
+So I reset the plan. The new core speaks the open **LocalSend v2 protocol**. Local transfer will be free and unlimited. The chat and the OmniDrop ID are on hold. The focus is what is still missing out there: **a clipboard shared across every system, and sending files outside your Wi-Fi without an account**. Nothing else ships before a transfer works 10 times out of 10 on two real devices.
+
+## New things I did not plan
+
+- **Bonne Étoile**: a funny isekai text RPG for iPhone. Ten chapters, d20 dice, and an on-device AI game master that improvises when you type something the story did not expect.
+- **AION 2 Companion**: a passive tool for the game AION 2. A transparent overlay draws the best route on the map, and an advisor reads my character from the official public page. No memory reading, no automation: the account stays safe.
+- **MotionStudio**: videos written in code, rendered at 60 fps. The first ones present my own apps, filmed on the real builds.
+- **Plans3D**: a prototype site where a house plan draws itself like an architect sketch, rises into a 3D model, then becomes a real-time render with a sun you can move.
+- **L'Écorce**: yes, a novel. A heroic fantasy saga planned in five volumes. Volume 1 is drafted, 40 chapters, and waiting for my reading.
+
+## Behind the scenes: a better way to work with AI
+
+I keep building with Claude, but the setup changed. My workspace now has guard rails that run on their own (a hook that blocks dangerous commands, a checkpoint every 75 actions), small specialised helpers (one that reads, one that verifies), and a command that proposes, tests, then keeps improvements to the setup itself. Fewer rules to remember, more checks that run automatically.
+
+## What I put on hold
+
+Ephemera, BridgeGen, EarthPulse, GhostKitchen, NightOwl, PlateScore, Nova and StickerVibe AI are still on the site, now marked **On hold**. Their MVPs exist, but a solo dev cannot push 20 projects at once. I would rather finish a few.
+
+## What comes next
+
+1. OmniDrop: reliable local transfer, tested on two real devices
+2. CookBook AI and TipLog: store submission
+3. More presentation videos, including one for this site
+
+Thanks for reading. If one of these projects speaks to you, tell me: it helps me choose what to finish first.`,
+    date: '2026-10-25',
+    readTime: '6 min',
+    tags: ['Update', 'Solo Dev', 'Projects'],
+    icon: '\u{1F5D3}\u{FE0F}',
+    gradient: 'from-brand-blue to-brand-violet',
+  },
+  {
+    title: "OmniDrop: I reset everything (and it was the right call)",
+    slug: "omnidrop-reset",
+    excerpt: "In March, OmniDrop had dozens of features and could not reliably send a file. Seven months later I am picking it back up with one rule: a transfer that works 10 times out of 10.",
+    content: `## The problem I did not want to see
+
+In March I told you about OmniDrop: local transfer, remote transfer, encrypted messaging, OMNI-ID identity, contacts, anti-spam. On paper, everything was there.
+
+When I reopened the code in October, the verdict was simple: **sending files could not work**. The send screen still called the old engine, whose receiver was no longer started. I had stacked features on a foundation that had never been tested on two real devices.
+
+That is the classic trap of building solo with AI: you can write a lot of code very fast. Writing code is not the problem. Checking it is.
+
+## The market moved too
+
+In those seven months, the world did not wait:
+
+- **AirDrop now talks to Quick Share** on recent Android phones. Sending a file from an iPhone to an Android phone next to it is no longer a problem.
+- **LocalSend 1.18** can now receive from a plain browser, no app needed.
+- **Blip** does transfer over the internet and charges professionals for it.
+
+Conclusion: a local "AirDrop for everyone" no longer sells. What is still open is **a clipboard shared across every operating system** and **sending files outside your Wi-Fi without an account or a cloud**.
+
+## The decision: do not rewrite it a second time
+
+I already had a plan in March: rebuild the core on the open LocalSend protocol, in 7 steps. It had stopped at step 1. The temptation was to start over. I did not. The plan was good; it needed to be **finished**.
+
+The first three steps make the reliable V1:
+
+1. **Discovery** of devices on the network, LocalSend-compatible
+2. **Sending** files, with a simple bar: 10 out of 10, three file sizes, Mac to iPhone and Mac to Android
+3. **Receiving**, and the share sheet
+
+## What testing found
+
+I tested against the real LocalSend, used as a reference device. Three bugs showed up right away:
+
+- **Protocol types**: OmniDrop sent the port and a flag as text instead of a number and a true/false. LocalSend simply ignored OmniDrop.
+- **The client certificate**: since version 1.18, LocalSend requires a certificate on both sides.
+- **The system proxy** was getting in the middle of local connections.
+
+None of these bugs show up when you read the code. They jump out the moment you test against reality.
+
+## What goes on hold
+
+Chat, the OMNI-ID identity, contacts, the HarmonyOS and WeChat versions, the "enterprise" strategy. Not abandoned, just shelved. And the daily transfer limit on the free version is gone: next to AirDrop and LocalSend, free and unlimited, it made no sense.
+
+## What is next
+
+First the test on two real devices. Then the clipboard, then remote transfer, which will justify a small subscription because it costs money every month. And an idea I really like: a public page, something like omnidrop.app/@you, where anyone can drop you an encrypted file.
+
+> An app that does one thing perfectly beats an app that does ten things halfway.`,
+    date: "2026-10-25",
+    readTime: "7 min",
+    tags: ["OmniDrop", "P2P", "Solo Dev"],
+    icon: "📡",
+    gradient: "from-blue-500 to-violet-500",
+  },
+  {
+    title: "Making videos by writing code",
+    slug: "videos-in-code-motionstudio",
+    excerpt: "No editing software, no timeline. Every shot is an animated web page, rendered frame by frame at 60 fps. This is MotionStudio, and why it changes how I present my apps.",
+    content: `## Why not an editing app?
+
+I wanted to present my apps on video. The problem: I am not an editor, and every small change in an editing app costs an hour.
+
+The idea behind MotionStudio is simple: **a video is code**. Every shot is a small animated web page. A tool films it frame by frame at 60 frames per second and assembles everything with the sound.
+
+## How it works
+
+- **A script** in a few lines: the shots, their length, what must appear
+- **Each shot** is an HTML page animated with GSAP
+- **Sound** is synced to the frame: every click and every pop lands one frame after what it illustrates
+- **The render** outputs a real video file, 9:16 for social, 4:3 or 16:9
+
+The big win: changing a word, a color or a duration means changing one line and rendering again.
+
+## Scoring every shot before publishing
+
+The trap with AI is believing something is good because it is finished. So every video gets a review: a contact sheet with the middle frame of each shot, and a score out of 10 for story, composition, motion, typography and sound. Any shot under 8 gets reworked.
+
+On the first test, "2 AM Idea", the review caught a clock losing its leading zero, a colon blinking as grey squares, and text touching the edge. None of that is invisible to a viewer.
+
+## The presentation series
+
+The next videos are filmed on the **real apps**, launched in demo mode on a simulator:
+
+- **A mobile ad** for a small iPhone game, in vertical format
+- **CookBook AI**, told as a recipe: ingredients, then steps, then "serve"
+- **ScolIA**, about the notebook you no longer need to write in: you see the old way, then the iPad takes over
+
+Next on the list: Bonne Étoile, L'Écorce, and this website.
+
+> Show a method, never people: that is the rule I set for these videos.`,
+    date: "2026-10-24",
+    readTime: "5 min",
+    tags: ["Video", "Motion design", "AI"],
+    icon: "🎬",
+    gradient: "from-fuchsia-500 to-purple-600",
+  },
+  {
+    title: "My AI workspace: from 31 KB of instructions to 3 KB",
+    slug: "ai-workspace-arms",
+    excerpt: "My instruction file for Claude had grown to 31 KB. It was slowing everything down. I turned it into a 3 KB router and replaced rules with automatic checks.",
+    content: `## When CLAUDE.md becomes a novel
+
+In March I explained how CLAUDE.md changed the way I work. That is still true. But in seven months, the file at the root of my projects had grown to **31 KB**: the status of every app, the history of every session, dozens of rules.
+
+The result: at every session, the AI read all of it before starting and drowned what mattered in everything else.
+
+## A router instead of an encyclopedia
+
+I reorganized everything into a small system I call ARMS:
+
+- **CLAUDE.md** becomes a 3 KB router: who I am, how I work, and where to find the rest
+- **An index per folder** (projects, content, business, personal) says where everything lives
+- **App sheets** and session history live in their own files, read only when needed
+- **An inbox** receives deliverables to sort
+
+Nothing was deleted: everything was moved as is, with a backup of the original.
+
+## The harness matters as much as the model
+
+Two days later I came across an idea that clicked: the "harness", everything around the model, matters as much as the model itself. And you improve it in small, tested layers, not by adding paragraphs to the prompt.
+
+So I replaced written rules with things that run on their own:
+
+- **A guard rail** that blocks dangerous delete commands
+- **A size check** that refuses a CLAUDE.md longer than 80 lines
+- **A forced checkpoint** every 75 actions, so the work does not drift
+- **Two small helpers**: one that reads large files, one that re-checks the work without trusting the author
+- **An evolve command** that proposes an improvement, tests it, then keeps it or throws it away
+
+## The rule I keep
+
+> A rule you can check belongs in a script, not in a text.
+
+The AI can forget or misread a text. It cannot ignore a script that blocks. My CLAUDE.md is shorter than in March, and the system is more reliable.`,
+    date: "2026-10-24",
+    readTime: "6 min",
+    tags: ["Claude Code", "Productivity", "CLAUDE.md"],
+    icon: "🧭",
+    gradient: "from-cyan to-brand-blue",
+  },
+  {
+    title: "Bonne Étoile: a role-playing game with an AI game master inside the iPhone",
+    slug: "bonne-etoile-ai-rpg",
+    excerpt: "A funny choose-your-path game, 100% offline, with an on-device AI that improvises when you step off the script. No server, no API key.",
+    content: `## Where it started
+
+I love isekai stories, where the hero is reborn in another world. And I wanted to test one question: **what can the AI built into an iPhone do, with no internet?**
+
+Bonne Étoile is the answer: a humorous text role-playing game.
+
+## A world upside down
+
+Your hero is reborn in **Contresens**, a world where logic runs backwards. You follow their whole life, from birth to the grand finale, across 10 chapters, about 4 hours of play.
+
+- **Three choices per scene**, which matter later
+- **d20 dice**, hit points and 5 stats
+- **Relationships** with the characters, comedy style
+- **Death is not the end**: you visit the Soul Counter and replay the scene
+
+## The improvising game master
+
+This is the part I enjoy most. Besides the three choices, you can type a free action: "I compliment the guard", "I hide the key in my boot".
+
+A game master powered by **Apple Intelligence**, the model that runs directly on the iPhone, improvises an answer in the tone of the story. It never breaks the script: it colors the scene, then the story carries on. If the model is not available on your device, the option simply disappears.
+
+## Writing a game like a book
+
+The whole story is written in files, chapter by chapter, with a "bible" that sets the world, the characters and the limits. A small checker re-reads everything and estimates the play time.
+
+> No server, no account, no subscription: the whole game fits in the phone.`,
+    date: "2026-10-18",
+    readTime: "4 min",
+    tags: ["Game", "Apple Intelligence", "SwiftUI"],
+    icon: "🌟",
+    gradient: "from-yellow-400 to-orange-500",
+  },
+  {
+    title: "AION 2 Companion: play better with little time, without risking your account",
+    slug: "aion2-companion-tool",
+    excerpt: "An optimal route drawn on the game map, and an advisor that reads your character to tell you what to improve first. All without touching the game.",
+    content: `## The busy player's problem
+
+I like AION 2, but I do not have hours to play. Opening ten websites to know what to do in a zone, in which order, and how to improve my gear eats into play time.
+
+So I built a companion for myself.
+
+## Two tools
+
+- **The route overlay**: a transparent mini-map on top of the game. It shows what is left to do in the zone (strongholds, sealed dungeons, hidden cubes, bosses) and the shortest order to do it all. Or, if I only have 30 minutes, the best plan for that time.
+- **The advisor**: it fetches my character from the official "Character info" page of the game's website, then tells me what to improve, in which order and at what real cost.
+
+The overlay can also **scan the game map**: it recognizes the zone and my position, ticks what is already done and draws the numbered route right on the map.
+
+## Rule number one: never risk the account
+
+Many game tools read game memory, sniff network traffic or automate clicks. That is exactly what gets an account banned.
+
+Here, everything is **passive**:
+
+- **No reading** of game memory, no access to the game process
+- **No automation** of keyboard or mouse
+- **No interception** of network traffic
+- **Only** separate windows, screenshots and the public web API, for my own character, with a cache so it is not overloaded
+
+For map data, I only use a source whose license allows it, with the credit it asks for.
+
+## What I learned
+
+> The best tool is not the one that does the most, it is the one you can use with peace of mind.
+
+The current version also has a "Week" tab with the game's daily and weekly counters. Next up: following the latest updates for my classes, Spirit Master and Sorcerer.`,
+    date: "2026-10-02",
+    readTime: "5 min",
+    tags: ["Gaming", "Python", "Tools"],
+    icon: "⚔️",
+    gradient: "from-amber-500 to-rose-600",
+  },
+  {
+    title: "ScolIA: a school app where the child never writes",
+    slug: "scolia-ipad-school-app",
+    excerpt: "The French curriculum, the level of the best international schools, and future skills. In a 100% offline iPad app where everything is done by touch.",
+    content: `## Why a school app?
+
+The starting point comes from international rankings: school is good at teaching how to **apply** a method, much less at **using it somewhere else**. Yet that is what matters most.
+
+ScolIA came from there, built first for my own family: an iPad app for primary school with three ambitions at once.
+
+- **The French curriculum**, so nothing is missed
+- **The level of the best international schools** (Singapore, UK, IB), for a child who might follow their parents abroad
+- **Future skills**: money, code and AI, engineering, critical thinking
+
+## The rule that changed everything
+
+The first version, made in September, had a major flaw: most lessons asked the child to write on paper. On an iPad, that makes no sense.
+
+So I rebuilt it with one simple rule: **the child never writes**. Everything is done by touch, with 16 exercise types: drag, color, connect, order, place on a number line.
+
+## A lesson in five steps
+
+Every lesson follows the same path and always ends with a **transfer challenge**: using what you just learned in a new situation. Share a pizza in fractions, then use the same fractions in a challenge set in Marrakech.
+
+After that, endless practice with spaced repetition brings each notion back at the right time.
+
+## Content, reviewed and reviewed again
+
+Today: **117 lessons, about 1,400 exercises, 11 subjects**. Every lesson was written, reviewed, audited by two readers, then passed to a checker whose job was to find mistakes. More than 550 fixes in total.
+
+To be honest: no human teacher has reviewed it yet. That is the next important step.
+
+## What does not change
+
+- **100% offline**
+- **No account, no ads**
+- **A parent space** to follow progress
+
+> The long-term goal: an app polished enough to aim for the Apple Design Awards.`,
+    date: "2026-09-28",
+    readTime: "6 min",
+    tags: ["ScolIA", "Education", "SwiftUI"],
+    icon: "🎒",
+    gradient: "from-sky-500 to-indigo-500",
+  },
+  {
+    title: "CookBook AI: making an app simple for someone who is not technical",
+    slug: "cookbook-ai-simple-version",
+    excerpt: "I installed CookBook AI on a real user's iPad. In one day I found out the AI was broken, the welcome flow was 9 pages long, and half the features were useless.",
+    content: `## The test that hurts
+
+In March, CookBook AI had everything: AI Chef, pantry, cookbook scanning, voice recipes, printed books. Then I installed it on the iPad mini of someone at home who is not technical at all. And I listened.
+
+She only wanted three things: **import a recipe from a link**, **have the week planned automatically**, **have the shopping list written automatically**.
+
+## First shock: the AI no longer worked
+
+The AI models the app called had been retired by their provider in the meantime. As a result, all the AI was down, with no clear message.
+
+The fix: a single entry point for AI, with a list of fallback models. If one disappears, the next one takes over. Lesson learned: **anything that depends on an external service eventually breaks**.
+
+## Importing a recipe without an API key
+
+Most recipe websites hide a structured card in their page: title, ingredients, steps. The app reads it first, with no AI and no key. Checked for real on several French recipe sites.
+
+If the card is missing, the iPad's on-device AI takes over. And with the **Share** button, a recipe seen in Safari or YouTube lands straight in the app.
+
+## Simplify, simplify, simplify
+
+- **The first-launch welcome** goes from 9 pages to 1: three promises, your first name, "Let's go"
+- **The Add screen** becomes a single field to paste a link
+- **The planner**: lunch and dinner, "This week" or "Next week", and a "Fill my week" button
+- **Shopping** follows the plan, rounded to what you actually buy, sorted by aisle
+
+One bug made me laugh: beef ended up in the dairy aisle, because aisles were matched on pieces of words. They are now matched on whole words.
+
+## Apple design, for real
+
+That same evening, the whole app moved to Apple's design guidelines: system font, large titles, Settings-style lists, a Calendar-style planner, a Reminders-style shopping list. The app no longer looks like "a Flutter app", it looks like an iPad app.
+
+## What is left before the stores
+
+Mostly paperwork: ads on Android, the premium product to create, signing. Tests went from 380 to more than 410, all green.
+
+> The best feature is often the one you remove.`,
+    date: "2026-09-27",
+    readTime: "7 min",
+    tags: ["CookBook AI", "Design", "Apple"],
+    icon: "🍳",
+    gradient: "from-orange-500 to-red-500",
+  },
+  {
+    title: "The Flutter errors that cost me hours (and how to fix them in minutes)",
+    slug: "flutter-errors-that-waste-hours",
+    excerpt: "When you build with AI without knowing Flutter, errors look like gibberish. Each one has a precise cause and a two-minute fix. Here they are.",
+    content: `## Gibberish always has a cause
+
+When you build with Claude Code and do not know Flutter, error messages are scary. Good news: every error has a precise cause, and the fix often takes two minutes. The real problem is knowing which one.
+
+Here are the ones I hit most often.
+
+## Setup and environment
+
+- **"Android license status unknown"**: Android Studio is installed but its licenses were never accepted. Run flutter doctor --android-licenses and answer "y" to everything.
+- **"flutter: command not found"**: Flutter is not in your PATH. Add the flutter/bin folder to your .zshrc file, then reload the terminal.
+- **"CocoaPods not installed"**: Flutter needs CocoaPods for iOS. Install it with Homebrew, then run pod install in the ios folder.
+
+## Flutter and Dart
+
+- **"RenderFlex overflowed by X pixels"**: content is bigger than the space available, often a Column inside a parent that does not scroll. Wrap it in a SingleChildScrollView. My rule: beyond 3 or 4 children, I plan for it.
+- **"setState() called after dispose()"**: an async operation finished after the screen was closed. Check that the widget is still mounted before updating. Long term, a state manager like Riverpod avoids the problem.
+- **"Null check operator used on a null value"**: an exclamation mark was used on an empty value. My rule: never use the exclamation mark, always plan a default value.
+- **"MissingPluginException"**: a native plugin is not linked. The universal fix: flutter clean, flutter pub get, pod install, then run again.
+
+## iOS and Xcode
+
+- **"Signing requires a development team"**: open the .xcworkspace file (not the .xcodeproj), pick your team in Signing & Capabilities and enable automatic signing.
+- **"Archive failed"**: run Clean Build Folder. If it still fails, delete Pods and Podfile.lock, run pod install again, then rebuild.
+- **Apple rejection for a missing description**: if the app uses the camera, photos or location, Info.plist must explain why. Generic sentences are rejected: Apple wants to know why your app needs it.
+
+## Android and Gradle
+
+- **"minSdkVersion 16 cannot be smaller than 21"**: raise the minimum version to 21 in the app's build.gradle file.
+- **"Unsupported class file major version"**: your Java version does not match Gradle. Set a recent Gradle version in gradle-wrapper.properties.
+
+## Publishing on the App Store
+
+- **"Missing Export Compliance"**: Apple asks whether the app uses encryption. If you only use HTTPS, declare it in Info.plist with the ITSAppUsesNonExemptEncryption key set to false.
+- **A build that crashes at archive time**: in 80% of cases, flutter clean then pod install fixes it.
+
+## The rule for every error
+
+Before searching for two hours, **paste the full error message into Claude Code**, not just the last line, and ask for the cause before the fix. If it cannot find it, give it context: the command you ran, what you had just changed.
+
+> All these errors, and many more, are collected in the "error bible" of the [ByNeel Starter Kit](/kit).`,
+    date: "2026-03-14",
+    readTime: "8 min",
+    tags: ["Flutter", "Debugging", "Solo Dev"],
+    icon: "🐛",
+    gradient: "from-blue-500 to-cyan",
+  },
+  {
     title: 'Building OmniDrop: how I made files fly between devices without touching a cloud',
     slug: 'building-omnidrop-p2p-remote-messaging',
     excerpt: 'LocalSend has 8 million downloads and does LAN only. I decided to go further — remote transfer, encrypted messaging, and a device identity system. Here\'s what I learned.',

@@ -13,8 +13,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://byneel.com'),
-  title: 'ByNeel — Mobile Apps & AI Tools',
-  description: 'ByNeel builds innovative mobile apps and AI tools for iOS, Android and Desktop. AI-assisted development.',
+  title: 'ByNeel — AI-powered creative studio',
+  description: 'Portfolio of ByNeel: apps, AI tools, games, motion design videos, AI images, 3D architecture and writing, all built with AI by one person.',
 };
 
 export default function RootLayout({

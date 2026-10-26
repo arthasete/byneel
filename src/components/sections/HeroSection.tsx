@@ -54,7 +54,7 @@ export function HeroSection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="#projects"
+            href="#portfolio"
             className="group relative px-8 py-4 rounded-2xl font-semibold text-white overflow-hidden transition-all duration-300"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-brand-blue via-brand-violet to-cyan opacity-100 group-hover:opacity-90 transition-opacity rounded-2xl" />
