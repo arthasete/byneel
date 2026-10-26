@@ -61,6 +61,367 @@ Merci de m'avoir lu. Si un de ces projets te parle, dis-le-moi : ça m'aide à c
     gradient: 'from-brand-blue to-brand-violet',
   },
   {
+    title: "OmniDrop : j'ai tout remis à plat (et c'était la bonne décision)",
+    slug: "omnidrop-remise-a-plat",
+    excerpt: "En mars, OmniDrop avait des dizaines de fonctions et n'envoyait pas un fichier de façon fiable. Sept mois plus tard, je reprends tout avec une seule règle : un transfert qui marche 10 fois sur 10.",
+    content: `## Le problème que je ne voulais pas voir
+
+En mars, je vous ai raconté OmniDrop : transfert local, transfert à distance, messagerie chiffrée, identité OMNI-ID, contacts, anti-spam. Sur le papier, tout y était.
+
+En vrai, quand j'ai rouvert le code en octobre, le constat était simple : **l'envoi de fichiers ne pouvait pas marcher**. L'écran d'envoi appelait encore l'ancien moteur, dont le récepteur n'était plus lancé. J'avais empilé les fonctions sur une base qui n'avait jamais été testée sur deux vrais appareils.
+
+C'est le piège classique du dev solo avec l'IA : on peut écrire beaucoup de code très vite. Écrire du code n'est pas le problème. Le vérifier, si.
+
+## Le marché a bougé aussi
+
+Pendant ces sept mois, le monde n'a pas attendu :
+
+- **AirDrop parle à Quick Share** sur les Android récents. Envoyer un fichier d'un iPhone à un Android posé à côté n'est plus un problème.
+- **LocalSend 1.18** sait maintenant recevoir depuis un simple navigateur, sans app.
+- **Blip** fait le transfert par internet et fait payer les pros.
+
+Conclusion : un « AirDrop pour tout le monde » en local ne se vend plus. Ce qui reste ouvert, c'est **le presse-papiers partagé entre tous les systèmes** et **l'envoi hors de ton Wi-Fi sans compte ni cloud**.
+
+## La décision : ne pas tout réécrire une deuxième fois
+
+J'avais déjà un plan en mars : refaire le cœur sur le protocole ouvert de LocalSend, en 7 étapes. Il s'était arrêté à l'étape 1. La tentation était de repartir de zéro. Je ne l'ai pas fait. Le plan était bon, il fallait le **finir**.
+
+Les trois premières étapes forment la V1 fiable :
+
+1. **La découverte** des appareils sur le réseau, compatible LocalSend
+2. **L'envoi** de fichiers, avec un critère simple : 10 sur 10, trois tailles de fichier, Mac vers iPhone et Mac vers Android
+3. **La réception** et le bouton Partager
+
+## Ce que la vérification a trouvé
+
+J'ai testé contre le vrai LocalSend, utilisé comme appareil de référence. Trois bugs sont sortis tout de suite :
+
+- **Les types du protocole** : OmniDrop envoyait le port et un drapeau en texte au lieu d'un nombre et d'un vrai/faux. LocalSend ignorait donc complètement OmniDrop.
+- **Le certificat client** : depuis la version 1.18, LocalSend exige un certificat des deux côtés.
+- **Le proxy système** venait se mettre au milieu des connexions locales.
+
+Aucun de ces bugs ne se voit en lisant le code. Ils sautent aux yeux dès qu'on teste contre la réalité.
+
+## Ce qui part en pause
+
+Le chat, l'identité OMNI-ID, les contacts, les versions HarmonyOS et WeChat, la stratégie « entreprise ». Pas abandonnés, juste rangés. Et la limite de transferts par jour de la version gratuite disparaît : face à AirDrop et LocalSend, gratuits et illimités, elle n'avait aucun sens.
+
+## La suite
+
+D'abord le test sur deux vrais appareils. Ensuite le presse-papiers, puis le transfert à distance, qui justifiera un petit abonnement parce qu'il coûte de l'argent chaque mois. Et une idée qui me plaît beaucoup : une page publique, du genre omnidrop.app/@toi, où n'importe qui peut te déposer un fichier chiffré.
+
+> Une app qui fait une chose parfaitement vaut mieux qu'une app qui en fait dix à moitié.`,
+    date: "2026-10-25",
+    readTime: "7 min",
+    tags: ["OmniDrop", "P2P", "Solo Dev"],
+    icon: "📡",
+    gradient: "from-blue-500 to-violet-500",
+  },
+  {
+    title: "Faire des vidéos en écrivant du code",
+    slug: "videos-en-code-motionstudio",
+    excerpt: "Pas de logiciel de montage, pas de timeline. Chaque plan est une page web animée, rendue image par image en 60 i/s. Voici MotionStudio, et pourquoi ça change la façon de présenter mes apps.",
+    content: `## Pourquoi pas un logiciel de montage ?
+
+Je voulais présenter mes apps en vidéo. Le problème : je ne suis pas monteur, et chaque petite modification dans un logiciel de montage coûte une heure.
+
+L'idée de MotionStudio est simple : **une vidéo, c'est du code**. Chaque plan est une petite page web animée. Un outil la filme image par image, en 60 images par seconde, et assemble le tout avec le son.
+
+## Comment ça marche
+
+- **Un scénario** en quelques lignes : les plans, leur durée, ce qui doit apparaître
+- **Chaque plan** est une page HTML animée avec GSAP
+- **Le son** est calé à l'image près : chaque clic, chaque « pop » tombe une image après ce qu'il illustre
+- **Le rendu** sort un vrai fichier vidéo, en 9:16 pour les réseaux, en 4:3 ou en 16:9
+
+Le grand avantage : changer un texte, une couleur ou une durée, c'est changer une ligne et relancer le rendu.
+
+## Noter chaque plan avant de publier
+
+Le piège avec l'IA, c'est de croire que c'est bien parce que c'est fini. Alors chaque vidéo passe une revue : une planche avec l'image du milieu de chaque plan, et une note sur 10 pour l'histoire, la composition, le mouvement, la typo et le son. Tant qu'un plan est sous 8, on le reprend.
+
+Sur le premier test, « 2 AM Idea », la revue a trouvé une horloge qui perdait son zéro, un deux-points qui clignotait en carrés gris, et un texte qui touchait le bord. Rien d'invisible pour un spectateur.
+
+## La série de présentations
+
+Les vidéos suivantes sont filmées sur les **vraies apps**, lancées en mode démo sur simulateur :
+
+- **Une pub mobile** pour un petit jeu iPhone, en format vertical
+- **CookBook AI**, racontée comme une recette : les ingrédients, puis les étapes, puis « servir »
+- **ScolIA**, sur le cahier qu'on n'a plus besoin d'écrire : on voit l'ancienne méthode, puis l'iPad prend le relais
+
+Prochaines sur la liste : Bonne Étoile, L'Écorce, et ce site.
+
+> Montrer une méthode, jamais des gens : c'est la règle que je me suis donnée pour ces vidéos.`,
+    date: "2026-10-24",
+    readTime: "5 min",
+    tags: ["Vidéo", "Motion design", "IA"],
+    icon: "🎬",
+    gradient: "from-fuchsia-500 to-purple-600",
+  },
+  {
+    title: "Mon espace de travail IA : de 31 Ko d'instructions à 3 Ko",
+    slug: "espace-de-travail-ia-arms",
+    excerpt: "Mon fichier d'instructions pour Claude avait grossi jusqu'à 31 Ko. Il ralentissait tout. Je l'ai transformé en routeur de 3 Ko, et j'ai remplacé les règles par des vérifications automatiques.",
+    content: `## Quand CLAUDE.md devient un roman
+
+En mars, je vous expliquais que CLAUDE.md avait changé ma façon de travailler. C'est toujours vrai. Mais en sept mois, le fichier à la racine de mes projets avait grossi jusqu'à **31 Ko** : l'état de chaque app, l'historique de chaque session, des dizaines de règles.
+
+Résultat : à chaque session, l'IA lisait tout ça avant de commencer, et noyait l'important dans le reste.
+
+## Un routeur au lieu d'une encyclopédie
+
+J'ai tout réorganisé en un petit système que j'appelle ARMS :
+
+- **CLAUDE.md** devient un routeur de 3 Ko : qui je suis, comment je travaille, et où trouver le reste
+- **Un index par dossier** (projets, contenu, business, perso) dit où vit chaque chose
+- **Les fiches des apps** et l'historique des sessions vivent dans leurs propres fichiers, lus seulement quand on en a besoin
+- **Une boîte d'arrivée** reçoit les livrables à trier
+
+Rien n'a été supprimé : tout a été déplacé tel quel, avec une sauvegarde de l'original.
+
+## Le harness compte autant que le modèle
+
+Deux jours plus tard, je suis tombé sur une idée qui m'a parlé : le « harness », c'est-à-dire tout ce qui entoure le modèle, compte autant que le modèle lui-même. Et on l'améliore par petites couches testées, pas en ajoutant des paragraphes au prompt.
+
+Alors j'ai remplacé des règles écrites par des choses qui tournent toutes seules :
+
+- **Un garde-fou** qui bloque les commandes de suppression dangereuses
+- **Un contrôle de taille** qui refuse un CLAUDE.md de plus de 80 lignes
+- **Un point d'étape forcé** toutes les 75 actions, pour ne pas partir dans le décor
+- **Deux petits assistants** : un qui lit les gros fichiers, un qui revérifie le travail sans faire confiance à l'auteur
+- **Une commande d'évolution** qui propose une amélioration, la teste, puis la garde ou la jette
+
+## La règle que je retiens
+
+> Une règle qu'on peut vérifier va dans un script, pas dans un texte.
+
+Un texte, l'IA peut l'oublier ou mal le lire. Un script qui bloque, non. Mon CLAUDE.md est plus court qu'en mars, et le système est plus fiable.`,
+    date: "2026-10-24",
+    readTime: "6 min",
+    tags: ["Claude Code", "Productivité", "CLAUDE.md"],
+    icon: "🧭",
+    gradient: "from-cyan to-brand-blue",
+  },
+  {
+    title: "Bonne Étoile : un jeu de rôle avec un maître du jeu IA dans l'iPhone",
+    slug: "bonne-etoile-jdr-ia",
+    excerpt: "Un jeu « dont tu es le héros », drôle, 100 % hors ligne, avec une IA embarquée qui improvise quand tu sors du scénario. Sans serveur et sans clé API.",
+    content: `## L'envie de départ
+
+J'adore les histoires d'isekai, ces récits où le héros renaît dans un autre monde. Et j'avais envie de tester une question : **que peut faire l'IA embarquée dans un iPhone, sans internet ?**
+
+Bonne Étoile est la réponse : un jeu de rôle textuel et humoristique.
+
+## Le monde à l'envers
+
+Ton héros renaît à **Contresens**, un monde où la logique marche à l'envers. Tu suis toute sa vie, de la naissance à la grande finale, en 10 chapitres, environ 4 heures de jeu.
+
+- **Trois choix par scène**, qui comptent pour la suite
+- **Des dés d20**, des points de vie et 5 statistiques
+- **Des relations** avec les personnages, version comédie
+- **La mort n'est pas la fin** : tu passes au Guichet des Âmes et tu rejoues la scène
+
+## Le maître du jeu improvisateur
+
+C'est la partie qui m'amuse le plus. En plus des trois choix, tu peux taper une action libre : « je fais un compliment au garde », « je cache la clé dans ma botte ».
+
+Un maître du jeu propulsé par **Apple Intelligence**, le modèle qui tourne directement dans l'iPhone, improvise une réponse dans le ton de l'histoire. Il ne casse jamais le scénario : il colore la scène, puis l'histoire reprend son cours. Si le modèle n'est pas disponible sur ton appareil, l'option disparaît simplement.
+
+## Écrire un jeu comme un livre
+
+Toute l'histoire est écrite dans des fichiers, chapitre par chapitre, avec une « bible » qui fixe le monde, les personnages et les limites. Un petit vérificateur relit tout et estime la durée de jeu.
+
+> Pas de serveur, pas de compte, pas d'abonnement : le jeu entier tient dans le téléphone.`,
+    date: "2026-10-18",
+    readTime: "4 min",
+    tags: ["Jeu", "Apple Intelligence", "SwiftUI"],
+    icon: "🌟",
+    gradient: "from-yellow-400 to-orange-500",
+  },
+  {
+    title: "AION 2 Companion : jouer mieux avec peu de temps, sans risquer son compte",
+    slug: "aion2-companion",
+    excerpt: "Une route optimale dessinée sur la carte du jeu, et un conseiller qui lit ton personnage pour te dire quoi améliorer en premier. Le tout sans toucher au jeu.",
+    content: `## Le problème du joueur pressé
+
+J'aime AION 2, mais je n'ai pas des heures pour jouer. Ouvrir dix sites pour savoir quoi faire dans une zone, dans quel ordre, et comment améliorer mon équipement, ça mange le temps de jeu.
+
+J'ai donc construit un compagnon pour moi.
+
+## Deux outils
+
+- **L'overlay de route** : une mini-carte transparente posée au-dessus du jeu. Elle montre ce qu'il reste à faire dans la zone (bastions, donjons scellés, cubes cachés, boss) et l'ordre le plus court pour tout faire. Ou, si je n'ai que 30 minutes, le meilleur plan pour ce temps-là.
+- **Le conseiller** : il récupère mon personnage depuis la page officielle « Infos personnage » du site du jeu, puis me dit quoi améliorer, dans quel ordre et pour quel coût réel.
+
+L'overlay sait aussi **scanner la carte du jeu** : il reconnaît la zone et ma position, coche ce qui est déjà fait et dessine la route numérotée directement sur la carte.
+
+## La règle numéro un : ne jamais risquer le compte
+
+Beaucoup d'outils de jeu lisent la mémoire du jeu, interceptent le réseau ou automatisent des clics. C'est exactement ce qui fait bannir un compte.
+
+Ici, tout est **passif** :
+
+- **Aucune lecture** de la mémoire du jeu, aucun accès au programme du jeu
+- **Aucune automatisation** de clavier ou de souris
+- **Aucune interception** du trafic réseau
+- **Seulement** des fenêtres séparées, des captures d'écran et l'API web publique, pour mon propre personnage, avec un cache pour ne pas la surcharger
+
+Et pour les données de carte, j'utilise uniquement une source dont la licence le permet, avec le crédit demandé.
+
+## Ce que j'ai appris
+
+> Le meilleur outil n'est pas celui qui fait le plus, c'est celui qu'on peut utiliser sans arrière-pensée.
+
+La version actuelle a aussi un onglet « Semaine » avec les compteurs quotidiens et hebdomadaires du jeu. Le prochain chantier : suivre les dernières mises à jour pour mes classes, Spirit Master et Sorcier.`,
+    date: "2026-10-02",
+    readTime: "5 min",
+    tags: ["Jeu vidéo", "Python", "Outils"],
+    icon: "⚔️",
+    gradient: "from-amber-500 to-rose-600",
+  },
+  {
+    title: "ScolIA : une app d'école où l'enfant n'écrit jamais",
+    slug: "scolia-app-ecole-ipad",
+    excerpt: "Le programme français, le niveau des meilleures écoles internationales, et les compétences du futur. Dans une app iPad 100 % hors ligne, où tout se fait au toucher.",
+    content: `## Pourquoi une app d'école ?
+
+Le constat de départ vient des classements internationaux : l'école apprend bien à **appliquer** une méthode, beaucoup moins à **s'en servir ailleurs**. C'est pourtant ce qui compte le plus.
+
+ScolIA est née de là, d'abord pour ma propre famille : une app iPad pour le primaire, avec trois ambitions en même temps.
+
+- **Le programme français**, pour ne rien rater
+- **Le niveau des meilleures écoles internationales** (Singapour, Royaume-Uni, IB), pour un enfant qui pourrait suivre ses parents à l'étranger
+- **Les compétences du futur** : l'argent, le code et l'IA, l'ingénierie, l'esprit critique
+
+## La règle qui a tout changé
+
+La première version, faite en septembre, avait un défaut majeur : la plupart des leçons demandaient d'écrire sur papier. Sur un iPad, c'est absurde.
+
+Alors j'ai tout refait avec une règle simple : **l'enfant n'écrit jamais**. Tout se fait au toucher, avec 16 types d'exercices : glisser, colorier, relier, ordonner, placer sur une droite.
+
+## Une leçon en cinq temps
+
+Chaque leçon suit le même chemin, et finit toujours par un **défi de transfert** : utiliser ce qu'on vient d'apprendre dans une situation nouvelle. Partager une pizza en fractions, puis se servir des mêmes fractions dans un défi qui se passe à Marrakech.
+
+Ensuite, un entraînement infini avec répétition espacée fait revenir les notions au bon moment.
+
+## Le contenu, relu et re-relu
+
+Aujourd'hui : **117 leçons, près de 1 400 exercices, 11 matières**. Chaque leçon a été écrite, relue, auditée par deux regards, puis passée à un vérificateur chargé de trouver les erreurs. Plus de 550 corrections au total.
+
+Je le dis honnêtement : aucun enseignant humain ne l'a encore relue. C'est la prochaine étape importante.
+
+## Ce qui ne bouge pas
+
+- **100 % hors ligne**
+- **Pas de compte, pas de pub**
+- **Un espace parents** pour suivre les progrès
+
+> L'objectif à long terme : une app assez soignée pour viser les Apple Design Awards.`,
+    date: "2026-09-28",
+    readTime: "6 min",
+    tags: ["ScolIA", "Éducation", "SwiftUI"],
+    icon: "🎒",
+    gradient: "from-sky-500 to-indigo-500",
+  },
+  {
+    title: "CookBook AI : rendre une app simple pour quelqu'un qui n'est pas technique",
+    slug: "cookbook-ai-version-simple",
+    excerpt: "J'ai installé CookBook AI sur l'iPad d'une vraie utilisatrice. En une journée, j'ai découvert que l'IA était en panne, que l'accueil faisait 9 pages, et que la moitié des fonctions ne servaient à rien.",
+    content: `## Le test qui fait mal
+
+En mars, CookBook AI avait tout : Chef IA, garde-manger, scan de livres, recettes à la voix, livre imprimé. Puis je l'ai installée sur l'iPad mini de quelqu'un qui n'est pas du tout technique, à la maison. Et j'ai écouté.
+
+Elle ne voulait que trois choses : **importer une recette depuis un lien**, **que la semaine se planifie toute seule**, **que la liste de courses se fasse toute seule**.
+
+## Premier choc : l'IA ne marchait plus
+
+Les modèles d'IA que l'app appelait avaient été arrêtés par leur fournisseur entre-temps. Résultat : toute l'IA était en panne, sans message clair.
+
+La correction : un seul point d'entrée pour l'IA, avec une liste de modèles de secours. Si l'un disparaît, le suivant prend le relais. Leçon retenue : **tout ce qui dépend d'un service externe finit par casser**.
+
+## Importer une recette sans clé API
+
+La plupart des sites de recettes cachent dans leur page une fiche structurée : titre, ingrédients, étapes. L'app la lit d'abord, sans IA et sans clé. Vérifié en vrai sur Marmiton, 750g et d'autres.
+
+Si la fiche n'existe pas, l'IA embarquée de l'iPad prend le relais. Et avec le bouton **Partager**, une recette vue dans Safari ou YouTube arrive directement dans l'app.
+
+## Simplifier, simplifier, simplifier
+
+- **L'accueil du premier lancement** passe de 9 pages à 1 : trois promesses, ton prénom, « C'est parti »
+- **L'écran Ajouter** devient un seul champ pour coller un lien
+- **Le planning** : midi et soir, « Cette semaine » ou « Semaine prochaine », et un bouton « Remplir ma semaine »
+- **Les courses** suivent le planning, arrondies à ce qu'on achète vraiment, rangées par rayon
+
+Un bug m'a fait rire : le bœuf se retrouvait au rayon crèmerie, parce que les rayons étaient reconnus sur des morceaux de mots. Ils se trouvent maintenant par mots entiers.
+
+## Le design Apple, pour de vrai
+
+Le soir même, toute l'app est passée aux règles de design d'Apple : police système, grands titres, listes façon Réglages, planning façon Calendrier, courses façon Rappels. L'app ne ressemble plus à « une app Flutter », elle ressemble à une app iPad.
+
+## Ce qui reste avant les stores
+
+Surtout de l'administratif : la pub sur Android, le produit premium à créer, la signature. Les tests, eux, sont passés de 380 à plus de 410, tous verts.
+
+> La meilleure fonction, c'est souvent celle qu'on enlève.`,
+    date: "2026-09-27",
+    readTime: "7 min",
+    tags: ["CookBook AI", "Design", "Apple"],
+    icon: "🍳",
+    gradient: "from-orange-500 to-red-500",
+  },
+  {
+    title: "Les erreurs Flutter qui m'ont coûté des heures (et comment les régler en minutes)",
+    slug: "erreurs-flutter-qui-font-perdre-des-heures",
+    excerpt: "Quand on construit avec l'IA sans connaître Flutter, les erreurs ressemblent à du charabia. Chacune a pourtant une cause précise et une solution de deux minutes. Les voici.",
+    content: `## Le charabia a toujours une cause
+
+Quand tu construis avec Claude Code et que tu ne connais pas Flutter, les messages d'erreur font peur. Bonne nouvelle : chaque erreur a une cause précise, et la solution prend souvent deux minutes. Le vrai problème, c'est de savoir laquelle.
+
+Voici celles que j'ai rencontrées le plus souvent.
+
+## Installation et environnement
+
+- **« Android license status unknown »** : Android Studio est installé mais ses licences n'ont jamais été acceptées. Lance flutter doctor --android-licenses et réponds « y » partout.
+- **« flutter: command not found »** : Flutter n'est pas dans le PATH. Ajoute le dossier flutter/bin à ton fichier .zshrc, puis recharge le terminal.
+- **« CocoaPods not installed »** : Flutter a besoin de CocoaPods pour iOS. Installe-le avec Homebrew, puis lance pod install dans le dossier ios.
+
+## Flutter et Dart
+
+- **« RenderFlex overflowed by X pixels »** : le contenu dépasse l'espace disponible, souvent une Column dans un parent qui ne défile pas. Enveloppe-la dans un SingleChildScrollView. Ma règle : au-delà de 3 ou 4 éléments, je l'anticipe.
+- **« setState() called after dispose() »** : une opération asynchrone a fini après la fermeture de l'écran. Vérifie que le widget est encore monté avant de mettre à jour. À long terme, un gestionnaire d'état comme Riverpod évite le problème.
+- **« Null check operator used on a null value »** : un point d'exclamation a été utilisé sur une valeur vide. Ma règle : ne jamais utiliser le point d'exclamation, toujours prévoir une valeur par défaut.
+- **« MissingPluginException »** : un plugin natif n'est pas lié. La solution universelle : flutter clean, flutter pub get, pod install, puis relancer.
+
+## iOS et Xcode
+
+- **« Signing requires a development team »** : ouvre le fichier .xcworkspace (pas le .xcodeproj), choisis ton équipe dans Signing & Capabilities et coche la signature automatique.
+- **« Archive failed »** : fais un Clean Build Folder. Si ça échoue encore, supprime les Pods et le Podfile.lock, relance pod install, puis reconstruis.
+- **Rejet Apple pour description manquante** : si l'app utilise la caméra, les photos ou la position, Info.plist doit expliquer pourquoi. Les phrases génériques sont refusées : Apple veut savoir pourquoi ton app en a besoin.
+
+## Android et Gradle
+
+- **« minSdkVersion 16 cannot be smaller than 21 »** : monte la version minimale à 21 dans le fichier build.gradle de l'app.
+- **« Unsupported class file major version »** : la version de Java ne correspond pas à celle de Gradle. Mets une version récente de Gradle dans le fichier gradle-wrapper.properties.
+
+## Publication sur l'App Store
+
+- **« Missing Export Compliance »** : Apple demande si l'app utilise du chiffrement. Si tu n'utilises que HTTPS, déclare-le dans Info.plist avec la clé ITSAppUsesNonExemptEncryption à false.
+- **Un build qui plante à l'archive** : dans 80 % des cas, flutter clean puis pod install règle le problème.
+
+## La règle qui vaut pour toutes les erreurs
+
+Avant de chercher pendant deux heures, **colle le message d'erreur complet dans Claude Code**, pas seulement la dernière ligne, et demande la cause avant la correction. S'il ne trouve pas, donne-lui le contexte : la commande lancée, ce que tu venais de modifier.
+
+> Toutes ces erreurs, et beaucoup d'autres, sont rangées dans la « bible des erreurs » du [ByNeel Starter Kit](/kit).`,
+    date: "2026-03-14",
+    readTime: "8 min",
+    tags: ["Flutter", "Débogage", "Solo Dev"],
+    icon: "🐛",
+    gradient: "from-blue-500 to-cyan",
+  },
+  {
     title: 'Construire OmniDrop : comment j\'ai fait voler des fichiers entre appareils sans toucher un cloud',
     slug: 'building-omnidrop-p2p-remote-messaging',
     excerpt: 'LocalSend a 8 millions de downloads et ne fait que du LAN. J\'ai décidé d\'aller plus loin — transfert distant, messagerie chiffrée, et un système d\'identité. Voici ce que j\'ai appris.',
