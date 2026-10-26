@@ -17,7 +17,7 @@ export interface Project {
   /** Masonry height variant */
   masonryHeight?: 'sm' | 'md' | 'lg' | 'xl';
   /** Filter category */
-  category: 'mobile' | 'ai' | 'backend' | 'creative';
+  category: 'mobile' | 'ai' | 'backend' | 'games' | 'video' | 'architecture' | 'writing';
   /** Optional dedicated landing page URL (overrides /projects/[slug]) */
   landingUrl?: string;
 }
@@ -170,7 +170,7 @@ export const projects: Project[] = [
   {
     title: "Bonne Étoile",
     slug: "bonne-etoile",
-    category: "mobile",
+    category: "games",
     masonryHeight: "md",
     description: "A funny isekai text RPG for iPhone, with an on-device AI game master. 100% offline.",
     longDescription: "Bonne Étoile is a choose-your-path role-playing game for iPhone. Your hero is reborn in Contresens, a world where logic runs backwards, and you follow their whole life across 10 chapters (about 4 hours). Three choices per scene, d20 dice, stats and relationships. When you want to try something the story did not plan for, an on-device Apple Intelligence game master improvises with you.",
@@ -191,7 +191,7 @@ export const projects: Project[] = [
   {
     title: "Plans3D",
     slug: "plans3d",
-    category: "creative",
+    category: "architecture",
     masonryHeight: "lg",
     description: "House plans that come to life: architect sketch, then 3D model, then a realistic render. In the browser.",
     longDescription: "Plans3D is a prototype website for house plans. Each house is drawn like an architect board (plan, facades, section) that traces itself as you scroll, then the plan rises into a 3D model, then into a realistic real-time render with a sun you can move from morning to evening. An “I have an idea” page draws a house live from a few criteria.",
@@ -212,7 +212,7 @@ export const projects: Project[] = [
   {
     title: "MotionStudio",
     slug: "motionstudio",
-    category: "creative",
+    category: "video",
     masonryHeight: "md",
     description: "Motion design videos written in code: app trailers and ads rendered at 60 fps.",
     longDescription: "MotionStudio is where I make videos without a timeline editor: every shot is code, rendered frame by frame at 60 fps, with sound synced to the picture. It is used for a series of presentation videos of my projects, filmed on the real apps: an ad for a mobile game, a CookBook AI video told as a recipe, and a ScolIA video about the notebook you no longer need to write in.",
@@ -232,7 +232,7 @@ export const projects: Project[] = [
   {
     title: "L'Écorce",
     slug: "l-ecorce",
-    category: "creative",
+    category: "writing",
     masonryHeight: "sm",
     description: "A French heroic fantasy saga in five volumes. Volume 1, La Souche, is written.",
     longDescription: "L'Écorce is a heroic fantasy series planned in five volumes, in French. The first volume, La Souche, is fully drafted (40 chapters) and now in the author's reading and revision phase.",

@@ -6,6 +6,8 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { useProjects } from '@/i18n/useLocalizedData';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { ArrowRight } from 'lucide-react';
+import { PortfolioGrid } from '@/components/sections/PortfolioSection';
+import { portfolio } from '@/data/portfolio';
 
 function useRevealAnimation() {
   useEffect(() => {
@@ -36,6 +38,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
   const projectIndex = useMemo(() => localizedProjects.findIndex((p) => p.slug === slug), [localizedProjects, slug]);
   const nextProject = useMemo(() => localizedProjects[(projectIndex + 1) % localizedProjects.length], [localizedProjects, projectIndex]);
   const prevProject = useMemo(() => localizedProjects[(projectIndex - 1 + localizedProjects.length) % localizedProjects.length], [localizedProjects, projectIndex]);
+  const gallery = useMemo(() => portfolio.filter((item) => item.project === slug), [slug]);
 
   if (!project) {
     return (
@@ -127,6 +130,18 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
           </div>
         </div>
       </section>
+
+      {/* Gallery */}
+      {gallery.length > 0 && (
+        <section className="pt-20 px-6">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-xs font-semibold tracking-widest uppercase text-brand-blue mb-6">
+              {t('projectPage.gallery')}
+            </p>
+            <PortfolioGrid items={gallery} />
+          </div>
+        </section>
+      )}
 
       {/* Features */}
       <section className="py-20 px-6">

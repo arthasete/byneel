@@ -148,7 +148,7 @@ export const projectsFr: Project[] = [
   {
     title: "Bonne Étoile",
     slug: "bonne-etoile",
-    category: "mobile",
+    category: "games",
     masonryHeight: "md",
     description: "Un jeu de rôle textuel isekai et drôle pour iPhone, avec un maître du jeu IA embarqué. 100 % hors ligne.",
     longDescription: "Bonne Étoile est un jeu de rôle « dont tu es le héros » pour iPhone. Ton héros renaît à Contresens, un monde où la logique marche à l'envers, et tu suis toute sa vie sur 10 chapitres (environ 4 heures). Trois choix par scène, des dés d20, des stats et des relations. Et quand tu veux tenter un truc que l'histoire n'avait pas prévu, un maître du jeu Apple Intelligence embarqué improvise avec toi.",
@@ -169,7 +169,7 @@ export const projectsFr: Project[] = [
   {
     title: "Plans3D",
     slug: "plans3d",
-    category: "creative",
+    category: "architecture",
     masonryHeight: "lg",
     description: "Des plans de maisons qui prennent vie : croquis d'architecte, puis maquette 3D, puis rendu réel. Dans le navigateur.",
     longDescription: "Plans3D est un prototype de site de plans de maisons. Chaque maison est dessinée comme une planche d'architecte (plan, façades, coupe) qui se trace sous tes yeux, puis le plan monte en maquette 3D, puis en rendu réaliste en temps réel avec un soleil que tu règles du matin au soir. Une page « J'ai une idée » dessine une maison en direct à partir de quelques critères.",
@@ -190,7 +190,7 @@ export const projectsFr: Project[] = [
   {
     title: "MotionStudio",
     slug: "motionstudio",
-    category: "creative",
+    category: "video",
     masonryHeight: "md",
     description: "Des vidéos de motion design écrites en code : bandes-annonces et pubs rendues en 60 i/s.",
     longDescription: "MotionStudio, c'est là où je fais des vidéos sans logiciel de montage : chaque plan est du code, rendu image par image en 60 i/s, avec un son calé sur l'image. Il sert à une série de vidéos de présentation de mes projets, filmées sur les vraies apps : une pub pour un jeu mobile, une vidéo CookBook AI racontée comme une recette, et une vidéo ScolIA sur le cahier qu'on n'a plus besoin d'écrire.",
@@ -210,7 +210,7 @@ export const projectsFr: Project[] = [
   {
     title: "L'Écorce",
     slug: "l-ecorce",
-    category: "creative",
+    category: "writing",
     masonryHeight: "sm",
     description: "Une saga d'heroic fantasy en cinq tomes. Le tome 1, La Souche, est écrit.",
     longDescription: "L'Écorce est une série d'heroic fantasy prévue en cinq tomes. Le premier, La Souche, est entièrement rédigé (40 chapitres) et entre en phase de lecture et de révision par l'auteur.",

@@ -8,7 +8,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { useProjects } from '@/i18n/useLocalizedData';
 import type { TranslationKey } from '@/i18n/translations';
 
-type FilterCategory = 'all' | 'mobile' | 'ai' | 'backend' | 'creative';
+type FilterCategory = 'all' | Project['category'];
 
 const MASONRY_MIN_HEIGHTS: Record<string, string> = {
   sm: 'min-h-[260px]',
@@ -25,7 +25,7 @@ interface Project {
   gradient: string;
   bentoSize?: 'large' | 'tall' | 'normal';
   masonryHeight?: 'sm' | 'md' | 'lg' | 'xl';
-  category: 'mobile' | 'ai' | 'backend' | 'creative';
+  category: 'mobile' | 'ai' | 'backend' | 'games' | 'video' | 'architecture' | 'writing';
   tags: string[];
   comingSoon?: boolean;
   paused?: boolean;
@@ -127,8 +127,11 @@ export function BentoGrid() {
     { key: 'all', label: t('bento.filterAll') },
     { key: 'mobile', label: t('bento.filterMobile') },
     { key: 'ai', label: t('bento.filterAI') },
+    { key: 'games', label: t('bento.filterGames') },
+    { key: 'video', label: t('bento.filterVideo') },
+    { key: 'architecture', label: t('bento.filterArchitecture') },
+    { key: 'writing', label: t('bento.filterWriting') },
     { key: 'backend', label: t('bento.filterBackend') },
-    { key: 'creative', label: t('bento.filterCreative') },
   ];
 
   const filteredProjects = useMemo(() => {
@@ -169,7 +172,7 @@ export function BentoGrid() {
         {/* Filter tabs */}
         <ScrollReveal delay={0.1} className="mb-12">
           <div className="flex flex-wrap gap-2">
-            {filters.map((filter) => (
+            {filters.filter((f) => f.key === 'all' || localizedProjects.some((p) => p.category === f.key)).map((filter) => (
               <button
                 key={filter.key}
                 onClick={() => setActiveFilter(filter.key)}
