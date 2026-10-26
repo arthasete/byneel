@@ -242,8 +242,6 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
                   <p className="text-sm text-muted leading-relaxed">
                     {project.techStack.includes('AES-256-GCM')
                       ? t('projectPage.arch.aes')
-                      : project.slug === 'beloved'
-                      ? t('projectPage.arch.beloved')
                       : t('projectPage.arch.keychain')}
                   </p>
                 </div>
