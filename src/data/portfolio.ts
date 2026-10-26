@@ -156,6 +156,16 @@ export const portfolio: PortfolioItem[] = [
     project: 'plans3d',
   },
   {
+    id: 'app-cookbook-accueil',
+    discipline: 'apps',
+    kind: 'image',
+    src: '/portfolio/app-cookbook-accueil.webp',
+    wide: true,
+    title: { en: 'CookBook AI on iPad', fr: 'CookBook AI sur iPad' },
+    caption: { en: 'Tonight, this week, and everything in one glance.', fr: 'Ce soir, la semaine, et tout le reste en un coup d’œil.' },
+    project: 'cookbook-ai',
+  },
+  {
     id: 'app-cookbook-planning',
     discipline: 'apps',
     kind: 'image',
@@ -184,6 +194,15 @@ export const portfolio: PortfolioItem[] = [
       fr: 'Synchronisée avec le planning, rangée par rayon.',
     },
     project: 'cookbook-ai',
+  },
+  {
+    id: 'app-scolia-aujourdhui',
+    discipline: 'apps',
+    kind: 'image',
+    src: '/portfolio/app-scolia-aujourdhui.webp',
+    title: { en: 'ScolIA, today', fr: 'ScolIA, aujourd’hui' },
+    caption: { en: 'The day’s lessons and mission, with Lumi the mascot.', fr: 'Les leçons et la mission du jour, avec Lumi la mascotte.' },
+    project: 'scolia',
   },
   {
     id: 'app-scolia-fractions',
